@@ -1,0 +1,770 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Phoenix Venture Studios - Founder Market",
+  "home_page_url": "https://phoenixventurestudios.com",
+  "feed_url": "https://phoenixventurestudios.com/rss/feed.json",
+  "description": "Funding, AI market moves, capital shifts, and founder-facing business signals curated for Phoenix Venture Studios.",
+  "generated_at": "2026-05-29T15:20:13.011Z",
+  "items": [
+    {
+      "id": "https://phoenixventurestudios.com/founder-signal/signals/this-chip-startup-just-raised-135m-bet-that-ai-s-biggest-bottleneck-isn-t-comp-b87402dc/",
+      "url": "https://phoenixventurestudios.com/founder-signal/signals/this-chip-startup-just-raised-135m-bet-that-ai-s-biggest-bottleneck-isn-t-comp-b87402dc/",
+      "external_url": "https://techcrunch.com/2026/05/29/xcena-secures-135m-at-570m-valuation-betting-on-memory-as-ais-real-bottleneck/",
+      "title": "This chip startup just raised $135M on a bet that AI’s biggest bottleneck isn’t compute — it’s memory",
+      "content_text": "South Korean chip startup XCENA is betting that AI's real bottleneck is not compute, but memory.",
+      "image": "https://phoenixventurestudios.com/images/signals/generated/this-chip-startup-just-raised-135m-bet-that-ai-s-biggest-bottleneck-isn-t-comp-b87402dc.jpg",
+      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/this-chip-startup-just-raised-135m-bet-that-ai-s-biggest-bottleneck-isn-t-comp-b87402dc.jpg",
+      "date_published": "2026-05-29T12:00:00.000Z",
+      "authors": [
+        {
+          "name": "TechCrunch"
+        }
+      ],
+      "tags": [
+        "AI Operator Impact"
+      ],
+      "_phoenix": {
+        "bucket": "ai_operator_impact",
+        "score": 95,
+        "source": "TechCrunch",
+        "slug": "this-chip-startup-just-raised-135m-bet-that-ai-s-biggest-bottleneck-isn-t-comp-b87402dc",
+        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/this-chip-startup-just-raised-135m-bet-that-ai-s-biggest-bottleneck-isn-t-comp-b87402dc.jpg",
+        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/this-chip-startup-just-raised-135m-bet-that-ai-s-biggest-bottleneck-isn-t-comp-b87402dc.jpg",
+        "socialImagePath": "/images/signals/generated/this-chip-startup-just-raised-135m-bet-that-ai-s-biggest-bottleneck-isn-t-comp-b87402dc.jpg",
+        "sourceImageUrl": "",
+        "imageStrategy": "owned-photo-match",
+        "imageFamily": "capital_readiness",
+        "imageSourceType": "phoenix-owned",
+        "imageCredit": "Phoenix Venture Studios image library",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageTemplate": "opportunity_window",
+        "imageVariant": "operator-map",
+        "imageTone": "aqua",
+        "imageComposition": "lower-band",
+        "imageWarnings": [
+          "Source policy is reference-only and not approved for public image use; using a Phoenix-owned fallback."
+        ],
+        "imageBrief": {
+          "storyAngle": "Capital readiness",
+          "emotionalHook": "Capital is flowing toward clearer proof, stronger timing, and a more believable growth story.",
+          "visualMetaphor": "A founder reviewing capital options with a clear path through the numbers.",
+          "audiencePainOpportunity": "Founders need to connect attention to a fundable business move.",
+          "imageFamily": "capital_readiness",
+          "preferredImageFamily": "capital_readiness",
+          "sourceImageEligibility": "reference-only",
+          "sourceImagePolicy": "reference-only",
+          "sourceImageMatchedKey": "",
+          "sourceImageNote": "",
+          "manualReviewNeeded": true,
+          "overlayTone": "capital",
+          "template": "opportunity_window",
+          "imageVariant": "operator-map",
+          "imageTone": "aqua",
+          "imageComposition": "lower-band"
+        },
+        "feedRole": "founder-market",
+        "simpleSummary": "TechCrunch flagged a ai operator impact story. Use this to see what changed, why it matters, and what to watch next.",
+        "engagementPrompt": "What is your takeaway from this signal? Drop it below.",
+        "trendContext": "The pattern to watch is whether more sources start pointing to the same shift.",
+        "relatedRecentSignals": [],
+        "readingLevel": {
+          "target": "grade-5-plain-founder",
+          "heuristic": "average sentence words",
+          "averageSentenceWords": 11.2
+        },
+        "editorialMode": "phoenix-original-brief",
+        "internalPath": "/founder-signal/signals/this-chip-startup-just-raised-135m-bet-that-ai-s-biggest-bottleneck-isn-t-comp-b87402dc",
+        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/this-chip-startup-just-raised-135m-bet-that-ai-s-biggest-bottleneck-isn-t-comp-b87402dc/",
+        "originalUrl": "https://techcrunch.com/2026/05/29/xcena-secures-135m-at-570m-valuation-betting-on-memory-as-ais-real-bottleneck/",
+        "whyItMatters": "AI is shifting from novelty into operations. The founders who benefit are the ones who translate tools into workflow, revenue, and risk decisions.",
+        "whyShared": "Phoenix shared this because it helps business owners separate practical AI leverage from hype.",
+        "founderTakeaway": "Ask where this signal could reduce friction, increase speed, or create a clearer customer experience inside your own business.",
+        "businessTakeaway": "The business takeaway is to pick one workflow where AI can create measurable lift before expanding the system."
+      }
+    },
+    {
+      "id": "https://phoenixventurestudios.com/founder-signal/signals/anthropic-raises-65-billion-nears-1t-valuation-ahead-ipo-9ee60768/",
+      "url": "https://phoenixventurestudios.com/founder-signal/signals/anthropic-raises-65-billion-nears-1t-valuation-ahead-ipo-9ee60768/",
+      "external_url": "https://techcrunch.com/2026/05/28/anthropic-raises-65-billion-nears-1t-valuation-ahead-of-ipo/",
+      "title": "Anthropic raises $65 billion, nears $1T valuation ahead of IPO",
+      "content_text": "Anthropic has closed a $65 billion Series H round at a $965 billion post-money valuation, marking what could be the AI startup's final private fundraise before a highly anticipated IPO.",
+      "image": "https://phoenixventurestudios.com/images/signals/generated/anthropic-raises-65-billion-nears-1t-valuation-ahead-ipo-9ee60768.jpg",
+      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/anthropic-raises-65-billion-nears-1t-valuation-ahead-ipo-9ee60768.jpg",
+      "date_published": "2026-05-28T18:52:51.000Z",
+      "authors": [
+        {
+          "name": "TechCrunch"
+        }
+      ],
+      "tags": [
+        "Funding & Venture"
+      ],
+      "_phoenix": {
+        "bucket": "funding_venture",
+        "score": 86,
+        "source": "TechCrunch",
+        "slug": "anthropic-raises-65-billion-nears-1t-valuation-ahead-ipo-9ee60768",
+        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/anthropic-raises-65-billion-nears-1t-valuation-ahead-ipo-9ee60768.jpg",
+        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/anthropic-raises-65-billion-nears-1t-valuation-ahead-ipo-9ee60768.jpg",
+        "socialImagePath": "/images/signals/generated/anthropic-raises-65-billion-nears-1t-valuation-ahead-ipo-9ee60768.jpg",
+        "sourceImageUrl": "",
+        "imageStrategy": "owned-photo-match",
+        "imageFamily": "capital_readiness",
+        "imageSourceType": "phoenix-owned",
+        "imageCredit": "Phoenix Venture Studios image library",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageTemplate": "opportunity_window",
+        "imageVariant": "signal-rail",
+        "imageTone": "electric",
+        "imageComposition": "right-anchor",
+        "imageWarnings": [
+          "Source policy is reference-only and not approved for public image use; using a Phoenix-owned fallback."
+        ],
+        "imageBrief": {
+          "storyAngle": "AI funding race",
+          "emotionalHook": "A near-trillion-dollar valuation changes the benchmark for AI traction, trust, and durable revenue.",
+          "visualMetaphor": "A high-stakes AI boardroom where valuation, adoption, and infrastructure pressure are visible.",
+          "audiencePainOpportunity": "Founders need to understand what investors are actually rewarding before borrowing the headline.",
+          "imageFamily": "capital_readiness",
+          "preferredImageFamily": "capital_readiness",
+          "sourceImageEligibility": "reference-only",
+          "sourceImagePolicy": "reference-only",
+          "sourceImageMatchedKey": "",
+          "sourceImageNote": "",
+          "manualReviewNeeded": true,
+          "overlayTone": "capital",
+          "template": "opportunity_window",
+          "imageVariant": "signal-rail",
+          "imageTone": "electric",
+          "imageComposition": "right-anchor"
+        },
+        "feedRole": "founder-market",
+        "simpleSummary": "Anthropic raises $65 billion, nears $1T valuation ahead of IPO means money, trust, or timing may be changing. If you are building, use this to think about what proof investors, lenders, or customers may want next.",
+        "engagementPrompt": "What would this change about your funding story? Drop your takeaway below.",
+        "trendContext": "The pattern to watch is where capital keeps flowing and what kind of proof gets rewarded next.",
+        "relatedRecentSignals": [],
+        "readingLevel": {
+          "target": "grade-5-plain-founder",
+          "heuristic": "average sentence words",
+          "averageSentenceWords": 15.9
+        },
+        "editorialMode": "phoenix-original-brief",
+        "internalPath": "/founder-signal/signals/anthropic-raises-65-billion-nears-1t-valuation-ahead-ipo-9ee60768",
+        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/anthropic-raises-65-billion-nears-1t-valuation-ahead-ipo-9ee60768/",
+        "originalUrl": "https://techcrunch.com/2026/05/28/anthropic-raises-65-billion-nears-1t-valuation-ahead-of-ipo/",
+        "whyItMatters": "This is not just another big AI number. A near-trillion-dollar private valuation shows investors are rewarding enterprise adoption, revenue velocity, compute access, and the belief that frontier AI will keep consolidating attention.",
+        "whyShared": "Phoenix shared this because Anthropic's valuation jump reframes the AI funding race: the market is not only watching model quality, it is pricing distribution, trust, infrastructure, and the path to durable revenue.",
+        "founderTakeaway": "Do not copy frontier-lab economics. Use the signal to ask what proof your own AI-enabled offer can show: adoption, retention, workflow value, or a credible reason customers will keep paying.",
+        "businessTakeaway": "The practical move is to tighten the evidence behind the story before chasing attention: who uses it, why it matters now, what gets measurably better, and why the advantage can last."
+      }
+    },
+    {
+      "id": "https://phoenixventurestudios.com/founder-signal/signals/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629/",
+      "url": "https://phoenixventurestudios.com/founder-signal/signals/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629/",
+      "external_url": "https://techcrunch.com/2026/05/28/anthropic-releases-opus-4-8-with-new-dynamic-workflow-tool/",
+      "title": "Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool",
+      "content_text": "The new Opus model comes with a tool called Dynamic Workflows, for coordinating swarms of subagents.",
+      "image": "https://phoenixventurestudios.com/images/signals/generated/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629.jpg",
+      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629.jpg",
+      "date_published": "2026-05-28T17:00:09.000Z",
+      "authors": [
+        {
+          "name": "TechCrunch AI"
+        }
+      ],
+      "tags": [
+        "AI Operator Impact"
+      ],
+      "_phoenix": {
+        "bucket": "ai_operator_impact",
+        "score": 84,
+        "source": "TechCrunch AI",
+        "slug": "anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629",
+        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629.jpg",
+        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629.jpg",
+        "socialImagePath": "/images/signals/generated/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629.jpg",
+        "sourceImageUrl": "",
+        "imageStrategy": "owned-photo-match",
+        "imageFamily": "ai_opportunity",
+        "imageSourceType": "phoenix-owned",
+        "imageCredit": "Phoenix Venture Studios image library",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageTemplate": "founder_brief",
+        "imageVariant": "operator-map",
+        "imageTone": "electric",
+        "imageComposition": "left-anchor",
+        "imageWarnings": [
+          "Source policy is reference-only and not approved for public image use; using a Phoenix-owned fallback."
+        ],
+        "imageBrief": {
+          "storyAngle": "Operator leverage",
+          "emotionalHook": "The signal is not the tool itself. It is what the tool can remove, speed up, or systemize.",
+          "visualMetaphor": "A clean operating room for AI workflow, systems, and execution decisions.",
+          "audiencePainOpportunity": "Founders need one useful workflow before they buy another subscription.",
+          "imageFamily": "ai_opportunity",
+          "preferredImageFamily": "ai_opportunity",
+          "sourceImageEligibility": "reference-only",
+          "sourceImagePolicy": "reference-only",
+          "sourceImageMatchedKey": "",
+          "sourceImageNote": "",
+          "manualReviewNeeded": true,
+          "overlayTone": "operator",
+          "template": "founder_brief",
+          "imageVariant": "operator-map",
+          "imageTone": "electric",
+          "imageComposition": "left-anchor"
+        },
+        "feedRole": "founder-market",
+        "simpleSummary": "TechCrunch AI flagged a ai operator impact story. Use this to see what changed, why it matters, and what to watch next.",
+        "engagementPrompt": "What is your takeaway from this signal? Drop it below.",
+        "trendContext": "The pattern to watch is whether more sources start pointing to the same shift.",
+        "relatedRecentSignals": [],
+        "readingLevel": {
+          "target": "grade-5-plain-founder",
+          "heuristic": "average sentence words",
+          "averageSentenceWords": 11.3
+        },
+        "editorialMode": "phoenix-original-brief",
+        "internalPath": "/founder-signal/signals/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629",
+        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629/",
+        "originalUrl": "https://techcrunch.com/2026/05/28/anthropic-releases-opus-4-8-with-new-dynamic-workflow-tool/",
+        "whyItMatters": "AI is shifting from novelty into operations. The founders who benefit are the ones who translate tools into workflow, revenue, and risk decisions.",
+        "whyShared": "Phoenix shared this because it helps business owners separate practical AI leverage from hype.",
+        "founderTakeaway": "Ask where this signal could reduce friction, increase speed, or create a clearer customer experience inside your own business.",
+        "businessTakeaway": "The business takeaway is to pick one workflow where AI can create measurable lift before expanding the system."
+      }
+    },
+    {
+      "id": "https://phoenixventurestudios.com/founder-signal/signals/vertu-wants-ceos-run-companies-ai-foldable-starting-at-6-880-7ed81bda/",
+      "url": "https://phoenixventurestudios.com/founder-signal/signals/vertu-wants-ceos-run-companies-ai-foldable-starting-at-6-880-7ed81bda/",
+      "external_url": "https://techcrunch.com/2026/05/28/vertu-wants-ceos-to-run-companies-from-an-ai-foldable-starting-at-6880/",
+      "title": "Vertu wants CEOs to run companies from an AI foldable starting at $6,880",
+      "content_text": "Built on top of the open source Hermes project, Vertu's new foldable combines AI-agent workflows, enterprise integrations, and ultra-premium luxury finishes.",
+      "image": "https://phoenixventurestudios.com/images/signals/generated/vertu-wants-ceos-run-companies-ai-foldable-starting-at-6-880-7ed81bda.jpg",
+      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/vertu-wants-ceos-run-companies-ai-foldable-starting-at-6-880-7ed81bda.jpg",
+      "date_published": "2026-05-28T07:00:00.000Z",
+      "authors": [
+        {
+          "name": "TechCrunch AI"
+        }
+      ],
+      "tags": [
+        "AI Operator Impact"
+      ],
+      "_phoenix": {
+        "bucket": "ai_operator_impact",
+        "score": 84,
+        "source": "TechCrunch AI",
+        "slug": "vertu-wants-ceos-run-companies-ai-foldable-starting-at-6-880-7ed81bda",
+        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/vertu-wants-ceos-run-companies-ai-foldable-starting-at-6-880-7ed81bda.jpg",
+        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/vertu-wants-ceos-run-companies-ai-foldable-starting-at-6-880-7ed81bda.jpg",
+        "socialImagePath": "/images/signals/generated/vertu-wants-ceos-run-companies-ai-foldable-starting-at-6-880-7ed81bda.jpg",
+        "sourceImageUrl": "",
+        "imageStrategy": "owned-photo-match",
+        "imageFamily": "ai_opportunity",
+        "imageSourceType": "phoenix-owned",
+        "imageCredit": "Phoenix Venture Studios image library",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageTemplate": "founder_brief",
+        "imageVariant": "capital-pulse",
+        "imageTone": "steel",
+        "imageComposition": "right-anchor",
+        "imageWarnings": [
+          "Source policy is reference-only and not approved for public image use; using a Phoenix-owned fallback."
+        ],
+        "imageBrief": {
+          "storyAngle": "Operator leverage",
+          "emotionalHook": "The signal is not the tool itself. It is what the tool can remove, speed up, or systemize.",
+          "visualMetaphor": "A clean operating room for AI workflow, systems, and execution decisions.",
+          "audiencePainOpportunity": "Founders need one useful workflow before they buy another subscription.",
+          "imageFamily": "ai_opportunity",
+          "preferredImageFamily": "ai_opportunity",
+          "sourceImageEligibility": "reference-only",
+          "sourceImagePolicy": "reference-only",
+          "sourceImageMatchedKey": "",
+          "sourceImageNote": "",
+          "manualReviewNeeded": true,
+          "overlayTone": "operator",
+          "template": "founder_brief",
+          "imageVariant": "capital-pulse",
+          "imageTone": "steel",
+          "imageComposition": "right-anchor"
+        },
+        "feedRole": "founder-market",
+        "simpleSummary": "TechCrunch AI flagged a ai operator impact story. Use this to see what changed, why it matters, and what to watch next.",
+        "engagementPrompt": "What is your takeaway from this signal? Drop it below.",
+        "trendContext": "The pattern to watch is whether more sources start pointing to the same shift.",
+        "relatedRecentSignals": [],
+        "readingLevel": {
+          "target": "grade-5-plain-founder",
+          "heuristic": "average sentence words",
+          "averageSentenceWords": 11.3
+        },
+        "editorialMode": "phoenix-original-brief",
+        "internalPath": "/founder-signal/signals/vertu-wants-ceos-run-companies-ai-foldable-starting-at-6-880-7ed81bda",
+        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/vertu-wants-ceos-run-companies-ai-foldable-starting-at-6-880-7ed81bda/",
+        "originalUrl": "https://techcrunch.com/2026/05/28/vertu-wants-ceos-to-run-companies-from-an-ai-foldable-starting-at-6880/",
+        "whyItMatters": "AI is shifting from novelty into operations. The founders who benefit are the ones who translate tools into workflow, revenue, and risk decisions.",
+        "whyShared": "Phoenix shared this because it helps business owners separate practical AI leverage from hype.",
+        "founderTakeaway": "Ask where this signal could reduce friction, increase speed, or create a clearer customer experience inside your own business.",
+        "businessTakeaway": "The business takeaway is to pick one workflow where AI can create measurable lift before expanding the system."
+      }
+    },
+    {
+      "id": "https://phoenixventurestudios.com/founder-signal/signals/apply-startup-battlefield-2026-you-need-ahead-june-8-deadline-2af6edbe/",
+      "url": "https://phoenixventurestudios.com/founder-signal/signals/apply-startup-battlefield-2026-you-need-ahead-june-8-deadline-2af6edbe/",
+      "external_url": "https://techcrunch.com/2026/05/28/how-to-apply-to-startup-battlefield-2026-what-you-need-ahead-of-the-june-8-deadline/",
+      "title": "How to apply to Startup Battlefield 2026, what you need ahead of the June 8 deadline",
+      "content_text": "Startup Battlefield applications are due tomorrow, so now's the time to put the finishing touches on your submission!",
+      "image": "https://phoenixventurestudios.com/images/signals/generated/apply-startup-battlefield-2026-you-need-ahead-june-8-deadline-2af6edbe.jpg",
+      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/apply-startup-battlefield-2026-you-need-ahead-june-8-deadline-2af6edbe.jpg",
+      "date_published": "2026-05-28T23:01:52.000Z",
+      "authors": [
+        {
+          "name": "TechCrunch"
+        }
+      ],
+      "tags": [
+        "Funding & Venture"
+      ],
+      "_phoenix": {
+        "bucket": "funding_venture",
+        "score": 75,
+        "source": "TechCrunch",
+        "slug": "apply-startup-battlefield-2026-you-need-ahead-june-8-deadline-2af6edbe",
+        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/apply-startup-battlefield-2026-you-need-ahead-june-8-deadline-2af6edbe.jpg",
+        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/apply-startup-battlefield-2026-you-need-ahead-june-8-deadline-2af6edbe.jpg",
+        "socialImagePath": "/images/signals/generated/apply-startup-battlefield-2026-you-need-ahead-june-8-deadline-2af6edbe.jpg",
+        "sourceImageUrl": "",
+        "imageStrategy": "owned-photo-match",
+        "imageFamily": "capital_readiness",
+        "imageSourceType": "phoenix-owned",
+        "imageCredit": "Phoenix Venture Studios image library",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageTemplate": "opportunity_window",
+        "imageVariant": "field-note",
+        "imageTone": "ember",
+        "imageComposition": "right-anchor",
+        "imageWarnings": [
+          "Source policy is reference-only and not approved for public image use; using a Phoenix-owned fallback."
+        ],
+        "imageBrief": {
+          "storyAngle": "Capital readiness",
+          "emotionalHook": "Capital is flowing toward clearer proof, stronger timing, and a more believable growth story.",
+          "visualMetaphor": "A founder reviewing capital options with a clear path through the numbers.",
+          "audiencePainOpportunity": "Founders need to connect attention to a fundable business move.",
+          "imageFamily": "capital_readiness",
+          "preferredImageFamily": "capital_readiness",
+          "sourceImageEligibility": "reference-only",
+          "sourceImagePolicy": "reference-only",
+          "sourceImageMatchedKey": "",
+          "sourceImageNote": "",
+          "manualReviewNeeded": true,
+          "overlayTone": "capital",
+          "template": "opportunity_window",
+          "imageVariant": "field-note",
+          "imageTone": "ember",
+          "imageComposition": "right-anchor"
+        },
+        "feedRole": "founder-market",
+        "simpleSummary": "How to apply to Startup Battlefield 2026, what you need ahead of the June 8 deadline means money, trust, or timing may be changing. If you are building, use this to think about what proof investors, lenders, or customers may want next.",
+        "engagementPrompt": "What would this change about your funding story? Drop your takeaway below.",
+        "trendContext": "The pattern to watch is where capital keeps flowing and what kind of proof gets rewarded next.",
+        "relatedRecentSignals": [],
+        "readingLevel": {
+          "target": "grade-5-plain-founder",
+          "heuristic": "average sentence words",
+          "averageSentenceWords": 15.2
+        },
+        "editorialMode": "phoenix-original-brief",
+        "internalPath": "/founder-signal/signals/apply-startup-battlefield-2026-you-need-ahead-june-8-deadline-2af6edbe",
+        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/apply-startup-battlefield-2026-you-need-ahead-june-8-deadline-2af6edbe/",
+        "originalUrl": "https://techcrunch.com/2026/05/28/how-to-apply-to-startup-battlefield-2026-what-you-need-ahead-of-the-june-8-deadline/",
+        "whyItMatters": "Funding news is not just about who raised money. It reveals where investors, lenders, and operators believe demand is moving.",
+        "whyShared": "Phoenix shared this because founders can use funding patterns to pressure-test offers, timing, and capital strategy without chasing every headline.",
+        "founderTakeaway": "Look for the signal behind the raise: what problem is being funded, what market pressure is being answered, and what that says about your own positioning.",
+        "businessTakeaway": "The business takeaway is to connect opportunity to a fundable plan, not just a bigger idea."
+      }
+    },
+    {
+      "id": "https://phoenixventurestudios.com/founder-signal/signals/j-p-morgan-fired-employee-over-642-deli-platter-now-it-owes-him-4-25-million-c235dee2/",
+      "url": "https://phoenixventurestudios.com/founder-signal/signals/j-p-morgan-fired-employee-over-642-deli-platter-now-it-owes-him-4-25-million-c235dee2/",
+      "external_url": "https://www.inc.com/amaya-nichole/jp-morgan-fired-employee-over-642-dollar-deli-platter-now-firm-owes-him-millions/91351587",
+      "title": "J.P. Morgan Fired an Employee Over a $642 Deli Platter. Now It Owes Him $4.25 Million",
+      "content_text": "The bank claimed that Brent Ryan Bodner charged a personal expense to the bank in 2024. He disputed that, noting that it was for a preapproved meeting.",
+      "image": "https://phoenixventurestudios.com/images/signals/generated/j-p-morgan-fired-employee-over-642-deli-platter-now-it-owes-him-4-25-million-c235dee2.jpg",
+      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/j-p-morgan-fired-employee-over-642-deli-platter-now-it-owes-him-4-25-million-c235dee2.jpg",
+      "date_published": "2026-05-28T15:30:07.000Z",
+      "authors": [
+        {
+          "name": "Inc."
+        }
+      ],
+      "tags": [
+        "Capital & Credit"
+      ],
+      "_phoenix": {
+        "bucket": "capital_credit",
+        "score": 74,
+        "source": "Inc.",
+        "slug": "j-p-morgan-fired-employee-over-642-deli-platter-now-it-owes-him-4-25-million-c235dee2",
+        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/j-p-morgan-fired-employee-over-642-deli-platter-now-it-owes-him-4-25-million-c235dee2.jpg",
+        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/j-p-morgan-fired-employee-over-642-deli-platter-now-it-owes-him-4-25-million-c235dee2.jpg",
+        "socialImagePath": "/images/signals/generated/j-p-morgan-fired-employee-over-642-deli-platter-now-it-owes-him-4-25-million-c235dee2.jpg",
+        "sourceImageUrl": "",
+        "imageStrategy": "owned-photo-match",
+        "imageFamily": "capital_readiness",
+        "imageSourceType": "phoenix-owned",
+        "imageCredit": "Phoenix Venture Studios image library",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageTemplate": "opportunity_window",
+        "imageVariant": "capital-pulse",
+        "imageTone": "electric",
+        "imageComposition": "left-anchor",
+        "imageWarnings": [
+          "Source policy is reference-only and not approved for public image use; using a Phoenix-owned fallback."
+        ],
+        "imageBrief": {
+          "storyAngle": "Capital readiness",
+          "emotionalHook": "Capital is flowing toward clearer proof, stronger timing, and a more believable growth story.",
+          "visualMetaphor": "A founder reviewing capital options with a clear path through the numbers.",
+          "audiencePainOpportunity": "Founders need to connect attention to a fundable business move.",
+          "imageFamily": "capital_readiness",
+          "preferredImageFamily": "capital_readiness",
+          "sourceImageEligibility": "reference-only",
+          "sourceImagePolicy": "reference-only",
+          "sourceImageMatchedKey": "",
+          "sourceImageNote": "",
+          "manualReviewNeeded": true,
+          "overlayTone": "capital",
+          "template": "opportunity_window",
+          "imageVariant": "capital-pulse",
+          "imageTone": "electric",
+          "imageComposition": "left-anchor"
+        },
+        "feedRole": "founder-market",
+        "simpleSummary": "J.P. Morgan Fired an Employee Over a $642 Deli Platter. Now It Owes Him $4.25 Million means money, trust, or timing may be changing. If you are building, use this to think about what proof investors, lenders, or customers may want next.",
+        "engagementPrompt": "What would this change about your funding story? Drop your takeaway below.",
+        "trendContext": "The pattern to watch is whether more sources start pointing to the same shift.",
+        "relatedRecentSignals": [],
+        "readingLevel": {
+          "target": "grade-5-plain-founder",
+          "heuristic": "average sentence words",
+          "averageSentenceWords": 11.1
+        },
+        "editorialMode": "phoenix-original-brief",
+        "internalPath": "/founder-signal/signals/j-p-morgan-fired-employee-over-642-deli-platter-now-it-owes-him-4-25-million-c235dee2",
+        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/j-p-morgan-fired-employee-over-642-deli-platter-now-it-owes-him-4-25-million-c235dee2/",
+        "originalUrl": "https://www.inc.com/amaya-nichole/jp-morgan-fired-employee-over-642-dollar-deli-platter-now-firm-owes-him-millions/91351587",
+        "whyItMatters": "Capital access, credit pricing, and cash-flow conditions shape how much room a business has to move. A small shift here can change hiring, inventory, marketing, or the timing of an AI rollout.",
+        "whyShared": "Phoenix shared this because funding conversations get easier when founders can connect outside market signals to their own capital readiness.",
+        "founderTakeaway": "Use this as a prompt to review your runway, credit options, and the business case for borrowing before you need capital urgently.",
+        "businessTakeaway": "A practical takeaway is to tighten the numbers behind your next growth move so a funding conversation has a clear purpose."
+      }
+    },
+    {
+      "id": "https://phoenixventurestudios.com/founder-signal/signals/different-ai-models-ran-simulated-societies-1-grok-charge-experienced-apocalyp-8164dae0/",
+      "url": "https://phoenixventurestudios.com/founder-signal/signals/different-ai-models-ran-simulated-societies-1-grok-charge-experienced-apocalyp-8164dae0/",
+      "external_url": "https://www.inc.com/chris-morris/different-ai-models-ran-simulated-societies-the-1-with-grok-in-charge-experienced-an-apocalypse/91352101",
+      "title": "Different AI Models Ran Simulated Societies. The 1 With Grok in Charge Experienced an Apocalypse",
+      "content_text": "A research study had AI models like Claude, Gemini, and Grok in charge of various worlds. Things took a dark turn in Grok’s realm.",
+      "image": "https://phoenixventurestudios.com/images/signals/generated/different-ai-models-ran-simulated-societies-1-grok-charge-experienced-apocalyp-8164dae0.jpg",
+      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/different-ai-models-ran-simulated-societies-1-grok-charge-experienced-apocalyp-8164dae0.jpg",
+      "date_published": "2026-05-29T14:47:22.000Z",
+      "authors": [
+        {
+          "name": "Inc."
+        }
+      ],
+      "tags": [
+        "Founder Strategy & Operations"
+      ],
+      "_phoenix": {
+        "bucket": "founder_strategy",
+        "score": 74,
+        "source": "Inc.",
+        "slug": "different-ai-models-ran-simulated-societies-1-grok-charge-experienced-apocalyp-8164dae0",
+        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/different-ai-models-ran-simulated-societies-1-grok-charge-experienced-apocalyp-8164dae0.jpg",
+        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/different-ai-models-ran-simulated-societies-1-grok-charge-experienced-apocalyp-8164dae0.jpg",
+        "socialImagePath": "/images/signals/generated/different-ai-models-ran-simulated-societies-1-grok-charge-experienced-apocalyp-8164dae0.jpg",
+        "sourceImageUrl": "",
+        "imageStrategy": "owned-photo-match",
+        "imageFamily": "ai_opportunity",
+        "imageSourceType": "phoenix-owned",
+        "imageCredit": "Phoenix Venture Studios image library",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageTemplate": "founder_brief",
+        "imageVariant": "operator-map",
+        "imageTone": "ember",
+        "imageComposition": "lower-band",
+        "imageWarnings": [
+          "Source policy is reference-only and not approved for public image use; using a Phoenix-owned fallback."
+        ],
+        "imageBrief": {
+          "storyAngle": "Operator leverage",
+          "emotionalHook": "The signal is not the tool itself. It is what the tool can remove, speed up, or systemize.",
+          "visualMetaphor": "A clean operating room for AI workflow, systems, and execution decisions.",
+          "audiencePainOpportunity": "Founders need one useful workflow before they buy another subscription.",
+          "imageFamily": "ai_opportunity",
+          "preferredImageFamily": "ai_opportunity",
+          "sourceImageEligibility": "reference-only",
+          "sourceImagePolicy": "reference-only",
+          "sourceImageMatchedKey": "",
+          "sourceImageNote": "",
+          "manualReviewNeeded": true,
+          "overlayTone": "operator",
+          "template": "founder_brief",
+          "imageVariant": "operator-map",
+          "imageTone": "ember",
+          "imageComposition": "lower-band"
+        },
+        "feedRole": "founder-market",
+        "simpleSummary": "Inc. flagged a founder strategy & operations story. Use this to see what changed, why it matters, and what to watch next.",
+        "engagementPrompt": "What is your takeaway from this signal? Drop it below.",
+        "trendContext": "The pattern to watch is whether more sources start pointing to the same shift.",
+        "relatedRecentSignals": [],
+        "readingLevel": {
+          "target": "grade-5-plain-founder",
+          "heuristic": "average sentence words",
+          "averageSentenceWords": 10
+        },
+        "editorialMode": "phoenix-original-brief",
+        "internalPath": "/founder-signal/signals/different-ai-models-ran-simulated-societies-1-grok-charge-experienced-apocalyp-8164dae0",
+        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/different-ai-models-ran-simulated-societies-1-grok-charge-experienced-apocalyp-8164dae0/",
+        "originalUrl": "https://www.inc.com/chris-morris/different-ai-models-ran-simulated-societies-the-1-with-grok-in-charge-experienced-an-apocalypse/91352101",
+        "whyItMatters": "This points to a founder decision around positioning, pricing, execution, or team focus.",
+        "whyShared": "Phoenix shared this because entrepreneurs need operating context they can turn into a practical decision.",
+        "founderTakeaway": "Use this to check whether your current plan still matches the market you are building in.",
+        "businessTakeaway": "The business takeaway is to turn the signal into one decision: keep, cut, clarify, or test."
+      }
+    },
+    {
+      "id": "https://phoenixventurestudios.com/founder-signal/signals/visa-invests-replit-power-agentic-payments-developers-d9dddcb5/",
+      "url": "https://phoenixventurestudios.com/founder-signal/signals/visa-invests-replit-power-agentic-payments-developers-d9dddcb5/",
+      "external_url": "https://techcrunch.com/2026/05/28/visa-invests-in-replit-to-power-agentic-payments-for-developers/",
+      "title": "Visa invests in Replit to power agentic payments for developers",
+      "content_text": "Visa said that over 1,000 employees have been using Replit for prototyping and development.",
+      "image": "https://phoenixventurestudios.com/images/signals/generated/visa-invests-replit-power-agentic-payments-developers-d9dddcb5.jpg",
+      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/visa-invests-replit-power-agentic-payments-developers-d9dddcb5.jpg",
+      "date_published": "2026-05-28T14:00:00.000Z",
+      "authors": [
+        {
+          "name": "TechCrunch AI"
+        }
+      ],
+      "tags": [
+        "AI Operator Impact"
+      ],
+      "_phoenix": {
+        "bucket": "ai_operator_impact",
+        "score": 73,
+        "source": "TechCrunch AI",
+        "slug": "visa-invests-replit-power-agentic-payments-developers-d9dddcb5",
+        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/visa-invests-replit-power-agentic-payments-developers-d9dddcb5.jpg",
+        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/visa-invests-replit-power-agentic-payments-developers-d9dddcb5.jpg",
+        "socialImagePath": "/images/signals/generated/visa-invests-replit-power-agentic-payments-developers-d9dddcb5.jpg",
+        "sourceImageUrl": "",
+        "imageStrategy": "owned-photo-match",
+        "imageFamily": "market_shock",
+        "imageSourceType": "phoenix-owned",
+        "imageCredit": "Phoenix Venture Studios image library",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageTemplate": "market_warning",
+        "imageVariant": "signal-rail",
+        "imageTone": "electric",
+        "imageComposition": "split-panel",
+        "imageWarnings": [
+          "Source policy is reference-only and not approved for public image use; using a Phoenix-owned fallback."
+        ],
+        "imageBrief": {
+          "storyAngle": "Risk signal",
+          "emotionalHook": "The useful question is what can break, cost more, or need human judgment.",
+          "visualMetaphor": "A late-night decision room, warning glow, and pressure around the operator.",
+          "audiencePainOpportunity": "Founders need to spot the risk before it becomes an expensive surprise.",
+          "imageFamily": "market_shock",
+          "preferredImageFamily": "market_shock",
+          "sourceImageEligibility": "reference-only",
+          "sourceImagePolicy": "reference-only",
+          "sourceImageMatchedKey": "",
+          "sourceImageNote": "",
+          "manualReviewNeeded": true,
+          "overlayTone": "warning",
+          "template": "market_warning",
+          "imageVariant": "signal-rail",
+          "imageTone": "electric",
+          "imageComposition": "split-panel"
+        },
+        "feedRole": "founder-market",
+        "simpleSummary": "TechCrunch AI flagged a ai operator impact story. Use this to see what changed, why it matters, and what to watch next.",
+        "engagementPrompt": "What is your takeaway from this signal? Drop it below.",
+        "trendContext": "The pattern to watch is whether more sources start pointing to the same shift.",
+        "relatedRecentSignals": [],
+        "readingLevel": {
+          "target": "grade-5-plain-founder",
+          "heuristic": "average sentence words",
+          "averageSentenceWords": 11.3
+        },
+        "editorialMode": "phoenix-original-brief",
+        "internalPath": "/founder-signal/signals/visa-invests-replit-power-agentic-payments-developers-d9dddcb5",
+        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/visa-invests-replit-power-agentic-payments-developers-d9dddcb5/",
+        "originalUrl": "https://techcrunch.com/2026/05/28/visa-invests-in-replit-to-power-agentic-payments-for-developers/",
+        "whyItMatters": "AI is shifting from novelty into operations. The founders who benefit are the ones who translate tools into workflow, revenue, and risk decisions.",
+        "whyShared": "Phoenix shared this because it helps business owners separate practical AI leverage from hype.",
+        "founderTakeaway": "Ask where this signal could reduce friction, increase speed, or create a clearer customer experience inside your own business.",
+        "businessTakeaway": "The business takeaway is to pick one workflow where AI can create measurable lift before expanding the system."
+      }
+    },
+    {
+      "id": "https://phoenixventurestudios.com/founder-signal/signals/can-10-chicken-caesar-wraps-save-sweetgreen-502a9649/",
+      "url": "https://phoenixventurestudios.com/founder-signal/signals/can-10-chicken-caesar-wraps-save-sweetgreen-502a9649/",
+      "external_url": "https://www.inc.com/amaya-nichole/can-10-dollar-chicken-ceasar-wraps-save-sweetgreen/91351880",
+      "title": "Can $10 Chicken Caesar Wraps Save Sweetgreen?",
+      "content_text": "The brand’s co-founders are attempting to win over a key demographic with a nationwide rollout that’s already trending on TikTok.",
+      "image": "https://phoenixventurestudios.com/images/signals/generated/can-10-chicken-caesar-wraps-save-sweetgreen-502a9649.jpg",
+      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/can-10-chicken-caesar-wraps-save-sweetgreen-502a9649.jpg",
+      "date_published": "2026-05-28T20:40:11.000Z",
+      "authors": [
+        {
+          "name": "Inc."
+        }
+      ],
+      "tags": [
+        "Founder Strategy & Operations"
+      ],
+      "_phoenix": {
+        "bucket": "founder_strategy",
+        "score": 72,
+        "source": "Inc.",
+        "slug": "can-10-chicken-caesar-wraps-save-sweetgreen-502a9649",
+        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/can-10-chicken-caesar-wraps-save-sweetgreen-502a9649.jpg",
+        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/can-10-chicken-caesar-wraps-save-sweetgreen-502a9649.jpg",
+        "socialImagePath": "/images/signals/generated/can-10-chicken-caesar-wraps-save-sweetgreen-502a9649.jpg",
+        "sourceImageUrl": "",
+        "imageStrategy": "owned-photo-match",
+        "imageFamily": "operational_leverage",
+        "imageSourceType": "phoenix-owned",
+        "imageCredit": "Phoenix Venture Studios image library",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageTemplate": "founder_brief",
+        "imageVariant": "operator-map",
+        "imageTone": "aqua",
+        "imageComposition": "right-anchor",
+        "imageWarnings": [
+          "Source policy is reference-only and not approved for public image use; using a Phoenix-owned fallback."
+        ],
+        "imageBrief": {
+          "storyAngle": "Operator leverage",
+          "emotionalHook": "The signal is not the tool itself. It is what the tool can remove, speed up, or systemize.",
+          "visualMetaphor": "A clean operating room for AI workflow, systems, and execution decisions.",
+          "audiencePainOpportunity": "Founders need one useful workflow before they buy another subscription.",
+          "imageFamily": "operational_leverage",
+          "preferredImageFamily": "operational_leverage",
+          "sourceImageEligibility": "reference-only",
+          "sourceImagePolicy": "reference-only",
+          "sourceImageMatchedKey": "",
+          "sourceImageNote": "",
+          "manualReviewNeeded": true,
+          "overlayTone": "operator",
+          "template": "founder_brief",
+          "imageVariant": "operator-map",
+          "imageTone": "aqua",
+          "imageComposition": "right-anchor"
+        },
+        "feedRole": "founder-market",
+        "simpleSummary": "Inc. flagged a founder strategy & operations story. Use this to see what changed, why it matters, and what to watch next.",
+        "engagementPrompt": "What is your takeaway from this signal? Drop it below.",
+        "trendContext": "The pattern to watch is whether more sources start pointing to the same shift.",
+        "relatedRecentSignals": [],
+        "readingLevel": {
+          "target": "grade-5-plain-founder",
+          "heuristic": "average sentence words",
+          "averageSentenceWords": 10
+        },
+        "editorialMode": "phoenix-original-brief",
+        "internalPath": "/founder-signal/signals/can-10-chicken-caesar-wraps-save-sweetgreen-502a9649",
+        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/can-10-chicken-caesar-wraps-save-sweetgreen-502a9649/",
+        "originalUrl": "https://www.inc.com/amaya-nichole/can-10-dollar-chicken-ceasar-wraps-save-sweetgreen/91351880",
+        "whyItMatters": "This points to a founder decision around positioning, pricing, execution, or team focus.",
+        "whyShared": "Phoenix shared this because entrepreneurs need operating context they can turn into a practical decision.",
+        "founderTakeaway": "Use this to check whether your current plan still matches the market you are building in.",
+        "businessTakeaway": "The business takeaway is to turn the signal into one decision: keep, cut, clarify, or test."
+      }
+    },
+    {
+      "id": "https://phoenixventurestudios.com/founder-signal/signals/18-years-ago-i-felt-invisible-moment-that-forced-me-rethink-business-success-l-37a7f159/",
+      "url": "https://phoenixventurestudios.com/founder-signal/signals/18-years-ago-i-felt-invisible-moment-that-forced-me-rethink-business-success-l-37a7f159/",
+      "external_url": "https://www.entrepreneur.com/business-news/18-years-ago-i-felt-invisible-a-moment-that-forced-me-to-rethink-business-success-and-learn-5-critical-lessons",
+      "title": "18 Years Ago, I Felt Invisible — A Moment That Forced Me to Rethink Business Success and Learn 5 Critical Lessons",
+      "content_text": "After chronic illness forced me to stop performing and start rebuilding from limitation, I discovered why the founders who look busiest often build the weakest businesses — and what actually creates sustainable growth instead.",
+      "image": "https://phoenixventurestudios.com/images/signals/generated/18-years-ago-i-felt-invisible-moment-that-forced-me-rethink-business-success-l-37a7f159.jpg",
+      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/18-years-ago-i-felt-invisible-moment-that-forced-me-rethink-business-success-l-37a7f159.jpg",
+      "date_published": "2026-05-28T22:00:00.000Z",
+      "authors": [
+        {
+          "name": "Entrepreneur"
+        }
+      ],
+      "tags": [
+        "Founder Strategy & Operations"
+      ],
+      "_phoenix": {
+        "bucket": "founder_strategy",
+        "score": 70,
+        "source": "Entrepreneur",
+        "slug": "18-years-ago-i-felt-invisible-moment-that-forced-me-rethink-business-success-l-37a7f159",
+        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/18-years-ago-i-felt-invisible-moment-that-forced-me-rethink-business-success-l-37a7f159.jpg",
+        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/18-years-ago-i-felt-invisible-moment-that-forced-me-rethink-business-success-l-37a7f159.jpg",
+        "socialImagePath": "/images/signals/generated/18-years-ago-i-felt-invisible-moment-that-forced-me-rethink-business-success-l-37a7f159.jpg",
+        "sourceImageUrl": "",
+        "imageStrategy": "owned-photo-match",
+        "imageFamily": "operational_leverage",
+        "imageSourceType": "phoenix-owned",
+        "imageCredit": "Phoenix Venture Studios image library",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageTemplate": "founder_brief",
+        "imageVariant": "capital-pulse",
+        "imageTone": "aqua",
+        "imageComposition": "right-anchor",
+        "imageWarnings": [
+          "Source policy is reference-only and not approved for public image use; using a Phoenix-owned fallback."
+        ],
+        "imageBrief": {
+          "storyAngle": "Operator leverage",
+          "emotionalHook": "The signal is not the tool itself. It is what the tool can remove, speed up, or systemize.",
+          "visualMetaphor": "A clean operating room for AI workflow, systems, and execution decisions.",
+          "audiencePainOpportunity": "Founders need one useful workflow before they buy another subscription.",
+          "imageFamily": "operational_leverage",
+          "preferredImageFamily": "operational_leverage",
+          "sourceImageEligibility": "reference-only",
+          "sourceImagePolicy": "reference-only",
+          "sourceImageMatchedKey": "",
+          "sourceImageNote": "",
+          "manualReviewNeeded": true,
+          "overlayTone": "operator",
+          "template": "founder_brief",
+          "imageVariant": "capital-pulse",
+          "imageTone": "aqua",
+          "imageComposition": "right-anchor"
+        },
+        "feedRole": "founder-market",
+        "simpleSummary": "Entrepreneur flagged a founder strategy & operations story. Use this to see what changed, why it matters, and what to watch next.",
+        "engagementPrompt": "What is your takeaway from this signal? Drop it below.",
+        "trendContext": "The pattern to watch is whether more sources start pointing to the same shift.",
+        "relatedRecentSignals": [],
+        "readingLevel": {
+          "target": "grade-5-plain-founder",
+          "heuristic": "average sentence words",
+          "averageSentenceWords": 11.3
+        },
+        "editorialMode": "phoenix-original-brief",
+        "internalPath": "/founder-signal/signals/18-years-ago-i-felt-invisible-moment-that-forced-me-rethink-business-success-l-37a7f159",
+        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/18-years-ago-i-felt-invisible-moment-that-forced-me-rethink-business-success-l-37a7f159/",
+        "originalUrl": "https://www.entrepreneur.com/business-news/18-years-ago-i-felt-invisible-a-moment-that-forced-me-to-rethink-business-success-and-learn-5-critical-lessons",
+        "whyItMatters": "This points to a founder decision around positioning, pricing, execution, or team focus.",
+        "whyShared": "Phoenix shared this because entrepreneurs need operating context they can turn into a practical decision.",
+        "founderTakeaway": "Use this to check whether your current plan still matches the market you are building in.",
+        "businessTakeaway": "The business takeaway is to turn the signal into one decision: keep, cut, clarify, or test."
+      }
+    }
+  ]
+}

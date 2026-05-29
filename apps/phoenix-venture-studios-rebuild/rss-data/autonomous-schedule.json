@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "timezone": "America/Detroit",
+  "slots": [
+    {
+      "id": "early-morning",
+      "localTime": "05:30",
+      "cronUtc": "30 9 * * *",
+      "intent": "Catch overnight market and AI tool developments before the workday starts."
+    },
+    {
+      "id": "mid-morning",
+      "localTime": "10:30",
+      "cronUtc": "30 14 * * *",
+      "intent": "Refresh after morning publisher updates and company announcements."
+    },
+    {
+      "id": "afternoon",
+      "localTime": "15:30",
+      "cronUtc": "30 19 * * *",
+      "intent": "Catch U.S. market, funding, and product news that lands during the business day."
+    },
+    {
+      "id": "late-night",
+      "localTime": "22:30",
+      "cronUtc": "30 2 * * *",
+      "intent": "Prepare a fresh overnight set and catch West Coast/product-cycle updates."
+    }
+  ],
+  "feeds": [
+    {
+      "id": "founder-market",
+      "publicXml": "/rss/feed.xml",
+      "publicJson": "/rss/feed.json",
+      "promise": "Market, funding, AI company, and founder strategy signals."
+    },
+    {
+      "id": "founder-tools",
+      "publicXml": "/rss/tools.xml",
+      "compatXml": "/rss/ai-attention.xml",
+      "publicJson": "/rss/tools.json",
+      "compatJson": "/rss/ai-attention.json",
+      "promise": "AI tools, agent development, automation, coding, and time-saving workflows founders can use."
+    }
+  ],
+  "publishPolicy": {
+    "publishWithoutHumanApproval": true,
+    "preservePreviousValidOutputOnFailure": true,
+    "publicImagesMustBePhoenixOwned": true,
+    "publisherImagesAreReferenceOnlyUnlessAllowlisted": true,
+    "doNotPublishFullPublisherArticleRewrites": true
+  }
+}

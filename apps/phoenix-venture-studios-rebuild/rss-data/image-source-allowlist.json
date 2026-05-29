@@ -1,0 +1,37 @@
+{
+  "defaultPolicy": "reference-only",
+  "sources": {
+    "techcrunch": {
+      "policy": "reference-only",
+      "note": "Use TechCrunch article images as private context only unless explicit image rights are cleared."
+    },
+    "techcrunch-ai": {
+      "policy": "reference-only",
+      "note": "Use TechCrunch AI article images as private context only unless explicit image rights are cleared."
+    },
+    "the-verge-ai": {
+      "policy": "reference-only",
+      "note": "Use The Verge article images as private context only unless explicit image rights are cleared."
+    },
+    "inc": {
+      "policy": "reference-only",
+      "note": "Use Inc. article images as private context only unless explicit image rights are cleared."
+    },
+    "entrepreneur": {
+      "policy": "reference-only",
+      "note": "Use Entrepreneur article images as private context only unless explicit image rights are cleared."
+    },
+    "infoq": {
+      "policy": "reference-only",
+      "note": "Use InfoQ article images as private context only unless explicit image rights are cleared."
+    },
+    "openai-news": {
+      "policy": "reference-only",
+      "note": "Use official OpenAI images only after confirming the specific asset is permitted for republication."
+    },
+    "tensorfeed": {
+      "policy": "reference-only",
+      "note": "Use TensorFeed images as private context only unless explicit image rights are cleared."
+    }
+  }
+}

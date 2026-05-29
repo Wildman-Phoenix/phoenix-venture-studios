@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Phoenix Venture Studios - Founder Tools</title>
+    <description>Useful AI tools, agent development, automation, coding, and time-saving workflow signals for founders.</description>
+    <link>https://phoenixventurestudios.com</link>
+    <atom:link href="https://phoenixventurestudios.com/rss/tools.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 29 May 2026 15:20:13 GMT</lastBuildDate>
+    <language>en-us</language>
+    <generator>Phoenix Venture Studios Static RSS Generator</generator>
+    <item>
+      <title><![CDATA[GitHub Slashes Agent Workflow Token Spend up to 62% with Daily Audits and MCP Pruning]]></title>
+      <description><![CDATA[GitHub reports cutting token costs in agentic CI workflows by up to 62% by pruning unused MCP tools, swapping some MCP calls for gh CLI, and running daily “auditor” and “optimizer” agents. A token-usage.jsonl artefact and an Effective Tokens metric help track spend across models and spot regressions. By Mark Silvester Phoenix brief: GitHub Slashes Agent Workflow Token Spend up to 62% with Daily Audits and MCP Pruning points to a tool or workflow shift. Use this to ask what task could get faster, cheaper, or easier this week. Why it matters: AI agents and tools are moving quickly, but the useful question is still business fit: what can be trusted, delegated, measured, and improved? Founder takeaway: Treat this as a cue to identify which tool category could create leverage now and which one still needs human supervision. Trend to watch: The pattern to watch is whether this moves from demo excitement into real daily workflow value. Engagement: Would you test this tool or workflow? Drop your takeaway below. Phoenix bucket: AI Tools & Agents. Source: InfoQ.]]></description>
+      <link>https://phoenixventurestudios.com/founder-signal/signals/github-slashes-agent-workflow-token-spend-up-62-daily-audits-mcp-pruning-16982ed8/</link>
+      <guid isPermaLink="true">https://phoenixventurestudios.com/founder-signal/signals/github-slashes-agent-workflow-token-spend-up-62-daily-audits-mcp-pruning-16982ed8/</guid>
+      <pubDate>Fri, 29 May 2026 08:30:00 GMT</pubDate>
+      <source url="https://www.infoq.com/news/2026/05/github-agentic-token-savings/?utm_campaign=infoq_content&amp;utm_source=infoq&amp;utm_medium=feed&amp;utm_term=global"><![CDATA[InfoQ]]></source>
+      <category><![CDATA[AI Tools & Agents]]></category>
+      <enclosure url="https://phoenixventurestudios.com/images/signals/generated/github-slashes-agent-workflow-token-spend-up-62-daily-audits-mcp-pruning-16982ed8.jpg" type="image/jpeg" length="0" />
+    </item>
+    <item>
+      <title><![CDATA[Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool]]></title>
+      <description><![CDATA[The new Opus model comes with a tool called Dynamic Workflows, for coordinating swarms of subagents. Phoenix brief: Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool points to a tool or workflow shift. Use this to ask what task could get faster, cheaper, or easier this week. Why it matters: AI agents and tools are moving quickly, but the useful question is still business fit: what can be trusted, delegated, measured, and improved? Founder takeaway: Treat this as a cue to identify which tool category could create leverage now and which one still needs human supervision. Trend to watch: The pattern to watch is whether this moves from demo excitement into real daily workflow value. Engagement: Would you test this tool or workflow? Drop your takeaway below. Phoenix bucket: AI Tools & Agents. Source: TechCrunch AI.]]></description>
+      <link>https://phoenixventurestudios.com/founder-signal/signals/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629/</link>
+      <guid isPermaLink="true">https://phoenixventurestudios.com/founder-signal/signals/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629/</guid>
+      <pubDate>Thu, 28 May 2026 17:00:09 GMT</pubDate>
+      <source url="https://techcrunch.com/2026/05/28/anthropic-releases-opus-4-8-with-new-dynamic-workflow-tool/"><![CDATA[TechCrunch AI]]></source>
+      <category><![CDATA[AI Tools & Agents]]></category>
+      <enclosure url="https://phoenixventurestudios.com/images/signals/generated/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629.jpg" type="image/jpeg" length="0" />
+    </item>
+    <item>
+      <title><![CDATA[Glean’s top line crosses $300M as AI budget cutting becomes its major selling point]]></title>
+      <description><![CDATA[The enterprise AI search startup tripled its annual revenue even as tech giants entered the category. Phoenix brief: TechCrunch AI flagged a ai revenue opportunities story. Use this to see what changed, why it matters, and what to watch next. Why it matters: AI revenue opportunities are strongest when they connect to a clear buyer, a real business pain, and a repeatable delivery model. Founder takeaway: Ask what someone would pay for if this signal keeps growing: clarity, implementation, training, speed, or a done-with-you rollout. Trend to watch: The pattern to watch is whether more sources start pointing to the same shift. Engagement: What is your takeaway from this signal? Drop it below. Phoenix bucket: AI Revenue Opportunities. Source: TechCrunch AI.]]></description>
+      <link>https://phoenixventurestudios.com/founder-signal/signals/glean-s-top-line-crosses-300m-as-ai-budget-cutting-becomes-its-major-selling-p-5471d949/</link>
+      <guid isPermaLink="true">https://phoenixventurestudios.com/founder-signal/signals/glean-s-top-line-crosses-300m-as-ai-budget-cutting-becomes-its-major-selling-p-5471d949/</guid>
+      <pubDate>Fri, 29 May 2026 00:44:37 GMT</pubDate>
+      <source url="https://techcrunch.com/2026/05/28/gleans-top-line-crosses-300m-as-ai-budget-cutting-becomes-its-major-selling-point/"><![CDATA[TechCrunch AI]]></source>
+      <category><![CDATA[AI Revenue Opportunities]]></category>
+      <enclosure url="https://phoenixventurestudios.com/images/signals/generated/glean-s-top-line-crosses-300m-as-ai-budget-cutting-becomes-its-major-selling-p-5471d949.jpg" type="image/jpeg" length="0" />
+    </item>
+    <item>
+      <title><![CDATA[A $2,000 AI-generated film will make its debut at Tribeca]]></title>
+      <description><![CDATA[Next month's Tribeca Festival will include the premiere of an AI-generated film: Dreams of Violets. The 75-minute film is a fictional dramatization of the Iranian government's mass killing of protestors in January, with the people and images fully created by AI, as reported earlier by The Hollywood Reporter. Dreams of Violets cost $2,000 to make […] Phoenix brief: The Verge AI flagged a wildcard attention story. Use this to see what changed, why it matters, and what to watch next. Why it matters: Some signals matter because they capture attention before the business implications are obvious. Founder takeaway: Ask whether this is noise, a weak signal, or the start of a pattern worth watching. Trend to watch: The pattern to watch is whether more sources start pointing to the same shift. Engagement: What is your takeaway from this signal? Drop it below. Phoenix bucket: Wildcard Attention. Source: The Verge AI.]]></description>
+      <link>https://phoenixventurestudios.com/founder-signal/signals/2-000-ai-generated-film-will-make-its-debut-at-tribeca-a8e64a26/</link>
+      <guid isPermaLink="true">https://phoenixventurestudios.com/founder-signal/signals/2-000-ai-generated-film-will-make-its-debut-at-tribeca-a8e64a26/</guid>
+      <pubDate>Thu, 28 May 2026 16:08:45 GMT</pubDate>
+      <source url="https://www.theverge.com/entertainment/939067/ai-film-dreams-of-violets-tribeca"><![CDATA[The Verge AI]]></source>
+      <category><![CDATA[Wildcard Attention]]></category>
+      <enclosure url="https://phoenixventurestudios.com/images/signals/generated/2-000-ai-generated-film-will-make-its-debut-at-tribeca-a8e64a26.jpg" type="image/jpeg" length="0" />
+    </item>
+    <item>
+      <title><![CDATA[How Endava builds an agentic organization with Codex]]></title>
+      <description><![CDATA[Learn how Endava uses Codex to build an agentic organization, accelerating software delivery and reducing requirements analysis from weeks to hours. Phoenix brief: How Endava builds an agentic organization with Codex points to a tool or workflow shift. Use this to ask what task could get faster, cheaper, or easier this week. Why it matters: AI agents and tools are moving quickly, but the useful question is still business fit: what can be trusted, delegated, measured, and improved? Founder takeaway: Treat this as a cue to identify which tool category could create leverage now and which one still needs human supervision. Trend to watch: The pattern to watch is whether this moves from demo excitement into real daily workflow value. Engagement: Would you test this tool or workflow? Drop your takeaway below. Phoenix bucket: AI Tools & Agents. Source: OpenAI News.]]></description>
+      <link>https://phoenixventurestudios.com/founder-signal/signals/endava-builds-agentic-organization-codex-c4a9a577/</link>
+      <guid isPermaLink="true">https://phoenixventurestudios.com/founder-signal/signals/endava-builds-agentic-organization-codex-c4a9a577/</guid>
+      <pubDate>Thu, 28 May 2026 12:00:00 GMT</pubDate>
+      <source url="https://openai.com/index/endava"><![CDATA[OpenAI News]]></source>
+      <category><![CDATA[AI Tools & Agents]]></category>
+      <enclosure url="https://phoenixventurestudios.com/images/signals/generated/endava-builds-agentic-organization-codex-c4a9a577.jpg" type="image/jpeg" length="0" />
+    </item>
+    <item>
+      <title><![CDATA[Warp’s big bet on building open source with GPT-5.5]]></title>
+      <description><![CDATA[Warp uses GPT-5.5 and OpenAI models to coordinate coding agents across local, cloud, and open-source development workflows. Phoenix brief: Warp’s big bet on building open source with GPT-5.5 points to a tool or workflow shift. Use this to ask what task could get faster, cheaper, or easier this week. Why it matters: AI agents and tools are moving quickly, but the useful question is still business fit: what can be trusted, delegated, measured, and improved? Founder takeaway: Treat this as a cue to identify which tool category could create leverage now and which one still needs human supervision. Trend to watch: The pattern to watch is whether this moves from demo excitement into real daily workflow value. Engagement: Would you test this tool or workflow? Drop your takeaway below. Phoenix bucket: AI Tools & Agents. Source: OpenAI News.]]></description>
+      <link>https://phoenixventurestudios.com/founder-signal/signals/warp-s-big-bet-building-open-source-gpt-5-5-b36c9194/</link>
+      <guid isPermaLink="true">https://phoenixventurestudios.com/founder-signal/signals/warp-s-big-bet-building-open-source-gpt-5-5-b36c9194/</guid>
+      <pubDate>Wed, 27 May 2026 00:00:00 GMT</pubDate>
+      <source url="https://openai.com/index/warp"><![CDATA[OpenAI News]]></source>
+      <category><![CDATA[AI Tools & Agents]]></category>
+      <enclosure url="https://phoenixventurestudios.com/images/signals/generated/warp-s-big-bet-building-open-source-gpt-5-5-b36c9194.jpg" type="image/jpeg" length="0" />
+    </item>
+    <item>
+      <title><![CDATA[Check out real-life AI prototypes from the Futures Lab.]]></title>
+      <description><![CDATA[University of Waterloo students develop AI prototypes like sign language tutors to reshape the future of education and work. Phoenix brief: Check out real-life AI prototypes from the Futures Lab. points to a tool or workflow shift. Use this to ask what task could get faster, cheaper, or easier this week. Why it matters: Implementation is where AI either becomes useful or becomes another subscription nobody uses. The market is rewarding practical rollout capability. Founder takeaway: Review the handoffs, bottlenecks, and repetitive decisions in your business before choosing tools. Trend to watch: The pattern to watch is whether more sources start pointing to the same shift. Engagement: Would you test this tool or workflow? Drop your takeaway below. Phoenix bucket: AI Implementation. Source: Google AI Blog.]]></description>
+      <link>https://phoenixventurestudios.com/founder-signal/signals/check-out-real-life-ai-prototypes-futures-lab-daac52c1/</link>
+      <guid isPermaLink="true">https://phoenixventurestudios.com/founder-signal/signals/check-out-real-life-ai-prototypes-futures-lab-daac52c1/</guid>
+      <pubDate>Fri, 29 May 2026 12:00:00 GMT</pubDate>
+      <source url="https://blog.google/innovation-and-ai/technology/ai/university-waterloo-labs/"><![CDATA[Google AI Blog]]></source>
+      <category><![CDATA[AI Implementation]]></category>
+      <enclosure url="https://phoenixventurestudios.com/images/signals/generated/check-out-real-life-ai-prototypes-futures-lab-daac52c1.jpg" type="image/jpeg" length="0" />
+    </item>
+    <item>
+      <title><![CDATA[AI Data Center Map – Visualize Water and Power Impact]]></title>
+      <description><![CDATA[Phoenix brief: AI Data Center Map – Visualize Water and Power Impact points to a tool or workflow shift. Use this to ask what task could get faster, cheaper, or easier this week. Why it matters: Automation changes margins, response time, and customer experience. It can also expose weak processes if the business automates too early. Founder takeaway: Find one repetitive process where a better system would save time or increase follow-up quality this month. Trend to watch: The pattern to watch is whether more sources start pointing to the same shift. Engagement: Would you test this tool or workflow? Drop your takeaway below. Phoenix bucket: Business Automation. Source: TensorFeed.]]></description>
+      <link>https://phoenixventurestudios.com/founder-signal/signals/ai-data-center-map-visualize-water-power-impact-feff96b0/</link>
+      <guid isPermaLink="true">https://phoenixventurestudios.com/founder-signal/signals/ai-data-center-map-visualize-water-power-impact-feff96b0/</guid>
+      <pubDate>Fri, 29 May 2026 14:18:01 GMT</pubDate>
+      <source url="https://aidatacentermap.org/"><![CDATA[TensorFeed]]></source>
+      <category><![CDATA[Business Automation]]></category>
+      <enclosure url="https://phoenixventurestudios.com/images/signals/generated/ai-data-center-map-visualize-water-power-impact-feff96b0.jpg" type="image/jpeg" length="0" />
+    </item>
+    <item>
+      <title><![CDATA[Presentation: From Founding Engineer to CTO to CEO – At the Same Startup]]></title>
+      <description><![CDATA[Trisha Ballakur discusses her journey from a backend software engineer to CTO and CEO, using her startup Pointz as a case study. She explains how to implement bottom-up customer discovery to find product-market fit, effectively delegate to global contractors to reduce build times, customize open-source repos like Valhalla, and apply engineering test-case models to business development. By Trisha Ballakur Phoenix brief: Presentation: From Founding Engineer to CTO to CEO – At the Same Startup points to a tool or workflow shift. Use this to ask what task could get faster, cheaper, or easier this week. Why it matters: Implementation is where AI either becomes useful or becomes another subscription nobody uses. The market is rewarding practical rollout capability. Founder takeaway: Review the handoffs, bottlenecks, and repetitive decisions in your business before choosing tools. Trend to watch: The pattern to watch is whether more sources start pointing to the same shift. Engagement: Would you test this tool or workflow? Drop your takeaway below. Phoenix bucket: AI Implementation. Source: InfoQ.]]></description>
+      <link>https://phoenixventurestudios.com/founder-signal/signals/presentation-founding-engineer-cto-ceo-at-same-startup-12ffdde6/</link>
+      <guid isPermaLink="true">https://phoenixventurestudios.com/founder-signal/signals/presentation-founding-engineer-cto-ceo-at-same-startup-12ffdde6/</guid>
+      <pubDate>Thu, 28 May 2026 12:33:00 GMT</pubDate>
+      <source url="https://www.infoq.com/presentations/framework-best-practices-startup/?utm_campaign=infoq_content&amp;utm_source=infoq&amp;utm_medium=feed&amp;utm_term=global"><![CDATA[InfoQ]]></source>
+      <category><![CDATA[AI Implementation]]></category>
+      <enclosure url="https://phoenixventurestudios.com/images/signals/generated/presentation-founding-engineer-cto-ceo-at-same-startup-12ffdde6.jpg" type="image/jpeg" length="0" />
+    </item>
+    <item>
+      <title><![CDATA[When old data brings AI rollouts to a screeching halt - and how to manage it]]></title>
+      <description><![CDATA[With AI, long-forgotten data assets suddenly turn to gold, with potential security risks. Phoenix brief: When old data brings AI rollouts to a screeching halt - and how to manage it points to a tool or workflow shift. Use this to ask what task could get faster, cheaper, or easier this week. Why it matters: Automation changes margins, response time, and customer experience. It can also expose weak processes if the business automates too early. Founder takeaway: Find one repetitive process where a better system would save time or increase follow-up quality this month. Trend to watch: The pattern to watch is whether more sources start pointing to the same shift. Engagement: Would you test this tool or workflow? Drop your takeaway below. Phoenix bucket: Business Automation. Source: TensorFeed.]]></description>
+      <link>https://phoenixventurestudios.com/founder-signal/signals/old-data-brings-ai-rollouts-screeching-halt-manage-it-b46abccd/</link>
+      <guid isPermaLink="true">https://phoenixventurestudios.com/founder-signal/signals/old-data-brings-ai-rollouts-screeching-halt-manage-it-b46abccd/</guid>
+      <pubDate>Thu, 28 May 2026 14:16:00 GMT</pubDate>
+      <source url="https://www.zdnet.com/article/proceed-cautiously-with-ai-rollouts/"><![CDATA[TensorFeed]]></source>
+      <category><![CDATA[Business Automation]]></category>
+      <enclosure url="https://phoenixventurestudios.com/images/signals/generated/old-data-brings-ai-rollouts-screeching-halt-manage-it-b46abccd.jpg" type="image/jpeg" length="0" />
+    </item>
+  </channel>
+</rss>

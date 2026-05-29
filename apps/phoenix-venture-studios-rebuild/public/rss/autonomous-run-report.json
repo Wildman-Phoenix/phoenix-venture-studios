@@ -1,0 +1,80 @@
+{
+  "generatedAt": "2026-05-29T15:20:13.011Z",
+  "runSlot": "mid-morning",
+  "slot": {
+    "id": "mid-morning",
+    "localTime": "10:30",
+    "cronUtc": "30 14 * * *",
+    "intent": "Refresh after morning publisher updates and company announcements."
+  },
+  "siteUrl": "https://phoenixventurestudios.com",
+  "backupDir": "/Users/nathanwildman/Documents/New project/apps/phoenix-venture-studios-rebuild/tmp/rss-autonomous-backup-2026-05-29T15-20-13-013Z",
+  "restoredPreviousOutput": false,
+  "historyItems": 20,
+  "outputChanged": false,
+  "signatures": {
+    "previous": "cdd56da956484bebfa329c86733daecb7d822cab7493106ae5f6f75002c78343",
+    "current": "cdd56da956484bebfa329c86733daecb7d822cab7493106ae5f6f75002c78343"
+  },
+  "publishPolicy": {
+    "publishWithoutHumanApproval": true,
+    "preservePreviousValidOutputOnFailure": true,
+    "publicImagesMustBePhoenixOwned": true,
+    "publisherImagesAreReferenceOnlyUnlessAllowlisted": true,
+    "doNotPublishFullPublisherArticleRewrites": true
+  },
+  "allValid": true,
+  "feeds": [
+    {
+      "feedId": "founder-market",
+      "title": "Phoenix Venture Studios - Founder Market",
+      "feedValid": true,
+      "preservedPreviousFeed": false,
+      "selected": 10,
+      "sourceErrors": 0,
+      "socialCardErrors": 0,
+      "manualReviewNeeded": 10,
+      "varietyErrors": 0,
+      "editorialErrors": 0,
+      "editorialWarnings": 0,
+      "copyWarnings": 8,
+      "aliases": []
+    },
+    {
+      "feedId": "founder-tools",
+      "title": "Phoenix Venture Studios - Founder Tools",
+      "feedValid": true,
+      "preservedPreviousFeed": false,
+      "selected": 10,
+      "sourceErrors": 0,
+      "socialCardErrors": 0,
+      "manualReviewNeeded": 10,
+      "varietyErrors": 0,
+      "editorialErrors": 0,
+      "editorialWarnings": 0,
+      "copyWarnings": 4,
+      "aliases": [
+        {
+          "from": "tools.xml",
+          "to": "ai-attention.xml"
+        },
+        {
+          "from": "tools.json",
+          "to": "ai-attention.json"
+        },
+        {
+          "from": "tools-items.json",
+          "to": "ai-attention-items.json"
+        },
+        {
+          "from": "tools-run-report.md",
+          "to": "ai-attention-run-report.md"
+        },
+        {
+          "from": "tools-run-report.json",
+          "to": "ai-attention-run-report.json"
+        }
+      ]
+    }
+  ]
+}

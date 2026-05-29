@@ -1,0 +1,70 @@
+name: Phoenix RSS Autonomous Refresh
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_slot:
+        description: "Run slot label"
+        required: false
+        default: "manual"
+  schedule:
+    - cron: "30 9 * * *"
+    - cron: "30 14 * * *"
+    - cron: "30 19 * * *"
+    - cron: "30 2 * * *"
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/phoenix-venture-studios-rebuild
+    env:
+      PHOENIX_RSS_SITE_URL: https://phoenixventurestudios.com
+      SITE_URL: https://phoenixventurestudios.com
+      VITE_BASE_PATH: /
+      VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+      VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
+      VITE_TURNSTILE_SITE_KEY: ${{ secrets.VITE_TURNSTILE_SITE_KEY }}
+      PHOENIX_RSS_RUN_SLOT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.run_slot || '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: apps/phoenix-venture-studios-rebuild/package-lock.json
+
+      - run: npm ci
+
+      - run: npm run rss:test
+
+      - id: rss_run
+        run: npm run rss:autonomous
+
+      - run: npm run rss:validate
+
+      - run: npm run rss:publish-preview
+        if: steps.rss_run.outputs.output_changed == 'true'
+
+      - run: npm run prepare:production
+        if: steps.rss_run.outputs.output_changed == 'true'
+
+      - run: node scripts/rss/validate-rss-output.mjs --deploy-artifacts
+        if: steps.rss_run.outputs.output_changed == 'true'
+
+      - name: Deploy production Pages
+        if: steps.rss_run.outputs.output_changed == 'true'
+        run: npx wrangler pages deploy dist --project-name phoenixventurestudios-com --commit-dirty=true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Deploy preview hub
+        if: steps.rss_run.outputs.output_changed == 'true'
+        working-directory: .
+        run: npx wrangler pages deploy output/phoenix-previews-upload --project-name phoenix-previews --commit-dirty=true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

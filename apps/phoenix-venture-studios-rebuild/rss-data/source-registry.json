@@ -1,0 +1,121 @@
+{
+  "version": 1,
+  "updated": "2026-05-27",
+  "maxPerSource": 3,
+  "excludeKeywords": [
+    "single gen-z",
+    "buying homes",
+    "family dining chains"
+  ],
+  "preferredKeywords": [
+    "new tool",
+    "new tools",
+    "new venture",
+    "venture studio",
+    "startup studio",
+    "funding",
+    "raised",
+    "raise",
+    "capital",
+    "credit",
+    "loan",
+    "agentic",
+    "gentic",
+    "vibe coding",
+    "coding agent",
+    "app builder",
+    "build apps",
+    "building apps",
+    "app development",
+    "developer tools",
+    "operators",
+    "workflow"
+  ],
+  "penaltyKeywords": [
+    "small-business ideas",
+    "burning out",
+    "burn out",
+    "nervous system",
+    "wellness",
+    "meditation",
+    "single gen-z",
+    "buying homes",
+    "homebuyer",
+    "backyard drama",
+    "bird feeder"
+  ],
+  "targets": {
+    "capital_credit": 1,
+    "founder_strategy": 2,
+    "funding_venture": 3,
+    "ai_operator_impact": 4
+  },
+  "sources": [
+    {
+      "id": "techcrunch-main",
+      "name": "TechCrunch",
+      "url": "https://techcrunch.com/feed/",
+      "type": "rss",
+      "enabled": true,
+      "score": 78,
+      "buckets": ["funding_venture", "ai_operator_impact", "wildcard_attention"]
+    },
+    {
+      "id": "techcrunch-ai",
+      "name": "TechCrunch AI",
+      "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+      "type": "rss",
+      "enabled": true,
+      "score": 80,
+      "buckets": ["ai_operator_impact"]
+    },
+    {
+      "id": "entrepreneur-latest",
+      "name": "Entrepreneur",
+      "url": "https://www.entrepreneur.com/latest.rss",
+      "type": "rss",
+      "enabled": true,
+      "score": 72,
+      "buckets": ["founder_strategy", "coaching_consulting", "wildcard_attention"]
+    },
+    {
+      "id": "inc-main",
+      "name": "Inc.",
+      "url": "https://www.inc.com/rss",
+      "type": "rss",
+      "enabled": true,
+      "score": 74,
+      "buckets": ["founder_strategy", "funding_venture", "capital_credit", "coaching_consulting", "wildcard_attention"]
+    },
+    {
+      "id": "sba-newsroom",
+      "name": "SBA Newsroom",
+      "url": "https://www.sba.gov/about-sba/sba-newsroom",
+      "type": "html",
+      "enabled": false,
+      "score": 88,
+      "buckets": ["capital_credit", "market_regulatory"],
+      "notes": "HTML is reachable; parser verification required before automation."
+    },
+    {
+      "id": "cnbc-business",
+      "name": "CNBC",
+      "url": "https://www.cnbc.com/id/100003114/device/rss/rss.html",
+      "type": "rss",
+      "enabled": false,
+      "score": 80,
+      "buckets": ["capital_credit", "market_regulatory", "wildcard_attention"],
+      "notes": "Excluded because curl returned 403 during planning."
+    },
+    {
+      "id": "axios-ai",
+      "name": "Axios AI",
+      "url": "https://www.axios.com/tag/artificial-intelligence/",
+      "type": "html",
+      "enabled": false,
+      "score": 82,
+      "buckets": ["ai_operator_impact", "market_regulatory"],
+      "notes": "Useful source, but RSS endpoint still needs verification."
+    }
+  ]
+}

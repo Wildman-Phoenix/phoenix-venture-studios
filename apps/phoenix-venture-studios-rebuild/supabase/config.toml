@@ -1,0 +1,55 @@
+project_id = "kqhteuhrhkqrsxynvxln"
+
+[functions.venture-snapshot]
+verify_jwt = false
+
+[functions.sigma-lead-notify]
+verify_jwt = false
+
+[functions.founder-intelligence]
+verify_jwt = false
+
+[functions.market-intelligence-rss]
+verify_jwt = false
+
+[functions.phoenix-editorial-rss]
+verify_jwt = false
+
+[functions.capital-lead-notify]
+verify_jwt = false
+
+[functions.capital-welcome-email]
+verify_jwt = false
+
+[functions.capital-followup-email]
+verify_jwt = false
+
+[functions.validate-form]
+verify_jwt = false
+
+[functions.compose-founder-signal]
+verify_jwt = false
+
+[functions.send-founder-signal]
+verify_jwt = false
+
+[functions.phoenix-editorial]
+verify_jwt = false
+
+[functions.newsletter-welcome]
+verify_jwt = false
+
+[functions.onboarding-nathan-intro]
+verify_jwt = false
+
+[functions.onboarding-preferences-ask]
+verify_jwt = false
+
+[functions.process-onboarding-drip]
+verify_jwt = false
+
+[functions.submit-form]
+verify_jwt = false
+
+[functions.og-share]
+verify_jwt = false

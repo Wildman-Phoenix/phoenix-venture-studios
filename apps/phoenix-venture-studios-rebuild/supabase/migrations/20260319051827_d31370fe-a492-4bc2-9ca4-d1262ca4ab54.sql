@@ -1,0 +1,1 @@
+ALTER TABLE public.intelligence_entries ADD COLUMN IF NOT EXISTS image_scene_id text DEFAULT null;

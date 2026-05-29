@@ -1,0 +1,1 @@
+DROP POLICY IF EXISTS "Users can update own subscription by email" ON public.newsletter_subscribers;
