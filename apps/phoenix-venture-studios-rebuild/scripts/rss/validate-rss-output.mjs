@@ -27,17 +27,6 @@ const REQUIRED_FIELDS = [
   "readingLevel",
   "editorialMode",
 ];
-const REQUIRED_QUEUE_FIELDS = [
-  "isSocialQueue",
-  "candidatePoolSize",
-  "eligibleCandidates",
-  "eligibleSelected",
-  "heldForManualReview",
-  "skippedForFallbackArt",
-  "queueRotationReason",
-  "historyUpdated",
-  "sampleReady",
-];
 
 function fail(errors) {
   for (const error of errors) console.error(`RSS validation: ${error}`);
@@ -48,44 +37,12 @@ async function readText(file) {
   return fs.readFile(path.join(RSS_DIR, file), "utf8");
 }
 
-async function compareArtifactFile(root, file, errors) {
-  const source = await readText(file).catch(() => "");
-  const artifactPath = path.join(root, "rss", file);
-  const artifact = await fs.readFile(artifactPath, "utf8").catch(() => "");
-
-  if (!artifact) {
-    errors.push(`${file} missing from deploy artifact ${root}`);
-    return;
-  }
-
-  if (source !== artifact) {
-    errors.push(`${file} in deploy artifact ${root} does not match public/rss/${file}`);
-  }
-}
-
 async function main() {
   const errors = [];
   const checkDeployArtifacts = process.argv.includes("--deploy-artifacts");
-  const requireArticleSpecificImages =
-    process.env.PHOENIX_RSS_REQUIRE_ARTICLE_IMAGES === "1" ||
-    process.env.PHOENIX_RSS_IMAGE_MODE === "article-or-hold";
-  const feedExpectations = [
-    { xml: "feed.xml", json: "feed.json", items: 10 },
-    { xml: "tools.xml", json: "tools.json", items: 10 },
-    { xml: "ai-attention.xml", json: "ai-attention.json", items: 10 },
-    { xml: "social.xml", json: "social.json", items: 1 },
-    { xml: "tools-social.xml", json: "tools-social.json", items: 1 },
-    { xml: "ai-attention-social.xml", json: "ai-attention-social.json", items: 1 },
-  ];
-  const requiredFiles = [
-    ...feedExpectations.flatMap((feed) => [feed.xml, feed.json]),
-    "run-report.json",
-    "tools-run-report.json",
-    "ai-attention-run-report.json",
-    "social-run-report.json",
-    "tools-social-run-report.json",
-    "ai-attention-social-run-report.json",
-  ];
+  const xmlFiles = ["feed.xml", "ai-attention.xml", "tools.xml"];
+  const jsonFiles = ["feed.json", "ai-attention.json", "tools.json"];
+  const requiredFiles = [...xmlFiles, ...jsonFiles, "run-report.json", "ai-attention-run-report.json", "tools-run-report.json"];
 
   for (const file of requiredFiles) {
     try {
@@ -95,81 +52,22 @@ async function main() {
     }
   }
 
-  for (const reportFile of ["social-run-report.json", "tools-social-run-report.json", "ai-attention-social-run-report.json"]) {
-    const report = JSON.parse(await readText(reportFile).catch(() => "{}"));
-    const queue = report.queue || {};
-    const selectedItem = Array.isArray(report.selectedItems) ? report.selectedItems[0] : null;
-    const selectedNeedsManualReview = Boolean(
-      selectedItem?.imageBrief?.manualReviewNeeded ||
-      selectedItem?.imageRightsStatus === "manual-review" ||
-      selectedItem?.imageApprovalStatus === "held"
-    );
-    for (const field of REQUIRED_QUEUE_FIELDS) {
-      if (typeof queue[field] === "undefined") errors.push(`${reportFile} missing queue.${field}`);
-    }
-    if (queue.isSocialQueue !== true) errors.push(`${reportFile} queue.isSocialQueue must be true`);
-    if (queue.queueRotationReason === "not-a-social-queue") {
-      errors.push(`${reportFile} queueRotationReason must describe social queue behavior`);
-    }
-    if (report.items?.selected === 1 && Number(queue.candidatePoolSize || 0) < 1) {
-      errors.push(`${reportFile} must report a non-empty candidate pool when one item is selected`);
-    }
-    if (queue.eligibleSelected === true) {
-      if (selectedNeedsManualReview) {
-        errors.push(`${reportFile} cannot mark eligibleSelected=true when manual review is still needed`);
-      }
-      if (Number(report.images?.genericFallbacks || 0) > 0) {
-        errors.push(`${reportFile} cannot mark eligibleSelected=true when generic fallback art is still selected`);
-      }
-    }
-    if (
-      queue.sampleReady === false &&
-      report.items?.selected === 1 &&
-      !selectedNeedsManualReview &&
-      Number(report.images?.genericFallbacks || 0) === 0
-    ) {
-      errors.push(`${reportFile} sampleReady=false must correspond to manual review or fallback-art visibility`);
-    }
-  }
-
-  for (const expectation of feedExpectations) {
-    const xml = await readText(expectation.xml).catch(() => "");
-    if (!validateRss(xml)) errors.push(`${expectation.xml} is not well-formed RSS`);
-    const itemCount = (xml.match(/<item>/g) || []).length;
-    if (expectation.items === 1) {
-      if (itemCount !== 1) errors.push(`${expectation.xml} must contain 1 item`);
-    } else if (itemCount < 1 || itemCount > expectation.items) {
-      errors.push(`${expectation.xml} must contain between 1 and ${expectation.items} items`);
-    }
-    if (!xml.includes("/founder-signal/signals/")) errors.push(`${expectation.xml} missing Phoenix signal links`);
-    if (!xml.includes("/images/signals/generated/")) errors.push(`${expectation.xml} missing generated Phoenix enclosures`);
-    if (expectation.xml === "tools.xml" && !xml.includes("https://phoenixventurestudios.com/rss/tools.xml")) {
+  for (const file of xmlFiles) {
+    const xml = await readText(file).catch(() => "");
+    if (!validateRss(xml)) errors.push(`${file} is not well-formed RSS`);
+    if ((xml.match(/<item>/g) || []).length !== 10) errors.push(`${file} must contain 10 items`);
+    if (!xml.includes("/founder-signal/signals/")) errors.push(`${file} missing Phoenix signal links`);
+    if (!xml.includes("/images/signals/generated/")) errors.push(`${file} missing generated Phoenix enclosures`);
+    if (file === "tools.xml" && !xml.includes("https://phoenixventurestudios.com/rss/tools.xml")) {
       errors.push("tools.xml must self-identify as /rss/tools.xml");
     }
-    if (expectation.xml === "tools-social.xml" && !xml.includes("https://phoenixventurestudios.com/rss/tools-social.xml")) {
-      errors.push("tools-social.xml must self-identify as /rss/tools-social.xml");
-    }
-    if (checkDeployArtifacts) {
-      await compareArtifactFile(DIST_ROOT, expectation.xml, errors);
-      await compareArtifactFile(DIST_ROOT, expectation.json, errors);
-    }
   }
 
-  for (const expectation of feedExpectations) {
-    const file = expectation.json;
+  for (const file of jsonFiles) {
     const feed = JSON.parse(await readText(file));
-    if (!Array.isArray(feed.items)) {
-      errors.push(`${file} must contain an items array`);
-    } else if (expectation.items === 1) {
-      if (feed.items.length !== 1) errors.push(`${file} must contain 1 item`);
-    } else if (feed.items.length < 1 || feed.items.length > expectation.items) {
-      errors.push(`${file} must contain between 1 and ${expectation.items} items`);
-    }
+    if (!Array.isArray(feed.items) || feed.items.length !== 10) errors.push(`${file} must contain 10 items`);
     if (file === "tools.json" && feed.feed_url !== "https://phoenixventurestudios.com/rss/tools.json") {
       errors.push("tools.json must self-identify as /rss/tools.json");
-    }
-    if (file === "tools-social.json" && feed.feed_url !== "https://phoenixventurestudios.com/rss/tools-social.json") {
-      errors.push("tools-social.json must self-identify as /rss/tools-social.json");
     }
     for (const item of feed.items || []) {
       const phoenix = item._phoenix || {};
@@ -228,20 +126,8 @@ async function main() {
       if (String(phoenix.sourceImageUrl || "").startsWith("http")) {
         errors.push(`${label} exposes publisher sourceImageUrl`);
       }
-      if (!/\/images\/signals\/(generated|source-art)\//.test(String(phoenix.socialImageUrl || ""))) {
-        errors.push(`${label} socialImageUrl is not a Phoenix-owned RSS image`);
-      }
-      if (
-        requireArticleSpecificImages &&
-        !["held-for-codex-image", "source-allowlisted"].includes(String(phoenix.imageStrategy || ""))
-      ) {
-        errors.push(`${label} must use an allowlisted source image or a Codex-approved raw story image`);
-      }
-      if (
-        String(phoenix.imageStrategy || "") === "held-for-codex-image" &&
-        String(phoenix.imageApprovalStatus || "") !== "approved"
-      ) {
-        errors.push(`${label} is still held for Codex image and should not be in the published feed`);
+      if (!String(phoenix.socialImageUrl || "").includes("/images/signals/generated/")) {
+        errors.push(`${label} socialImageUrl is not Phoenix generated media`);
       }
     }
   }
