@@ -1,6 +1,11 @@
 name: Phoenix RSS Autonomous Refresh
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/phoenix-rss-autonomous.yml
   workflow_dispatch:
     inputs:
       run_slot:
