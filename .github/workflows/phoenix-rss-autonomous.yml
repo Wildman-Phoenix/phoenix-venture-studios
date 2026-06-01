@@ -63,7 +63,7 @@ jobs:
         id: deploy_production
         if: steps.rss_run.outputs.output_changed == 'true'
         continue-on-error: true
-        run: npx wrangler pages deploy dist --project-name phoenixventurestudios-com --commit-dirty=true
+        run: npx wrangler pages deploy dist --project-name phoenixventurestudios-com --branch main --commit-hash "${{ github.sha }}" --commit-dirty=true
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -73,7 +73,7 @@ jobs:
         if: steps.rss_run.outputs.output_changed == 'true'
         working-directory: .
         continue-on-error: true
-        run: npx wrangler pages deploy output/phoenix-previews-upload --project-name phoenix-previews --commit-dirty=true
+        run: npx wrangler pages deploy output/phoenix-previews-upload --project-name phoenix-previews --branch main --commit-hash "${{ github.sha }}" --commit-dirty=true
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
