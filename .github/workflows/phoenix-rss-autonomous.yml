@@ -47,6 +47,9 @@ jobs:
 
       - run: npm run rss:validate
 
+      - run: npm run preview:publish
+        if: steps.rss_run.outputs.output_changed == 'true'
+
       - run: npm run rss:publish-preview
         if: steps.rss_run.outputs.output_changed == 'true'
 
