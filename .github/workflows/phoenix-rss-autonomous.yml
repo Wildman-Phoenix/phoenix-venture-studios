@@ -64,6 +64,8 @@ jobs:
         if: steps.rss_run.outputs.output_changed == 'true'
         run: |
           set -euo pipefail
+          # Probe the live Pages root after each candidate deploy so the workflow only
+          # reports success when the production tools feed actually matches dist/rss.
 
           EXPECTED_HASH="$(shasum dist/rss/tools.xml | awk '{print $1}')"
           EXPECTED_BUILD_DATE="$(node -e "const fs=require('fs');const xml=fs.readFileSync('dist/rss/tools.xml','utf8');const match=xml.match(/<lastBuildDate>([^<]+)<\\/lastBuildDate>/);process.stdout.write(match ? match[1] : '');")"
