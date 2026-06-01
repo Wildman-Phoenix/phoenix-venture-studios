@@ -20,9 +20,9 @@ jobs:
       PHOENIX_RSS_SITE_URL: https://phoenixventurestudios.com
       SITE_URL: https://phoenixventurestudios.com
       VITE_BASE_PATH: /
-      VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-      VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
-      VITE_TURNSTILE_SITE_KEY: ${{ secrets.VITE_TURNSTILE_SITE_KEY }}
+      VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL != '' && secrets.VITE_SUPABASE_URL || 'https://kqhteuhrhkqrsxynvxln.supabase.co' }}
+      VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY != '' && secrets.VITE_SUPABASE_PUBLISHABLE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtxaHRldWhyaGtxcnN4eW52eGxuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMTY2MzQsImV4cCI6MjA5NTU5MjYzNH0.h_XKU4iUJ6PzvG7jfp5BaolZ6KH3pWBgkkV-70a3f38' }}
+      VITE_TURNSTILE_SITE_KEY: ${{ secrets.VITE_TURNSTILE_SITE_KEY != '' && secrets.VITE_TURNSTILE_SITE_KEY || '0x4AAAAAADYIyBLRIGWMfJ3b' }}
       PHOENIX_RSS_RUN_SLOT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.run_slot || '' }}
     steps:
       - uses: actions/checkout@v4
