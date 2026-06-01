@@ -8,10 +8,7 @@ on:
         required: false
         default: "manual"
   schedule:
-    - cron: "30 9 * * *"
-    - cron: "30 14 * * *"
-    - cron: "30 19 * * *"
-    - cron: "30 2 * * *"
+    - cron: "*/15 * * * *"
 
 jobs:
   refresh:
@@ -55,16 +52,37 @@ jobs:
         if: steps.rss_run.outputs.output_changed == 'true'
 
       - name: Deploy production Pages
+        id: deploy_production
         if: steps.rss_run.outputs.output_changed == 'true'
+        continue-on-error: true
         run: npx wrangler pages deploy dist --project-name phoenixventurestudios-com --commit-dirty=true
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       - name: Deploy preview hub
+        id: deploy_preview
         if: steps.rss_run.outputs.output_changed == 'true'
         working-directory: .
+        continue-on-error: true
         run: npx wrangler pages deploy output/phoenix-previews-upload --project-name phoenix-previews --commit-dirty=true
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Summarize deploy status
+        if: always() && steps.rss_run.outputs.output_changed == 'true'
+        run: |
+          {
+            echo "## Phoenix RSS deploy status"
+            echo ""
+            echo "- Production Pages: ${{ steps.deploy_production.outcome }}"
+            echo "- Preview hub: ${{ steps.deploy_preview.outcome }}"
+            echo ""
+            if [ "${{ steps.deploy_production.outcome }}" != "success" ] || [ "${{ steps.deploy_preview.outcome }}" != "success" ]; then
+              echo "Deploy auth or Pages project access is still blocking at least one publish target."
+              echo "The RSS refresh itself completed, so investigate Cloudflare credentials or project permissions next."
+            else
+              echo "Both deploy targets completed successfully."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
