@@ -1,19 +1,12 @@
 name: Phoenix RSS Autonomous Refresh
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - .github/workflows/phoenix-rss-autonomous.yml
   workflow_dispatch:
     inputs:
       run_slot:
         description: "Run slot label"
         required: false
         default: "manual"
-  schedule:
-    - cron: "30 4,10,16,22 * * *"
 
 jobs:
   refresh:
