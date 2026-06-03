@@ -1,6 +1,11 @@
 name: Phoenix RSS Autonomous Refresh
 
 on:
+  schedule:
+    - cron: "30 4 * * *"
+    - cron: "30 10 * * *"
+    - cron: "30 16 * * *"
+    - cron: "30 22 * * *"
   workflow_dispatch:
     inputs:
       run_slot:
@@ -61,14 +66,14 @@ jobs:
           # reports success when the production tools feed actually matches dist/rss.
 
           EXPECTED_HASH="$(shasum dist/rss/tools.xml | awk '{print $1}')"
-          EXPECTED_BUILD_DATE="$(node -e "const fs=require('fs');const xml=fs.readFileSync('dist/rss/tools.xml','utf8');const match=xml.match(/<lastBuildDate>([^<]+)<\/lastBuildDate>/);process.stdout.write(match ? match[1] : '');")"
+          EXPECTED_BUILD_DATE="$(node -e "const fs=require('fs');const xml=fs.readFileSync('dist/rss/tools.xml','utf8');const match=xml.match(/<lastBuildDate>([^<]+)<\\/lastBuildDate>/);process.stdout.write(match ? match[1] : '');")"
 
           verify_live_tools() {
             local target="$1"
             local live_hash
             local live_build_date
             live_hash="$(curl -fsSL -H 'Cache-Control: no-cache' "https://phoenixventurestudios-com.pages.dev/rss/tools.xml?ts=$(date +%s)" | shasum | awk '{print $1}')"
-            live_build_date="$(curl -fsSL -H 'Cache-Control: no-cache' "https://phoenixventurestudios-com.pages.dev/rss/tools.xml?ts=$(date +%s)" | node -e "let data='';process.stdin.on('data',d=>data+=d);process.stdin.on('end',()=>{const match=data.match(/<lastBuildDate>([^<]+)<\/lastBuildDate>/);process.stdout.write(match ? match[1] : '');});")"
+            live_build_date="$(curl -fsSL -H 'Cache-Control: no-cache' "https://phoenixventurestudios-com.pages.dev/rss/tools.xml?ts=$(date +%s)" | node -e "let data='';process.stdin.on('data',d=>data+=d);process.stdin.on('end',()=>{const match=data.match(/<lastBuildDate>([^<]+)<\\/lastBuildDate>/);process.stdout.write(match ? match[1] : '');});")"
             echo "Checked ${target}: live hash=${live_hash} live lastBuildDate=${live_build_date}"
             [ "${live_hash}" = "${EXPECTED_HASH}" ]
           }
@@ -113,7 +118,7 @@ jobs:
 
       - name: Deploy preview hub
         id: deploy_preview
-        if: steps.rss_run.outputs.output_changed == 'true'
+        if: always() && steps.rss_run.outputs.output_changed == 'true'
         working-directory: .
         continue-on-error: true
         run: npx wrangler pages deploy output/phoenix-previews-upload --project-name phoenix-previews --branch main --commit-hash "${{ github.sha }}" --commit-dirty=true
