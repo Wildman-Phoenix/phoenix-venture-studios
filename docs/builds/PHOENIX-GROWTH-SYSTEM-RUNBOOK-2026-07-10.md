@@ -31,7 +31,7 @@ From the Phoenix app:
 
 ## Scheduling
 
-GitHub Actions owns the four daily RSS runs. The Codex six-hour RSS automation should be paused only after a successful GitHub proof run using the updated workflow. Daily Ops Digest remains unchanged. Slack and unrelated paused automations are outside this runbook.
+GitHub Actions is the intended owner of the four daily RSS runs. Its deterministic gate is proven through deploy-artifact validation, but unattended production deployment still requires the Cloudflare Actions secrets. Keep the Codex six-hour RSS fallback active until one fully green GitHub production run proves deployment and both-domain parity. Daily Ops Digest remains unchanged. Slack and unrelated paused automations are outside this runbook.
 
 ## Katalyst rules
 
