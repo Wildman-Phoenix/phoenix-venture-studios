@@ -17,6 +17,8 @@ Status: `Needs you`
 - The maintenance event-trigger function is no longer publicly executable.
 - Anonymous storage directory listing was removed from the public intelligence-image bucket.
 - Supabase security advisor result: zero findings.
+- Rendered QA passed on twelve desktop routes and six high-value mobile routes with no horizontal overflow, missing image alternative text, or browser console errors.
+- Desktop homepage and mobile unsubscribe viewport captures received visual signoff; no forms or external systems were submitted or changed.
 
 ## Current schedules
 
@@ -61,3 +63,9 @@ Chrome is required only for workflow-definition and Social Planner UI work that 
 ## Creative boundary
 
 No brand, copy, image direction, or customer-experience redesign was performed. Nathan's creative review begins after the Katalyst finish and scheduler cutover are proven.
+
+## Evidence index
+
+- `docs/builds/PHOENIX-RENDERED-QA-2026-07-10.md`
+- `docs/builds/qa-evidence/phoenix-desktop-home.jpg`
+- `docs/builds/qa-evidence/phoenix-mobile-unsubscribe.jpg`
