@@ -45,6 +45,8 @@ jobs:
 
       - run: npm run rss:test
 
+      - run: npm run rss:hydrate-live
+
       - id: rss_run
         run: npm run rss:autonomous
 
