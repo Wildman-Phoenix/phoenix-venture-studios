@@ -4,12 +4,13 @@ import { fileURLToPath } from "node:url";
 
 const APP_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (relativePath) => fs.readFile(path.join(APP_ROOT, relativePath), "utf8");
-const [webhook, adapter, submit, onboarding, validate] = await Promise.all([
+const [webhook, adapter, submit, onboarding, validate, newsletterMigration] = await Promise.all([
   read("supabase/functions/ghl-newsletter-webhook/index.ts"),
   read("supabase/functions/_shared/highlevel-newsletter.ts"),
   read("supabase/functions/submit-form/index.ts"),
   read("supabase/functions/process-onboarding-drip/index.ts"),
   read("supabase/functions/validate-form/index.ts"),
+  read("supabase/migrations/20260616233000_highlevel_newsletter_migration.sql"),
 ]);
 
 const checks = [
@@ -23,6 +24,7 @@ const checks = [
   [onboarding.includes('.eq("marketing_consent", true)'), "Onboarding does not require marketing consent"],
   [submit.includes('.select("marketing_consent, unsubscribed, unsubscribed_at")') && submit.includes("marketing_consent: existingSubscriber.marketing_consent"), "Preference mirror can overwrite consent"],
   [validate.includes("turnstile") && validate.includes("form_security_log"), "Protected form validation/Turnstile evidence is missing"],
+  [!newsletterMigration.includes('CREATE POLICY "Anyone can read newsletter sync events"') && newsletterMigration.includes('TO service_role'), "Newsletter sync evidence is readable outside the service role"],
 ];
 
 const failures = checks.filter(([passed]) => !passed).map(([, message]) => message);
