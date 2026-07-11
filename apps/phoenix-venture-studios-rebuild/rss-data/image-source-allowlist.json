@@ -2,36 +2,108 @@
   "defaultPolicy": "reference-only",
   "sources": {
     "techcrunch": {
-      "policy": "reference-only",
-      "note": "Use TechCrunch article images as private context only unless explicit image rights are cleared."
+      "policy": "allowed",
+      "note": "Use the TechCrunch article image as the default cover unless it is weak, distracting, or inappropriate for the Phoenix post."
     },
     "techcrunch-ai": {
-      "policy": "reference-only",
-      "note": "Use TechCrunch AI article images as private context only unless explicit image rights are cleared."
+      "policy": "allowed",
+      "note": "Use the TechCrunch AI article image as the default cover unless it is weak, distracting, or inappropriate for the Phoenix post."
     },
     "the-verge-ai": {
-      "policy": "reference-only",
-      "note": "Use The Verge article images as private context only unless explicit image rights are cleared."
+      "policy": "allowed",
+      "note": "Use the Verge AI article image as the default cover unless it is weak, distracting, or inappropriate for the Phoenix post."
     },
     "inc": {
-      "policy": "reference-only",
-      "note": "Use Inc. article images as private context only unless explicit image rights are cleared."
+      "policy": "allowed",
+      "note": "Use the Inc. article image as the default cover unless it is weak, distracting, or inappropriate for the Phoenix post."
     },
     "entrepreneur": {
-      "policy": "reference-only",
-      "note": "Use Entrepreneur article images as private context only unless explicit image rights are cleared."
+      "policy": "allowed",
+      "note": "Use the Entrepreneur article image as the default cover unless it is weak, distracting, or inappropriate for the Phoenix post."
     },
     "infoq": {
-      "policy": "reference-only",
-      "note": "Use InfoQ article images as private context only unless explicit image rights are cleared."
+      "policy": "manual-review",
+      "note": "InfoQ article images often resolve to conference photos, slide decks, or diagrams. Review before using as a Phoenix cover."
     },
     "openai-news": {
+      "policy": "allowed",
+      "note": "Use the official OpenAI image as the default cover unless it is weak, distracting, or inappropriate for the Phoenix post."
+    },
+    "openai-platform": {
+      "policy": "allowed",
+      "note": "Official OpenAI platform/update images are public-safe only after the local cover audit passes."
+    },
+    "anthropic-news": {
+      "policy": "allowed",
+      "note": "Official Anthropic news images are public-safe only after the local cover audit passes."
+    },
+    "anthropic-research": {
+      "policy": "allowed",
+      "note": "Official Anthropic research images are public-safe only after the local cover audit passes."
+    },
+    "anthropic-engineering": {
+      "policy": "allowed",
+      "note": "Official Anthropic engineering images are public-safe only after the local cover audit passes."
+    },
+    "claude-release-notes": {
+      "policy": "allowed",
+      "note": "Official Claude release-note images are public-safe only after the local cover audit passes."
+    },
+    "claude-code-changelog": {
+      "policy": "allowed",
+      "note": "Official Claude Code changelog images are public-safe only after the local cover audit passes."
+    },
+    "heygen-updates": {
+      "policy": "allowed",
+      "note": "Official HeyGen product-update images are public-safe only after the local cover audit passes."
+    },
+    "heygen-new": {
+      "policy": "allowed",
+      "note": "Official HeyGen new-release images are public-safe only after the local cover audit passes."
+    },
+    "heygen-blog": {
+      "policy": "allowed",
+      "note": "Official HeyGen blog images are public-safe only after the local cover audit passes."
+    },
+    "deepmind-blog": {
+      "policy": "allowed",
+      "note": "Official Google DeepMind images are public-safe only after the local cover audit passes."
+    },
+    "github-changelog": {
+      "policy": "allowed",
+      "note": "Official GitHub changelog images are public-safe only after the local cover audit passes."
+    },
+    "cloudflare-ai-blog": {
+      "policy": "allowed",
+      "note": "Official Cloudflare AI blog images are public-safe only after the local cover audit passes."
+    },
+    "langchain-blog": {
+      "policy": "allowed",
+      "note": "Official LangChain blog images are public-safe only after the local cover audit passes."
+    },
+    "perplexity-hub": {
+      "policy": "allowed",
+      "note": "Official Perplexity hub images are public-safe only after the local cover audit passes."
+    },
+    "vercel-ai-sdk": {
+      "policy": "allowed",
+      "note": "Official Vercel AI SDK images are public-safe only after the local cover audit passes."
+    },
+    "huggingface-blog": {
+      "policy": "allowed",
+      "note": "Official Hugging Face blog images are public-safe only after the local cover audit passes."
+    },
+    "matt-wolfe-youtube": {
       "policy": "reference-only",
-      "note": "Use official OpenAI images only after confirming the specific asset is permitted for republication."
+      "note": "Matt Wolfe videos are trend discovery inputs. Do not use YouTube thumbnails as Phoenix public covers."
+    },
+    "futuretools-news": {
+      "policy": "reference-only",
+      "note": "FutureTools is a trend discovery source. Do not use source images as Phoenix public covers without a separate review."
     },
     "tensorfeed": {
-      "policy": "reference-only",
-      "note": "Use TensorFeed images as private context only unless explicit image rights are cleared."
+      "policy": "allowed",
+      "note": "Use the TensorFeed article image as the default cover unless it is weak, distracting, or inappropriate for the Phoenix post."
     }
   }
 }

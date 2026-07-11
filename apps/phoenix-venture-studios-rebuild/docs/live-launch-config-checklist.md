@@ -50,7 +50,10 @@ Set these on the production Supabase project before any live form or email verif
 | --- | --- | --- |
 | `SUPABASE_SERVICE_ROLE_KEY` | admin writes, feed composition, form handlers | Required by multiple edge functions. Keep server-side only. |
 | `TURNSTILE_SECRET_KEY` | captcha validation | Required for strict Turnstile verification in `validate-form`. |
-| `RESEND_API_KEY` | welcome/onboarding/newsletter delivery flows | Required for `newsletter-welcome`, `onboarding-nathan-intro`, `onboarding-preferences-ask`, `process-onboarding-drip`, and `send-founder-signal`. |
+| `HIGHLEVEL_LOCATION_ID` | GoHighLevel newsletter/contact sync | Required before `shadow` or `primary` mode can be treated as real. |
+| `HIGHLEVEL_PRIVATE_INTEGRATION_TOKEN` | GoHighLevel newsletter/contact sync | Private server-side integration token only. |
+| `HIGHLEVEL_NEWSLETTER_MODE` | newsletter delivery behavior | Supported values: `disabled`, `shadow`, `primary`. |
+| `RESEND_API_KEY` | welcome/onboarding/newsletter fallback delivery | Still required unless `primary` mode is proven and all welcome/onboarding paths are intentionally running through GoHighLevel instead. In `shadow`, welcome/onboarding still depend on Resend or log-only fallback. |
 | `SITE_URL` | function-generated links where still referenced | Must be `https://phoenixventurestudios.com`. |
 
 ## Production function registration checks
@@ -67,22 +70,29 @@ Confirm the production Supabase project has the newsletter-related edge function
 
 These names must stay aligned with `supabase/config.toml` and the deployed project. Do not add secret values to this repo while verifying them.
 
-## Resend and manual-send readiness
+## Delivery readiness by mode
 
-1. In Resend, verify the sending domain and the `signal@phoenixventurestudios.com` sender used by the newsletter and onboarding functions.
-2. In the production Supabase project, set `RESEND_API_KEY` and `SITE_URL=https://phoenixventurestudios.com` before testing any welcome, onboarding, or weekly-send flow.
-3. Confirm the production site exposes working public routes used inside emails:
+1. Decide which delivery mode is intended for launch:
+   - `shadow`: GoHighLevel mirrors contact state, but welcome/onboarding still require Resend or log-only fallback.
+   - `primary`: GoHighLevel is expected to handle live newsletter and transactional delivery, but this must be proven with real tests first.
+2. If `shadow` or any fallback path will be used, verify the Resend sending domain and the `signal@phoenixventurestudios.com` sender used by the newsletter and onboarding functions.
+3. In the production Supabase project, set `SITE_URL=https://phoenixventurestudios.com` and the delivery secrets that match the chosen mode before testing any welcome, onboarding, or weekly-send flow.
+4. Do not treat a `200` response from onboarding functions as inbox proof by itself.
+5. In non-`primary` mode, `onboarding-nathan-intro` and `onboarding-preferences-ask` can return success with logged-only fallback when `RESEND_API_KEY` is missing.
+6. `newsletter-welcome` differs from those later onboarding functions because it returns `503` when no live delivery path is configured.
+7. Confirm the production site exposes working public routes used inside emails:
    - `https://phoenixventurestudios.com/unsubscribe`
    - `https://phoenixventurestudios.com/founder-signal/preferences`
    - `https://phoenixventurestudios.com/market-intelligence`
-4. Treat `send-founder-signal` as a manual-send function at launch. Do not auto-run it until a real brief has been reviewed and approved.
-5. Before the first live send, manually verify that at least one approved `weekly_brief_runs` record exists and that unsubscribe placeholders are still being injected at send time.
-6. For onboarding drip tests, invoke the sequence manually in a safe test context first:
+8. Treat `send-founder-signal` as a manual-send function at launch. Do not auto-run it until a real brief has been reviewed and approved.
+9. Before the first live send, manually verify that at least one approved `weekly_brief_runs` record exists and that unsubscribe placeholders are still being injected at send time.
+10. For onboarding drip tests, invoke the sequence manually in a safe test context first:
    - signup via `submit-form`
    - immediate `newsletter-welcome`
    - delayed `onboarding-nathan-intro`
    - delayed `onboarding-preferences-ask`
-7. If Resend is intentionally absent in a test environment, expect log-only behavior from the welcome/onboarding functions and do not mistake that for live delivery readiness.
+11. If `primary` mode is the launch target, confirm that welcome, onboarding, unsubscribe, and weekly-send paths all reach GoHighLevel successfully before treating Resend as removable.
+12. If Resend is intentionally absent in a test environment, expect log-only behavior from the onboarding functions and do not mistake that for live delivery readiness.
 
 ## Production artifact build
 
@@ -182,6 +192,8 @@ Run these checks on the live domain immediately after DNS changes settle:
 8. `https://phoenixventurestudios.com/robots.txt`
 9. Submit one safe form test and confirm the expected Supabase and Turnstile path succeeds.
 10. If onboarding/newsletter is in scope for launch day, run the manual test path before any real send.
+11. For newsletter UI changes, confirm the live homepage and `/founder-signal` both reference the newest JS asset hash after deploy.
+12. Check the signup surfaces once in a hard-refreshed tab and once in a clean private window so stale cached bundles are not mistaken for a live regression.
 
 ## Launch gate
 

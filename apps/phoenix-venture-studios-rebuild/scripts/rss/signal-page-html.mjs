@@ -1,10 +1,15 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
-const FEED_FILES = ["ai-attention.json", "feed.json"];
+const FEED_FILES = [
+  "feed.json",
+  "tools.json",
+  "ai-attention.json",
+  "social.json",
+  "tools-social.json",
+  "ai-attention-social.json",
+];
 const DEFAULT_SITE_URL = "https://previews.phoenixventurestudios.com/phoenix-venture-studios-rebuild";
-const DEFAULT_IMAGE_PATH = "/images/signal-default.jpg";
-
 function normalizeSiteUrl(value = DEFAULT_SITE_URL) {
   return String(value || DEFAULT_SITE_URL).replace(/\/$/, "");
 }
@@ -84,7 +89,7 @@ function buildSignalMeta(item, siteUrl) {
     toSitePath(phoenix.imageUrl);
   const image = ownedImagePath.startsWith("/images/")
     ? asAbsoluteUrl(ownedImagePath, siteUrl)
-    : asSiteUrl(item.image || item.banner_image, siteUrl) || asAbsoluteUrl(DEFAULT_IMAGE_PATH, siteUrl);
+    : asSiteUrl(item.image || item.banner_image, siteUrl);
   const title = `${stripHtml(item.title || "Founder Signal")} | Phoenix Venture Studios`;
   const description = clampText(phoenix.whyItMatters || item.content_text || "A Phoenix Founder Signal briefing for entrepreneurs.");
 

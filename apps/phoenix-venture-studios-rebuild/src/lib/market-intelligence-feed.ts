@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { isSupabaseConfigured, supabase } from "@/integrations/supabase/client";
-import { loadStaticRssFeed } from "@/lib/static-rss-feed";
+import { loadMergedStaticRssFeeds } from "@/lib/static-rss-feed";
 
 export interface Article {
   headline: string;
@@ -11,7 +11,15 @@ export interface Article {
   id?: string;
   editorialCategory?: string;
   whyItMatters?: string;
+  whyShared?: string;
   founderTakeaway?: string;
+  businessTakeaway?: string;
+  trendContext?: string;
+  engagementPrompt?: string;
+  briefDepth?: "signal-note" | "editorial-brief" | "expanded-briefing";
+  sourceLinkCount?: number;
+  researchCitationCount?: number;
+  relatedSignalCount?: number;
   imageUrl?: string;
   imageSourceType?: string;
   internalPath?: string;
@@ -32,7 +40,15 @@ interface FounderIntelligenceArticle {
   id?: string;
   editorialCategory?: string;
   whyItMatters?: string;
+  whyShared?: string;
   founderTakeaway?: string;
+  businessTakeaway?: string;
+  trendContext?: string;
+  engagementPrompt?: string;
+  briefDepth?: "signal-note" | "editorial-brief" | "expanded-briefing";
+  sourceLinkCount?: number;
+  researchCitationCount?: number;
+  relatedSignalCount?: number;
   imageUrl?: string;
   image_url?: string;
   imageSourceType?: string;
@@ -43,7 +59,7 @@ interface FounderIntelligenceArticle {
   };
 }
 
-const CACHE_KEY = "pvs_intel_feed_v3";
+const CACHE_KEY = "pvs_intel_feed_v5";
 const CACHE_TTL = 1000 * 60 * 30;
 const FOUNDER_INTELLIGENCE_TIMEOUT_MS = 3500;
 
@@ -83,7 +99,7 @@ function withTimeout<T>(promise: Promise<T>, ms: number, message: string): Promi
 
 async function loadFounderIntelligenceFeed() {
   try {
-    return await loadStaticRssFeed(10);
+    return await loadMergedStaticRssFeeds(10);
   } catch (staticFeedError) {
     if (!isSupabaseConfigured) throw staticFeedError;
   }
@@ -104,7 +120,15 @@ async function loadFounderIntelligenceFeed() {
           id: article.id,
           editorialCategory: article.editorialCategory,
           whyItMatters: article.whyItMatters,
+          whyShared: article.whyShared,
           founderTakeaway: article.founderTakeaway,
+          businessTakeaway: article.businessTakeaway,
+          trendContext: article.trendContext,
+          engagementPrompt: article.engagementPrompt,
+          briefDepth: article.briefDepth,
+          sourceLinkCount: article.sourceLinkCount,
+          researchCitationCount: article.researchCitationCount,
+          relatedSignalCount: article.relatedSignalCount,
           imageUrl: article.imageUrl || article.image_url || undefined,
           imageSourceType: article.imageSourceType || article.image_source_type || undefined,
         })).slice(0, 10);
@@ -114,7 +138,7 @@ async function loadFounderIntelligenceFeed() {
       "Founder intelligence timed out",
     );
   } catch {
-    return loadStaticRssFeed(10);
+    return loadMergedStaticRssFeeds(10);
   }
 }
 

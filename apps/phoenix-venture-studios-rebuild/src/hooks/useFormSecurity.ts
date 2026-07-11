@@ -34,6 +34,44 @@ interface ValidationResult {
   disposableEmail?: boolean;
 }
 
+function getValidationToast(reason?: string) {
+  switch (reason) {
+    case "rate_limited":
+      return {
+        title: "Too many attempts",
+        description: "Too many verification attempts were made. Wait a bit, then try again.",
+      };
+    case "captcha_failed":
+    case "captcha_required":
+      return {
+        title: "Verification failed",
+        description: "Please complete the verification check and try again.",
+      };
+    case "captcha_unavailable":
+      return {
+        title: "Verification offline",
+        description: "The signup verification service is unavailable right now. Try again shortly.",
+      };
+    case "validation_required":
+      return {
+        title: "Verification expired",
+        description: "Please complete the verification again before submitting the form.",
+      };
+    case "validation_lookup_failed":
+    case "validation_unavailable":
+    case "server_error":
+      return {
+        title: "Verification unavailable",
+        description: "We could not verify the signup form right now. Refresh the page and try again.",
+      };
+    default:
+      return {
+        title: "Verification failed",
+        description: "Verification did not pass. Please retry the check and submit again.",
+      };
+  }
+}
+
 export function useFormSecurity(formName: string) {
   const [honeypot, setHoneypot] = useState("");
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
@@ -128,9 +166,10 @@ export function useFormSecurity(formName: string) {
 
         if (error) {
           console.error("Validation edge function error:", error);
+          const message = getValidationToast("validation_unavailable");
           toast({
-            title: "Verification unavailable",
-            description: "Please try again in a moment.",
+            title: message.title,
+            description: message.description,
             variant: "destructive",
           });
           return { valid: false, reason: "validation_unavailable" };
@@ -138,27 +177,12 @@ export function useFormSecurity(formName: string) {
 
         if (!data.valid) {
           const reason = data.reason;
-
-          if (reason === "rate_limited") {
-            toast({
-              title: "Too many attempts",
-              description: "Please try again later.",
-              variant: "destructive",
-            });
-          } else if (reason === "captcha_failed" || reason === "captcha_required") {
-            toast({
-              title: "Verification failed",
-              description: "Please complete the verification and try again.",
-              variant: "destructive",
-            });
-          } else {
-            // Generic failure (honeypot, etc.) — silent-ish
-            toast({
-              title: "Verification failed",
-              description: "Please try again.",
-              variant: "destructive",
-            });
-          }
+          const message = getValidationToast(reason);
+          toast({
+            title: message.title,
+            description: message.description,
+            variant: "destructive",
+          });
 
           resetTurnstile();
           return { valid: false, reason };
@@ -170,9 +194,10 @@ export function useFormSecurity(formName: string) {
         };
       } catch (err) {
         console.error("Validation error:", err);
+        const message = getValidationToast("validation_unavailable");
         toast({
-          title: "Verification unavailable",
-          description: "Please try again in a moment.",
+          title: message.title,
+          description: message.description,
           variant: "destructive",
         });
         return { valid: false, reason: "validation_unavailable" };

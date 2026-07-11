@@ -1,0 +1,20 @@
+{
+  "home": "/",
+  "founderSignal": "/founder-signal",
+  "founderSignalDetail": "/founder-signal/signals/:slug",
+  "marketIntelligence": "/market-intelligence",
+  "funding": "/funding",
+  "studio": "/studio",
+  "applicationPath": "/snapshot",
+  "about": "/about",
+  "aiOverview": "/ai-overview",
+  "contact": "/contact",
+  "sigmaFunding": "/sigma-funding",
+  "preferredFunding": "/preferred-funding",
+  "callConfirmed": "/call-confirmed",
+  "intelligenceDetail": "/intelligence/:slug",
+  "preferences": "/founder-signal/preferences",
+  "unsubscribe": "/unsubscribe",
+  "privacy": "/privacy",
+  "terms": "/terms"
+}

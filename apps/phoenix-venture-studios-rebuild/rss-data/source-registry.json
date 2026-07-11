@@ -5,7 +5,12 @@
   "excludeKeywords": [
     "single gen-z",
     "buying homes",
-    "family dining chains"
+    "family dining chains",
+    "apple's wwdc ai demos looked more real",
+    "wwdc ai demos",
+    "apples-wwdc-ai-demos-looked-more-real",
+    "wwdc 2026:",
+    "wwdc-2026"
   ],
   "preferredKeywords": [
     "new tool",
@@ -51,6 +56,19 @@
     "ai_operator_impact": 4
   },
   "sources": [
+    {
+      "id": "phoenix-editorial-wwdc-context",
+      "name": "Phoenix Editorial Research",
+      "url": "https://developer.apple.com/wwdc26/guides/apple-intelligence/",
+      "type": "manual-signal",
+      "itemsPath": "rss-data/manual-signals.json",
+      "itemIds": ["wwdc-2026-apple-context-compute"],
+      "enabled": true,
+      "score": 260,
+      "buckets": ["ai_operator_impact", "founder_strategy"],
+      "runInSocialFeeds": true,
+      "whySelected": "Phoenix original editorial research package created for the WWDC Apple Intelligence context and compute reset."
+    },
     {
       "id": "techcrunch-main",
       "name": "TechCrunch",

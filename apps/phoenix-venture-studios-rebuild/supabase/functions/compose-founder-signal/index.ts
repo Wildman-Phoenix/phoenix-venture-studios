@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { requireInternalRequest } from "../_shared/internal-auth.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -8,6 +9,7 @@ const corsHeaders = {
 };
 
 const DEFAULT_SITE_URL = "https://phoenixventurestudios.com";
+const DEFAULT_PRIORITY_SIGNAL_SLUG = "apple-wwdc-ai-context-private-cloud-compute-2026";
 const FEED_FILES = ["feed.json", "ai-attention.json"] as const;
 const MAX_SELECTED_ITEMS = 6;
 
@@ -185,14 +187,30 @@ function dedupeArticles(items: BriefArticle[]) {
   });
 }
 
-function selectBriefItems(founderItems: BriefArticle[], aiItems: BriefArticle[]) {
+function selectBriefItems(
+  founderItems: BriefArticle[],
+  aiItems: BriefArticle[],
+  prioritySlug?: string | null,
+) {
   const founderSelected = founderItems.slice(0, 4);
   const founderSlugs = new Set(founderSelected.map((item) => item.slug));
   const aiSelected = aiItems.filter((item) => !founderSlugs.has(item.slug)).slice(0, 3);
 
-  return dedupeArticles([...founderSelected, ...aiSelected])
+  const combined = dedupeArticles([...founderSelected, ...aiSelected])
     .sort((a, b) => b.score - a.score)
     .slice(0, MAX_SELECTED_ITEMS);
+
+  if (!prioritySlug) {
+    return combined;
+  }
+
+  const priorityItem = dedupeArticles([...founderItems, ...aiItems]).find((item) => item.slug === prioritySlug);
+  if (!priorityItem) {
+    return combined;
+  }
+
+  const withoutPriority = combined.filter((item) => item.slug !== prioritySlug);
+  return dedupeArticles([priorityItem, ...withoutPriority]).slice(0, MAX_SELECTED_ITEMS);
 }
 
 function countMatching(items: BriefArticle[], pattern: RegExp) {
@@ -414,11 +432,26 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  const auth = requireInternalRequest(req);
+  if (!auth.ok) {
+    return auth.response;
+  }
+
   try {
     const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
     const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const siteUrl = normalizeSiteUrl(Deno.env.get("SITE_URL") || DEFAULT_SITE_URL);
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+    let prioritySlug = Deno.env.get("FOUNDER_SIGNAL_PRIORITY_SLUG") || DEFAULT_PRIORITY_SIGNAL_SLUG;
+
+    try {
+      const body = await req.json();
+      if (typeof body?.priority_slug === "string" && body.priority_slug.trim()) {
+        prioritySlug = body.priority_slug.trim();
+      }
+    } catch {
+      // No body is fine.
+    }
 
     const [founderFeed, aiFeed] = await Promise.all([
       loadFeed(siteUrl, FEED_FILES[0]),
@@ -430,7 +463,7 @@ serve(async (req) => {
     const aiItems = mapFeedItems("ai-attention", aiFeed.items || [], siteUrl)
       .sort((a, b) => b.score - a.score);
 
-    const selectedItems = selectBriefItems(founderItems, aiItems);
+    const selectedItems = selectBriefItems(founderItems, aiItems, prioritySlug);
     if (!selectedItems.length) {
       return new Response(
         JSON.stringify({ success: false, reason: "No RSS items were available to compose the weekly brief." }),
@@ -439,19 +472,42 @@ serve(async (req) => {
     }
 
     const newsletter = buildNewsletter(selectedItems, siteUrl);
+    const canonicalLinks = selectedItems.map((item) => item.internalUrl);
+    const sourceSlugs = selectedItems.map((item) => item.slug);
+    const heroAngle = newsletter.previewText;
+    const deliverySegmentKey = "phoenix-founder-signal-weekly";
+    const providerPayload = {
+      audienceTag: "phoenix-founder-signal",
+      canonicalLinks,
+      entryCount: selectedItems.length,
+      heroAngle,
+      previewText: newsletter.previewText,
+      segmentKey: deliverySegmentKey,
+      sourceSlugs,
+      subjectLine: newsletter.subjectLine,
+    };
 
     const { data: briefRun, error: insertError } = await supabase
       .from("weekly_brief_runs")
       .insert({
+        canonical_links: canonicalLinks,
+        delivery_segment_key: deliverySegmentKey,
         week_start: newsletter.weekStart,
         week_end: newsletter.weekEnd,
         status: "drafted",
         entry_count: selectedItems.length,
+        hero_angle: heroAngle,
         subject_line: newsletter.subjectLine,
         preview_text: newsletter.previewText,
         html_body: newsletter.htmlBody,
         text_body: newsletter.textBody,
+        provider: "gohighlevel",
+        provider_payload: providerPayload,
         source_entry_ids: [],
+        source_slugs: sourceSlugs,
+        error_message: prioritySlug && selectedItems.some((item) => item.slug === prioritySlug)
+          ? `priority_signal_included:${prioritySlug}`
+          : null,
       })
       .select()
       .single();
@@ -462,10 +518,13 @@ serve(async (req) => {
       JSON.stringify({
         success: true,
         brief_id: briefRun.id,
+        delivery_payload_preview: providerPayload,
         subject_line: newsletter.subjectLine,
         preview_text: newsletter.previewText,
         entry_count: selectedItems.length,
-        source_slugs: selectedItems.map((item) => item.slug),
+        source_slugs: sourceSlugs,
+        priority_slug: prioritySlug,
+        priority_included: selectedItems.some((item) => item.slug === prioritySlug),
         feeds_used: FEED_FILES,
       }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } },

@@ -1,4 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { deliverTransactionalEmailViaHighLevel, getNewsletterMode, isNewsletterProviderConfigured } from "../_shared/highlevel-newsletter.ts";
+import { requireInternalRequest } from "../_shared/internal-auth.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -11,6 +13,11 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  const auth = requireInternalRequest(req);
+  if (!auth.ok) {
+    return auth.response;
+  }
+
   try {
     const { email } = await req.json();
 
@@ -18,16 +25,6 @@ serve(async (req) => {
       return new Response(
         JSON.stringify({ success: false, reason: "No email provided" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
-
-    const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
-
-    if (!RESEND_API_KEY) {
-      console.log("RESEND_API_KEY not set — email 3 logged only:", email);
-      return new Response(
-        JSON.stringify({ success: true, method: "logged" }),
-        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
@@ -52,7 +49,7 @@ serve(async (req) => {
       Quick question — now that you've had a chance to read The Founder Signal, what's landing and what's not?
     </p>
     <p style="font-size:15px;color:#374151;line-height:1.7;margin:0 0 20px 0;">
-      We built this briefing to help founders cut through noise faster. But the only way it gets sharper is if you tell us what signals matter most to you.
+      We built Founder Signal to help founders cut through noise faster. But the only way it gets sharper is if you tell us what signals matter most to you.
     </p>
 
     <!-- What we'd love to know -->
@@ -73,7 +70,7 @@ serve(async (req) => {
     <!-- CTA -->
     <div style="text-align:center;margin:0 0 16px 0;">
       <a href="${preferencesUrl}" style="display:block;width:100%;max-width:260px;margin:0 auto 10px auto;padding:12px 0;background:#F97316;color:#FFFFFF;font-size:14px;font-weight:600;text-align:center;text-decoration:none;border-radius:5px;">Share Your Preferences</a>
-      <a href="${SITE_URL}/market-intelligence" style="display:block;width:100%;max-width:260px;margin:0 auto;padding:12px 0;background:transparent;border:1.5px solid #E5E7EB;color:#9CA3AF;font-size:14px;font-weight:600;text-align:center;text-decoration:none;border-radius:5px;">Explore Market Intelligence</a>
+      <a href="${SITE_URL}/founder-signal" style="display:block;width:100%;max-width:260px;margin:0 auto;padding:12px 0;background:transparent;border:1.5px solid #E5E7EB;color:#9CA3AF;font-size:14px;font-weight:600;text-align:center;text-decoration:none;border-radius:5px;">Explore Founder Signal</a>
     </div>
 
     <p style="font-size:13px;color:#9CA3AF;line-height:1.6;margin:16px 0 0 0;text-align:center;">
@@ -97,7 +94,7 @@ Help Shape The Signal
 
 Quick question -- now that you've had a chance to read The Founder Signal, what's landing and what's not?
 
-We built this briefing to help founders cut through noise faster. But the only way it gets sharper is if you tell us what signals matter most to you.
+We built Founder Signal to help founders cut through noise faster. But the only way it gets sharper is if you tell us what signals matter most to you.
 
 WHAT WE'D LOVE TO KNOW
 
@@ -110,7 +107,7 @@ It takes about 90 seconds. And every answer helps us build something more useful
 
 Share Your Preferences: ${preferencesUrl}
 
-Explore Market Intelligence: ${SITE_URL}/market-intelligence
+Explore Founder Signal: ${SITE_URL}/founder-signal
 
 Thanks for being here. It means more than you know.
 
@@ -120,6 +117,36 @@ Phoenix Venture Studios
 Clarity over complexity. Strategy over noise.
 
 Unsubscribe: ${unsubUrl}`;
+
+    if (getNewsletterMode() === "primary" && isNewsletterProviderConfigured()) {
+      const ghlDelivery = await deliverTransactionalEmailViaHighLevel(
+        email,
+        "Help us build a better Founder Signal",
+        htmlBody,
+      );
+
+      return new Response(
+        JSON.stringify({
+          success: ghlDelivery.delivered,
+          method: ghlDelivery.reason,
+          error: ghlDelivery.error,
+        }),
+        {
+          status: ghlDelivery.delivered ? 200 : 502,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        }
+      );
+    }
+
+    const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+
+    if (!RESEND_API_KEY) {
+      console.log("RESEND_API_KEY not set — email 3 logged only:", email);
+      return new Response(
+        JSON.stringify({ success: true, method: "logged" }),
+        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
 
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",

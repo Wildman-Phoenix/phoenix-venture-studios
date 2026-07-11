@@ -51,5 +51,8 @@ verify_jwt = false
 [functions.submit-form]
 verify_jwt = false
 
+[functions.ghl-newsletter-webhook]
+verify_jwt = false
+
 [functions.og-share]
 verify_jwt = false
