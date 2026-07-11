@@ -6,13 +6,16 @@ This checklist turns the local two-feed RSS system into a live unattended GitHub
 
 - Founder Market: `https://phoenixventurestudios.com/rss/feed.xml`
 - Founder Tools: `https://phoenixventurestudios.com/rss/tools.xml`
-- Compatibility alias: `https://phoenixventurestudios.com/rss/ai-attention.xml`
+- AI Attention: `https://phoenixventurestudios.com/rss/ai-attention.xml`
+- GoHighLevel one-at-a-time market queue: `https://phoenixventurestudios.com/rss/social.xml`
+- GoHighLevel one-at-a-time tools queue: `https://phoenixventurestudios.com/rss/tools-social.xml`
+- GoHighLevel one-at-a-time AI Attention queue: `https://phoenixventurestudios.com/rss/ai-attention-social.xml`
 
 ## GitHub Requirements
 
 The workflow file is `.github/workflows/phoenix-rss-autonomous.yml`.
 
-Before the four daily cron runs can execute, the repository must have:
+Before the live cron can execute, the repository must have:
 
 - The workflow and RSS source files committed and pushed.
 - The GitHub app or local git remote connected to the real repository.
@@ -25,14 +28,18 @@ Before the four daily cron runs can execute, the repository must have:
 
 ## Schedule
 
-The workflow runs at:
+The checked-in workflow currently runs on a six-hour cadence:
 
-- `09:30 UTC`
-- `14:30 UTC`
-- `19:30 UTC`
-- `02:30 UTC`
+- GitHub cron: `30 4 * * *`
+- GitHub cron: `30 10 * * *`
+- GitHub cron: `30 16 * * *`
+- GitHub cron: `30 22 * * *`
 
-These map to the intended four daily checks during Eastern Daylight Time. They are not DST-aware, so winter local time shifts by one hour unless the cron values are updated.
+There is also a Friday AI trend sweep:
+
+- GitHub cron: `30 13 * * 5`
+
+For RSS-to-social, use the one-at-a-time queue URL that matches the exact feed family you want and set the consumer to check more frequently than the feed if needed. Do not connect the 10-item archive feeds to auto-post unless you want multiple items ingested at once.
 
 ## Safety Gates
 
@@ -45,7 +52,9 @@ Each scheduled run performs:
 5. `node scripts/rss/validate-rss-output.mjs --deploy-artifacts`
 6. Cloudflare Pages deploys only after deploy-artifact validation passes
 
-The autonomous runner snapshots `public/rss` before generation and restores the prior RSS bundle if the new two-feed run is invalid.
+The autonomous runner snapshots `public/rss` before generation and restores the prior RSS bundle if the new run is invalid. The normal archive feeds keep 10 items; the social queue feeds expose one item at a time.
+
+Use `npm run rss:autonomous` for production-style queue rotation. A plain `npm run rss:generate` refreshes the files, but it does not update `autonomous-history.json`, so it is not the right command for confirming one-at-a-time queue advancement.
 
 ## Manual Verification
 
@@ -54,6 +63,9 @@ After the first scheduled run, verify:
 - GitHub Actions run is green.
 - `https://phoenixventurestudios.com/rss/feed.xml` returns `200`.
 - `https://phoenixventurestudios.com/rss/tools.xml` returns `200`.
-- `https://phoenixventurestudios.com/rss/ai-attention.xml` still returns `200`.
+- `https://phoenixventurestudios.com/rss/ai-attention.xml` returns `200` and self-identifies as `/rss/ai-attention.xml`.
+- `https://phoenixventurestudios.com/rss/social.xml` returns `200` and contains one item.
+- `https://phoenixventurestudios.com/rss/tools-social.xml` returns `200` and contains one item.
+- `https://phoenixventurestudios.com/rss/ai-attention-social.xml` returns `200` and contains one item.
 - A current signal page has raw `og:image` and `twitter:image` metadata.
 - Generated image URLs return `200 image/jpeg`.

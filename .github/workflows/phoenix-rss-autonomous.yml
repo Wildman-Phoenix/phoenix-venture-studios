@@ -6,6 +6,7 @@ on:
     - cron: "30 10 * * *"
     - cron: "30 16 * * *"
     - cron: "30 22 * * *"
+    - cron: "30 13 * * 5"
   workflow_dispatch:
     inputs:
       run_slot:
@@ -26,7 +27,7 @@ jobs:
       VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL != '' && secrets.VITE_SUPABASE_URL || 'https://kqhteuhrhkqrsxynvxln.supabase.co' }}
       VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY != '' && secrets.VITE_SUPABASE_PUBLISHABLE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtxaHRldWhyaGtxcnN4eW52eGxuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMTY2MzQsImV4cCI6MjA5NTU5MjYzNH0.h_XKU4iUJ6PzvG7jfp5BaolZ6KH3pWBgkkV-70a3f38' }}
       VITE_TURNSTILE_SITE_KEY: ${{ secrets.VITE_TURNSTILE_SITE_KEY != '' && secrets.VITE_TURNSTILE_SITE_KEY || '0x4AAAAAADYIyBLRIGWMfJ3b' }}
-      PHOENIX_RSS_RUN_SLOT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.run_slot || '' }}
+      PHOENIX_RSS_RUN_SLOT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.run_slot || github.event.schedule == '30 10 * * *' && 'early-morning' || github.event.schedule == '30 16 * * *' && 'mid-morning' || github.event.schedule == '30 22 * * *' && 'afternoon' || github.event.schedule == '30 4 * * *' && 'late-night' || github.event.schedule == '30 13 * * 5' && 'friday-ai-trend-sweep' || '' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -45,9 +46,6 @@ jobs:
 
       - run: npm run rss:validate
 
-      - run: npm run preview:publish
-        if: steps.rss_run.outputs.output_changed == 'true'
-
       - run: npm run rss:publish-preview
         if: steps.rss_run.outputs.output_changed == 'true'
 
@@ -62,20 +60,17 @@ jobs:
         if: steps.rss_run.outputs.output_changed == 'true'
         run: |
           set -euo pipefail
-          # Probe the live Pages root after each candidate deploy so the workflow only
-          # reports success when the production tools feed actually matches dist/rss.
+          FEEDS=(feed.xml tools.xml ai-attention.xml social.xml tools-social.xml ai-attention-social.xml)
 
-          EXPECTED_HASH="$(shasum dist/rss/tools.xml | awk '{print $1}')"
-          EXPECTED_BUILD_DATE="$(node -e "const fs=require('fs');const xml=fs.readFileSync('dist/rss/tools.xml','utf8');const match=xml.match(/<lastBuildDate>([^<]+)<\\/lastBuildDate>/);process.stdout.write(match ? match[1] : '');")"
-
-          verify_live_tools() {
+          verify_live_bundle() {
             local target="$1"
-            local live_hash
-            local live_build_date
-            live_hash="$(curl -fsSL -H 'Cache-Control: no-cache' "https://phoenixventurestudios-com.pages.dev/rss/tools.xml?ts=$(date +%s)" | shasum | awk '{print $1}')"
-            live_build_date="$(curl -fsSL -H 'Cache-Control: no-cache' "https://phoenixventurestudios-com.pages.dev/rss/tools.xml?ts=$(date +%s)" | node -e "let data='';process.stdin.on('data',d=>data+=d);process.stdin.on('end',()=>{const match=data.match(/<lastBuildDate>([^<]+)<\\/lastBuildDate>/);process.stdout.write(match ? match[1] : '');});")"
-            echo "Checked ${target}: live hash=${live_hash} live lastBuildDate=${live_build_date}"
-            [ "${live_hash}" = "${EXPECTED_HASH}" ]
+            local base_url="$2"
+            for feed in "${FEEDS[@]}"; do
+              expected_hash="$(shasum "dist/rss/${feed}" | awk '{print $1}')"
+              live_hash="$(curl -fsSL -H 'Cache-Control: no-cache' "${base_url}/rss/${feed}?ts=$(date +%s)" | shasum | awk '{print $1}')"
+              echo "Checked ${target}/${feed}: expected=${expected_hash} live=${live_hash}"
+              [ "${live_hash}" = "${expected_hash}" ] || return 1
+            done
           }
 
           deploy_candidate() {
@@ -84,11 +79,9 @@ jobs:
             echo "Attempting production Pages deploy via ${label}"
             npx wrangler pages deploy dist --project-name phoenixventurestudios-com --commit-hash "${{ github.sha }}" --commit-dirty=true "$@"
             sleep 15
-            verify_live_tools "${label}"
+            verify_live_bundle "${label} Pages alias" "https://phoenixventurestudios-com.pages.dev"
+            verify_live_bundle "${label} custom domain" "https://phoenixventurestudios.com"
           }
-
-          echo "Expected tools.xml hash=${EXPECTED_HASH}"
-          echo "Expected tools.xml lastBuildDate=${EXPECTED_BUILD_DATE}"
 
           if deploy_candidate "default production deploy"; then
             echo "branch=default" >> "$GITHUB_OUTPUT"
@@ -110,7 +103,7 @@ jobs:
             exit 0
           fi
 
-          echo "No production deploy candidate updated phoenixventurestudios-com.pages.dev/rss/tools.xml to the expected artifact."
+          echo "No production deploy candidate produced full feed parity on both the Pages alias and custom domain."
           exit 1
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

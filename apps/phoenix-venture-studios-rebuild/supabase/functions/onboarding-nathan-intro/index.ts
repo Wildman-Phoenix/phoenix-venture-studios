@@ -1,4 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { deliverTransactionalEmailViaHighLevel, getNewsletterMode, isNewsletterProviderConfigured } from "../_shared/highlevel-newsletter.ts";
+import { requireInternalRequest } from "../_shared/internal-auth.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -11,6 +13,11 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  const auth = requireInternalRequest(req);
+  if (!auth.ok) {
+    return auth.response;
+  }
+
   try {
     const { email } = await req.json();
 
@@ -18,16 +25,6 @@ serve(async (req) => {
       return new Response(
         JSON.stringify({ success: false, reason: "No email provided" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
-
-    const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
-
-    if (!RESEND_API_KEY) {
-      console.log("RESEND_API_KEY not set — email 2 logged only:", email);
-      return new Response(
-        JSON.stringify({ success: true, method: "logged" }),
-        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
@@ -64,7 +61,7 @@ serve(async (req) => {
       Phoenix Venture Studios exists to cut through the noise. We help founders align capital decisions, venture strategy, and market direction — without the jargon, without the pressure.
     </p>
     <p style="font-size:15px;color:#374151;line-height:1.7;margin:0 0 14px 0;">
-      The Founder Signal is one way we do that: a weekly memo built to help you think more clearly about what's shifting and what it means for your business.
+      The Founder Signal is one way we do that: a concise founder read built to help you think more clearly about what's shifting and what it means for your business.
     </p>
     <p style="font-size:15px;color:#374151;line-height:1.7;margin:0 0 24px 0;">
       I'd genuinely love to know what you're working on. Hit reply, or use the link below — it takes 90 seconds and helps me make this more useful for you.
@@ -102,7 +99,7 @@ I started this because I've watched too many sharp founders struggle with the sa
 
 Phoenix Venture Studios exists to cut through the noise. We help founders align capital decisions, venture strategy, and market direction -- without the jargon, without the pressure.
 
-The Founder Signal is one way we do that: a weekly memo built to help you think more clearly about what's shifting and what it means for your business.
+The Founder Signal is one way we do that: a concise founder read built to help you think more clearly about what's shifting and what it means for your business.
 
 I'd genuinely love to know what you're working on. Use the link below -- it takes 90 seconds and helps me make this more useful for you.
 
@@ -118,6 +115,36 @@ Phoenix Venture Studios
 Clarity over complexity. Strategy over noise.
 
 Unsubscribe: ${unsubUrl}`;
+
+    if (getNewsletterMode() === "primary" && isNewsletterProviderConfigured()) {
+      const ghlDelivery = await deliverTransactionalEmailViaHighLevel(
+        email,
+        "A quick note from the founder",
+        htmlBody,
+      );
+
+      return new Response(
+        JSON.stringify({
+          success: ghlDelivery.delivered,
+          method: ghlDelivery.reason,
+          error: ghlDelivery.error,
+        }),
+        {
+          status: ghlDelivery.delivered ? 200 : 502,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        }
+      );
+    }
+
+    const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+
+    if (!RESEND_API_KEY) {
+      console.log("RESEND_API_KEY not set — email 2 logged only:", email);
+      return new Response(
+        JSON.stringify({ success: true, method: "logged" }),
+        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
 
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",

@@ -2,86 +2,13 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
+import { BACKGROUND_VARIANTS } from "./background-library.mjs";
+import { renderCreativeBackground } from "./creative-background-art.mjs";
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const APP_ROOT = path.resolve(SCRIPT_DIR, "../..");
 const WIDTH = 1200;
 const HEIGHT = 630;
-
-const BACKGROUNDS = [
-  {
-    source: "src/assets/late-night-strategy.jpg",
-    output: "public/images/signals/backgrounds/ai-risk.jpg",
-    accent: "#ff6a1f",
-    secondary: "#00b8ff",
-    saturation: 1.34,
-    brightness: 1.02,
-  },
-  {
-    source: "src/assets/strategy-session.jpg",
-    output: "public/images/signals/backgrounds/ai-opportunity.jpg",
-    accent: "#00d4ff",
-    secondary: "#ff8a1f",
-    saturation: 1.28,
-    brightness: 1.06,
-  },
-  {
-    source: "src/assets/hero-entrepreneur-v2.jpg",
-    output: "public/images/signals/backgrounds/founder-pressure.jpg",
-    accent: "#ff7a1a",
-    secondary: "#8ed9d2",
-    saturation: 1.22,
-    brightness: 1.05,
-  },
-  {
-    source: "src/assets/funding-review.jpg",
-    output: "public/images/signals/backgrounds/capital-readiness.jpg",
-    accent: "#ff8a1f",
-    secondary: "#00a6ff",
-    saturation: 1.30,
-    brightness: 1.05,
-  },
-  {
-    source: "src/assets/intel-hero.jpg",
-    output: "public/images/signals/backgrounds/market-shock.jpg",
-    accent: "#ff5a1f",
-    secondary: "#00d4ff",
-    saturation: 1.34,
-    brightness: 1.02,
-  },
-  {
-    source: "src/assets/intel-action.jpg",
-    output: "public/images/signals/backgrounds/operational-leverage.jpg",
-    accent: "#22d3ee",
-    secondary: "#ff9b22",
-    saturation: 1.25,
-    brightness: 1.07,
-  },
-  {
-    source: "src/assets/hero-entrepreneur.jpg",
-    output: "public/images/signals/backgrounds/consulting-revenue.jpg",
-    accent: "#00d4ff",
-    secondary: "#ff7a1a",
-    saturation: 1.28,
-    brightness: 1.05,
-  },
-  {
-    source: "src/assets/founders-collaborating.jpg",
-    output: "public/images/signals/backgrounds/event-workshop.jpg",
-    accent: "#ff7a1a",
-    secondary: "#8ed9d2",
-    saturation: 1.24,
-    brightness: 1.06,
-  },
-  {
-    source: "src/assets/late-night-strategy.jpg",
-    output: "public/images/signals/backgrounds/wildcard-attention.jpg",
-    accent: "#22d3ee",
-    secondary: "#ff8a1f",
-    saturation: 1.30,
-    brightness: 1.04,
-  },
-];
 
 function overlaySvg({ accent, secondary }) {
   return Buffer.from(`
@@ -112,18 +39,30 @@ function overlaySvg({ accent, secondary }) {
 
 await fs.mkdir(path.join(APP_ROOT, "public/images/signals/backgrounds"), { recursive: true });
 
-for (const background of BACKGROUNDS) {
-  await sharp(path.join(APP_ROOT, background.source))
-    .rotate()
-    .resize(WIDTH, HEIGHT, { fit: "cover", position: "center" })
-    .modulate({
-      brightness: background.brightness,
-      saturation: background.saturation,
-    })
-    .linear(1.05, -4)
-    .composite([{ input: overlaySvg(background), top: 0, left: 0 }])
-    .jpeg({ quality: 88, mozjpeg: true })
-    .toFile(path.join(APP_ROOT, background.output));
+for (const background of BACKGROUND_VARIANTS) {
+  const creativeInput = background.creativeScene
+    ? renderCreativeBackground(background.creativeScene, background)
+    : null;
+  const outputPath = path.join(APP_ROOT, "public", background.publicPath.replace(/^\//, ""));
 
-  console.log(`wrote ${background.output}`);
+  if (creativeInput) {
+    await sharp(creativeInput)
+      .resize(WIDTH, HEIGHT, { fit: "cover", position: "center" })
+      .jpeg({ quality: 90, mozjpeg: true })
+      .toFile(outputPath);
+  } else {
+    await sharp(path.join(APP_ROOT, background.source))
+      .rotate()
+      .resize(WIDTH, HEIGHT, { fit: "cover", position: background.position || "center" })
+      .modulate({
+        brightness: background.brightness,
+        saturation: background.saturation,
+      })
+      .linear(background.contrast ?? 1.05, background.bias ?? -4)
+      .composite([{ input: overlaySvg(background), top: 0, left: 0 }])
+      .jpeg({ quality: 88, mozjpeg: true })
+      .toFile(outputPath);
+  }
+
+  console.log(`wrote ${background.publicPath}`);
 }

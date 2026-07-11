@@ -1,0 +1,18 @@
+{
+  "/": { "title": "Phoenix Venture Studios | Capital + AI Studio", "description": "Phoenix Venture Studios helps entrepreneurs read AI and capital signals, explore funding paths, subscribe to Founder Signal, and build sharper rollout assets.", "index": true },
+  "/funding": { "title": "Funding Path | Phoenix Venture Studios", "description": "Explore capital-readiness and funding paths with Phoenix Venture Studios.", "index": true },
+  "/snapshot": { "title": "Phoenix Application Path | Phoenix Venture Studios", "description": "Find the right Phoenix path for funding, AI systems, products, partnerships, or Nathan review.", "index": true },
+  "/market-intelligence": { "title": "Market Intelligence | Phoenix Venture Studios", "description": "Read Phoenix market, capital, founder, and AI intelligence.", "index": true },
+  "/founder-signal": { "title": "Founder Signal | Phoenix Venture Studios", "description": "Read and subscribe to Phoenix Founder Signal.", "index": true },
+  "/ai-overview": { "title": "AI Systems | Phoenix Venture Studios", "description": "Explore Phoenix AI systems, automation, and implementation support.", "index": true },
+  "/studio": { "title": "Studio Support | Phoenix Venture Studios", "description": "Explore Phoenix Venture Studios implementation and rollout support.", "index": true },
+  "/about": { "title": "About | Phoenix Venture Studios", "description": "Learn about Phoenix Venture Studios and Nathan Wildman.", "index": true },
+  "/contact": { "title": "Contact | Phoenix Venture Studios", "description": "Contact Phoenix Venture Studios for a founder, capital, or implementation conversation.", "index": true },
+  "/privacy": { "title": "Privacy | Phoenix Venture Studios", "description": "Read the Phoenix Venture Studios privacy policy.", "index": true },
+  "/terms": { "title": "Terms | Phoenix Venture Studios", "description": "Read the Phoenix Venture Studios terms.", "index": true },
+  "/unsubscribe": { "title": "Unsubscribe | Phoenix Venture Studios", "description": "Manage your Phoenix Founder Signal subscription.", "index": false },
+  "/founder-signal/preferences": { "title": "Founder Signal Preferences | Phoenix Venture Studios", "description": "Manage your Phoenix Founder Signal preferences.", "index": false },
+  "/call-confirmed": { "title": "Call Confirmed | Phoenix Venture Studios", "description": "Your Phoenix Venture Studios call is confirmed.", "index": false },
+  "/sigma-funding": { "title": "Funding Information | Phoenix Venture Studios", "description": "Phoenix funding information and next steps.", "index": false },
+  "/preferred-funding": { "title": "Preferred Funding | Phoenix Venture Studios", "description": "Phoenix preferred funding information and next steps.", "index": false }
+}

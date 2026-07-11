@@ -1,4 +1,10 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
+import {
+  getNewsletterMode,
+  unsubscribeNewsletterSubscriber,
+  updateNewsletterSubscriberPreferences,
+  upsertNewsletterSubscriber,
+} from "../_shared/highlevel-newsletter.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -21,6 +27,7 @@ const MAX_EMAIL = 255;
 const VALIDATION_WINDOW_MS = 15 * 60 * 1000;
 const VALIDATION_PASSED_REASON = "validation_passed";
 const SUBMISSION_ACCEPTED_REASON = "submission_accepted";
+const NEWSLETTER_INTERNAL_SECRET_HEADER = "x-phoenix-newsletter-secret";
 
 const VALIDATION_FORM_NAMES = [
   "newsletter",
@@ -64,6 +71,20 @@ function jsonResponse(body: Record<string, unknown>, status = 200) {
     headers: { ...corsHeaders, "Content-Type": "application/json" },
   });
 }
+
+type WelcomeDeliveryResult = {
+  delivered: boolean;
+  reason: string;
+  error?: string;
+};
+
+type NewsletterMirrorRecord = {
+  provider?: string | null;
+  provider_contact_id?: string | null;
+  provider_last_error?: string | null;
+  provider_last_synced_at?: string | null;
+  provider_status?: string | null;
+};
 
 function getClientIp(req: Request): string {
   return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim()
@@ -208,6 +229,138 @@ async function logAcceptedSubmission({
   });
 }
 
+async function sendNewsletterWelcomeEmail(email: string): Promise<WelcomeDeliveryResult> {
+  const supabaseUrl = Deno.env.get("SUPABASE_URL");
+  const supabaseServiceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+  const internalSecret = Deno.env.get("PHOENIX_NEWSLETTER_CRON_SECRET");
+
+  if (!supabaseUrl || !supabaseServiceRoleKey) {
+    return {
+      delivered: false,
+      reason: "invoke_unavailable",
+      error: "Supabase runtime is missing internal invocation config.",
+    };
+  }
+
+  if (!internalSecret) {
+    return {
+      delivered: false,
+      reason: "internal_secret_unconfigured",
+      error: "PHOENIX_NEWSLETTER_CRON_SECRET is not configured for welcome delivery.",
+    };
+  }
+
+  try {
+    const response = await fetch(`${supabaseUrl}/functions/v1/newsletter-welcome`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${supabaseServiceRoleKey}`,
+        "Content-Type": "application/json",
+        [NEWSLETTER_INTERNAL_SECRET_HEADER]: internalSecret,
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    let payload: Record<string, unknown> | null = null;
+    try {
+      payload = await response.json();
+    } catch {
+      payload = null;
+    }
+
+    if (!response.ok || !payload?.success) {
+      return {
+        delivered: false,
+        reason: String(payload?.delivery || payload?.reason || "delivery_failed"),
+        error: typeof payload?.error === "string" ? payload.error : `newsletter-welcome ${response.status}`,
+      };
+    }
+
+    return {
+      delivered: true,
+      reason: String(payload?.delivery || "email"),
+    };
+  } catch (error) {
+    return {
+      delivered: false,
+      reason: "unexpected_error",
+      error: error instanceof Error ? error.message : "newsletter-welcome invocation failed",
+    };
+  }
+}
+
+async function mirrorNewsletterSubscriber(
+  supabase: any,
+  email: string,
+  updates: Record<string, unknown>,
+) {
+  const row = {
+    email,
+    ...updates,
+  };
+
+  const { error } = await supabase
+    .from("newsletter_subscribers")
+    .upsert(row, { onConflict: "email" });
+
+  if (error) {
+    console.error("Newsletter mirror upsert error:", error);
+  }
+}
+
+async function mirrorSubscriberProfile(
+  supabase: any,
+  email: string,
+  updates: Record<string, unknown>,
+) {
+  const { error } = await supabase
+    .from("subscriber_profiles")
+    .upsert({
+      email,
+      updated_at: new Date().toISOString(),
+      ...updates,
+    }, { onConflict: "email" });
+
+  if (error) {
+    console.error("Subscriber profile mirror upsert error:", error);
+  }
+}
+
+async function logNewsletterSyncEvent(
+  supabase: any,
+  eventType: string,
+  email: string,
+  payload: Record<string, unknown>,
+) {
+  const { error } = await supabase
+    .from("newsletter_sync_events")
+    .insert({
+      event_type: eventType,
+      subscriber_email: email,
+      payload,
+      provider: "gohighlevel",
+      status: String(payload.status || "unknown"),
+    });
+
+  if (error) {
+    console.error("Newsletter sync event log error:", error);
+  }
+}
+
+function mapMirrorFromSync(sync: {
+  contactId?: string | null;
+  delivered?: WelcomeDeliveryResult;
+  status: string;
+}): NewsletterMirrorRecord {
+  return {
+    provider: "gohighlevel",
+    provider_contact_id: sync.contactId || null,
+    provider_last_error: sync.delivered?.error || null,
+    provider_last_synced_at: new Date().toISOString(),
+    provider_status: sync.status,
+  };
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
@@ -243,7 +396,10 @@ Deno.serve(async (req) => {
 
     if (!validationGate.ok) {
       return jsonResponse(
-        { error: validationGate.reason === "validation_required" ? "Submission verification required" : "Submission verification unavailable" },
+        {
+          error: validationGate.reason === "validation_required" ? "Submission verification required" : "Submission verification unavailable",
+          reason: validationGate.reason,
+        },
         validationGate.reason === "validation_lookup_failed" ? 503 : 403
       );
     }
@@ -354,19 +510,125 @@ async function handleNewsletterSubscribe(supabase: any, data: any) {
     return { error: "Valid email is required" };
   }
 
-  const { error } = await supabase
-    .from("newsletter_subscribers")
-    .insert({ email, marketing_consent: true });
+  const firstName = sanitizeShort(data.first_name);
+  const currentStage = sanitizeShort(data.current_stage);
+  const primaryInterest = sanitizeShort(data.primary_interest);
+  const biggestChallenge = sanitize(data.biggest_challenge);
+  const whatAreYouBuilding = sanitize(data.what_are_you_building);
+  const interests = Array.isArray(data.interests) ? data.interests.slice(0, 20).map((item: unknown) => String(item).slice(0, 50)) : [];
+  const newsletterMode = getNewsletterMode();
 
-  if (error) {
-    if (error.code === "23505") {
-      return { success: true, already_subscribed: true };
-    }
-    console.error("Newsletter subscribe error:", error);
+  const { data: existing, error: lookupError } = await supabase
+    .from("newsletter_subscribers")
+    .select("id, unsubscribed")
+    .eq("email", email)
+    .maybeSingle();
+
+  if (lookupError) {
+    console.error("Newsletter subscribe lookup error:", lookupError);
     return { error: "Failed to subscribe" };
   }
 
-  return { success: true };
+  const ghlSync = await upsertNewsletterSubscriber({
+    email,
+    marketingConsent: true,
+    profile: {
+      biggestChallenge,
+      currentStage,
+      firstName,
+      interests,
+      primaryInterest,
+      whatAreYouBuilding,
+    },
+    reactivate: Boolean(existing?.id && existing.unsubscribed),
+    signupSource: "phoenix-site",
+  });
+
+  await logNewsletterSyncEvent(supabase, "newsletter_subscribe", email, ghlSync as unknown as Record<string, unknown>);
+
+  if (newsletterMode === "shadow") {
+    if (existing?.id) {
+      if (existing.unsubscribed) {
+        const { error: reactivateError } = await supabase
+          .from("newsletter_subscribers")
+          .update({
+            unsubscribed: false,
+            unsubscribed_at: null,
+            marketing_consent: true,
+            ...mapMirrorFromSync(ghlSync),
+          })
+          .eq("id", existing.id);
+
+        if (reactivateError) {
+          console.error("Newsletter resubscribe error:", reactivateError);
+          return { error: "Failed to subscribe" };
+        }
+
+        const welcomeDelivery = await sendNewsletterWelcomeEmail(email);
+        return {
+          success: true,
+          reactivated: true,
+          provider_sync: ghlSync,
+          welcome_delivery: welcomeDelivery,
+        };
+      }
+
+      await mirrorNewsletterSubscriber(supabase, email, mapMirrorFromSync(ghlSync));
+      return {
+        success: true,
+        already_subscribed: true,
+        provider_sync: ghlSync,
+      };
+    }
+
+    const { error } = await supabase
+      .from("newsletter_subscribers")
+      .insert({
+        email,
+        marketing_consent: true,
+        ...mapMirrorFromSync(ghlSync),
+      });
+
+    if (error) {
+      console.error("Newsletter subscribe error:", error);
+      return { error: "Failed to subscribe" };
+    }
+
+    const welcomeDelivery = await sendNewsletterWelcomeEmail(email);
+    return {
+      success: true,
+      provider_sync: ghlSync,
+      welcome_delivery: welcomeDelivery,
+    };
+  }
+
+  await mirrorNewsletterSubscriber(supabase, email, {
+    marketing_consent: true,
+    unsubscribed: false,
+    unsubscribed_at: null,
+    ...mapMirrorFromSync(ghlSync),
+  });
+  await mirrorSubscriberProfile(supabase, email, {
+    first_name: firstName,
+    current_stage: currentStage,
+    primary_interest: primaryInterest,
+    biggest_challenge: biggestChallenge,
+    what_are_you_building: whatAreYouBuilding,
+    interests,
+    provider_last_synced_at: new Date().toISOString(),
+  });
+
+  const welcomeDelivery = (!existing?.id || existing.unsubscribed)
+    ? await sendNewsletterWelcomeEmail(email)
+    : ghlSync.delivered;
+
+  return {
+    success: true,
+    reactivated: Boolean(existing?.id && existing.unsubscribed),
+    already_subscribed: Boolean(existing?.id && !existing.unsubscribed),
+    provider_sync: ghlSync,
+    welcome_delivery: welcomeDelivery,
+  };
 }
 
 // ── NEWSLETTER UNSUBSCRIBE ──
@@ -376,17 +638,28 @@ async function handleNewsletterUnsubscribe(supabase: any, data: any) {
     return { error: "Valid email is required" };
   }
 
+  const ghlSync = await unsubscribeNewsletterSubscriber(email);
+  await logNewsletterSyncEvent(supabase, "newsletter_unsubscribe", email, ghlSync as unknown as Record<string, unknown>);
+
   const { error } = await supabase
     .from("newsletter_subscribers")
-    .update({ unsubscribed: true, unsubscribed_at: new Date().toISOString() })
-    .eq("email", email);
+    .upsert({
+      email,
+      marketing_consent: false,
+      unsubscribed: true,
+      unsubscribed_at: new Date().toISOString(),
+      ...mapMirrorFromSync(ghlSync),
+    }, { onConflict: "email" });
 
   if (error) {
     console.error("Unsubscribe error:", error);
     return { error: "Failed to unsubscribe" };
   }
 
-  return { success: true };
+  return {
+    success: true,
+    provider_sync: ghlSync,
+  };
 }
 
 // ── POST BOOKING INTERACTION ──
@@ -440,5 +713,36 @@ async function handleSubscriberProfile(supabase: any, data: any) {
     return { error: "Failed to save profile" };
   }
 
-  return { success: true };
+  const ghlSync = await updateNewsletterSubscriberPreferences(email, {
+    biggestChallenge: row.biggest_challenge as string | null,
+    currentStage: row.current_stage as string | null,
+    firstName: row.first_name as string | null,
+    interactiveNewsletterPreference: row.interactive_newsletter_preference as boolean,
+    interests: row.interests as string[],
+    phoenixSegment: sanitizeShort(data.phoenix_segment),
+    primaryInterest: row.primary_interest as string | null,
+    whatAreYouBuilding: row.what_are_you_building as string | null,
+  });
+  await logNewsletterSyncEvent(supabase, "subscriber_profile", email, ghlSync as unknown as Record<string, unknown>);
+  await mirrorSubscriberProfile(supabase, email, {
+    provider_last_synced_at: new Date().toISOString(),
+  });
+  const { data: existingSubscriber } = await supabase
+    .from("newsletter_subscribers")
+    .select("marketing_consent, unsubscribed, unsubscribed_at")
+    .eq("email", email)
+    .maybeSingle();
+  if (existingSubscriber) {
+    await mirrorNewsletterSubscriber(supabase, email, {
+      marketing_consent: existingSubscriber.marketing_consent,
+      unsubscribed: existingSubscriber.unsubscribed,
+      unsubscribed_at: existingSubscriber.unsubscribed_at,
+      ...mapMirrorFromSync(ghlSync),
+    });
+  }
+
+  return {
+    success: true,
+    provider_sync: ghlSync,
+  };
 }

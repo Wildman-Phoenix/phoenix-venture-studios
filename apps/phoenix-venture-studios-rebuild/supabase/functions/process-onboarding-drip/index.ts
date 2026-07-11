@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { requireInternalRequest } from "../_shared/internal-auth.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -12,9 +13,15 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  const auth = requireInternalRequest(req);
+  if (!auth.ok) {
+    return auth.response;
+  }
+
   try {
     const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
     const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+    const INTERNAL_SECRET = Deno.env.get("PHOENIX_NEWSLETTER_CRON_SECRET")!;
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
     const now = new Date();
@@ -23,6 +30,7 @@ serve(async (req) => {
     const { data: subscribers, error: subErr } = await supabase
       .from("newsletter_subscribers")
       .select("id, email, signup_date")
+      .eq("marketing_consent", true)
       .or("unsubscribed.is.null,unsubscribed.eq.false")
       .limit(200);
 
@@ -80,6 +88,7 @@ serve(async (req) => {
             headers: {
               Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
               "Content-Type": "application/json",
+              "x-phoenix-newsletter-secret": INTERNAL_SECRET,
             },
             body: JSON.stringify({ email: sub.email }),
           });
@@ -112,6 +121,7 @@ serve(async (req) => {
             headers: {
               Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
               "Content-Type": "application/json",
+              "x-phoenix-newsletter-secret": INTERNAL_SECRET,
             },
             body: JSON.stringify({ email: sub.email }),
           });

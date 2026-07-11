@@ -6,9 +6,11 @@ import { componentTagger } from "lovable-tagger";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
+  const isBuildProof = process.env.PHOENIX_BUILD_PROOF === "1";
 
   return {
     base: env.VITE_BASE_PATH || "/",
+    publicDir: isBuildProof ? false : undefined,
     server: {
       host: "::",
       port: 8080,
@@ -18,9 +20,22 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
     resolve: {
-      alias: {
-        "@": path.resolve(__dirname, "./src"),
-      },
+      alias: [
+        {
+          find: /^lucide-react$/,
+          replacement: path.resolve(__dirname, "./src/lib/lucide-react-lite.ts"),
+        },
+        {
+          find: "@",
+          replacement: path.resolve(__dirname, "./src"),
+        },
+      ],
     },
+    build: isBuildProof
+      ? {
+          outDir: "tmp/build-proof",
+          emptyOutDir: true,
+        }
+      : undefined,
   };
 });

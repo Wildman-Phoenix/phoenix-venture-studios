@@ -15,7 +15,8 @@ This manifest is the launch-facing rights snapshot for public assets used by the
 | `public/images/signal-venture-funding.jpg` | `phoenix-owned-approved` | Static Phoenix-owned editorial fallback. |
 | `public/images/signal-ai-infrastructure.jpg` | `phoenix-owned-approved` | Static Phoenix-owned editorial fallback. |
 | `public/images/signals/backgrounds/*.jpg` | `phoenix-owned-generated` | Phoenix-controlled background library for generated cards. |
-| `public/images/signals/generated/*.jpg` | `phoenix-owned-generated` | Public RSS/social cards generated from Phoenix-owned backgrounds. No publisher hotlinks allowed. |
+| `public/images/signals/source-art/*.jpg` | `phoenix-owned-generated` | Article-specific Phoenix-owned art used as the source image for a signal card. |
+| `public/images/signals/generated/*.jpg` | `phoenix-owned-generated` | Public RSS/social cards generated from Phoenix-owned or allowlisted source imagery. No publisher hotlinks allowed. |
 
 ## Needs clearance before broader public reuse
 
@@ -26,4 +27,4 @@ This manifest is the launch-facing rights snapshot for public assets used by the
 
 ## Launch rule
 
-If an RSS story cannot use an `allowed` source image under `rss-data/image-source-allowlist.json`, it must keep using a Phoenix-owned background/card from `public/images/signals/backgrounds/` or `public/images/signals/generated/`. New custom backgrounds are a manual creative request, not a cron responsibility.
+If an RSS story cannot use an `allowed` source image under `rss-data/image-source-allowlist.json`, the preferred path is a Phoenix-owned article-specific image under `public/images/signals/source-art/:slug.jpg`, wrapped in the branded Founder Signal card. Generic Phoenix background cards are emergency fallbacks only; autonomous publish should hold when `PHOENIX_RSS_REQUIRE_ARTICLE_IMAGES` is enabled and no article-specific image exists.

@@ -1,4 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { deliverTransactionalEmailViaHighLevel, getNewsletterMode, isNewsletterProviderConfigured } from "../_shared/highlevel-newsletter.ts";
+import { requireInternalRequest } from "../_shared/internal-auth.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -11,6 +13,11 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  const auth = requireInternalRequest(req);
+  if (!auth.ok) {
+    return auth.response;
+  }
+
   try {
     const { email } = await req.json();
 
@@ -18,16 +25,6 @@ serve(async (req) => {
       return new Response(
         JSON.stringify({ success: false, reason: "No email provided" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
-
-    const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
-
-    if (!RESEND_API_KEY) {
-      console.log("RESEND_API_KEY not set — welcome email logged only:", email);
-      return new Response(
-        JSON.stringify({ success: true, method: "logged" }),
-        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
@@ -48,19 +45,19 @@ serve(async (req) => {
 
     <!-- Body -->
     <p style="font-size:15px;color:#374151;line-height:1.7;margin:0 0 14px 0;">
-      You're in. Each week, you'll receive a short strategic briefing — the market shifts, capital signals, and operational insights that matter most for founders right now.
+      You're in. Founder Signal is a concise founder read on the market shifts, capital signals, and operational pressure points that matter most right now.
     </p>
     <p style="font-size:15px;color:#374151;line-height:1.7;margin:0 0 14px 0;">
       No noise. No fluff. Just the signals worth your attention.
     </p>
     <p style="font-size:15px;color:#374151;line-height:1.7;margin:0 0 24px 0;">
-      Your first briefing will arrive soon. In the meantime, explore what's moving the market right now.
+      Your first founder read will arrive soon. In the meantime, start with the current signal desk and use the archive when you want the broader record.
     </p>
 
     <!-- CTA -->
     <div style="text-align:center;margin:0 0 28px 0;">
-      <a href="${SITE_URL}/market-intelligence" style="display:block;width:100%;max-width:260px;margin:0 auto 10px auto;padding:12px 0;background:#F97316;color:#FFFFFF;font-size:14px;font-weight:600;text-align:center;text-decoration:none;border-radius:5px;">Explore Market Intelligence</a>
-      <a href="${SITE_URL}/snapshot" style="display:block;width:100%;max-width:260px;margin:0 auto;padding:12px 0;background:transparent;border:1.5px solid #E5E7EB;color:#9CA3AF;font-size:14px;font-weight:600;text-align:center;text-decoration:none;border-radius:5px;">Get Your Venture Snapshot</a>
+      <a href="${SITE_URL}/founder-signal" style="display:block;width:100%;max-width:260px;margin:0 auto 10px auto;padding:12px 0;background:#F97316;color:#FFFFFF;font-size:14px;font-weight:600;text-align:center;text-decoration:none;border-radius:5px;">Explore Founder Signal</a>
+      <a href="${SITE_URL}/market-intelligence" style="display:block;width:100%;max-width:260px;margin:0 auto;padding:12px 0;background:transparent;border:1.5px solid #E5E7EB;color:#9CA3AF;font-size:14px;font-weight:600;text-align:center;text-decoration:none;border-radius:5px;">Read the archive</a>
     </div>
 
     <!-- Footer -->
@@ -78,14 +75,14 @@ serve(async (req) => {
     const textBody = `THE FOUNDER SIGNAL
 Strategic intelligence for founders, operators, and business owners
 
-You're in. Each week, you'll receive a short strategic briefing -- the market shifts, capital signals, and operational insights that matter most for founders right now.
+You're in. Founder Signal is a concise founder read on the market shifts, capital signals, and operational pressure points that matter most right now.
 
 No noise. No fluff. Just the signals worth your attention.
 
-Your first briefing will arrive soon. In the meantime, explore what's moving the market:
+Your first founder read will arrive soon. In the meantime, start with the current signal desk and use the archive when you want the broader record:
 
-Explore Market Intelligence: ${SITE_URL}/market-intelligence
-Get Your Venture Snapshot: ${SITE_URL}/snapshot
+Explore Founder Signal: ${SITE_URL}/founder-signal
+Read the archive: ${SITE_URL}/market-intelligence
 
 ---
 
@@ -93,6 +90,40 @@ Phoenix Venture Studios
 Clarity over complexity. Strategy over noise.
 
 Unsubscribe: ${unsubUrl}`;
+
+    if (getNewsletterMode() === "primary" && isNewsletterProviderConfigured()) {
+      const ghlDelivery = await deliverTransactionalEmailViaHighLevel(
+        email,
+        "Welcome to The Founder Signal",
+        htmlBody,
+      );
+
+      return new Response(
+        JSON.stringify({
+          success: ghlDelivery.delivered,
+          delivery: ghlDelivery.reason,
+          error: ghlDelivery.error,
+        }),
+        {
+          status: ghlDelivery.delivered ? 200 : 502,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        }
+      );
+    }
+
+    const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+
+    if (!RESEND_API_KEY) {
+      console.log("RESEND_API_KEY not set — welcome email logged only:", email);
+      return new Response(
+        JSON.stringify({
+          success: false,
+          delivery: "unconfigured",
+          error: "RESEND_API_KEY is not configured for newsletter-welcome",
+        }),
+        { status: 503, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
 
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -113,13 +144,17 @@ Unsubscribe: ${unsubUrl}`;
       const errText = await res.text();
       console.error("Resend welcome email failed:", res.status, errText);
       return new Response(
-        JSON.stringify({ success: false, error: `Resend ${res.status}` }),
-        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        JSON.stringify({
+          success: false,
+          delivery: "failed",
+          error: `Resend ${res.status}`,
+        }),
+        { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
     return new Response(
-      JSON.stringify({ success: true, method: "email" }),
+      JSON.stringify({ success: true, delivery: "email" }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (error) {

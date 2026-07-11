@@ -1,30 +1,37 @@
 {
   "version": 1,
   "timezone": "America/Detroit",
+  "checkIntervalMinutes": 360,
   "slots": [
     {
       "id": "early-morning",
-      "localTime": "05:30",
-      "cronUtc": "30 9 * * *",
-      "intent": "Catch overnight market and AI tool developments before the workday starts."
+      "localTime": "06:30",
+      "cronUtc": "30 10 * * *",
+      "intent": "Refresh all archive feeds and advance Founder Market social only."
     },
     {
       "id": "mid-morning",
-      "localTime": "10:30",
-      "cronUtc": "30 14 * * *",
-      "intent": "Refresh after morning publisher updates and company announcements."
+      "localTime": "12:30",
+      "cronUtc": "30 16 * * *",
+      "intent": "Refresh all archive feeds and advance Founder Tools social only."
     },
     {
       "id": "afternoon",
-      "localTime": "15:30",
-      "cronUtc": "30 19 * * *",
-      "intent": "Catch U.S. market, funding, and product news that lands during the business day."
+      "localTime": "18:30",
+      "cronUtc": "30 22 * * *",
+      "intent": "Refresh all archive feeds and advance AI Attention social only."
     },
     {
       "id": "late-night",
-      "localTime": "22:30",
-      "cronUtc": "30 2 * * *",
-      "intent": "Prepare a fresh overnight set and catch West Coast/product-cycle updates."
+      "localTime": "00:30",
+      "cronUtc": "30 4 * * *",
+      "intent": "Refresh archive feeds only; do not advance a social queue."
+    },
+    {
+      "id": "friday-ai-trend-sweep",
+      "localTime": "09:30",
+      "cronUtc": "30 13 * * 5",
+      "intent": "Pull Matt Wolfe, FutureTools, and official-source AI trend leads every Friday for corroborated Founder Tools discovery."
     }
   ],
   "feeds": [
@@ -32,15 +39,43 @@
       "id": "founder-market",
       "publicXml": "/rss/feed.xml",
       "publicJson": "/rss/feed.json",
+      "maxItems": 10,
       "promise": "Market, funding, AI company, and founder strategy signals."
+    },
+    {
+      "id": "founder-market-social",
+      "publicXml": "/rss/social.xml",
+      "publicJson": "/rss/social.json",
+      "maxItems": 1,
+      "promise": "One Founder Market signal at a time for GoHighLevel RSS-to-social."
     },
     {
       "id": "founder-tools",
       "publicXml": "/rss/tools.xml",
-      "compatXml": "/rss/ai-attention.xml",
       "publicJson": "/rss/tools.json",
-      "compatJson": "/rss/ai-attention.json",
+      "maxItems": 10,
       "promise": "AI tools, agent development, automation, coding, and time-saving workflows founders can use."
+    },
+    {
+      "id": "founder-tools-social",
+      "publicXml": "/rss/tools-social.xml",
+      "publicJson": "/rss/tools-social.json",
+      "maxItems": 1,
+      "promise": "One Founder Tools signal at a time for GoHighLevel RSS-to-social."
+    },
+    {
+      "id": "ai-attention",
+      "publicXml": "/rss/ai-attention.xml",
+      "publicJson": "/rss/ai-attention.json",
+      "maxItems": 10,
+      "promise": "AI consulting, implementation, agents, and operator-level AI shifts founders should watch separately from tools."
+    },
+    {
+      "id": "ai-attention-social",
+      "publicXml": "/rss/ai-attention-social.xml",
+      "publicJson": "/rss/ai-attention-social.json",
+      "maxItems": 1,
+      "promise": "One AI Attention signal at a time for RSS-to-social publishing."
     }
   ],
   "publishPolicy": {
