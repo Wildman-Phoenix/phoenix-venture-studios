@@ -40,10 +40,24 @@ Status: `Needs you`
 ## Reconnect requirements
 
 - GitHub Actions needs `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
-- The ChatGPT HighLevel connector requires reauthentication; its OAuth grant returns `invalid_grant`.
+- The ChatGPT HighLevel connector requires reauthentication only if Nathan wants to use that separate connector; its OAuth grant returns `invalid_grant`.
+- The private Katalyst API integration is healthy and does not require reconnection. A fresh metadata-only read completed successfully on 2026-07-10 with no API read errors.
 - Local Cloudflare OAuth is healthy.
 - Supabase connector and project are healthy.
-- The older private Katalyst integration snapshot cannot be treated as current until its protected runtime token is available or the ChatGPT connector is reauthenticated.
+
+## Fresh Katalyst API evidence
+
+- Location: `Rising Phoenix Business Services` (`dLFChrqjcIIeGUaHK4z5`).
+- Workflows: 71 total; 31 published and 40 draft.
+- Workflow classification: 31 keep, 11 archive candidates, 11 duplicate-name candidates, 18 unrelated, and zero current Phoenix dependencies.
+- Pipelines: 5; `Phoenix Applications` is not present.
+- Custom fields: 48; the planned Phoenix consent, newsletter, segmentation, and Application Path fields remain missing.
+- Tags: 71; the existing Phoenix base tags are present, while nine planned preference, unsubscribe, intake, fit, and referral tags remain missing.
+- Connected social accounts: 10; selection remains approval-gated because the account set includes multiple brands and profile types.
+- Contact data included: no.
+- API read errors: none.
+
+The private integration environment is loaded explicitly from the established HighLevel build-preview configuration. The expired ChatGPT connector is not used for this audit and is not a blocker to private API reads.
 
 ## Katalyst and Chrome finish
 
