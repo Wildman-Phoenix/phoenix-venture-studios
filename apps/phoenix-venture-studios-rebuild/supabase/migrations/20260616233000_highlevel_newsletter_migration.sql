@@ -31,13 +31,11 @@ CREATE TABLE IF NOT EXISTS public.newsletter_sync_events (
 
 ALTER TABLE public.newsletter_sync_events ENABLE ROW LEVEL SECURITY;
 
-DROP POLICY IF EXISTS "Anyone can read newsletter sync events" ON public.newsletter_sync_events;
 DROP POLICY IF EXISTS "Service role can manage newsletter sync events" ON public.newsletter_sync_events;
 
-CREATE POLICY "Anyone can read newsletter sync events"
-  ON public.newsletter_sync_events FOR SELECT
-  TO anon, authenticated
-  USING (true);
+-- Sync evidence contains subscriber identifiers and provider payloads. Keep it
+-- server-only; public clients never need direct access to this table.
+DROP POLICY IF EXISTS "Anyone can read newsletter sync events" ON public.newsletter_sync_events;
 
 CREATE POLICY "Service role can manage newsletter sync events"
   ON public.newsletter_sync_events FOR ALL
