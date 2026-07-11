@@ -52,10 +52,10 @@ jobs:
 
       - run: npm run rss:validate
 
-      - run: npm run rss:publish-preview
+      - run: npm run prepare:production
         if: steps.rss_run.outputs.output_changed == 'true'
 
-      - run: npm run prepare:production
+      - run: npm run rss:publish-preview
         if: steps.rss_run.outputs.output_changed == 'true'
 
       - run: node scripts/rss/validate-rss-output.mjs --deploy-artifacts
