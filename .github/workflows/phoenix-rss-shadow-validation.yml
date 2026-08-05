@@ -10,6 +10,7 @@ on:
   pull_request:
     paths:
       - ".github/workflows/phoenix-rss-shadow-validation.yml"
+      - ".github/workflows/phoenix-rss-daily-production.yml"
       - "apps/phoenix-venture-studios-rebuild/**"
 
 permissions:
