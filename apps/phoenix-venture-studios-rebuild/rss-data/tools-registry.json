@@ -4,6 +4,7 @@
   "feedName": "Founder Tools",
   "feedIntent": "Product, tool, agent, and workflow releases founders can use directly to build faster, automate work, and upgrade operator throughput.",
   "maxPerSource": 2,
+  "minimumScore": 65,
   "excludeKeywords": [
     "raises $",
     "raised $",

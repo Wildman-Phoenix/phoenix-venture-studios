@@ -2,85 +2,93 @@
 
 - Feed: founder-tools
 - Title: Phoenix Venture Studios - Founder Tools
-- Generated: 2026-05-29T15:20:13.011Z
+- Generated: 2026-08-05T20:27:06.958Z
 - Dry run: no
-- Sources enabled: 6
-- Sources fetched: 6
+- Sources enabled: 14
+- Sources fetched: 14
+- Research sources enabled: 8
+- Source warnings: 0
 - Source errors: 0
-- Parsed items: 1164
-- Keyword filtered items: 7
-- Selected items: 10
-- Social cards generated: 10/10
-- Social card errors: 0
-- Manual image review needed: 10
+- Parsed items: 1324
+- Keyword filtered items: 6
+- Recent social items skipped: 0
+- Selected items: 9
+- Image mode: source-or-codex-queue
+- Feed-ready images: 9/10
+- Held for Codex image: 0
+- Source-approved images: 3
+- Codex-approved raw images: 6
+- Image processing errors: 0
+- Manual image review needed: 1
+- Creative follow-up still needed: 6
 - Feed valid: yes
 - Preserved previous feed: no
 
 ## Bucket Counts
 
-- AI Implementation: 2
-- AI Tools & Agents: 4
-- Business Automation: 2
-- AI Revenue Opportunities: 1
+- AI Tools & Agents: 7
 - Wildcard Attention: 1
+- Business Automation: 1
 
 ## Source Counts
 
-- google-ai-blog: 1
-- infoq-general: 2
+- tensorfeed-ai: 4
+- infoq-general: 1
 - techcrunch-ai: 2
-- tensorfeed-ai: 2
+- openai-news: 1
 - the-verge-ai: 1
-- openai-news: 2
+
+## Source Type Counts
+
+- manual: 1
+- rss: 6
+- official-page: 7
 
 ## Image Strategy Counts
 
-- owned-photo-match: 10
+- held-for-codex-image: 6
+- source-allowlisted: 3
 
 ## Image Family Counts
 
 - ai_opportunity: 4
+- ai_risk: 1
+- founder_pressure: 2
+- operational_leverage: 1
 - consulting_revenue: 1
-- ai_risk: 2
-- wildcard_attention: 1
-- market_shock: 1
-- founder_pressure: 1
 
 ## Image Variety Audit
 
 - Max consecutive family repeats: 2
-- Variant field-note: 2
-- Variant operator-map: 4
-- Variant capital-pulse: 4
-- Composition lower-band: 2
-- Composition left-anchor: 3
-- Composition right-anchor: 1
-- Composition split-panel: 4
+- Variant operator-map: 3
+- Variant capital-pulse: 3
+- Variant signal-rail: 2
+- Variant field-note: 1
+- Composition lower-band: 3
+- Composition split-panel: 2
+- Composition right-anchor: 3
+- Composition left-anchor: 1
 
 ## Selected Items
 
-- [AI Tools & Agents] GitHub Slashes Agent Workflow Token Spend up to 62% with Daily Audits and MCP Pruning (InfoQ, score 97)
-- [AI Tools & Agents] Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool (TechCrunch AI, score 85)
-- [AI Revenue Opportunities] Glean’s top line crosses $300M as AI budget cutting becomes its major selling point (TechCrunch AI, score 82)
-- [Wildcard Attention] A $2,000 AI-generated film will make its debut at Tribeca (The Verge AI, score 81)
-- [AI Tools & Agents] How Endava builds an agentic organization with Codex (OpenAI News, score 81)
-- [AI Tools & Agents] Warp’s big bet on building open source with GPT-5.5 (OpenAI News, score 74)
-- [AI Implementation] Check out real-life AI prototypes from the Futures Lab. (Google AI Blog, score 72)
-- [Business Automation] AI Data Center Map – Visualize Water and Power Impact (TensorFeed, score 63)
-- [AI Implementation] Presentation: From Founding Engineer to CTO to CEO – At the Same Startup (InfoQ, score 62)
-- [Business Automation] When old data brings AI rollouts to a screeching halt - and how to manage it (TensorFeed, score 61)
+- [AI Tools & Agents] TensorFeed | AI Tools & Agents | Agentic Coding in the Wild: Characterizing GitHub Copilot Traces at Production Scale (TensorFeed, score 99) -> OG image failed audit; Phoenix generated art used
+- [AI Tools & Agents] InfoQ | AI Tools & Agents | Ponytail Agent Skill Corrects Its Own Benchmark After Contributor Challenge (InfoQ, score 79) -> source image policy is reference-only; Phoenix generated art used
+- [AI Tools & Agents] TechCrunch AI | AI Tools & Agents | TechCrunch Disrupt 2026’s Real World AI Stage features robots, automated factories, and extinct animals (TechCrunch AI, score 79) -> OG image found and allowed source image passed audit
+- [AI Tools & Agents] OpenAI News | AI Tools & Agents | New ways to learn and teach with ChatGPT Work and Codex (OpenAI News, score 68) -> RSS image missing; Phoenix generated art used
+- [Wildcard Attention] The Verge AI | Wildcard Attention | Google just announced a major shakeup of its top AI leadership (The Verge AI, score 67) -> OG image failed audit; Phoenix generated art used
+- [AI Tools & Agents] TechCrunch AI | AI Tools & Agents | Anthropic signs $10B deal with AI cloud startup Volta (TechCrunch AI, score 74) -> OG image found and allowed source image passed audit
+- [AI Tools & Agents] TensorFeed | AI Tools & Agents | AI Leaders Propose SAFE Guidelines for Cybersecurity Transparency (TensorFeed, score 71) -> OG image failed audit; Phoenix generated art used
+- [Business Automation] TensorFeed | Business Automation | AMD’s data center business is booming while gaming takes a backseat (TensorFeed, score 67) -> OG image found and allowed source image passed audit
+- [AI Tools & Agents] TensorFeed | AI Tools & Agents | Google’s Top AI Brains Are Leaving to Launch Discovery Loop (TensorFeed, score 65) -> OG image failed audit; Phoenix generated art used
 
 ## Copy Repetition Warnings
 
-- whyItMatters repeats across 4 selected items; consider a sharper Phoenix take in the next editorial pass.
-- whyShared repeats across 4 selected items; consider a sharper Phoenix take in the next editorial pass.
-- founderTakeaway repeats across 4 selected items; consider a sharper Phoenix take in the next editorial pass.
-- businessTakeaway repeats across 4 selected items; consider a sharper Phoenix take in the next editorial pass.
+- whyItMatters repeats across 6 selected items; consider a sharper Phoenix take in the next editorial pass.
+- whyShared repeats across 6 selected items; consider a sharper Phoenix take in the next editorial pass.
+- businessTakeaway repeats across 6 selected items; consider a sharper Phoenix take in the next editorial pass.
 
-## Feed Aliases
+## Editorial Warnings
 
-- tools.xml -> ai-attention.xml
-- tools.json -> ai-attention.json
-- tools-items.json -> ai-attention-items.json
-- tools-run-report.md -> ai-attention-run-report.md
-- tools-run-report.json -> ai-attention-run-report.json
+- agentic-coding-wild-characterizing-github-copilot-traces-at-production-scale-9998cf83: editorial copy lacks a clear reader-directed action
+- ways-learn-teach-chatgpt-work-codex-b274d678: editorial copy lacks a clear reader-directed action
+- ai-leaders-propose-safe-guidelines-cybersecurity-transparency-e45661ea: editorial copy lacks a clear reader-directed action

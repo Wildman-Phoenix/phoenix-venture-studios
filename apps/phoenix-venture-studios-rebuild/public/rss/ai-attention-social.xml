@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Phoenix Venture Studios - AI Attention - Social Queue</title>
+    <description>One AI consulting or implementation signal at a time for RSS-to-social publishing.</description>
+    <link>https://phoenixventurestudios.com</link>
+    <atom:link href="https://phoenixventurestudios.com/rss/ai-attention-social.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Jul 2026 22:30:00 GMT</lastBuildDate>
+    <language>en-us</language>
+    <generator>Phoenix Venture Studios Static RSS Generator</generator>
+    <item>
+      <title><![CDATA[Automate 7 Projects Marketing with AI for $40]]></title>
+      <description><![CDATA[The useful signal is the workflow change underneath this release: which step becomes faster, cheaper, or easier to supervise.
+
+This points to a workflow shift worth testing in the real world. Look for the task that gets cheaper, faster, or easier first.
+
+Start with the workflow that already hurts. If the tool cannot improve that work, it has not earned expansion.
+
+The next proof point is this signal showing up again from a different angle.
+
+Read the full Phoenix signal on phoenixventurestudios.com.
+
+#AI]]></description>
+      <link>https://phoenixventurestudios.com/founder-signal/signals/automate-7-projects-marketing-ai-40-0f36281c/</link>
+      <guid isPermaLink="true">https://phoenixventurestudios.com/founder-signal/signals/automate-7-projects-marketing-ai-40-0f36281c/</guid>
+      <pubDate>Sun, 26 Jul 2026 22:30:00 GMT</pubDate>
+      <source url="https://apsquared.co/posts/marketing-automation-claude-codex"><![CDATA[TensorFeed]]></source>
+      <category><![CDATA[Business Automation]]></category>
+      <enclosure url="https://phoenixventurestudios.com/images/signals/generated/automate-7-projects-marketing-ai-40-0f36281c.jpg" type="image/jpeg" length="0" />
+    </item>
+  </channel>
+</rss>

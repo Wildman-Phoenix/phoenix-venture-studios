@@ -1,0 +1,213 @@
+[
+  {
+    "title": "Anduril reportedly in talks to raise funding at $100B valuation, more than 3x last year's mark",
+    "url": "https://phoenixventurestudios.com/founder-signal/signals/anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256/",
+    "description": "Anduril is said to be raising a new round of funding that may push its valuation up to about $100 billion, per Reuters.",
+    "publishedAt": "2026-07-25T12:42:11.656Z",
+    "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256.jpg",
+    "sourceImageUrl": "",
+    "sourceId": "techcrunch-main",
+    "sourceName": "TechCrunch",
+    "sourceUrl": "https://techcrunch.com/feed/",
+    "sourceScore": 78,
+    "sourceType": "rss",
+    "sourceSurface": "rss",
+    "rawTitle": "Anduril reportedly in talks to raise funding at $100B valuation, more than 3x last year’s mark",
+    "topicLabel": "Funding & Venture",
+    "whySelected": "RSS source matched the Phoenix registry and entered editorial scoring.",
+    "researchCitations": [],
+    "requiresCorroboration": false,
+    "corroborationDomains": [],
+    "candidateBuckets": [
+      "funding_venture",
+      "ai_operator_impact",
+      "wildcard_attention"
+    ],
+    "publisherImageUrl": "https://techcrunch.com/wp-content/uploads/2026/03/9389943.jpg?resize=1200,800",
+    "canonicalUrl": "https://techcrunch.com/2026/07/24/anduril-reportedly-in-talks-to-raise-funding-at-100b-valuation-more-than-3x-last-years-mark/",
+    "articleMetadata": {
+      "ok": true,
+      "url": "https://techcrunch.com/2026/07/24/anduril-reportedly-in-talks-to-raise-funding-at-100b-valuation-more-than-3x-last-years-mark/",
+      "canonicalUrl": "https://techcrunch.com/2026/07/24/anduril-reportedly-in-talks-to-raise-funding-at-100b-valuation-more-than-3x-last-years-mark/",
+      "title": "Anduril reportedly in talks to raise funding at $100B valuation, more than 3x last year's mark | TechCrunch",
+      "description": "Anduril is said to be raising a new round of funding that may push its valuation up to about $100 billion, per Reuters.",
+      "imageUrl": "https://techcrunch.com/wp-content/uploads/2026/03/9389943.jpg?resize=1200,800",
+      "imageSource": "og:image",
+      "siteName": "TechCrunch",
+      "sourceHost": "techcrunch.com",
+      "failureReason": ""
+    },
+    "imageDiagnostic": {
+      "feedImageMissing": true,
+      "articleImageChecked": true,
+      "articleImageFound": true,
+      "articleImageSource": "og:image",
+      "articleImageFetchError": "",
+      "sourceImagePolicy": "",
+      "imageDecision": "RSS image missing; OG image found"
+    },
+    "bucket": "funding_venture",
+    "bucketLabel": "Funding & Venture",
+    "score": 97,
+    "ageDays": 0.8,
+    "preferredKeywordHits": 2,
+    "penaltyKeywordHits": 0,
+    "sourceSurfaceScore": 0,
+    "excluded": false,
+    "excludeReason": "",
+    "slug": "anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256",
+    "internalPath": "/founder-signal/signals/anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256",
+    "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256/",
+    "originalUrl": "https://techcrunch.com/2026/07/24/anduril-reportedly-in-talks-to-raise-funding-at-100b-valuation-more-than-3x-last-years-mark/",
+    "imageBrief": {
+      "storyAngle": "Capital readiness",
+      "storySubject": "the valuation race around frontier AI",
+      "emotionalHook": "Capital is flowing toward clearer proof, stronger timing, and a more believable growth story.",
+      "visualMetaphor": "A high-stakes valuation room with growth curves, adoption dashboards, and infrastructure pressure visible at once.",
+      "audiencePainOpportunity": "Founders need to understand what kind of traction investors are actually rewarding before they copy the headline.",
+      "imagePrompt": "Create one cinematic editorial cover image for this specific story: \"Anduril reportedly in talks to raise funding at $100B valuation, more than 3x last year’s mark\". Core context to visualize: the valuation race around frontier AI. Capital is flowing toward clearer proof, stronger timing, and a more believable growth story. Founders need to understand what kind of traction investors are actually rewarding before they copy the headline. A high-stakes valuation room with growth curves, adoption dashboards, and infrastructure pressure visible at once. Show revenue acceleration, investor pressure, model adoption signals, and the scale race without falling back to a generic boardroom. Use a cinematic editorial poster grammar: one dominant metaphor, strong light and shadow, and deliberate negative space for a bold headline. Pull out the article's key context instead of showing the article literally: the lock, threshold, risk, leverage point, workflow layer, or trust boundary. Use concrete anchors sparingly: one person silhouette, one device stack, one dashboard, one room, or one symbolic architecture. Do not build a cluttered collage. Let supporting details prove the metaphor: app cards, charts, files, messages, capital flows, handoff lines, or compute layers should feel intentional and readable at thumbnail size. Avoid generic office scenes, showroom product staging, fake logos, celebrity likenesses, overstuffed UI panels, and decorative AI clouds. For capital stories, turn the financial pressure into architecture: gates, ledgers, valuation rooms, runway lines, proof stacks, and money-flow shadows. Use the source article only as private visual reference; create Phoenix-owned artwork for public use. Make it feel like a strong magazine or strategy-report cover, not a product render. Avoid portraits or people unless the story clearly needs a human subject. Leave clean negative space for a Phoenix Founder Signal headline overlay.",
+      "articleImageRequired": false,
+      "expectedArticleImagePath": "/images/signals/source-art/anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256.jpg",
+      "imageFamily": "capital_readiness",
+      "preferredImageFamily": "capital_readiness",
+      "sourceImageEligibility": "allowed",
+      "sourceImagePolicy": "allowed",
+      "sourceImageMatchedKey": "",
+      "sourceImageNote": "",
+      "manualReviewNeeded": false,
+      "overlayTone": "capital",
+      "template": "opportunity_window",
+      "sceneLane": "frontier_funding",
+      "sceneMotif": "valuation-arc",
+      "imageVariant": "operator-map",
+      "imageTone": "ember",
+      "imageComposition": "left-anchor",
+      "imageFingerprint": "268e98e7a7308974"
+    },
+    "imagePath": "/images/signals/generated/anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256.jpg",
+    "socialImagePath": "/images/signals/generated/anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256.jpg",
+    "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256.jpg",
+    "imageStrategy": "source-allowlisted",
+    "imageApprovalStatus": "approved",
+    "imageHoldReason": "",
+    "imageFamily": "capital_readiness",
+    "imageSourceType": "source-image",
+    "imageCredit": "TechCrunch",
+    "imageRightsStatus": "allowlisted",
+    "imageTemplate": "opportunity_window",
+    "imageVariant": "operator-map",
+    "imageTone": "ember",
+    "imageComposition": "left-anchor",
+    "sceneLane": "frontier_funding",
+    "sceneMotif": "valuation-arc",
+    "imageFingerprint": "268e98e7a7308974",
+    "imageWarnings": [],
+    "reviewTitle": "TechCrunch | Funding & Venture | Anduril reportedly in talks to raise funding at $100B valuation, more than 3x last year’s mark",
+    "imageDecision": "allowed-source-image-used",
+    "imageDiagnosticReason": "OG image found and allowed source image passed audit",
+    "sourceImagePolicy": "allowed",
+    "whyItMatters": "Funding news is not just about who raised money. It reveals where investors, lenders, and operators believe demand is moving.",
+    "whyShared": "Phoenix shared this because founders can use funding patterns to pressure-test offers, timing, and capital strategy without chasing every headline.",
+    "founderTakeaway": "Ignore the round size for a minute and ask what evidence made the market move this fast.",
+    "businessTakeaway": "Connect the opportunity to a fundable plan, not just a bigger idea.",
+    "publicTitle": "Anduril reportedly in talks to raise funding at $100B valuation, more than 3x last year's mark",
+    "sourceTitle": "Anduril reportedly in talks to raise funding at $100B valuation, more than 3x last year’s mark",
+    "feedRole": "founder-market",
+    "simpleSummary": "Money is not chasing everything. It is chasing a narrower kind of proof than most founders want to admit.",
+    "engagementPrompt": "What kind of proof do you think the market will reward next?",
+    "trendContext": "The next funding cycle will show what kind of proof still commands attention.",
+    "relatedRecentSignals": [],
+    "readingLevel": {
+      "target": "grade-5-plain-founder",
+      "heuristic": "average sentence words",
+      "averageSentenceWords": 13.8
+    },
+    "editorialMode": "phoenix-original-brief",
+    "imageVisualHash": "303cb23098b17178",
+    "imageAudit": {
+      "width": 1200,
+      "height": 800,
+      "luminanceMean": 150,
+      "luminanceStdDev": 48.44,
+      "colorfulness": 30.5,
+      "sharpness": 11.1,
+      "bestComposition": {
+        "composition": "right-anchor",
+        "meanLuma": 131.89214190445398,
+        "lumaStdDev": 37.677244366266905,
+        "textureStdDev": 10.529988977678,
+        "readability": 0.5844750764257867
+      },
+      "compositionScores": {
+        "left-anchor": {
+          "meanLuma": 139.2,
+          "lumaStdDev": 43.15,
+          "textureStdDev": 9.03,
+          "readability": 0.513
+        },
+        "split-panel": {
+          "meanLuma": 137.91,
+          "lumaStdDev": 42.58,
+          "textureStdDev": 8.77,
+          "readability": 0.523
+        },
+        "right-anchor": {
+          "meanLuma": 131.89,
+          "lumaStdDev": 37.68,
+          "textureStdDev": 10.53,
+          "readability": 0.584
+        },
+        "lower-band": {
+          "meanLuma": 135.87,
+          "lumaStdDev": 49.35,
+          "textureStdDev": 11.59,
+          "readability": 0.489
+        }
+      },
+      "learningSignal": {
+        "lane": "frontier_funding",
+        "reviewMode": "source-image",
+        "approvedExamples": 22,
+        "rejectedExamples": 0,
+        "distanceToApproved": 1.064,
+        "distanceToRejected": null,
+        "shouldReject": false
+      },
+      "vision": {
+        "maxFaceAreaRatio": 0,
+        "textCoverage": 0,
+        "handCount": 0,
+        "completeHandCount": 0,
+        "lowConfidenceHandCount": 0,
+        "textObservationCount": 0,
+        "faceCount": 0,
+        "landmarkedFaceCount": 0
+      },
+      "editorialNotes": [],
+      "recommendedFixes": [],
+      "editorialModelReview": {
+        "verdict": "approve",
+        "storyFit": "strong",
+        "headlinePlacementRisk": "low",
+        "confidence": "high",
+        "notes": [
+          "Title is strong and relevant",
+          "Image is high quality and clear",
+          "Text is readable and well-placed"
+        ],
+        "fixes": [
+          ""
+        ],
+        "normalizedVerdict": "approve"
+      }
+    },
+    "queueCandidateState": {
+      "publishable": true,
+      "eligible": true,
+      "sampleReady": true,
+      "manualReviewNeeded": false,
+      "usesStrictImageStrategy": true,
+      "reasons": []
+    }
+  }
+]

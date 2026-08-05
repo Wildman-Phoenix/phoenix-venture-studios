@@ -9,7 +9,7 @@ const FEED_FILES = [
   "tools-social.json",
   "ai-attention-social.json",
 ];
-const DEFAULT_SITE_URL = "https://previews.phoenixventurestudios.com/phoenix-venture-studios-rebuild";
+const DEFAULT_SITE_URL = "https://phoenixventurestudios.com";
 function normalizeSiteUrl(value = DEFAULT_SITE_URL) {
   return String(value || DEFAULT_SITE_URL).replace(/\/$/, "");
 }

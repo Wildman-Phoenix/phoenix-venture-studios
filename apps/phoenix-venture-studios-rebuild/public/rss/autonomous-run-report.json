@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-05-29T15:20:13.011Z",
-  "runSlot": "mid-morning",
+  "generatedAt": "2026-08-05T20:25:59.938Z",
+  "runSlot": "manual",
   "slot": {
-    "id": "mid-morning",
-    "localTime": "10:30",
-    "cronUtc": "30 14 * * *",
-    "intent": "Refresh after morning publisher updates and company announcements."
+    "id": "manual"
   },
   "siteUrl": "https://phoenixventurestudios.com",
-  "backupDir": "/Users/nathanwildman/Documents/New project/apps/phoenix-venture-studios-rebuild/tmp/rss-autonomous-backup-2026-05-29T15-20-13-013Z",
+  "backupDir": "/private/tmp/phoenix-rss-20260805.c3eA7t/repo/apps/phoenix-venture-studios-rebuild/tmp/rss-autonomous-backup-2026-08-05T20-25-59-941Z",
   "restoredPreviousOutput": false,
-  "historyItems": 20,
-  "outputChanged": false,
+  "historyItems": 250,
+  "reviewMemoryEntries": 400,
+  "reviewQueueItems": 0,
+  "reviewRepositoryGroups": 26,
+  "outputChanged": true,
   "signatures": {
-    "previous": "cdd56da956484bebfa329c86733daecb7d822cab7493106ae5f6f75002c78343",
-    "current": "cdd56da956484bebfa329c86733daecb7d822cab7493106ae5f6f75002c78343"
+    "previous": "19a242fa92705ae5cc56b038a28882ecafc34523353cfcdb722579cb5ce9ddac",
+    "current": "825c65817019b2748a54d097ea557048801c88f1ce64b34ec94d2e0bf04b8886"
   },
   "publishPolicy": {
     "publishWithoutHumanApproval": true,
@@ -23,21 +23,32 @@
     "publisherImagesAreReferenceOnlyUnlessAllowlisted": true,
     "doNotPublishFullPublisherArticleRewrites": true
   },
+  "imagePolicy": "warn-on-generic-fallback",
   "allValid": true,
+  "allFresh": true,
+  "preservedCount": 0,
+  "timeoutCount": 0,
   "feeds": [
     {
       "feedId": "founder-market",
       "title": "Phoenix Venture Studios - Founder Market",
       "feedValid": true,
       "preservedPreviousFeed": false,
-      "selected": 10,
+      "selected": 7,
+      "recentFiltered": 0,
       "sourceErrors": 0,
       "socialCardErrors": 0,
-      "manualReviewNeeded": 10,
+      "manualReviewNeeded": 0,
+      "creativeFollowUpSelected": 4,
       "varietyErrors": 0,
       "editorialErrors": 0,
-      "editorialWarnings": 0,
-      "copyWarnings": 8,
+      "editorialWarnings": 7,
+      "copyWarnings": 3,
+      "queueCandidatePool": 0,
+      "sampleReady": false,
+      "eligibleSelected": false,
+      "queueRotationReason": "not-a-social-queue",
+      "historyUpdated": false,
       "aliases": []
     },
     {
@@ -45,36 +56,44 @@
       "title": "Phoenix Venture Studios - Founder Tools",
       "feedValid": true,
       "preservedPreviousFeed": false,
-      "selected": 10,
+      "selected": 9,
+      "recentFiltered": 0,
       "sourceErrors": 0,
       "socialCardErrors": 0,
-      "manualReviewNeeded": 10,
+      "manualReviewNeeded": 1,
+      "creativeFollowUpSelected": 6,
+      "varietyErrors": 0,
+      "editorialErrors": 0,
+      "editorialWarnings": 3,
+      "copyWarnings": 3,
+      "queueCandidatePool": 0,
+      "sampleReady": false,
+      "eligibleSelected": false,
+      "queueRotationReason": "not-a-social-queue",
+      "historyUpdated": false,
+      "aliases": []
+    },
+    {
+      "feedId": "ai-attention",
+      "title": "Phoenix Venture Studios - AI Attention",
+      "feedValid": true,
+      "preservedPreviousFeed": false,
+      "selected": 4,
+      "recentFiltered": 0,
+      "sourceErrors": 0,
+      "socialCardErrors": 0,
+      "manualReviewNeeded": 2,
+      "creativeFollowUpSelected": 3,
       "varietyErrors": 0,
       "editorialErrors": 0,
       "editorialWarnings": 0,
-      "copyWarnings": 4,
-      "aliases": [
-        {
-          "from": "tools.xml",
-          "to": "ai-attention.xml"
-        },
-        {
-          "from": "tools.json",
-          "to": "ai-attention.json"
-        },
-        {
-          "from": "tools-items.json",
-          "to": "ai-attention-items.json"
-        },
-        {
-          "from": "tools-run-report.md",
-          "to": "ai-attention-run-report.md"
-        },
-        {
-          "from": "tools-run-report.json",
-          "to": "ai-attention-run-report.json"
-        }
-      ]
+      "copyWarnings": 0,
+      "queueCandidatePool": 0,
+      "sampleReady": false,
+      "eligibleSelected": false,
+      "queueRotationReason": "not-a-social-queue",
+      "historyUpdated": false,
+      "aliases": []
     }
   ]
 }

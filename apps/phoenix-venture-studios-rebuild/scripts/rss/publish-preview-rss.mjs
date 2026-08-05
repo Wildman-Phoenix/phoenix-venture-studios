@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { writePreviewGuards } from "../preview/ensure-preview-routes.mjs";
 import { writeSignalStaticPages } from "./signal-page-html.mjs";
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
@@ -11,7 +12,8 @@ const DIST_DIR = path.join(APP_ROOT, "dist");
 const SOURCE_DIR = path.join(APP_ROOT, "public/rss");
 const SOURCE_IMAGES_DIR = path.join(APP_ROOT, "public/images/signals/generated");
 const PREVIEW_SLUG = "phoenix-venture-studios-rebuild";
-const TARGET_ROOT = path.join(WORKSPACE_ROOT, "output/phoenix-previews-upload", PREVIEW_SLUG);
+const HUB_DIR = path.join(WORKSPACE_ROOT, "output/phoenix-previews-upload");
+const TARGET_ROOT = path.join(HUB_DIR, PREVIEW_SLUG);
 const TARGET_DIR = path.join(TARGET_ROOT, "rss");
 const TARGET_IMAGES_DIR = path.join(TARGET_ROOT, "images/signals/generated");
 const PREVIEW_SITE_URL = `https://previews.phoenixventurestudios.com/${PREVIEW_SLUG}`;
@@ -213,6 +215,7 @@ export async function publishPreviewRss() {
     rssDir: TARGET_DIR,
     siteUrl: PREVIEW_SITE_URL,
   });
+  await writePreviewGuards(HUB_DIR);
   console.log(`Published RSS artifacts to ${TARGET_DIR}`);
   console.log(`Copied generated RSS images: ${copiedImages.count}`);
   if (shell.copied) {

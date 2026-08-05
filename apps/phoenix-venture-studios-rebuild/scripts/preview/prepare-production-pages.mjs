@@ -17,6 +17,39 @@ const APP_SHELL_TARGET = "/";
 const ROUTE_REGISTRY = JSON.parse(await fs.readFile(path.join(APP_ROOT, "src/config/phoenix-routes.json"), "utf8"));
 const ROUTE_METADATA = JSON.parse(await fs.readFile(path.join(APP_ROOT, "src/config/phoenix-route-metadata.json"), "utf8"));
 
+function readDatalessPublicFiles() {
+  if (process.platform !== "darwin") return new Set();
+  try {
+    const output = execFileSync(
+      "/usr/bin/find",
+      [path.join(APP_ROOT, "public"), "-type", "f", "-exec", "/usr/bin/stat", "-f", "%Sf|%N", "{}", "+"],
+      { encoding: "utf8", maxBuffer: 16 * 1024 * 1024 },
+    );
+    return new Set(
+      output
+        .split("\n")
+        .filter((line) => line.startsWith("compressed,dataless|"))
+        .map((line) => line.slice(line.indexOf("|") + 1)),
+    );
+  } catch {
+    return new Set();
+  }
+}
+
+async function copyAvailablePublicDir(sourceDir, targetDir, datalessFiles) {
+  await fs.mkdir(targetDir, { recursive: true });
+  const entries = await fs.readdir(sourceDir, { withFileTypes: true });
+  for (const entry of entries) {
+    const sourcePath = path.join(sourceDir, entry.name);
+    const targetPath = path.join(targetDir, entry.name);
+    if (entry.isDirectory()) {
+      await copyAvailablePublicDir(sourcePath, targetPath, datalessFiles);
+    } else if (entry.isFile() && !datalessFiles.has(sourcePath)) {
+      await fs.copyFile(sourcePath, targetPath);
+    }
+  }
+}
+
 function fail(message) {
   console.error(`Production Pages prepare failed: ${message}`);
   process.exit(1);
@@ -186,6 +219,7 @@ async function main() {
   const viteSupabaseUrl = requireEnv("VITE_SUPABASE_URL");
   const viteSupabasePublishableKey = requireEnv("VITE_SUPABASE_PUBLISHABLE_KEY");
   const turnstile = resolveTurnstileSiteKey();
+  const datalessPublicFiles = readDatalessPublicFiles();
   const siteUrl = normalizeSiteUrl(process.env.PHOENIX_RSS_SITE_URL || DEFAULT_SITE_URL);
   const projectName = process.env.CLOUDFLARE_PAGES_PROJECT || DEFAULT_PROJECT_NAME;
 
@@ -206,6 +240,10 @@ async function main() {
     stdio: "inherit",
   });
 
+  if (process.env.PHOENIX_SKIP_PUBLIC_COPY === "1") {
+    await copyAvailablePublicDir(path.join(APP_ROOT, "public"), DIST_DIR, datalessPublicFiles);
+  }
+
   const signalPages = await writeSignalStaticPages({
     targetRoot: DIST_DIR,
     rssDir: RSS_DIR,
@@ -216,6 +254,9 @@ async function main() {
   await writeRedirects();
   await writeSitemap(siteUrl);
   printNextSteps({ siteUrl, projectName, signalPages, usingTestTurnstile: turnstile.usingTestKey });
+  if (datalessPublicFiles.size) {
+    console.log(`Skipped ${datalessPublicFiles.size} unavailable local-only public placeholders during production staging.`);
+  }
 }
 
 main().catch((error) => {

@@ -19,6 +19,7 @@ dist-ssr
 artifacts/
 tmp/
 test-results/
+public/rss/all.xml
 vite.config.ts.timestamp-*.mjs
 
 # Editor directories and files

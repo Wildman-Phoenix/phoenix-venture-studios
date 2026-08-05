@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-06-03",
+  "updated": "2026-07-26",
   "policy": {
     "officialSourcesWin": true,
     "trendSourcesRequirePrimaryCorroboration": true,
@@ -37,6 +37,22 @@
       "buckets": ["ai_operator_impact", "ai_tools_agents", "ai_implementation"],
       "includeKeywords": ["research", "model", "agent", "safety", "eval", "benchmark", "developer"],
       "limit": 5
+    },
+    {
+      "id": "openai-news",
+      "name": "OpenAI News",
+      "url": "https://openai.com/news/rss.xml",
+      "type": "rss",
+      "enabled": true,
+      "cadence": "daily",
+      "score": 94,
+      "topicLabel": "OpenAI official update",
+      "whySelected": "Official OpenAI news source for product, company, safety, and model announcements.",
+      "feedIds": ["founder-tools", "founder-market", "founder-tools-social"],
+      "buckets": ["ai_operator_impact", "ai_tools_agents", "ai_implementation", "business_automation"],
+      "includeKeywords": ["openai", "codex", "agent", "agents", "model", "business", "enterprise", "developer", "release"],
+      "requiresCorroboration": false,
+      "limit": 6
     },
     {
       "id": "anthropic-news",
@@ -114,6 +130,39 @@
       "limit": 6
     },
     {
+      "id": "xai-news",
+      "name": "xAI News",
+      "url": "https://x.ai/news",
+      "type": "official-page",
+      "enabled": false,
+      "cadence": "daily",
+      "score": 92,
+      "topicLabel": "xAI and Grok update",
+      "whySelected": "Official xAI source for Grok models, agents, voice, video, enterprise, and automation releases.",
+      "feedIds": ["founder-tools", "founder-market", "founder-tools-social"],
+      "buckets": ["ai_operator_impact", "ai_tools_agents", "ai_implementation", "business_automation", "ai_revenue"],
+      "includeKeywords": ["grok", "xai", "model", "agent", "automation", "voice", "video", "enterprise", "api", "release"],
+      "requiresCorroboration": false,
+      "notes": "Official page is retained in the registry but disabled for direct collection because the server returns HTTP 403 to the RSS worker. xAI remains in the official-domain research sweep.",
+      "limit": 6
+    },
+    {
+      "id": "gemini-api-release-notes",
+      "name": "Gemini API Release Notes",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog",
+      "type": "official-page",
+      "enabled": true,
+      "cadence": "daily",
+      "score": 95,
+      "topicLabel": "Gemini API update",
+      "whySelected": "Official Google release notes for Gemini models, APIs, agents, image, video, audio, and developer tooling.",
+      "feedIds": ["founder-tools", "founder-market", "founder-tools-social"],
+      "buckets": ["ai_operator_impact", "ai_tools_agents", "ai_implementation", "business_automation"],
+      "includeKeywords": ["gemini", "model", "api", "agent", "computer use", "image", "video", "audio", "developer", "release", "deprecation"],
+      "requiresCorroboration": false,
+      "limit": 7
+    },
+    {
       "id": "heygen-updates",
       "name": "HeyGen Product Updates",
       "url": "https://heygen.noticeable.news/feed.rss",
@@ -155,6 +204,102 @@
       "limit": 5
     },
     {
+      "id": "synthesia-updates",
+      "name": "Synthesia Product Updates",
+      "url": "https://www.synthesia.io/updates",
+      "type": "official-page",
+      "enabled": true,
+      "cadence": "daily",
+      "score": 89,
+      "topicLabel": "Synthesia product update",
+      "whySelected": "Official Synthesia product-update source for AI avatars, dubbing, interactive video, training, and enterprise workflows.",
+      "feedIds": ["founder-tools", "founder-market", "founder-tools-social"],
+      "buckets": ["ai_tools_agents", "ai_implementation", "business_automation", "ai_revenue"],
+      "includeKeywords": ["avatar", "video", "dubbing", "translation", "interactive", "roleplay", "training", "enterprise", "agent"],
+      "requiresCorroboration": false,
+      "limit": 5
+    },
+    {
+      "id": "tavus-updates",
+      "name": "Tavus Product Updates",
+      "url": "https://www.tavus.io/updates",
+      "type": "official-page",
+      "enabled": true,
+      "cadence": "daily",
+      "score": 87,
+      "topicLabel": "Tavus product update",
+      "whySelected": "Official Tavus product source for conversational video, AI personas, replicas, and embedded agent workflows.",
+      "feedIds": ["founder-tools", "founder-market"],
+      "buckets": ["ai_tools_agents", "ai_implementation", "business_automation", "ai_revenue"],
+      "includeKeywords": ["persona", "replica", "conversation", "video", "agent", "developer", "portal", "knowledge", "guardrail"],
+      "requiresCorroboration": false,
+      "limit": 5
+    },
+    {
+      "id": "runway-changelog",
+      "name": "Runway Product Changelog",
+      "url": "https://runwayml.com/changelog",
+      "type": "official-page",
+      "enabled": true,
+      "cadence": "daily",
+      "score": 88,
+      "topicLabel": "Runway product update",
+      "whySelected": "Official Runway changelog for generative video, creative agents, editing, and production workflow releases.",
+      "feedIds": ["founder-tools", "founder-market", "founder-tools-social"],
+      "buckets": ["ai_tools_agents", "ai_implementation", "business_automation", "ai_revenue"],
+      "includeKeywords": ["video", "agent", "model", "editing", "creative", "production", "api", "workflow"],
+      "requiresCorroboration": false,
+      "limit": 5
+    },
+    {
+      "id": "luma-news",
+      "name": "Luma News",
+      "url": "https://lumalabs.ai/news",
+      "type": "official-page",
+      "enabled": true,
+      "cadence": "daily",
+      "score": 86,
+      "topicLabel": "Luma product update",
+      "whySelected": "Official Luma source for Dream Machine, generative video, 3D, creative workflow, and API releases.",
+      "feedIds": ["founder-tools", "founder-market"],
+      "buckets": ["ai_tools_agents", "ai_implementation", "business_automation", "ai_revenue"],
+      "includeKeywords": ["luma", "dream machine", "video", "model", "api", "creative", "workflow", "ray"],
+      "requiresCorroboration": false,
+      "limit": 5
+    },
+    {
+      "id": "captions-blog",
+      "name": "Captions Product Blog",
+      "url": "https://captions.ai/blog",
+      "type": "official-page",
+      "enabled": true,
+      "cadence": "daily",
+      "score": 80,
+      "topicLabel": "Captions product signal",
+      "whySelected": "Official Captions source for AI video editing, avatars, localization, clipping, and small-team production workflows.",
+      "feedIds": ["founder-tools"],
+      "buckets": ["ai_tools_agents", "ai_implementation", "business_automation", "ai_revenue"],
+      "includeKeywords": ["ai video", "avatar", "localization", "editing", "clip", "business", "team", "voice"],
+      "requiresCorroboration": false,
+      "limit": 4
+    },
+    {
+      "id": "d-id-blog",
+      "name": "D-ID Blog",
+      "url": "https://www.d-id.com/blog/",
+      "type": "official-page",
+      "enabled": true,
+      "cadence": "daily",
+      "score": 81,
+      "topicLabel": "D-ID avatar signal",
+      "whySelected": "Official D-ID source for interactive avatars, visual agents, translation, voice, and business communication workflows.",
+      "feedIds": ["founder-tools", "founder-market"],
+      "buckets": ["ai_tools_agents", "ai_implementation", "business_automation", "ai_revenue"],
+      "includeKeywords": ["avatar", "visual agent", "interactive", "video", "voice", "translation", "business", "training"],
+      "requiresCorroboration": false,
+      "limit": 4
+    },
+    {
       "id": "matt-wolfe-youtube",
       "name": "Matt Wolfe YouTube",
       "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UChpleBmo18P08aKCIgti38g",
@@ -167,7 +312,7 @@
       "feedIds": ["founder-tools"],
       "buckets": ["ai_tools_agents", "ai_implementation", "business_automation", "ai_revenue"],
       "requiresCorroboration": true,
-      "corroborationDomains": ["openai.com", "anthropic.com", "claude.com", "github.blog", "blog.cloudflare.com", "heygen.com", "deepmind.google", "vercel.com", "huggingface.co"]
+      "corroborationDomains": ["openai.com", "anthropic.com", "claude.com", "x.ai", "ai.google.dev", "github.blog", "blog.cloudflare.com", "heygen.com", "synthesia.io", "tavus.io", "runwayml.com", "lumalabs.ai", "captions.ai", "d-id.com", "deepmind.google", "vercel.com", "huggingface.co"]
     },
     {
       "id": "futuretools-news",
@@ -183,7 +328,7 @@
       "buckets": ["ai_tools_agents", "ai_implementation", "business_automation"],
       "includeKeywords": ["ai", "agent", "tool", "openai", "claude", "anthropic", "heygen", "coding", "video"],
       "requiresCorroboration": true,
-      "corroborationDomains": ["openai.com", "anthropic.com", "claude.com", "github.blog", "blog.cloudflare.com", "heygen.com", "deepmind.google", "vercel.com", "huggingface.co"],
+      "corroborationDomains": ["openai.com", "anthropic.com", "claude.com", "x.ai", "ai.google.dev", "github.blog", "blog.cloudflare.com", "heygen.com", "synthesia.io", "tavus.io", "runwayml.com", "lumalabs.ai", "captions.ai", "d-id.com", "deepmind.google", "vercel.com", "huggingface.co"],
       "limit": 5
     },
     {
@@ -299,8 +444,8 @@
       "whySelected": "Perplexity-backed cited sweep across official AI/product domains; skipped when PERPLEXITY_API_KEY is not configured.",
       "feedIds": ["founder-tools", "founder-market"],
       "buckets": ["ai_tools_agents", "ai_implementation", "ai_operator_impact", "business_automation"],
-      "domains": ["openai.com", "anthropic.com", "support.claude.com", "code.claude.com", "heygen.com", "github.blog", "blog.cloudflare.com", "deepmind.google", "vercel.com", "huggingface.co"],
-      "topics": ["Codex", "Claude Code", "agents", "AI video", "developer workflows", "AI SDKs", "business automation"],
+      "domains": ["openai.com", "anthropic.com", "support.claude.com", "code.claude.com", "x.ai", "ai.google.dev", "heygen.com", "synthesia.io", "tavus.io", "runwayml.com", "lumalabs.ai", "captions.ai", "d-id.com", "github.blog", "blog.cloudflare.com", "deepmind.google", "vercel.com", "huggingface.co"],
+      "topics": ["Codex", "Claude Code", "Grok", "Gemini", "agents", "AI video", "AI avatars", "developer workflows", "AI SDKs", "business automation"],
       "recency": "week",
       "limit": 5
     },
@@ -316,8 +461,8 @@
       "whySelected": "Perplexity-backed Friday sweep to corroborate Matt Wolfe/FutureTools trend leads against official sources.",
       "feedIds": ["founder-tools"],
       "buckets": ["ai_tools_agents", "ai_implementation", "business_automation", "ai_revenue"],
-      "domains": ["openai.com", "anthropic.com", "support.claude.com", "code.claude.com", "heygen.com", "github.blog", "blog.cloudflare.com", "deepmind.google", "vercel.com", "huggingface.co"],
-      "topics": ["Matt Wolfe AI news", "FutureTools AI news", "OpenAI Codex updates", "Anthropic Claude updates", "HeyGen product updates"],
+      "domains": ["openai.com", "anthropic.com", "support.claude.com", "code.claude.com", "x.ai", "ai.google.dev", "heygen.com", "synthesia.io", "tavus.io", "runwayml.com", "lumalabs.ai", "captions.ai", "d-id.com", "github.blog", "blog.cloudflare.com", "deepmind.google", "vercel.com", "huggingface.co"],
+      "topics": ["Matt Wolfe AI news", "FutureTools AI news", "OpenAI Codex updates", "Anthropic Claude updates", "Grok updates", "Gemini updates", "AI video and avatar product updates"],
       "recency": "week",
       "limit": 5
     }

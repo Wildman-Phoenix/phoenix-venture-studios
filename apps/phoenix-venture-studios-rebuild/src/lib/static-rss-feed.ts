@@ -220,6 +220,77 @@ function getArticleKey(article: StaticFeedArticle) {
   return article.slug || article.internalPath || article.url || article.headline;
 }
 
+function getArticleIdentityKeys(article: StaticFeedArticle) {
+  return [article.id, article.slug, article.internalPath, article.internalUrl, article.url, article.headline]
+    .map((value) => normalizeText(value).toLowerCase())
+    .filter(Boolean);
+}
+
+function getTopicTokens(article: StaticFeedArticle) {
+  return new Set(
+    `${article.editorialCategory || ""} ${article.feedRole || ""} ${article.headline}`
+      .toLowerCase()
+      .split(/[^a-z0-9]+/)
+      .filter((token) => token === "ai" || token.length > 2),
+  );
+}
+
+function getPublishedTime(article: StaticFeedArticle) {
+  const publishedTime = article.publishedAt ? Date.parse(article.publishedAt) : Number.NaN;
+  return Number.isNaN(publishedTime) ? 0 : publishedTime;
+}
+
+/**
+ * Returns a stable set of related signals from the already-loaded static archive.
+ * Topic/category affinity leads, feed affinity follows, and recency breaks ties.
+ */
+export function selectRelatedStaticSignals(
+  current: StaticFeedArticle,
+  articles: readonly StaticFeedArticle[],
+  count = 3,
+) {
+  const currentKeys = new Set(getArticleIdentityKeys(current));
+  const currentTopics = getTopicTokens(current);
+  const seen = new Set(currentKeys);
+
+  return articles
+    .filter((candidate) => {
+      const keys = getArticleIdentityKeys(candidate);
+      if (keys.some((key) => seen.has(key))) return false;
+      keys.forEach((key) => seen.add(key));
+      return true;
+    })
+    .map((candidate) => {
+      const candidateTopics = getTopicTokens(candidate);
+      let topicOverlap = 0;
+      currentTopics.forEach((topic) => {
+        if (candidateTopics.has(topic)) topicOverlap += 1;
+      });
+
+      const sameCategory = Boolean(
+        current.editorialCategory &&
+        normalizeText(current.editorialCategory).toLowerCase() ===
+          normalizeText(candidate.editorialCategory).toLowerCase(),
+      );
+      const sameFeed = Boolean(
+        (current.feedId && current.feedId === candidate.feedId) ||
+        (current.feedRole && current.feedRole === candidate.feedRole),
+      );
+
+      return {
+        article: candidate,
+        score: topicOverlap * 15 + (sameCategory ? 50 : 0) + (sameFeed ? 25 : 0),
+      };
+    })
+    .sort((a, b) =>
+      b.score - a.score ||
+      getPublishedTime(b.article) - getPublishedTime(a.article) ||
+      getArticleKey(a.article).localeCompare(getArticleKey(b.article)),
+    )
+    .slice(0, Math.max(0, count))
+    .map(({ article }) => article);
+}
+
 function compareArticlesByPublishedAt(a: StaticFeedArticle, b: StaticFeedArticle) {
   const aTime = a.publishedAt ? Date.parse(a.publishedAt) : Number.NaN;
   const bTime = b.publishedAt ? Date.parse(b.publishedAt) : Number.NaN;

@@ -1,0 +1,447 @@
+{
+  "feedId": "founder-market-social",
+  "title": "Phoenix Venture Studios - Founder Market - Social Queue",
+  "description": "One Phoenix Founder Signal item at a time for RSS-to-social publishing.",
+  "generatedAt": "2026-07-25T12:42:11.656Z",
+  "dryRun": false,
+  "siteUrl": "https://phoenixventurestudios.com",
+  "outputFiles": {
+    "xml": "social.xml",
+    "json": "social.json",
+    "items": "social-items.json",
+    "reportMd": "social-run-report.md",
+    "reportJson": "social-run-report.json"
+  },
+  "sources": {
+    "enabled": 5,
+    "fetched": 5,
+    "byType": {
+      "manual": 1,
+      "rss": 4
+    },
+    "researchEnabled": 0,
+    "warnings": [],
+    "errors": []
+  },
+  "items": {
+    "parsed": 90,
+    "crossFeedFiltered": 0,
+    "keywordFiltered": 0,
+    "recentFiltered": 0,
+    "feedBoundaryFiltered": 0,
+    "scored": 90,
+    "candidatePool": 6,
+    "selected": 1,
+    "held": 0,
+    "excluded": 1
+  },
+  "bucketCounts": {
+    "funding_venture": 1
+  },
+  "sourceCounts": {
+    "techcrunch-main": 1
+  },
+  "queue": {
+    "isSocialQueue": true,
+    "candidatePoolSize": 6,
+    "eligibleCandidates": 6,
+    "eligibleSelected": true,
+    "heldForManualReview": 0,
+    "skippedForFallbackArt": 0,
+    "queueRotationReason": "selected-top-eligible-candidate",
+    "historyUpdated": true,
+    "sampleReady": true,
+    "selectedReasons": [],
+    "queuePublishedAt": "2026-07-25T12:42:11.656Z",
+    "selectedOriginalUrl": "https://techcrunch.com/2026/07/24/anduril-reportedly-in-talks-to-raise-funding-at-100b-valuation-more-than-3x-last-years-mark/",
+    "selectedCanonicalKey": "https://techcrunch.com/2026/07/24/anduril-reportedly-in-talks-to-raise-funding-at-100b-valuation-more-than-3x-last-years-mark",
+    "excludedByRecent": 0,
+    "excludedByCrossLaneDedupe": 0,
+    "laneAssignmentReason": "founder-market-lane",
+    "candidates": [
+      {
+        "slug": "anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256",
+        "title": "Anduril reportedly in talks to raise funding at $100B valuation, more than 3x last year's mark",
+        "score": 97,
+        "imageStrategy": "source-allowlisted",
+        "imageRightsStatus": "allowlisted",
+        "imageApprovalStatus": "approved",
+        "manualReviewNeeded": false,
+        "eligible": true,
+        "sampleReady": true,
+        "reasons": []
+      },
+      {
+        "slug": "ai-communism-rogue-models-kimi-k3-spooked-wall-street-b9480a06",
+        "title": "'AI communism', rogue models, and the why Kimi K3 spooked Wall Street",
+        "score": 81,
+        "imageStrategy": "held-for-codex-image",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageApprovalStatus": "approved",
+        "manualReviewNeeded": false,
+        "eligible": true,
+        "sampleReady": true,
+        "reasons": [
+          "creative-follow-up-needed"
+        ]
+      },
+      {
+        "slug": "aegisai-founded-by-former-google-security-execs-lands-36m-stop-ai-driven-spear-b23e90f9",
+        "title": "AegisAI, founded by former Google security execs, lands $36M to stop AI-driven spear phishing",
+        "score": 79,
+        "imageStrategy": "held-for-codex-image",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageApprovalStatus": "approved",
+        "manualReviewNeeded": false,
+        "eligible": true,
+        "sampleReady": true,
+        "reasons": [
+          "creative-follow-up-needed"
+        ]
+      },
+      {
+        "slug": "ai-chip-startup-etched-defies-skeptics-hits-10-3b-valuation-big-name-investors-8d1cdf63",
+        "title": "AI chip startup Etched defies skeptics, hits $10.3B valuation from big-name investors",
+        "score": 79,
+        "imageStrategy": "held-for-codex-image",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageApprovalStatus": "approved",
+        "manualReviewNeeded": false,
+        "eligible": true,
+        "sampleReady": true,
+        "reasons": [
+          "creative-follow-up-needed"
+        ]
+      },
+      {
+        "slug": "zoom-s-ceo-thinks-4-day-workweek-is-inevitable-here-s-ai-could-make-it-happen-580f64d2",
+        "title": "Zoom's CEO Thinks the 4-Day Workweek Is Inevitable. Here's How AI Could Make It Happen",
+        "score": 74,
+        "imageStrategy": "source-allowlisted",
+        "imageRightsStatus": "allowlisted",
+        "imageApprovalStatus": "approved",
+        "manualReviewNeeded": false,
+        "eligible": true,
+        "sampleReady": true,
+        "reasons": []
+      },
+      {
+        "slug": "mark-cuban-says-ai-will-start-training-employees-same-way-pilots-learn-here-s-cfa9cbbb",
+        "title": "Mark Cuban Says AI Will Start Training Employees the Same Way Pilots Learn. Here's How",
+        "score": 68,
+        "imageStrategy": "source-allowlisted",
+        "imageRightsStatus": "allowlisted",
+        "imageApprovalStatus": "approved",
+        "manualReviewNeeded": false,
+        "eligible": true,
+        "sampleReady": true,
+        "reasons": []
+      }
+    ]
+  },
+  "scoring": {
+    "preferredKeywords": [
+      "new tool",
+      "new tools",
+      "new venture",
+      "venture studio",
+      "startup studio",
+      "funding",
+      "raised",
+      "raise",
+      "capital",
+      "credit",
+      "loan",
+      "agentic",
+      "gentic",
+      "vibe coding",
+      "coding agent",
+      "app builder",
+      "build apps",
+      "building apps",
+      "app development",
+      "developer tools",
+      "operators",
+      "workflow"
+    ],
+    "penaltyKeywords": [
+      "small-business ideas",
+      "burning out",
+      "burn out",
+      "nervous system",
+      "wellness",
+      "meditation",
+      "single gen-z",
+      "buying homes",
+      "homebuyer",
+      "backyard drama",
+      "bird feeder"
+    ]
+  },
+  "automation": {
+    "mode": "autonomous-editorial",
+    "scheduleSlots": [
+      "early-morning",
+      "mid-morning",
+      "afternoon",
+      "late-night",
+      "friday-ai-trend-sweep"
+    ],
+    "recentItemsConsidered": 259,
+    "modelStrategy": {
+      "triage": "lower-cost model or deterministic scoring",
+      "finalEditorial": "strong model recommended for publish/skip decisions",
+      "validation": "deterministic gates plus lightweight audit agents"
+    }
+  },
+  "images": {
+    "mode": "source-or-codex-queue",
+    "attempted": 6,
+    "approved": 1,
+    "held": 0,
+    "generated": 1,
+    "sourceAllowlisted": 1,
+    "codexApproved": 0,
+    "strategyCounts": {
+      "source-allowlisted": 1
+    },
+    "familyCounts": {
+      "capital_readiness": 1
+    },
+    "variantCounts": {
+      "operator-map": 1
+    },
+    "toneCounts": {
+      "ember": 1
+    },
+    "compositionCounts": {
+      "left-anchor": 1
+    },
+    "variety": {
+      "familyCounts": {
+        "capital_readiness": 1
+      },
+      "variantCounts": {
+        "operator-map": 1
+      },
+      "toneCounts": {
+        "ember": 1
+      },
+      "compositionCounts": {
+        "left-anchor": 1
+      },
+      "maxConsecutiveFamily": 1,
+      "dominantFamily": "capital_readiness",
+      "dominantFamilyCount": 1,
+      "warnings": [],
+      "errors": []
+    },
+    "sourceTypeCounts": {
+      "source-image": 1
+    },
+    "rightsStatusCounts": {
+      "allowlisted": 1
+    },
+    "manualReviewNeeded": 0,
+    "creativeFollowUpSelected": 0,
+    "warnings": [],
+    "errors": []
+  },
+  "copy": {
+    "repeated": [],
+    "warnings": []
+  },
+  "editorial": {
+    "warnings": [],
+    "errors": [],
+    "depthAudit": {
+      "feedId": "founder-market-social",
+      "leadItemLimit": 5,
+      "checkedLeadItems": 0,
+      "thinLeadItems": 0,
+      "leadItemsWithDepth": 0,
+      "warnings": []
+    }
+  },
+  "aliases": {
+    "configured": [],
+    "written": []
+  },
+  "heldItems": [],
+  "selectedItems": [
+    {
+      "title": "Anduril reportedly in talks to raise funding at $100B valuation, more than 3x last year's mark",
+      "url": "https://phoenixventurestudios.com/founder-signal/signals/anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256/",
+      "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256/",
+      "originalUrl": "https://techcrunch.com/2026/07/24/anduril-reportedly-in-talks-to-raise-funding-at-100b-valuation-more-than-3x-last-years-mark/",
+      "sourceName": "TechCrunch",
+      "sourceSurface": "rss",
+      "rawTitle": "Anduril reportedly in talks to raise funding at $100B valuation, more than 3x last year’s mark",
+      "reviewTitle": "TechCrunch | Funding & Venture | Anduril reportedly in talks to raise funding at $100B valuation, more than 3x last year’s mark",
+      "topicLabel": "Funding & Venture",
+      "whySelected": "RSS source matched the Phoenix registry and entered editorial scoring.",
+      "researchCitations": [],
+      "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256.jpg",
+      "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256.jpg",
+      "socialImagePath": "/images/signals/generated/anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256.jpg",
+      "sourceImageUrl": "",
+      "imageStrategy": "source-allowlisted",
+      "imageApprovalStatus": "approved",
+      "imageHoldReason": "",
+      "imageFamily": "capital_readiness",
+      "imageSourceType": "source-image",
+      "imageCredit": "TechCrunch",
+      "imageRightsStatus": "allowlisted",
+      "imageTemplate": "opportunity_window",
+      "imageVariant": "operator-map",
+      "imageTone": "ember",
+      "imageComposition": "left-anchor",
+      "sceneLane": "frontier_funding",
+      "sceneMotif": "valuation-arc",
+      "imageFingerprint": "268e98e7a7308974",
+      "imageVisualHash": "303cb23098b17178",
+      "imageAudit": {
+        "width": 1200,
+        "height": 800,
+        "luminanceMean": 150,
+        "luminanceStdDev": 48.44,
+        "colorfulness": 30.5,
+        "sharpness": 11.1,
+        "bestComposition": {
+          "composition": "right-anchor",
+          "meanLuma": 131.89214190445398,
+          "lumaStdDev": 37.677244366266905,
+          "textureStdDev": 10.529988977678,
+          "readability": 0.5844750764257867
+        },
+        "compositionScores": {
+          "left-anchor": {
+            "meanLuma": 139.2,
+            "lumaStdDev": 43.15,
+            "textureStdDev": 9.03,
+            "readability": 0.513
+          },
+          "split-panel": {
+            "meanLuma": 137.91,
+            "lumaStdDev": 42.58,
+            "textureStdDev": 8.77,
+            "readability": 0.523
+          },
+          "right-anchor": {
+            "meanLuma": 131.89,
+            "lumaStdDev": 37.68,
+            "textureStdDev": 10.53,
+            "readability": 0.584
+          },
+          "lower-band": {
+            "meanLuma": 135.87,
+            "lumaStdDev": 49.35,
+            "textureStdDev": 11.59,
+            "readability": 0.489
+          }
+        },
+        "learningSignal": {
+          "lane": "frontier_funding",
+          "reviewMode": "source-image",
+          "approvedExamples": 22,
+          "rejectedExamples": 0,
+          "distanceToApproved": 1.064,
+          "distanceToRejected": null,
+          "shouldReject": false
+        },
+        "vision": {
+          "maxFaceAreaRatio": 0,
+          "textCoverage": 0,
+          "handCount": 0,
+          "completeHandCount": 0,
+          "lowConfidenceHandCount": 0,
+          "textObservationCount": 0,
+          "faceCount": 0,
+          "landmarkedFaceCount": 0
+        },
+        "editorialNotes": [],
+        "recommendedFixes": [],
+        "editorialModelReview": {
+          "verdict": "approve",
+          "storyFit": "strong",
+          "headlinePlacementRisk": "low",
+          "confidence": "high",
+          "notes": [
+            "Title is strong and relevant",
+            "Image is high quality and clear",
+            "Text is readable and well-placed"
+          ],
+          "fixes": [
+            ""
+          ],
+          "normalizedVerdict": "approve"
+        }
+      },
+      "imageCorrectionTrail": [],
+      "imageBrief": {
+        "storyAngle": "Capital readiness",
+        "storySubject": "the valuation race around frontier AI",
+        "emotionalHook": "Capital is flowing toward clearer proof, stronger timing, and a more believable growth story.",
+        "visualMetaphor": "A high-stakes valuation room with growth curves, adoption dashboards, and infrastructure pressure visible at once.",
+        "audiencePainOpportunity": "Founders need to understand what kind of traction investors are actually rewarding before they copy the headline.",
+        "imagePrompt": "Create one cinematic editorial cover image for this specific story: \"Anduril reportedly in talks to raise funding at $100B valuation, more than 3x last year’s mark\". Core context to visualize: the valuation race around frontier AI. Capital is flowing toward clearer proof, stronger timing, and a more believable growth story. Founders need to understand what kind of traction investors are actually rewarding before they copy the headline. A high-stakes valuation room with growth curves, adoption dashboards, and infrastructure pressure visible at once. Show revenue acceleration, investor pressure, model adoption signals, and the scale race without falling back to a generic boardroom. Use a cinematic editorial poster grammar: one dominant metaphor, strong light and shadow, and deliberate negative space for a bold headline. Pull out the article's key context instead of showing the article literally: the lock, threshold, risk, leverage point, workflow layer, or trust boundary. Use concrete anchors sparingly: one person silhouette, one device stack, one dashboard, one room, or one symbolic architecture. Do not build a cluttered collage. Let supporting details prove the metaphor: app cards, charts, files, messages, capital flows, handoff lines, or compute layers should feel intentional and readable at thumbnail size. Avoid generic office scenes, showroom product staging, fake logos, celebrity likenesses, overstuffed UI panels, and decorative AI clouds. For capital stories, turn the financial pressure into architecture: gates, ledgers, valuation rooms, runway lines, proof stacks, and money-flow shadows. Use the source article only as private visual reference; create Phoenix-owned artwork for public use. Make it feel like a strong magazine or strategy-report cover, not a product render. Avoid portraits or people unless the story clearly needs a human subject. Leave clean negative space for a Phoenix Founder Signal headline overlay.",
+        "articleImageRequired": false,
+        "expectedArticleImagePath": "/images/signals/source-art/anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256.jpg",
+        "imageFamily": "capital_readiness",
+        "preferredImageFamily": "capital_readiness",
+        "sourceImageEligibility": "allowed",
+        "sourceImagePolicy": "allowed",
+        "sourceImageMatchedKey": "",
+        "sourceImageNote": "",
+        "manualReviewNeeded": false,
+        "overlayTone": "capital",
+        "template": "opportunity_window",
+        "sceneLane": "frontier_funding",
+        "sceneMotif": "valuation-arc",
+        "imageVariant": "operator-map",
+        "imageTone": "ember",
+        "imageComposition": "left-anchor",
+        "imageFingerprint": "268e98e7a7308974"
+      },
+      "expectedArticleImagePath": "/images/signals/source-art/anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256.jpg",
+      "feedId": "founder-market-social",
+      "feedRole": "founder-market",
+      "simpleSummary": "Money is not chasing everything. It is chasing a narrower kind of proof than most founders want to admit.",
+      "engagementPrompt": "What kind of proof do you think the market will reward next?",
+      "trendContext": "The next funding cycle will show what kind of proof still commands attention.",
+      "relatedRecentSignals": [],
+      "readingLevel": {
+        "target": "grade-5-plain-founder",
+        "heuristic": "average sentence words",
+        "averageSentenceWords": 13.8
+      },
+      "editorialMode": "phoenix-original-brief",
+      "imageWarnings": [],
+      "imageDecision": "allowed-source-image-used",
+      "imageDiagnosticReason": "OG image found and allowed source image passed audit",
+      "imageDiagnostic": {
+        "feedImageMissing": true,
+        "articleImageChecked": true,
+        "articleImageFound": true,
+        "articleImageSource": "og:image",
+        "articleImageFetchError": "",
+        "sourceImagePolicy": "",
+        "imageDecision": "RSS image missing; OG image found"
+      },
+      "qualityStatus": "ready",
+      "qualityNeedsCreativeFollowUp": false,
+      "rssStory": "Anduril is said to be raising a new round of funding that may push its valuation up to about $100 billion, per Reuters.\n\nMoney is not chasing everything. It is chasing a narrower kind of proof than most founders want to admit.\n\nIgnore the round size for a minute and ask what evidence made the market move this fast.\n\nThe next funding cycle will show what kind of proof still commands attention.\n\nRead the full Phoenix signal on phoenixventurestudios.com.\n\n#StartupFunding",
+      "slug": "anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256",
+      "bucket": "funding_venture",
+      "bucketLabel": "Funding & Venture",
+      "score": 97,
+      "publishedAt": "2026-07-25T12:42:11.656Z"
+    }
+  ],
+  "validation": {
+    "xmlWellFormed": true,
+    "errors": []
+  },
+  "feedValid": true,
+  "preservedPreviousFeed": false
+}

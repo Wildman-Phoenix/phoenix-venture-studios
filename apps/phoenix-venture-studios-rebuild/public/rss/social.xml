@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Phoenix Venture Studios - Founder Market - Social Queue</title>
+    <description>One Phoenix Founder Signal item at a time for RSS-to-social publishing.</description>
+    <link>https://phoenixventurestudios.com</link>
+    <atom:link href="https://phoenixventurestudios.com/rss/social.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Jul 2026 12:42:11 GMT</lastBuildDate>
+    <language>en-us</language>
+    <generator>Phoenix Venture Studios Static RSS Generator</generator>
+    <item>
+      <title><![CDATA[Anduril reportedly in talks to raise funding at $100B valuation, more than 3x last year's mark]]></title>
+      <description><![CDATA[Anduril is said to be raising a new round of funding that may push its valuation up to about $100 billion, per Reuters.
+
+Money is not chasing everything. It is chasing a narrower kind of proof than most founders want to admit.
+
+Ignore the round size for a minute and ask what evidence made the market move this fast.
+
+The next funding cycle will show what kind of proof still commands attention.
+
+Read the full Phoenix signal on phoenixventurestudios.com.
+
+#StartupFunding]]></description>
+      <link>https://phoenixventurestudios.com/founder-signal/signals/anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256/</link>
+      <guid isPermaLink="true">https://phoenixventurestudios.com/founder-signal/signals/anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256/</guid>
+      <pubDate>Sat, 25 Jul 2026 12:42:11 GMT</pubDate>
+      <source url="https://techcrunch.com/2026/07/24/anduril-reportedly-in-talks-to-raise-funding-at-100b-valuation-more-than-3x-last-years-mark/"><![CDATA[TechCrunch]]></source>
+      <category><![CDATA[Funding & Venture]]></category>
+      <enclosure url="https://phoenixventurestudios.com/images/signals/generated/anduril-reportedly-talks-raise-funding-at-100b-valuation-more-than-3x-last-yea-f64cf256.jpg" type="image/jpeg" length="0" />
+    </item>
+  </channel>
+</rss>
