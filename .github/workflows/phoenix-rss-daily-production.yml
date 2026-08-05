@@ -1,0 +1,162 @@
+name: Phoenix RSS Daily Production
+
+on:
+  schedule:
+    # One run per day at 11:30 UTC. The three expressions rotate the social lane.
+    - cron: "30 11 * * 1,4"
+    - cron: "30 11 * * 2,5"
+    - cron: "30 11 * * 0,3,6"
+  workflow_dispatch:
+    inputs:
+      run_slot:
+        description: "RSS lane to run"
+        required: true
+        default: "manual"
+        type: choice
+        options:
+          - manual
+          - early-morning
+          - mid-morning
+          - afternoon
+          - late-night
+
+permissions:
+  contents: read
+
+concurrency:
+  group: phoenix-rss-production
+  cancel-in-progress: false
+
+jobs:
+  refresh-and-deploy:
+    name: Validate, refresh, deploy, and verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: apps/phoenix-venture-studios-rebuild
+    env:
+      PHOENIX_RSS_SITE_URL: https://phoenixventurestudios.com
+      SITE_URL: https://phoenixventurestudios.com
+      VITE_BASE_PATH: /
+      VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+      VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
+      VITE_TURNSTILE_SITE_KEY: ${{ secrets.VITE_TURNSTILE_SITE_KEY }}
+      PHOENIX_RSS_RUN_SLOT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.run_slot || github.event.schedule == '30 11 * * 1,4' && 'early-morning' || github.event.schedule == '30 11 * * 2,5' && 'mid-morning' || 'afternoon' }}
+
+    steps:
+      - name: Check out production source
+        uses: actions/checkout@v4
+
+      - name: Use pinned Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.23.1"
+          cache: npm
+          cache-dependency-path: apps/phoenix-venture-studios-rebuild/package-lock.json
+
+      - name: Confirm required deployment secrets
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          for phoenix_required in VITE_SUPABASE_URL VITE_SUPABASE_PUBLISHABLE_KEY VITE_TURNSTILE_SITE_KEY CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID; do
+            if [ -z "${!phoenix_required:-}" ]; then
+              echo "Required GitHub Actions secret is missing: ${phoenix_required}"
+              exit 1
+            fi
+          done
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Run RSS regression suite
+        run: npm run rss:test
+
+      - name: Hydrate the last valid live bundle
+        run: npm run rss:hydrate-live
+
+      - name: Generate the daily candidate
+        id: rss_run
+        run: npm run rss:autonomous
+
+      - name: Validate the candidate
+        run: npm run rss:validate
+
+      - name: Prepare the production artifact
+        if: steps.rss_run.outputs.output_changed == 'true'
+        run: npm run prepare:production
+
+      - name: Prepare the preview-shaped artifact
+        if: steps.rss_run.outputs.output_changed == 'true'
+        run: npm run rss:publish-preview
+
+      - name: Validate deploy artifact parity
+        if: steps.rss_run.outputs.output_changed == 'true'
+        run: node scripts/rss/validate-rss-output.mjs --deploy-artifacts
+
+      - name: Deploy Phoenix Venture Studios only
+        if: steps.rss_run.outputs.output_changed == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@4.88.0 pages deploy dist --project-name phoenixventurestudios-com --branch main --commit-hash "${{ github.sha }}" --commit-dirty=true
+
+      - name: Verify all six live feeds
+        if: steps.rss_run.outputs.output_changed == 'true'
+        run: |
+          set -euo pipefail
+          phoenix_feeds=(feed.xml tools.xml ai-attention.xml social.xml tools-social.xml ai-attention-social.xml)
+          phoenix_targets=(https://phoenixventurestudios-com.pages.dev https://phoenixventurestudios.com)
+
+          for phoenix_attempt in 1 2 3 4 5 6; do
+            phoenix_all_match=true
+            phoenix_stamp="$(date +%s)-${phoenix_attempt}"
+
+            for phoenix_target in "${phoenix_targets[@]}"; do
+              for phoenix_feed in "${phoenix_feeds[@]}"; do
+                phoenix_expected="$(sha256sum "dist/rss/${phoenix_feed}" | awk '{print $1}')"
+                phoenix_live="$(curl -fsSL -H 'Cache-Control: no-cache' "${phoenix_target}/rss/${phoenix_feed}?ts=${phoenix_stamp}" | sha256sum | awk '{print $1}')"
+                if [ "${phoenix_expected}" != "${phoenix_live}" ]; then
+                  phoenix_all_match=false
+                  echo "Parity pending: ${phoenix_target}/rss/${phoenix_feed}"
+                fi
+              done
+            done
+
+            if [ "${phoenix_all_match}" = true ]; then
+              echo "All six feeds match on the Pages alias and custom domain."
+              exit 0
+            fi
+
+            sleep 10
+          done
+
+          echo "Live feed parity did not converge after six checks."
+          exit 1
+
+      - name: Preserve production evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phoenix-rss-production-${{ github.run_id }}
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            apps/phoenix-venture-studios-rebuild/public/rss
+            apps/phoenix-venture-studios-rebuild/public/images/signals/generated
+            apps/phoenix-venture-studios-rebuild/dist/rss
+
+      - name: Summarize the run
+        if: always()
+        run: |
+          {
+            echo "## Phoenix RSS daily production"
+            echo ""
+            echo "- Run slot: ${PHOENIX_RSS_RUN_SLOT}"
+            echo "- Output changed: ${{ steps.rss_run.outputs.output_changed || 'not-generated' }}"
+            echo "- BOSS used: no"
+            echo "- Local cron used: no"
+            echo "- Codex task created: no"
+          } >> "$GITHUB_STEP_SUMMARY"
