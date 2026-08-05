@@ -30,6 +30,7 @@
     "rss:test:supervisor": "node scripts/rss/test-supervised-static-rss.mjs",
     "rss:test:schedule": "node scripts/rss/test-autonomous-schedule.mjs",
     "rss:autonomous": "node scripts/rss/autonomous-rss-runner.mjs",
+    "rss:hydrate-live": "node scripts/rss/hydrate-live-rss-baseline.mjs",
     "rss:validate": "node scripts/rss/validate-rss-output.mjs",
     "rss:combine": "node scripts/rss/build-combined-founder-signal.mjs",
     "rss:adopt-current": "node scripts/rss/adopt-current-rss-bundle.mjs",
