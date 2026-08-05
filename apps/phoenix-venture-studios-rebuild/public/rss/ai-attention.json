@@ -1,552 +1,363 @@
 {
   "version": "https://jsonfeed.org/version/1.1",
-  "title": "Phoenix Venture Studios - Founder Tools",
+  "title": "Phoenix Venture Studios - AI Attention",
   "home_page_url": "https://phoenixventurestudios.com",
-  "feed_url": "https://phoenixventurestudios.com/rss/tools.json",
-  "description": "Useful AI tools, agent development, automation, coding, and time-saving workflow signals for founders.",
-  "generated_at": "2026-05-29T15:20:13.011Z",
+  "feed_url": "https://phoenixventurestudios.com/rss/ai-attention.json",
+  "description": "AI consulting, implementation, agent operations, and practical AI business signals for founders.",
+  "generated_at": "2026-08-05T20:27:42.613Z",
   "items": [
     {
-      "id": "https://phoenixventurestudios.com/founder-signal/signals/github-slashes-agent-workflow-token-spend-up-62-daily-audits-mcp-pruning-16982ed8/",
-      "url": "https://phoenixventurestudios.com/founder-signal/signals/github-slashes-agent-workflow-token-spend-up-62-daily-audits-mcp-pruning-16982ed8/",
-      "external_url": "https://www.infoq.com/news/2026/05/github-agentic-token-savings/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
-      "title": "GitHub Slashes Agent Workflow Token Spend up to 62% with Daily Audits and MCP Pruning",
-      "content_text": "GitHub reports cutting token costs in agentic CI workflows by up to 62% by pruning unused MCP tools, swapping some MCP calls for gh CLI, and running daily “auditor” and “optimizer” agents. A token-usage.jsonl artefact and an Effective Tokens metric help track spend across models and spot regressions. By Mark Silvester",
-      "image": "https://phoenixventurestudios.com/images/signals/generated/github-slashes-agent-workflow-token-spend-up-62-daily-audits-mcp-pruning-16982ed8.jpg",
-      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/github-slashes-agent-workflow-token-spend-up-62-daily-audits-mcp-pruning-16982ed8.jpg",
-      "date_published": "2026-05-29T08:30:00.000Z",
+      "id": "https://phoenixventurestudios.com/founder-signal/signals/presentation-five-stages-ai-maturity-engineering-organizations-where-teams-get-92cbd4f4/",
+      "url": "https://phoenixventurestudios.com/founder-signal/signals/presentation-five-stages-ai-maturity-engineering-organizations-where-teams-get-92cbd4f4/",
+      "external_url": "https://www.infoq.com/presentations/ai-sdlc-maturity-framework-bottlenecks/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "title": "The Five Stages of AI Maturity in Engineering Organizations - Where and Why Teams Get Stuck",
+      "content_text": "GitHub says disciplined audits, smaller tool stacks, and simpler workflow choices cut token spend by up to 62 percent.\n\nThis is the kind of workflow discipline that can turn AI from an expensive experiment into a cheaper operating system.\n\nCheaper AI work usually comes from tighter systems, not louder tooling.\n\nThe market signal to track is whether leaner agent stacks beat bigger, noisier ones on cost and reliability.\n\nRead the full Phoenix signal on phoenixventurestudios.com.\n\n#AI #AppDevelopment",
+      "image": "https://phoenixventurestudios.com/images/signals/generated/presentation-five-stages-ai-maturity-engineering-organizations-where-teams-get-92cbd4f4.jpg",
+      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/presentation-five-stages-ai-maturity-engineering-organizations-where-teams-get-92cbd4f4.jpg",
+      "date_published": "2026-08-04T16:00:00.000Z",
       "authors": [
         {
           "name": "InfoQ"
         }
       ],
       "tags": [
-        "AI Tools & Agents"
+        "Jamstack Operating Systems"
       ],
       "_phoenix": {
-        "bucket": "ai_tools_agents",
-        "score": 97,
+        "bucket": "jamstack_ops",
+        "score": 70,
         "source": "InfoQ",
-        "slug": "github-slashes-agent-workflow-token-spend-up-62-daily-audits-mcp-pruning-16982ed8",
-        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/github-slashes-agent-workflow-token-spend-up-62-daily-audits-mcp-pruning-16982ed8.jpg",
-        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/github-slashes-agent-workflow-token-spend-up-62-daily-audits-mcp-pruning-16982ed8.jpg",
-        "socialImagePath": "/images/signals/generated/github-slashes-agent-workflow-token-spend-up-62-daily-audits-mcp-pruning-16982ed8.jpg",
+        "sourceName": "InfoQ",
+        "sourceSurface": "rss",
+        "rawTitle": "Presentation: The Five Stages of AI Maturity in Engineering Organizations - Where and Why Teams Get Stuck",
+        "reviewTitle": "InfoQ | Jamstack Operating Systems | Presentation: The Five Stages of AI Maturity in Engineering Organizations - Where and Why Teams Get Stuck",
+        "topicLabel": "Jamstack Operating Systems",
+        "whySelected": "RSS source matched the Phoenix registry and entered editorial scoring.",
+        "researchCitations": [],
+        "slug": "presentation-five-stages-ai-maturity-engineering-organizations-where-teams-get-92cbd4f4",
+        "publicTitle": "The Five Stages of AI Maturity in Engineering Organizations - Where and Why Teams Get Stuck",
+        "sourceTitle": "Presentation: The Five Stages of AI Maturity in Engineering Organizations - Where and Why Teams Get Stuck",
+        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/presentation-five-stages-ai-maturity-engineering-organizations-where-teams-get-92cbd4f4.jpg",
+        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/presentation-five-stages-ai-maturity-engineering-organizations-where-teams-get-92cbd4f4.jpg",
+        "socialImagePath": "/images/signals/generated/presentation-five-stages-ai-maturity-engineering-organizations-where-teams-get-92cbd4f4.jpg",
         "sourceImageUrl": "",
-        "imageStrategy": "owned-photo-match",
-        "imageFamily": "ai_opportunity",
-        "imageSourceType": "phoenix-owned",
-        "imageCredit": "Phoenix Venture Studios image library",
-        "imageRightsStatus": "owned-or-licensed",
-        "imageTemplate": "founder_brief",
-        "imageVariant": "field-note",
-        "imageTone": "electric",
-        "imageComposition": "lower-band",
-        "imageWarnings": [
-          "Source policy is reference-only and not approved for public image use; using a Phoenix-owned fallback."
-        ],
-        "imageBrief": {
-          "storyAngle": "Operator leverage",
-          "emotionalHook": "The signal is not the tool itself. It is what the tool can remove, speed up, or systemize.",
-          "visualMetaphor": "A clean operating room for AI workflow, systems, and execution decisions.",
-          "audiencePainOpportunity": "Founders need one useful workflow before they buy another subscription.",
-          "imageFamily": "ai_opportunity",
-          "preferredImageFamily": "ai_opportunity",
-          "sourceImageEligibility": "reference-only",
-          "sourceImagePolicy": "reference-only",
-          "sourceImageMatchedKey": "",
-          "sourceImageNote": "",
-          "manualReviewNeeded": true,
-          "overlayTone": "operator",
-          "template": "founder_brief",
-          "imageVariant": "field-note",
-          "imageTone": "electric",
-          "imageComposition": "lower-band"
-        },
-        "feedRole": "founder-tools",
-        "simpleSummary": "GitHub Slashes Agent Workflow Token Spend up to 62% with Daily Audits and MCP Pruning points to a tool or workflow shift. Use this to ask what task could get faster, cheaper, or easier this week.",
-        "engagementPrompt": "Would you test this tool or workflow? Drop your takeaway below.",
-        "trendContext": "The pattern to watch is whether this moves from demo excitement into real daily workflow value.",
-        "relatedRecentSignals": [],
-        "readingLevel": {
-          "target": "grade-5-plain-founder",
-          "heuristic": "average sentence words",
-          "averageSentenceWords": 15.9
-        },
-        "editorialMode": "phoenix-original-brief",
-        "internalPath": "/founder-signal/signals/github-slashes-agent-workflow-token-spend-up-62-daily-audits-mcp-pruning-16982ed8",
-        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/github-slashes-agent-workflow-token-spend-up-62-daily-audits-mcp-pruning-16982ed8/",
-        "originalUrl": "https://www.infoq.com/news/2026/05/github-agentic-token-savings/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
-        "whyItMatters": "AI agents and tools are moving quickly, but the useful question is still business fit: what can be trusted, delegated, measured, and improved?",
-        "whyShared": "Phoenix shared this because founders need a grounded lens for tools that may affect sales, marketing, service, and internal operations.",
-        "founderTakeaway": "Treat this as a cue to identify which tool category could create leverage now and which one still needs human supervision.",
-        "businessTakeaway": "The business takeaway is to keep AI accountable to a business metric instead of adopting tools because the market is loud."
-      }
-    },
-    {
-      "id": "https://phoenixventurestudios.com/founder-signal/signals/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629/",
-      "url": "https://phoenixventurestudios.com/founder-signal/signals/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629/",
-      "external_url": "https://techcrunch.com/2026/05/28/anthropic-releases-opus-4-8-with-new-dynamic-workflow-tool/",
-      "title": "Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool",
-      "content_text": "The new Opus model comes with a tool called Dynamic Workflows, for coordinating swarms of subagents.",
-      "image": "https://phoenixventurestudios.com/images/signals/generated/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629.jpg",
-      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629.jpg",
-      "date_published": "2026-05-28T17:00:09.000Z",
-      "authors": [
-        {
-          "name": "TechCrunch AI"
-        }
-      ],
-      "tags": [
-        "AI Tools & Agents"
-      ],
-      "_phoenix": {
-        "bucket": "ai_tools_agents",
-        "score": 85,
-        "source": "TechCrunch AI",
-        "slug": "anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629",
-        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629.jpg",
-        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629.jpg",
-        "socialImagePath": "/images/signals/generated/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629.jpg",
-        "sourceImageUrl": "",
-        "imageStrategy": "owned-photo-match",
-        "imageFamily": "ai_opportunity",
-        "imageSourceType": "phoenix-owned",
-        "imageCredit": "Phoenix Venture Studios image library",
-        "imageRightsStatus": "owned-or-licensed",
-        "imageTemplate": "founder_brief",
-        "imageVariant": "operator-map",
-        "imageTone": "electric",
-        "imageComposition": "left-anchor",
-        "imageWarnings": [
-          "Source policy is reference-only and not approved for public image use; using a Phoenix-owned fallback."
-        ],
-        "imageBrief": {
-          "storyAngle": "Operator leverage",
-          "emotionalHook": "The signal is not the tool itself. It is what the tool can remove, speed up, or systemize.",
-          "visualMetaphor": "A clean operating room for AI workflow, systems, and execution decisions.",
-          "audiencePainOpportunity": "Founders need one useful workflow before they buy another subscription.",
-          "imageFamily": "ai_opportunity",
-          "preferredImageFamily": "ai_opportunity",
-          "sourceImageEligibility": "reference-only",
-          "sourceImagePolicy": "reference-only",
-          "sourceImageMatchedKey": "",
-          "sourceImageNote": "",
-          "manualReviewNeeded": true,
-          "overlayTone": "operator",
-          "template": "founder_brief",
-          "imageVariant": "operator-map",
-          "imageTone": "electric",
-          "imageComposition": "left-anchor"
-        },
-        "feedRole": "founder-tools",
-        "simpleSummary": "Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool points to a tool or workflow shift. Use this to ask what task could get faster, cheaper, or easier this week.",
-        "engagementPrompt": "Would you test this tool or workflow? Drop your takeaway below.",
-        "trendContext": "The pattern to watch is whether this moves from demo excitement into real daily workflow value.",
-        "relatedRecentSignals": [],
-        "readingLevel": {
-          "target": "grade-5-plain-founder",
-          "heuristic": "average sentence words",
-          "averageSentenceWords": 13.6
-        },
-        "editorialMode": "phoenix-original-brief",
-        "internalPath": "/founder-signal/signals/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629",
-        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/anthropic-releases-opus-4-8-dynamic-workflow-tool-215cc629/",
-        "originalUrl": "https://techcrunch.com/2026/05/28/anthropic-releases-opus-4-8-with-new-dynamic-workflow-tool/",
-        "whyItMatters": "AI agents and tools are moving quickly, but the useful question is still business fit: what can be trusted, delegated, measured, and improved?",
-        "whyShared": "Phoenix shared this because founders need a grounded lens for tools that may affect sales, marketing, service, and internal operations.",
-        "founderTakeaway": "Treat this as a cue to identify which tool category could create leverage now and which one still needs human supervision.",
-        "businessTakeaway": "The business takeaway is to keep AI accountable to a business metric instead of adopting tools because the market is loud."
-      }
-    },
-    {
-      "id": "https://phoenixventurestudios.com/founder-signal/signals/glean-s-top-line-crosses-300m-as-ai-budget-cutting-becomes-its-major-selling-p-5471d949/",
-      "url": "https://phoenixventurestudios.com/founder-signal/signals/glean-s-top-line-crosses-300m-as-ai-budget-cutting-becomes-its-major-selling-p-5471d949/",
-      "external_url": "https://techcrunch.com/2026/05/28/gleans-top-line-crosses-300m-as-ai-budget-cutting-becomes-its-major-selling-point/",
-      "title": "Glean’s top line crosses $300M as AI budget cutting becomes its major selling point",
-      "content_text": "The enterprise AI search startup tripled its annual revenue even as tech giants entered the category.",
-      "image": "https://phoenixventurestudios.com/images/signals/generated/glean-s-top-line-crosses-300m-as-ai-budget-cutting-becomes-its-major-selling-p-5471d949.jpg",
-      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/glean-s-top-line-crosses-300m-as-ai-budget-cutting-becomes-its-major-selling-p-5471d949.jpg",
-      "date_published": "2026-05-29T00:44:37.000Z",
-      "authors": [
-        {
-          "name": "TechCrunch AI"
-        }
-      ],
-      "tags": [
-        "AI Revenue Opportunities"
-      ],
-      "_phoenix": {
-        "bucket": "ai_revenue",
-        "score": 82,
-        "source": "TechCrunch AI",
-        "slug": "glean-s-top-line-crosses-300m-as-ai-budget-cutting-becomes-its-major-selling-p-5471d949",
-        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/glean-s-top-line-crosses-300m-as-ai-budget-cutting-becomes-its-major-selling-p-5471d949.jpg",
-        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/glean-s-top-line-crosses-300m-as-ai-budget-cutting-becomes-its-major-selling-p-5471d949.jpg",
-        "socialImagePath": "/images/signals/generated/glean-s-top-line-crosses-300m-as-ai-budget-cutting-becomes-its-major-selling-p-5471d949.jpg",
-        "sourceImageUrl": "",
-        "imageStrategy": "owned-photo-match",
-        "imageFamily": "consulting_revenue",
-        "imageSourceType": "phoenix-owned",
-        "imageCredit": "Phoenix Venture Studios image library",
-        "imageRightsStatus": "owned-or-licensed",
-        "imageTemplate": "opportunity_window",
-        "imageVariant": "field-note",
-        "imageTone": "steel",
-        "imageComposition": "right-anchor",
-        "imageWarnings": [
-          "Source policy is reference-only and not approved for public image use; using a Phoenix-owned fallback."
-        ],
-        "imageBrief": {
-          "storyAngle": "Revenue opportunity",
-          "emotionalHook": "The headline matters if it can become a clear offer, event, or consulting path.",
-          "visualMetaphor": "A polished consulting room where AI interest becomes a business offer.",
-          "audiencePainOpportunity": "Founders need to package AI attention into revenue instead of noise.",
-          "imageFamily": "consulting_revenue",
-          "preferredImageFamily": "consulting_revenue",
-          "sourceImageEligibility": "reference-only",
-          "sourceImagePolicy": "reference-only",
-          "sourceImageMatchedKey": "",
-          "sourceImageNote": "",
-          "manualReviewNeeded": true,
-          "overlayTone": "opportunity",
-          "template": "opportunity_window",
-          "imageVariant": "field-note",
-          "imageTone": "steel",
-          "imageComposition": "right-anchor"
-        },
-        "feedRole": "founder-tools",
-        "simpleSummary": "TechCrunch AI flagged a ai revenue opportunities story. Use this to see what changed, why it matters, and what to watch next.",
-        "engagementPrompt": "What is your takeaway from this signal? Drop it below.",
-        "trendContext": "The pattern to watch is whether more sources start pointing to the same shift.",
-        "relatedRecentSignals": [],
-        "readingLevel": {
-          "target": "grade-5-plain-founder",
-          "heuristic": "average sentence words",
-          "averageSentenceWords": 13.1
-        },
-        "editorialMode": "phoenix-original-brief",
-        "internalPath": "/founder-signal/signals/glean-s-top-line-crosses-300m-as-ai-budget-cutting-becomes-its-major-selling-p-5471d949",
-        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/glean-s-top-line-crosses-300m-as-ai-budget-cutting-becomes-its-major-selling-p-5471d949/",
-        "originalUrl": "https://techcrunch.com/2026/05/28/gleans-top-line-crosses-300m-as-ai-budget-cutting-becomes-its-major-selling-point/",
-        "whyItMatters": "AI revenue opportunities are strongest when they connect to a clear buyer, a real business pain, and a repeatable delivery model.",
-        "whyShared": "Phoenix shared this because attention is only useful when it turns into a practical offer, event, service, or campaign.",
-        "founderTakeaway": "Ask what someone would pay for if this signal keeps growing: clarity, implementation, training, speed, or a done-with-you rollout.",
-        "businessTakeaway": "The business takeaway is to turn interest into an offer hypothesis, then test it with a focused audience."
-      }
-    },
-    {
-      "id": "https://phoenixventurestudios.com/founder-signal/signals/2-000-ai-generated-film-will-make-its-debut-at-tribeca-a8e64a26/",
-      "url": "https://phoenixventurestudios.com/founder-signal/signals/2-000-ai-generated-film-will-make-its-debut-at-tribeca-a8e64a26/",
-      "external_url": "https://www.theverge.com/entertainment/939067/ai-film-dreams-of-violets-tribeca",
-      "title": "A $2,000 AI-generated film will make its debut at Tribeca",
-      "content_text": "Next month's Tribeca Festival will include the premiere of an AI-generated film: Dreams of Violets. The 75-minute film is a fictional dramatization of the Iranian government's mass killing of protestors in January, with the people and images fully created by AI, as reported earlier by The Hollywood Reporter. Dreams of Violets cost $2,000 to make […]",
-      "image": "https://phoenixventurestudios.com/images/signals/generated/2-000-ai-generated-film-will-make-its-debut-at-tribeca-a8e64a26.jpg",
-      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/2-000-ai-generated-film-will-make-its-debut-at-tribeca-a8e64a26.jpg",
-      "date_published": "2026-05-28T16:08:45.000Z",
-      "authors": [
-        {
-          "name": "The Verge AI"
-        }
-      ],
-      "tags": [
-        "Wildcard Attention"
-      ],
-      "_phoenix": {
-        "bucket": "wildcard_attention",
-        "score": 81,
-        "source": "The Verge AI",
-        "slug": "2-000-ai-generated-film-will-make-its-debut-at-tribeca-a8e64a26",
-        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/2-000-ai-generated-film-will-make-its-debut-at-tribeca-a8e64a26.jpg",
-        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/2-000-ai-generated-film-will-make-its-debut-at-tribeca-a8e64a26.jpg",
-        "socialImagePath": "/images/signals/generated/2-000-ai-generated-film-will-make-its-debut-at-tribeca-a8e64a26.jpg",
-        "sourceImageUrl": "",
-        "imageStrategy": "owned-photo-match",
-        "imageFamily": "ai_risk",
-        "imageSourceType": "phoenix-owned",
-        "imageCredit": "Phoenix Venture Studios image library",
-        "imageRightsStatus": "owned-or-licensed",
-        "imageTemplate": "market_warning",
-        "imageVariant": "capital-pulse",
-        "imageTone": "electric",
-        "imageComposition": "split-panel",
-        "imageWarnings": [
-          "Source policy is reference-only and not approved for public image use; using a Phoenix-owned fallback."
-        ],
-        "imageBrief": {
-          "storyAngle": "Risk signal",
-          "emotionalHook": "The useful question is what can break, cost more, or need human judgment.",
-          "visualMetaphor": "A late-night decision room, warning glow, and pressure around the operator.",
-          "audiencePainOpportunity": "Founders need to spot the risk before it becomes an expensive surprise.",
-          "imageFamily": "ai_risk",
-          "preferredImageFamily": "ai_risk",
-          "sourceImageEligibility": "reference-only",
-          "sourceImagePolicy": "reference-only",
-          "sourceImageMatchedKey": "",
-          "sourceImageNote": "",
-          "manualReviewNeeded": true,
-          "overlayTone": "warning",
-          "template": "market_warning",
-          "imageVariant": "capital-pulse",
-          "imageTone": "electric",
-          "imageComposition": "split-panel"
-        },
-        "feedRole": "founder-tools",
-        "simpleSummary": "The Verge AI flagged a wildcard attention story. Use this to see what changed, why it matters, and what to watch next.",
-        "engagementPrompt": "What is your takeaway from this signal? Drop it below.",
-        "trendContext": "The pattern to watch is whether more sources start pointing to the same shift.",
-        "relatedRecentSignals": [],
-        "readingLevel": {
-          "target": "grade-5-plain-founder",
-          "heuristic": "average sentence words",
-          "averageSentenceWords": 11.8
-        },
-        "editorialMode": "phoenix-original-brief",
-        "internalPath": "/founder-signal/signals/2-000-ai-generated-film-will-make-its-debut-at-tribeca-a8e64a26",
-        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/2-000-ai-generated-film-will-make-its-debut-at-tribeca-a8e64a26/",
-        "originalUrl": "https://www.theverge.com/entertainment/939067/ai-film-dreams-of-violets-tribeca",
-        "whyItMatters": "Some signals matter because they capture attention before the business implications are obvious.",
-        "whyShared": "Phoenix shared this because attention can become useful when it is translated into context, timing, and a next step.",
-        "founderTakeaway": "Ask whether this is noise, a weak signal, or the start of a pattern worth watching.",
-        "businessTakeaway": "The business takeaway is to use attention as a doorway into sharper questions, not as the whole strategy."
-      }
-    },
-    {
-      "id": "https://phoenixventurestudios.com/founder-signal/signals/endava-builds-agentic-organization-codex-c4a9a577/",
-      "url": "https://phoenixventurestudios.com/founder-signal/signals/endava-builds-agentic-organization-codex-c4a9a577/",
-      "external_url": "https://openai.com/index/endava",
-      "title": "How Endava builds an agentic organization with Codex",
-      "content_text": "Learn how Endava uses Codex to build an agentic organization, accelerating software delivery and reducing requirements analysis from weeks to hours.",
-      "image": "https://phoenixventurestudios.com/images/signals/generated/endava-builds-agentic-organization-codex-c4a9a577.jpg",
-      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/endava-builds-agentic-organization-codex-c4a9a577.jpg",
-      "date_published": "2026-05-28T12:00:00.000Z",
-      "authors": [
-        {
-          "name": "OpenAI News"
-        }
-      ],
-      "tags": [
-        "AI Tools & Agents"
-      ],
-      "_phoenix": {
-        "bucket": "ai_tools_agents",
-        "score": 81,
-        "source": "OpenAI News",
-        "slug": "endava-builds-agentic-organization-codex-c4a9a577",
-        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/endava-builds-agentic-organization-codex-c4a9a577.jpg",
-        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/endava-builds-agentic-organization-codex-c4a9a577.jpg",
-        "socialImagePath": "/images/signals/generated/endava-builds-agentic-organization-codex-c4a9a577.jpg",
-        "sourceImageUrl": "",
-        "imageStrategy": "owned-photo-match",
-        "imageFamily": "ai_opportunity",
-        "imageSourceType": "phoenix-owned",
-        "imageCredit": "Phoenix Venture Studios image library",
-        "imageRightsStatus": "owned-or-licensed",
-        "imageTemplate": "founder_brief",
-        "imageVariant": "capital-pulse",
-        "imageTone": "ember",
-        "imageComposition": "lower-band",
-        "imageWarnings": [
-          "Source policy is reference-only and not approved for public image use; using a Phoenix-owned fallback."
-        ],
-        "imageBrief": {
-          "storyAngle": "Operator leverage",
-          "emotionalHook": "The signal is not the tool itself. It is what the tool can remove, speed up, or systemize.",
-          "visualMetaphor": "A clean operating room for AI workflow, systems, and execution decisions.",
-          "audiencePainOpportunity": "Founders need one useful workflow before they buy another subscription.",
-          "imageFamily": "ai_opportunity",
-          "preferredImageFamily": "ai_opportunity",
-          "sourceImageEligibility": "reference-only",
-          "sourceImagePolicy": "reference-only",
-          "sourceImageMatchedKey": "",
-          "sourceImageNote": "",
-          "manualReviewNeeded": true,
-          "overlayTone": "operator",
-          "template": "founder_brief",
-          "imageVariant": "capital-pulse",
-          "imageTone": "ember",
-          "imageComposition": "lower-band"
-        },
-        "feedRole": "founder-tools",
-        "simpleSummary": "How Endava builds an agentic organization with Codex points to a tool or workflow shift. Use this to ask what task could get faster, cheaper, or easier this week.",
-        "engagementPrompt": "Would you test this tool or workflow? Drop your takeaway below.",
-        "trendContext": "The pattern to watch is whether this moves from demo excitement into real daily workflow value.",
-        "relatedRecentSignals": [],
-        "readingLevel": {
-          "target": "grade-5-plain-founder",
-          "heuristic": "average sentence words",
-          "averageSentenceWords": 15
-        },
-        "editorialMode": "phoenix-original-brief",
-        "internalPath": "/founder-signal/signals/endava-builds-agentic-organization-codex-c4a9a577",
-        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/endava-builds-agentic-organization-codex-c4a9a577/",
-        "originalUrl": "https://openai.com/index/endava",
-        "whyItMatters": "AI agents and tools are moving quickly, but the useful question is still business fit: what can be trusted, delegated, measured, and improved?",
-        "whyShared": "Phoenix shared this because founders need a grounded lens for tools that may affect sales, marketing, service, and internal operations.",
-        "founderTakeaway": "Treat this as a cue to identify which tool category could create leverage now and which one still needs human supervision.",
-        "businessTakeaway": "The business takeaway is to keep AI accountable to a business metric instead of adopting tools because the market is loud."
-      }
-    },
-    {
-      "id": "https://phoenixventurestudios.com/founder-signal/signals/warp-s-big-bet-building-open-source-gpt-5-5-b36c9194/",
-      "url": "https://phoenixventurestudios.com/founder-signal/signals/warp-s-big-bet-building-open-source-gpt-5-5-b36c9194/",
-      "external_url": "https://openai.com/index/warp",
-      "title": "Warp’s big bet on building open source with GPT-5.5",
-      "content_text": "Warp uses GPT-5.5 and OpenAI models to coordinate coding agents across local, cloud, and open-source development workflows.",
-      "image": "https://phoenixventurestudios.com/images/signals/generated/warp-s-big-bet-building-open-source-gpt-5-5-b36c9194.jpg",
-      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/warp-s-big-bet-building-open-source-gpt-5-5-b36c9194.jpg",
-      "date_published": "2026-05-27T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "OpenAI News"
-        }
-      ],
-      "tags": [
-        "AI Tools & Agents"
-      ],
-      "_phoenix": {
-        "bucket": "ai_tools_agents",
-        "score": 74,
-        "source": "OpenAI News",
-        "slug": "warp-s-big-bet-building-open-source-gpt-5-5-b36c9194",
-        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/warp-s-big-bet-building-open-source-gpt-5-5-b36c9194.jpg",
-        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/warp-s-big-bet-building-open-source-gpt-5-5-b36c9194.jpg",
-        "socialImagePath": "/images/signals/generated/warp-s-big-bet-building-open-source-gpt-5-5-b36c9194.jpg",
-        "sourceImageUrl": "",
-        "imageStrategy": "owned-photo-match",
-        "imageFamily": "ai_opportunity",
-        "imageSourceType": "phoenix-owned",
-        "imageCredit": "Phoenix Venture Studios image library",
-        "imageRightsStatus": "owned-or-licensed",
-        "imageTemplate": "founder_brief",
-        "imageVariant": "capital-pulse",
-        "imageTone": "ember",
-        "imageComposition": "split-panel",
-        "imageWarnings": [
-          "Source policy is reference-only and not approved for public image use; using a Phoenix-owned fallback."
-        ],
-        "imageBrief": {
-          "storyAngle": "Operator leverage",
-          "emotionalHook": "The signal is not the tool itself. It is what the tool can remove, speed up, or systemize.",
-          "visualMetaphor": "A clean operating room for AI workflow, systems, and execution decisions.",
-          "audiencePainOpportunity": "Founders need one useful workflow before they buy another subscription.",
-          "imageFamily": "ai_opportunity",
-          "preferredImageFamily": "ai_opportunity",
-          "sourceImageEligibility": "reference-only",
-          "sourceImagePolicy": "reference-only",
-          "sourceImageMatchedKey": "",
-          "sourceImageNote": "",
-          "manualReviewNeeded": true,
-          "overlayTone": "operator",
-          "template": "founder_brief",
-          "imageVariant": "capital-pulse",
-          "imageTone": "ember",
-          "imageComposition": "split-panel"
-        },
-        "feedRole": "founder-tools",
-        "simpleSummary": "Warp’s big bet on building open source with GPT-5.5 points to a tool or workflow shift. Use this to ask what task could get faster, cheaper, or easier this week.",
-        "engagementPrompt": "Would you test this tool or workflow? Drop your takeaway below.",
-        "trendContext": "The pattern to watch is whether this moves from demo excitement into real daily workflow value.",
-        "relatedRecentSignals": [],
-        "readingLevel": {
-          "target": "grade-5-plain-founder",
-          "heuristic": "average sentence words",
-          "averageSentenceWords": 13.6
-        },
-        "editorialMode": "phoenix-original-brief",
-        "internalPath": "/founder-signal/signals/warp-s-big-bet-building-open-source-gpt-5-5-b36c9194",
-        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/warp-s-big-bet-building-open-source-gpt-5-5-b36c9194/",
-        "originalUrl": "https://openai.com/index/warp",
-        "whyItMatters": "AI agents and tools are moving quickly, but the useful question is still business fit: what can be trusted, delegated, measured, and improved?",
-        "whyShared": "Phoenix shared this because founders need a grounded lens for tools that may affect sales, marketing, service, and internal operations.",
-        "founderTakeaway": "Treat this as a cue to identify which tool category could create leverage now and which one still needs human supervision.",
-        "businessTakeaway": "The business takeaway is to keep AI accountable to a business metric instead of adopting tools because the market is loud."
-      }
-    },
-    {
-      "id": "https://phoenixventurestudios.com/founder-signal/signals/check-out-real-life-ai-prototypes-futures-lab-daac52c1/",
-      "url": "https://phoenixventurestudios.com/founder-signal/signals/check-out-real-life-ai-prototypes-futures-lab-daac52c1/",
-      "external_url": "https://blog.google/innovation-and-ai/technology/ai/university-waterloo-labs/",
-      "title": "Check out real-life AI prototypes from the Futures Lab.",
-      "content_text": "University of Waterloo students develop AI prototypes like sign language tutors to reshape the future of education and work.",
-      "image": "https://phoenixventurestudios.com/images/signals/generated/check-out-real-life-ai-prototypes-futures-lab-daac52c1.jpg",
-      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/check-out-real-life-ai-prototypes-futures-lab-daac52c1.jpg",
-      "date_published": "2026-05-29T12:00:00.000Z",
-      "authors": [
-        {
-          "name": "Google AI Blog"
-        }
-      ],
-      "tags": [
-        "AI Implementation"
-      ],
-      "_phoenix": {
-        "bucket": "ai_implementation",
-        "score": 72,
-        "source": "Google AI Blog",
-        "slug": "check-out-real-life-ai-prototypes-futures-lab-daac52c1",
-        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/check-out-real-life-ai-prototypes-futures-lab-daac52c1.jpg",
-        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/check-out-real-life-ai-prototypes-futures-lab-daac52c1.jpg",
-        "socialImagePath": "/images/signals/generated/check-out-real-life-ai-prototypes-futures-lab-daac52c1.jpg",
-        "sourceImageUrl": "",
-        "imageStrategy": "owned-photo-match",
+        "feedId": "ai-attention",
+        "imageStrategy": "held-for-codex-image",
+        "imageApprovalStatus": "approved",
+        "imageHoldReason": "story-specific-cover-still-needed",
         "imageFamily": "wildcard_attention",
         "imageSourceType": "phoenix-owned",
-        "imageCredit": "Phoenix Venture Studios image library",
+        "imageCredit": "Phoenix Venture Studios approved background library",
         "imageRightsStatus": "owned-or-licensed",
         "imageTemplate": "founder_brief",
         "imageVariant": "operator-map",
         "imageTone": "steel",
-        "imageComposition": "left-anchor",
+        "imageComposition": "right-anchor",
+        "sceneLane": "workflow_system",
+        "sceneMotif": "handoff-grid",
+        "imageFingerprint": "ede325af6c72592e",
+        "imageVisualHash": "",
         "imageWarnings": [
-          "Source policy is unmatched; using a Phoenix-owned fallback and flagging manual review."
+          "Source image requires manual review before it can be used as the cover.",
+          "Using the best approved Phoenix-owned background for presentation-five-stages-ai-maturity-engineering-organizations-where-teams-get-92cbd4f4 while a story-specific cover still needs creative follow-up."
         ],
+        "imageAudit": null,
+        "imageCorrectionTrail": [],
+        "imageDecision": "phoenix-owned-background-used-creative-follow-up",
+        "imageDiagnosticReason": "source image policy is reference-only; Phoenix generated art used",
+        "imageDiagnostic": {
+          "feedImageMissing": false,
+          "articleImageChecked": false,
+          "articleImageFound": false,
+          "imageDecision": "RSS image found"
+        },
+        "imageCertification": {
+          "verdict": "creative-follow-up",
+          "approved": true,
+          "attributionVisible": true,
+          "sourceType": "phoenix-owned",
+          "imageStrategy": "held-for-codex-image",
+          "holdReason": "story-specific-cover-still-needed",
+          "notes": [
+            "Image cleared the current Phoenix cover rules.",
+            "Story-specific creative follow-up is still needed for this cover.",
+            "Source image requires manual review before it can be used as the cover.",
+            "Using the best approved Phoenix-owned background for presentation-five-stages-ai-maturity-engineering-organizations-where-teams-get-92cbd4f4 while a story-specific cover still needs creative follow-up."
+          ]
+        },
         "imageBrief": {
           "storyAngle": "Founder signal",
+          "storySubject": "the valuation race around frontier AI",
           "emotionalHook": "A practical signal worth translating before the market gets noisy.",
-          "visualMetaphor": "A premium founder briefing moment with clean business context.",
-          "audiencePainOpportunity": "Founders need a simple next move, not another article to save.",
+          "visualMetaphor": "A high-stakes valuation room with growth curves, adoption dashboards, and infrastructure pressure visible at once.",
+          "audiencePainOpportunity": "Founders need to understand what kind of traction investors are actually rewarding before they copy the headline.",
+          "imagePrompt": "Create one cinematic editorial cover image for this specific story: \"Presentation: The Five Stages of AI Maturity in Engineering Organizations - Where and Why Teams Get Stuck\". Core context to visualize: the valuation race around frontier AI. A practical signal worth translating before the market gets noisy. Founders need to understand what kind of traction investors are actually rewarding before they copy the headline. A high-stakes valuation room with growth curves, adoption dashboards, and infrastructure pressure visible at once. Show revenue acceleration, investor pressure, model adoption signals, and the scale race without falling back to a generic boardroom. Use a cinematic editorial poster grammar: one dominant metaphor, strong light and shadow, and deliberate negative space for a bold headline. Pull out the article's key context instead of showing the article literally: the lock, threshold, risk, leverage point, workflow layer, or trust boundary. Use concrete anchors sparingly: one person silhouette, one device stack, one dashboard, one room, or one symbolic architecture. Do not build a cluttered collage. Let supporting details prove the metaphor: app cards, charts, files, messages, capital flows, handoff lines, or compute layers should feel intentional and readable at thumbnail size. Avoid generic office scenes, showroom product staging, fake logos, celebrity likenesses, overstuffed UI panels, and decorative AI clouds. For capital stories, turn the financial pressure into architecture: gates, ledgers, valuation rooms, runway lines, proof stacks, and money-flow shadows. Use the source article only as private visual reference; create Phoenix-owned artwork for public use. Make it feel like a strong magazine or strategy-report cover, not a product render. Avoid portraits or people unless the story clearly needs a human subject. Leave clean negative space for a Phoenix Founder Signal headline overlay.",
+          "articleImageRequired": false,
+          "expectedArticleImagePath": "/images/signals/source-art/presentation-five-stages-ai-maturity-engineering-organizations-where-teams-get-92cbd4f4.jpg",
           "imageFamily": "wildcard_attention",
           "preferredImageFamily": "wildcard_attention",
-          "sourceImageEligibility": "reference-only",
-          "sourceImagePolicy": "reference-only",
+          "sourceImageEligibility": "manual-review",
+          "sourceImagePolicy": "manual-review",
           "sourceImageMatchedKey": "",
           "sourceImageNote": "",
           "manualReviewNeeded": true,
           "overlayTone": "steady",
           "template": "founder_brief",
+          "sceneLane": "workflow_system",
+          "sceneMotif": "handoff-grid",
           "imageVariant": "operator-map",
           "imageTone": "steel",
-          "imageComposition": "left-anchor"
+          "imageComposition": "right-anchor",
+          "imageFingerprint": "ede325af6c72592e",
+          "articleImagePath": "/images/signals/source-art/presentation-five-stages-ai-maturity-engineering-organizations-where-teams-get-92cbd4f4.jpg"
         },
-        "feedRole": "founder-tools",
-        "simpleSummary": "Check out real-life AI prototypes from the Futures Lab. points to a tool or workflow shift. Use this to ask what task could get faster, cheaper, or easier this week.",
-        "engagementPrompt": "Would you test this tool or workflow? Drop your takeaway below.",
-        "trendContext": "The pattern to watch is whether more sources start pointing to the same shift.",
+        "feedRole": "founder-market",
+        "simpleSummary": "This is the kind of workflow discipline that can turn AI from an expensive experiment into a cheaper operating system.",
+        "engagementPrompt": "Where is your current AI workflow leaking the most time or spend?",
+        "trendContext": "The market signal to track is whether leaner agent stacks beat bigger, noisier ones on cost and reliability.",
         "relatedRecentSignals": [],
         "readingLevel": {
           "target": "grade-5-plain-founder",
           "heuristic": "average sentence words",
-          "averageSentenceWords": 11
+          "averageSentenceWords": 18.5
         },
         "editorialMode": "phoenix-original-brief",
-        "internalPath": "/founder-signal/signals/check-out-real-life-ai-prototypes-futures-lab-daac52c1",
-        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/check-out-real-life-ai-prototypes-futures-lab-daac52c1/",
-        "originalUrl": "https://blog.google/innovation-and-ai/technology/ai/university-waterloo-labs/",
-        "whyItMatters": "Implementation is where AI either becomes useful or becomes another subscription nobody uses. The market is rewarding practical rollout capability.",
-        "whyShared": "Phoenix shared this because the real opportunity is not knowing about AI; it is installing it into the work people already do.",
-        "founderTakeaway": "Review the handoffs, bottlenecks, and repetitive decisions in your business before choosing tools.",
-        "businessTakeaway": "The business takeaway is to build an adoption path: one workflow, one owner, one measurable result."
+        "internalPath": "/founder-signal/signals/presentation-five-stages-ai-maturity-engineering-organizations-where-teams-get-92cbd4f4",
+        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/presentation-five-stages-ai-maturity-engineering-organizations-where-teams-get-92cbd4f4/",
+        "originalUrl": "https://www.infoq.com/presentations/ai-sdlc-maturity-framework-bottlenecks/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+        "rssStory": "GitHub says disciplined audits, smaller tool stacks, and simpler workflow choices cut token spend by up to 62 percent.\n\nThis is the kind of workflow discipline that can turn AI from an expensive experiment into a cheaper operating system.\n\nCheaper AI work usually comes from tighter systems, not louder tooling.\n\nThe market signal to track is whether leaner agent stacks beat bigger, noisier ones on cost and reliability.\n\nRead the full Phoenix signal on phoenixventurestudios.com.\n\n#AI #AppDevelopment",
+        "whyItMatters": "Modern operating systems for content, campaigns, and websites can be lighter, faster, and cheaper when the architecture is built around static assets and smart automation.",
+        "whyShared": "Phoenix shared this because technical stack choices affect speed, cost, and how easily a founder can launch campaigns.",
+        "founderTakeaway": "Before you buy the next AI tool, map where your tokens, tools, and handoffs are leaking value now.",
+        "businessTakeaway": "Use simple infrastructure where possible, then reserve complexity for the parts that truly need it.",
+        "articleBody": [],
+        "sourceLinks": []
       }
     },
     {
-      "id": "https://phoenixventurestudios.com/founder-signal/signals/ai-data-center-map-visualize-water-power-impact-feff96b0/",
-      "url": "https://phoenixventurestudios.com/founder-signal/signals/ai-data-center-map-visualize-water-power-impact-feff96b0/",
-      "external_url": "https://aidatacentermap.org/",
-      "title": "AI Data Center Map – Visualize Water and Power Impact",
-      "content_text": "",
-      "image": "https://phoenixventurestudios.com/images/signals/generated/ai-data-center-map-visualize-water-power-impact-feff96b0.jpg",
-      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/ai-data-center-map-visualize-water-power-impact-feff96b0.jpg",
-      "date_published": "2026-05-29T14:18:01.000Z",
+      "id": "https://phoenixventurestudios.com/founder-signal/signals/jeff-dean-other-top-ai-researchers-are-leaving-google-launch-their-own-startup-d0d37e3a/",
+      "url": "https://phoenixventurestudios.com/founder-signal/signals/jeff-dean-other-top-ai-researchers-are-leaving-google-launch-their-own-startup-d0d37e3a/",
+      "external_url": "https://techcrunch.com/2026/08/05/jeff-dean-and-other-top-ai-researchers-are-leaving-google-to-launch-their-own-startup/",
+      "title": "Jeff Dean and other top AI researchers are leaving Google to launch their own startup",
+      "content_text": "The legendary Google executive is joined by other outgoing Google execs in a joint mission to use AI to push forward the process of scientific discovery.\n\nThis points to a workflow shift worth testing in the real world. Look for the task that gets cheaper, faster, or easier first.\n\nStart with the workflow that already hurts. If the tool cannot improve that work, it has not earned expansion.\n\nThe next proof point is this signal showing up again from a different angle.\n\nRead the full Phoenix signal on phoenixventurestudios.com.\n\n#AI #Founders",
+      "image": "https://phoenixventurestudios.com/images/signals/generated/jeff-dean-other-top-ai-researchers-are-leaving-google-launch-their-own-startup-d0d37e3a.jpg",
+      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/jeff-dean-other-top-ai-researchers-are-leaving-google-launch-their-own-startup-d0d37e3a.jpg",
+      "date_published": "2026-08-05T19:30:19.000Z",
+      "authors": [
+        {
+          "name": "TechCrunch AI"
+        }
+      ],
+      "tags": [
+        "Business Automation"
+      ],
+      "_phoenix": {
+        "bucket": "business_automation",
+        "score": 68,
+        "source": "TechCrunch AI",
+        "sourceName": "TechCrunch AI",
+        "sourceSurface": "rss",
+        "rawTitle": "Jeff Dean and other top AI researchers are leaving Google to launch their own startup",
+        "reviewTitle": "TechCrunch AI | Business Automation | Jeff Dean and other top AI researchers are leaving Google to launch their own startup",
+        "topicLabel": "Business Automation",
+        "whySelected": "RSS source matched the Phoenix registry and entered editorial scoring.",
+        "researchCitations": [],
+        "slug": "jeff-dean-other-top-ai-researchers-are-leaving-google-launch-their-own-startup-d0d37e3a",
+        "publicTitle": "Jeff Dean and other top AI researchers are leaving Google to launch their own startup",
+        "sourceTitle": "Jeff Dean and other top AI researchers are leaving Google to launch their own startup",
+        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/jeff-dean-other-top-ai-researchers-are-leaving-google-launch-their-own-startup-d0d37e3a.jpg",
+        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/jeff-dean-other-top-ai-researchers-are-leaving-google-launch-their-own-startup-d0d37e3a.jpg",
+        "socialImagePath": "/images/signals/generated/jeff-dean-other-top-ai-researchers-are-leaving-google-launch-their-own-startup-d0d37e3a.jpg",
+        "sourceImageUrl": "",
+        "feedId": "ai-attention",
+        "imageStrategy": "held-for-codex-image",
+        "imageApprovalStatus": "approved",
+        "imageHoldReason": "story-specific-cover-still-needed",
+        "imageFamily": "ai_opportunity",
+        "imageSourceType": "phoenix-owned",
+        "imageCredit": "Phoenix Venture Studios approved background library",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageTemplate": "founder_brief",
+        "imageVariant": "field-note",
+        "imageTone": "aqua",
+        "imageComposition": "lower-band",
+        "sceneLane": "workflow_system",
+        "sceneMotif": "audit-terminal",
+        "imageFingerprint": "906eabdeaa50c511",
+        "imageVisualHash": "",
+        "imageWarnings": [
+          "Allowlisted source image failed the local art-director audit: headline placement area is too busy or bright for a clean editorial cover; editorial expert review rejected the image as not ready to publish",
+          "Using the best approved Phoenix-owned background for jeff-dean-other-top-ai-researchers-are-leaving-google-launch-their-own-startup-d0d37e3a while a story-specific cover still needs creative follow-up."
+        ],
+        "imageAudit": {
+          "width": 1200,
+          "height": 800,
+          "luminanceMean": 172.18,
+          "luminanceStdDev": 66.26,
+          "colorfulness": 23.34,
+          "sharpness": 8.34,
+          "bestComposition": {
+            "composition": "right-anchor",
+            "meanLuma": 197.68931876970333,
+            "lumaStdDev": 59.629294603627685,
+            "textureStdDev": 7.612237814087507,
+            "readability": 0.29372199171547164
+          },
+          "compositionScores": {
+            "left-anchor": {
+              "meanLuma": 190.71,
+              "lumaStdDev": 61.26,
+              "textureStdDev": 9.39,
+              "readability": 0.283
+            },
+            "split-panel": {
+              "meanLuma": 192.37,
+              "lumaStdDev": 59.95,
+              "textureStdDev": 9.37,
+              "readability": 0.292
+            },
+            "right-anchor": {
+              "meanLuma": 197.69,
+              "lumaStdDev": 59.63,
+              "textureStdDev": 7.61,
+              "readability": 0.294
+            },
+            "lower-band": {
+              "meanLuma": 152.77,
+              "lumaStdDev": 71.94,
+              "textureStdDev": 11.72,
+              "readability": 0.259
+            }
+          },
+          "learningSignal": {
+            "lane": "workflow_system",
+            "reviewMode": "source-image",
+            "approvedExamples": 17,
+            "rejectedExamples": 0,
+            "distanceToApproved": 2.787,
+            "distanceToRejected": null,
+            "shouldReject": false
+          },
+          "vision": {
+            "textCoverage": 0,
+            "lowConfidenceHandCount": 0,
+            "landmarkedFaceCount": 1,
+            "faceCount": 1,
+            "textObservationCount": 0,
+            "handCount": 1,
+            "completeHandCount": 1,
+            "maxFaceAreaRatio": 0.03925267877598171
+          },
+          "editorialNotes": [
+            "The image reads too soft at social size.",
+            "The headline area is too busy or bright."
+          ],
+          "recommendedFixes": [
+            "Use a sharper base image with a cleaner focal subject.",
+            "Choose a composition with cleaner negative space for the title overlay."
+          ],
+          "editorialModelReview": {
+            "verdict": "reject",
+            "storyFit": "weak",
+            "headlinePlacementRisk": "high",
+            "confidence": "low",
+            "notes": [
+              "The image reads too soft at social size.",
+              "The headline area is too busy or bright.",
+              "The text is not readable at a small size."
+            ],
+            "fixes": [
+              "Use a sharper base image with a cleaner focal subject.",
+              "Choose a composition with cleaner negative space for the title overlay.",
+              "Increase text contrast."
+            ],
+            "normalizedVerdict": "reject"
+          }
+        },
+        "imageCorrectionTrail": [],
+        "imageDecision": "phoenix-owned-background-used-creative-follow-up",
+        "imageDiagnosticReason": "OG image failed audit; Phoenix generated art used",
+        "imageDiagnostic": {
+          "feedImageMissing": true,
+          "articleImageChecked": true,
+          "imageDecision": "RSS image missing; OG image found",
+          "articleImageFound": true,
+          "articleImageSource": "og:image",
+          "articleImageFetchError": "",
+          "sourceImagePolicy": "reference-only"
+        },
+        "imageCertification": {
+          "verdict": "creative-follow-up",
+          "approved": true,
+          "attributionVisible": true,
+          "sourceType": "phoenix-owned",
+          "imageStrategy": "held-for-codex-image",
+          "holdReason": "story-specific-cover-still-needed",
+          "notes": [
+            "Image cleared the current Phoenix cover rules.",
+            "Story-specific creative follow-up is still needed for this cover.",
+            "Allowlisted source image failed the local art-director audit: headline placement area is too busy or bright for a clean editorial cover; editorial expert review rejected the image as not ready to publish",
+            "Using the best approved Phoenix-owned background for jeff-dean-other-top-ai-researchers-are-leaving-google-launch-their-own-startup-d0d37e3a while a story-specific cover still needs creative follow-up."
+          ]
+        },
+        "imageBrief": {
+          "storyAngle": "Workflow shift",
+          "storySubject": "Jeff Dean and other top AI researchers are leaving Google to launch their own startup",
+          "emotionalHook": "The signal is not the tool itself. It is what the tool can remove, speed up, or systemize.",
+          "visualMetaphor": "A premium founder briefing moment with clean business context.",
+          "audiencePainOpportunity": "Founders need a clear next move, not another vague article.",
+          "imagePrompt": "Create one cinematic editorial cover image for this specific story: \"Jeff Dean and other top AI researchers are leaving Google to launch their own startup\". Core context to visualize: Jeff Dean and other top AI researchers are leaving Google to launch their own startup. The signal is not the tool itself. It is what the tool can remove, speed up, or systemize. Founders need a clear next move, not another vague article. A premium founder briefing moment with clean business context. Make the scene specific to the article's real subject, pressure point, and physical environment. Use a cinematic editorial poster grammar: one dominant metaphor, strong light and shadow, and deliberate negative space for a bold headline. Pull out the article's key context instead of showing the article literally: the lock, threshold, risk, leverage point, workflow layer, or trust boundary. Use concrete anchors sparingly: one person silhouette, one device stack, one dashboard, one room, or one symbolic architecture. Do not build a cluttered collage. Let supporting details prove the metaphor: app cards, charts, files, messages, capital flows, handoff lines, or compute layers should feel intentional and readable at thumbnail size. Avoid generic office scenes, showroom product staging, fake logos, celebrity likenesses, overstuffed UI panels, and decorative AI clouds. For Apple/context stories, think in terms of private thresholds: keyholes, context layers, device memory, app stacks, secure compute boundaries, and elegant architectural silhouettes instead of literal product ads. Use Apple-adjacent cues only as abstract architecture, glass, device silhouettes, and privacy symbolism; never copy official logos or exact trademark marks. Use the source article only as private visual reference; create Phoenix-owned artwork for public use. Make it feel like a strong magazine or strategy-report cover, not a product render. Avoid portraits or people unless the story clearly needs a human subject. Leave clean negative space for a Phoenix Founder Signal headline overlay.",
+          "articleImageRequired": false,
+          "expectedArticleImagePath": "/images/signals/source-art/jeff-dean-other-top-ai-researchers-are-leaving-google-launch-their-own-startup-d0d37e3a.jpg",
+          "imageFamily": "ai_opportunity",
+          "preferredImageFamily": "ai_opportunity",
+          "sourceImageEligibility": "allowed",
+          "sourceImagePolicy": "allowed",
+          "sourceImageMatchedKey": "",
+          "sourceImageNote": "",
+          "manualReviewNeeded": false,
+          "overlayTone": "operator",
+          "template": "founder_brief",
+          "sceneLane": "workflow_system",
+          "sceneMotif": "audit-terminal",
+          "imageVariant": "field-note",
+          "imageTone": "aqua",
+          "imageComposition": "lower-band",
+          "imageFingerprint": "906eabdeaa50c511",
+          "articleImagePath": "/images/signals/source-art/jeff-dean-other-top-ai-researchers-are-leaving-google-launch-their-own-startup-d0d37e3a.jpg"
+        },
+        "feedRole": "founder-market",
+        "simpleSummary": "This points to a workflow shift worth testing in the real world. Look for the task that gets cheaper, faster, or easier first.",
+        "engagementPrompt": "Where would you test this first in a live workflow?",
+        "trendContext": "The next proof point is this signal showing up again from a different angle.",
+        "relatedRecentSignals": [],
+        "readingLevel": {
+          "target": "grade-5-plain-founder",
+          "heuristic": "average sentence words",
+          "averageSentenceWords": 11.4
+        },
+        "editorialMode": "phoenix-original-brief",
+        "internalPath": "/founder-signal/signals/jeff-dean-other-top-ai-researchers-are-leaving-google-launch-their-own-startup-d0d37e3a",
+        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/jeff-dean-other-top-ai-researchers-are-leaving-google-launch-their-own-startup-d0d37e3a/",
+        "originalUrl": "https://techcrunch.com/2026/08/05/jeff-dean-and-other-top-ai-researchers-are-leaving-google-to-launch-their-own-startup/",
+        "rssStory": "The legendary Google executive is joined by other outgoing Google execs in a joint mission to use AI to push forward the process of scientific discovery.\n\nThis points to a workflow shift worth testing in the real world. Look for the task that gets cheaper, faster, or easier first.\n\nStart with the workflow that already hurts. If the tool cannot improve that work, it has not earned expansion.\n\nThe next proof point is this signal showing up again from a different angle.\n\nRead the full Phoenix signal on phoenixventurestudios.com.\n\n#AI #Founders",
+        "whyItMatters": "Automation changes margins, response time, and customer experience. It can also expose weak processes if the business automates too early.",
+        "whyShared": "Phoenix shared this because automation is one of the cleanest bridges from AI attention to business results.",
+        "founderTakeaway": "Start with the workflow that already hurts. If the tool cannot improve that work, it has not earned expansion.",
+        "businessTakeaway": "Document the workflow before automating it, then measure whether the change creates real capacity.",
+        "articleBody": [],
+        "sourceLinks": []
+      }
+    },
+    {
+      "id": "https://phoenixventurestudios.com/founder-signal/signals/amd-s-data-center-business-is-booming-while-gaming-takes-backseat-4707f42c/",
+      "url": "https://phoenixventurestudios.com/founder-signal/signals/amd-s-data-center-business-is-booming-while-gaming-takes-backseat-4707f42c/",
+      "external_url": "https://www.theverge.com/tech/975381/amd-q2-2026-earnings-ai-gaming-ryzen",
+      "title": "AMD's data center business is booming while gaming takes a backseat",
+      "content_text": "Driven by demand for AI capacity, AMD's data center revenue more than doubled year-over-year in its latest earnings report, reaching $6.7 billion. That's up from $5.8 billion in Q1, and jumping 107...\n\nThis is a revenue story hiding inside an AI story. Notice what buyers still pay for when budgets get tighter.\n\nRevenue stories are usually proof stories in disguise. Ask what made the buyer say yes.\n\nThe next winners here are likely to grow by saving buyers money, not just by promising more AI.\n\nRead the full Phoenix signal on phoenixventurestudios.com.\n\n#AI",
+      "image": "https://phoenixventurestudios.com/images/signals/generated/amd-s-data-center-business-is-booming-while-gaming-takes-backseat-4707f42c.jpg",
+      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/amd-s-data-center-business-is-booming-while-gaming-takes-backseat-4707f42c.jpg",
+      "date_published": "2026-08-04T20:57:49.000Z",
       "authors": [
         {
           "name": "TensorFeed"
@@ -557,213 +368,316 @@
       ],
       "_phoenix": {
         "bucket": "business_automation",
-        "score": 63,
+        "score": 67,
         "source": "TensorFeed",
-        "slug": "ai-data-center-map-visualize-water-power-impact-feff96b0",
-        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/ai-data-center-map-visualize-water-power-impact-feff96b0.jpg",
-        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/ai-data-center-map-visualize-water-power-impact-feff96b0.jpg",
-        "socialImagePath": "/images/signals/generated/ai-data-center-map-visualize-water-power-impact-feff96b0.jpg",
+        "sourceName": "TensorFeed",
+        "sourceSurface": "rss",
+        "rawTitle": "AMD’s data center business is booming while gaming takes a backseat",
+        "reviewTitle": "TensorFeed | Business Automation | AMD’s data center business is booming while gaming takes a backseat",
+        "topicLabel": "Business Automation",
+        "whySelected": "RSS source matched the Phoenix registry and entered editorial scoring.",
+        "researchCitations": [],
+        "slug": "amd-s-data-center-business-is-booming-while-gaming-takes-backseat-4707f42c",
+        "publicTitle": "AMD's data center business is booming while gaming takes a backseat",
+        "sourceTitle": "AMD’s data center business is booming while gaming takes a backseat",
+        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/amd-s-data-center-business-is-booming-while-gaming-takes-backseat-4707f42c.jpg",
+        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/amd-s-data-center-business-is-booming-while-gaming-takes-backseat-4707f42c.jpg",
+        "socialImagePath": "/images/signals/generated/amd-s-data-center-business-is-booming-while-gaming-takes-backseat-4707f42c.jpg",
         "sourceImageUrl": "",
-        "imageStrategy": "owned-photo-match",
-        "imageFamily": "market_shock",
-        "imageSourceType": "phoenix-owned",
-        "imageCredit": "Phoenix Venture Studios image library",
-        "imageRightsStatus": "owned-or-licensed",
-        "imageTemplate": "market_warning",
-        "imageVariant": "operator-map",
-        "imageTone": "electric",
-        "imageComposition": "split-panel",
-        "imageWarnings": [
-          "Source policy is reference-only and not approved for public image use; using a Phoenix-owned fallback."
-        ],
+        "feedId": "ai-attention",
+        "imageStrategy": "source-allowlisted",
+        "imageApprovalStatus": "approved",
+        "imageHoldReason": "",
+        "imageFamily": "consulting_revenue",
+        "imageSourceType": "source-image",
+        "imageCredit": "TensorFeed",
+        "imageRightsStatus": "allowlisted",
+        "imageTemplate": "opportunity_window",
+        "imageVariant": "signal-rail",
+        "imageTone": "steel",
+        "imageComposition": "right-anchor",
+        "sceneLane": "workflow_system",
+        "sceneMotif": "agent-graph",
+        "imageFingerprint": "67f3b9b7b67e7fff",
+        "imageVisualHash": "5a9b9bcbc96989a9",
+        "imageWarnings": [],
+        "imageAudit": {
+          "width": 1200,
+          "height": 624,
+          "luminanceMean": 94.87,
+          "luminanceStdDev": 81.27,
+          "colorfulness": 100.31,
+          "sharpness": 7.78,
+          "bestComposition": {
+            "composition": "lower-band",
+            "meanLuma": 90.96883318979016,
+            "lumaStdDev": 75.15958471024719,
+            "textureStdDev": 7.344918115657191,
+            "readability": 0.5481919941676954
+          },
+          "compositionScores": {
+            "left-anchor": {
+              "meanLuma": 124.19,
+              "lumaStdDev": 89.7,
+              "textureStdDev": 7.93,
+              "readability": 0.385
+            },
+            "split-panel": {
+              "meanLuma": 124.06,
+              "lumaStdDev": 89.66,
+              "textureStdDev": 8.11,
+              "readability": 0.386
+            },
+            "right-anchor": {
+              "meanLuma": 94.26,
+              "lumaStdDev": 93.26,
+              "textureStdDev": 9.65,
+              "readability": 0.532
+            },
+            "lower-band": {
+              "meanLuma": 90.97,
+              "lumaStdDev": 75.16,
+              "textureStdDev": 7.34,
+              "readability": 0.548
+            }
+          },
+          "learningSignal": {
+            "lane": "workflow_system",
+            "reviewMode": "source-image",
+            "approvedExamples": 17,
+            "rejectedExamples": 0,
+            "distanceToApproved": 2.17,
+            "distanceToRejected": null,
+            "shouldReject": false
+          },
+          "vision": {
+            "landmarkedFaceCount": 0,
+            "maxFaceAreaRatio": 0,
+            "faceCount": 0,
+            "textCoverage": 0.0951923076923077,
+            "handCount": 0,
+            "textObservationCount": 1,
+            "lowConfidenceHandCount": 0,
+            "completeHandCount": 0
+          },
+          "editorialNotes": [
+            "The image reads too soft at social size."
+          ],
+          "recommendedFixes": [
+            "Use a sharper base image with a cleaner focal subject."
+          ],
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "medium",
+            "confidence": "medium",
+            "notes": [
+              "The image is too soft for social media. Consider sharpening the image and focusing on the text."
+            ],
+            "fixes": [
+              "Sharpen the image and improve text clarity for social media use."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        "imageCorrectionTrail": [],
+        "imageDecision": "allowed-source-image-used",
+        "imageDiagnosticReason": "OG image found and allowed source image passed audit",
+        "imageDiagnostic": {
+          "feedImageMissing": true,
+          "articleImageChecked": true,
+          "imageDecision": "RSS image missing; OG image found",
+          "articleImageFound": true,
+          "articleImageSource": "og:image",
+          "articleImageFetchError": "",
+          "sourceImagePolicy": "reference-only"
+        },
+        "imageCertification": {
+          "verdict": "good-to-go",
+          "approved": true,
+          "attributionVisible": true,
+          "sourceType": "source-image",
+          "imageStrategy": "source-allowlisted",
+          "holdReason": "",
+          "notes": [
+            "Image cleared the current Phoenix cover rules.",
+            "The image reads too soft at social size."
+          ]
+        },
         "imageBrief": {
-          "storyAngle": "Risk signal",
-          "emotionalHook": "The useful question is what can break, cost more, or need human judgment.",
-          "visualMetaphor": "A late-night decision room, warning glow, and pressure around the operator.",
-          "audiencePainOpportunity": "Founders need to spot the risk before it becomes an expensive surprise.",
-          "imageFamily": "market_shock",
-          "preferredImageFamily": "market_shock",
-          "sourceImageEligibility": "reference-only",
-          "sourceImagePolicy": "reference-only",
+          "storyAngle": "Revenue opportunity",
+          "storySubject": "the valuation race around frontier AI",
+          "emotionalHook": "The headline matters if it can become a clear offer, event, or consulting path.",
+          "visualMetaphor": "A high-stakes valuation room with growth curves, adoption dashboards, and infrastructure pressure visible at once.",
+          "audiencePainOpportunity": "Founders need to understand what kind of traction investors are actually rewarding before they copy the headline.",
+          "imagePrompt": "Create one cinematic editorial cover image for this specific story: \"AMD’s data center business is booming while gaming takes a backseat\". Core context to visualize: the valuation race around frontier AI. The headline matters if it can become a clear offer, event, or consulting path. Founders need to understand what kind of traction investors are actually rewarding before they copy the headline. A high-stakes valuation room with growth curves, adoption dashboards, and infrastructure pressure visible at once. Show revenue acceleration, investor pressure, model adoption signals, and the scale race without falling back to a generic boardroom. Use a cinematic editorial poster grammar: one dominant metaphor, strong light and shadow, and deliberate negative space for a bold headline. Pull out the article's key context instead of showing the article literally: the lock, threshold, risk, leverage point, workflow layer, or trust boundary. Use concrete anchors sparingly: one person silhouette, one device stack, one dashboard, one room, or one symbolic architecture. Do not build a cluttered collage. Let supporting details prove the metaphor: app cards, charts, files, messages, capital flows, handoff lines, or compute layers should feel intentional and readable at thumbnail size. Avoid generic office scenes, showroom product staging, fake logos, celebrity likenesses, overstuffed UI panels, and decorative AI clouds. For capital stories, turn the financial pressure into architecture: gates, ledgers, valuation rooms, runway lines, proof stacks, and money-flow shadows. Use the source article only as private visual reference; create Phoenix-owned artwork for public use. Make it feel like a strong magazine or strategy-report cover, not a product render. Avoid portraits or people unless the story clearly needs a human subject. Leave clean negative space for a Phoenix Founder Signal headline overlay.",
+          "articleImageRequired": false,
+          "expectedArticleImagePath": "/images/signals/source-art/amd-s-data-center-business-is-booming-while-gaming-takes-backseat-4707f42c.jpg",
+          "imageFamily": "consulting_revenue",
+          "preferredImageFamily": "consulting_revenue",
+          "sourceImageEligibility": "allowed",
+          "sourceImagePolicy": "allowed",
           "sourceImageMatchedKey": "",
           "sourceImageNote": "",
-          "manualReviewNeeded": true,
-          "overlayTone": "warning",
-          "template": "market_warning",
-          "imageVariant": "operator-map",
-          "imageTone": "electric",
-          "imageComposition": "split-panel"
+          "manualReviewNeeded": false,
+          "overlayTone": "opportunity",
+          "template": "opportunity_window",
+          "sceneLane": "workflow_system",
+          "sceneMotif": "agent-graph",
+          "imageVariant": "signal-rail",
+          "imageTone": "steel",
+          "imageComposition": "right-anchor",
+          "imageFingerprint": "67f3b9b7b67e7fff"
         },
-        "feedRole": "founder-tools",
-        "simpleSummary": "AI Data Center Map – Visualize Water and Power Impact points to a tool or workflow shift. Use this to ask what task could get faster, cheaper, or easier this week.",
-        "engagementPrompt": "Would you test this tool or workflow? Drop your takeaway below.",
-        "trendContext": "The pattern to watch is whether more sources start pointing to the same shift.",
+        "feedRole": "founder-market",
+        "simpleSummary": "This is a revenue story hiding inside an AI story. Notice what buyers still pay for when budgets get tighter.",
+        "engagementPrompt": "What are buyers still paying for even while they cut everywhere else?",
+        "trendContext": "The next winners here are likely to grow by saving buyers money, not just by promising more AI.",
         "relatedRecentSignals": [],
         "readingLevel": {
           "target": "grade-5-plain-founder",
           "heuristic": "average sentence words",
-          "averageSentenceWords": 12.2
+          "averageSentenceWords": 11.3
         },
         "editorialMode": "phoenix-original-brief",
-        "internalPath": "/founder-signal/signals/ai-data-center-map-visualize-water-power-impact-feff96b0",
-        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/ai-data-center-map-visualize-water-power-impact-feff96b0/",
-        "originalUrl": "https://aidatacentermap.org/",
+        "internalPath": "/founder-signal/signals/amd-s-data-center-business-is-booming-while-gaming-takes-backseat-4707f42c",
+        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/amd-s-data-center-business-is-booming-while-gaming-takes-backseat-4707f42c/",
+        "originalUrl": "https://www.theverge.com/tech/975381/amd-q2-2026-earnings-ai-gaming-ryzen",
+        "rssStory": "Driven by demand for AI capacity, AMD's data center revenue more than doubled year-over-year in its latest earnings report, reaching $6.7 billion. That's up from $5.8 billion in Q1, and jumping 107...\n\nThis is a revenue story hiding inside an AI story. Notice what buyers still pay for when budgets get tighter.\n\nRevenue stories are usually proof stories in disguise. Ask what made the buyer say yes.\n\nThe next winners here are likely to grow by saving buyers money, not just by promising more AI.\n\nRead the full Phoenix signal on phoenixventurestudios.com.\n\n#AI",
         "whyItMatters": "Automation changes margins, response time, and customer experience. It can also expose weak processes if the business automates too early.",
         "whyShared": "Phoenix shared this because automation is one of the cleanest bridges from AI attention to business results.",
-        "founderTakeaway": "Find one repetitive process where a better system would save time or increase follow-up quality this month.",
-        "businessTakeaway": "The business takeaway is to document the workflow before automating it, then measure whether the change creates real capacity."
+        "founderTakeaway": "Revenue stories are usually proof stories in disguise. Ask what made the buyer say yes.",
+        "businessTakeaway": "Document the workflow before automating it, then measure whether the change creates real capacity.",
+        "articleBody": [],
+        "sourceLinks": []
       }
     },
     {
-      "id": "https://phoenixventurestudios.com/founder-signal/signals/presentation-founding-engineer-cto-ceo-at-same-startup-12ffdde6/",
-      "url": "https://phoenixventurestudios.com/founder-signal/signals/presentation-founding-engineer-cto-ceo-at-same-startup-12ffdde6/",
-      "external_url": "https://www.infoq.com/presentations/framework-best-practices-startup/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
-      "title": "Presentation: From Founding Engineer to CTO to CEO – At the Same Startup",
-      "content_text": "Trisha Ballakur discusses her journey from a backend software engineer to CTO and CEO, using her startup Pointz as a case study. She explains how to implement bottom-up customer discovery to find product-market fit, effectively delegate to global contractors to reduce build times, customize open-source repos like Valhalla, and apply engineering test-case models to business development. By Trisha Ballakur",
-      "image": "https://phoenixventurestudios.com/images/signals/generated/presentation-founding-engineer-cto-ceo-at-same-startup-12ffdde6.jpg",
-      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/presentation-founding-engineer-cto-ceo-at-same-startup-12ffdde6.jpg",
-      "date_published": "2026-05-28T12:33:00.000Z",
+      "id": "https://phoenixventurestudios.com/founder-signal/signals/presentation-microservices-platforms-team-topologies-meets-microservices-patte-e1402236/",
+      "url": "https://phoenixventurestudios.com/founder-signal/signals/presentation-microservices-platforms-team-topologies-meets-microservices-patte-e1402236/",
+      "external_url": "https://www.infoq.com/presentations/microservices-platform-team-topology/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "title": "Microservices Platforms: When Team Topologies Meets Microservices Patterns",
+      "content_text": "This signal is useful when it can be tied to one concrete decision instead of treated as another headline.\n\nSoftware teams are starting to compress work that used to take weeks into a much faster delivery loop.\n\nLook at whether your current website and content system helps you ship quickly or slows every campaign down.\n\nThe next clue is whether more delivery teams rebuild around smaller agent loops instead of bigger project cycles.\n\nRead the full Phoenix signal on phoenixventurestudios.com.\n\n#AI #Founders #Startup",
+      "image": "https://phoenixventurestudios.com/images/signals/generated/presentation-microservices-platforms-team-topologies-meets-microservices-patte-e1402236.jpg",
+      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/presentation-microservices-platforms-team-topologies-meets-microservices-patte-e1402236.jpg",
+      "date_published": "2026-08-04T11:45:00.000Z",
       "authors": [
         {
           "name": "InfoQ"
         }
       ],
       "tags": [
-        "AI Implementation"
+        "Jamstack Operating Systems"
       ],
       "_phoenix": {
-        "bucket": "ai_implementation",
-        "score": 62,
+        "bucket": "jamstack_ops",
+        "score": 69,
         "source": "InfoQ",
-        "slug": "presentation-founding-engineer-cto-ceo-at-same-startup-12ffdde6",
-        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/presentation-founding-engineer-cto-ceo-at-same-startup-12ffdde6.jpg",
-        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/presentation-founding-engineer-cto-ceo-at-same-startup-12ffdde6.jpg",
-        "socialImagePath": "/images/signals/generated/presentation-founding-engineer-cto-ceo-at-same-startup-12ffdde6.jpg",
+        "sourceName": "InfoQ",
+        "sourceSurface": "rss",
+        "rawTitle": "Presentation: Microservices Platforms: When Team Topologies Meets Microservices Patterns",
+        "reviewTitle": "InfoQ | Jamstack Operating Systems | Presentation: Microservices Platforms: When Team Topologies Meets Microservices Patterns",
+        "topicLabel": "Jamstack Operating Systems",
+        "whySelected": "RSS source matched the Phoenix registry and entered editorial scoring.",
+        "researchCitations": [],
+        "slug": "presentation-microservices-platforms-team-topologies-meets-microservices-patte-e1402236",
+        "publicTitle": "Microservices Platforms: When Team Topologies Meets Microservices Patterns",
+        "sourceTitle": "Presentation: Microservices Platforms: When Team Topologies Meets Microservices Patterns",
+        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/presentation-microservices-platforms-team-topologies-meets-microservices-patte-e1402236.jpg",
+        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/presentation-microservices-platforms-team-topologies-meets-microservices-patte-e1402236.jpg",
+        "socialImagePath": "/images/signals/generated/presentation-microservices-platforms-team-topologies-meets-microservices-patte-e1402236.jpg",
         "sourceImageUrl": "",
-        "imageStrategy": "owned-photo-match",
-        "imageFamily": "founder_pressure",
-        "imageSourceType": "phoenix-owned",
-        "imageCredit": "Phoenix Venture Studios image library",
-        "imageRightsStatus": "owned-or-licensed",
-        "imageTemplate": "founder_brief",
-        "imageVariant": "operator-map",
-        "imageTone": "electric",
-        "imageComposition": "split-panel",
-        "imageWarnings": [
-          "Source policy is reference-only and not approved for public image use; using a Phoenix-owned fallback."
-        ],
-        "imageBrief": {
-          "storyAngle": "Founder pressure",
-          "emotionalHook": "A founder decision is hiding inside the news cycle.",
-          "visualMetaphor": "A focused founder moment with calm pressure, strategy, and a next decision.",
-          "audiencePainOpportunity": "Founders need to decide what to keep, cut, clarify, or test.",
-          "imageFamily": "founder_pressure",
-          "preferredImageFamily": "founder_pressure",
-          "sourceImageEligibility": "reference-only",
-          "sourceImagePolicy": "reference-only",
-          "sourceImageMatchedKey": "",
-          "sourceImageNote": "",
-          "manualReviewNeeded": true,
-          "overlayTone": "strategic",
-          "template": "founder_brief",
-          "imageVariant": "operator-map",
-          "imageTone": "electric",
-          "imageComposition": "split-panel"
-        },
-        "feedRole": "founder-tools",
-        "simpleSummary": "Presentation: From Founding Engineer to CTO to CEO – At the Same Startup points to a tool or workflow shift. Use this to ask what task could get faster, cheaper, or easier this week.",
-        "engagementPrompt": "Would you test this tool or workflow? Drop your takeaway below.",
-        "trendContext": "The pattern to watch is whether more sources start pointing to the same shift.",
-        "relatedRecentSignals": [],
-        "readingLevel": {
-          "target": "grade-5-plain-founder",
-          "heuristic": "average sentence words",
-          "averageSentenceWords": 12.7
-        },
-        "editorialMode": "phoenix-original-brief",
-        "internalPath": "/founder-signal/signals/presentation-founding-engineer-cto-ceo-at-same-startup-12ffdde6",
-        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/presentation-founding-engineer-cto-ceo-at-same-startup-12ffdde6/",
-        "originalUrl": "https://www.infoq.com/presentations/framework-best-practices-startup/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
-        "whyItMatters": "Implementation is where AI either becomes useful or becomes another subscription nobody uses. The market is rewarding practical rollout capability.",
-        "whyShared": "Phoenix shared this because the real opportunity is not knowing about AI; it is installing it into the work people already do.",
-        "founderTakeaway": "Review the handoffs, bottlenecks, and repetitive decisions in your business before choosing tools.",
-        "businessTakeaway": "The business takeaway is to build an adoption path: one workflow, one owner, one measurable result."
-      }
-    },
-    {
-      "id": "https://phoenixventurestudios.com/founder-signal/signals/old-data-brings-ai-rollouts-screeching-halt-manage-it-b46abccd/",
-      "url": "https://phoenixventurestudios.com/founder-signal/signals/old-data-brings-ai-rollouts-screeching-halt-manage-it-b46abccd/",
-      "external_url": "https://www.zdnet.com/article/proceed-cautiously-with-ai-rollouts/",
-      "title": "When old data brings AI rollouts to a screeching halt - and how to manage it",
-      "content_text": "With AI, long-forgotten data assets suddenly turn to gold, with potential security risks.",
-      "image": "https://phoenixventurestudios.com/images/signals/generated/old-data-brings-ai-rollouts-screeching-halt-manage-it-b46abccd.jpg",
-      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/old-data-brings-ai-rollouts-screeching-halt-manage-it-b46abccd.jpg",
-      "date_published": "2026-05-28T14:16:00.000Z",
-      "authors": [
-        {
-          "name": "TensorFeed"
-        }
-      ],
-      "tags": [
-        "Business Automation"
-      ],
-      "_phoenix": {
-        "bucket": "business_automation",
-        "score": 61,
-        "source": "TensorFeed",
-        "slug": "old-data-brings-ai-rollouts-screeching-halt-manage-it-b46abccd",
-        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/old-data-brings-ai-rollouts-screeching-halt-manage-it-b46abccd.jpg",
-        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/old-data-brings-ai-rollouts-screeching-halt-manage-it-b46abccd.jpg",
-        "socialImagePath": "/images/signals/generated/old-data-brings-ai-rollouts-screeching-halt-manage-it-b46abccd.jpg",
-        "sourceImageUrl": "",
-        "imageStrategy": "owned-photo-match",
+        "feedId": "ai-attention",
+        "imageStrategy": "held-for-codex-image",
+        "imageApprovalStatus": "approved",
+        "imageHoldReason": "story-specific-cover-still-needed",
         "imageFamily": "ai_risk",
         "imageSourceType": "phoenix-owned",
-        "imageCredit": "Phoenix Venture Studios image library",
+        "imageCredit": "Phoenix Venture Studios approved background library",
         "imageRightsStatus": "owned-or-licensed",
         "imageTemplate": "market_warning",
-        "imageVariant": "capital-pulse",
-        "imageTone": "electric",
+        "imageVariant": "field-note",
+        "imageTone": "steel",
         "imageComposition": "left-anchor",
+        "sceneLane": "workflow_system",
+        "sceneMotif": "audit-terminal",
+        "imageFingerprint": "c5ff0648880f7f4c",
+        "imageVisualHash": "",
         "imageWarnings": [
-          "Source policy is reference-only and not approved for public image use; using a Phoenix-owned fallback."
+          "Source image requires manual review before it can be used as the cover.",
+          "Using the best approved Phoenix-owned background for presentation-microservices-platforms-team-topologies-meets-microservices-patte-e1402236 while a story-specific cover still needs creative follow-up."
         ],
+        "imageAudit": null,
+        "imageCorrectionTrail": [],
+        "imageDecision": "phoenix-owned-background-used-creative-follow-up",
+        "imageDiagnosticReason": "source image policy is reference-only; Phoenix generated art used",
+        "imageDiagnostic": {
+          "feedImageMissing": false,
+          "articleImageChecked": false,
+          "articleImageFound": false,
+          "imageDecision": "RSS image found"
+        },
+        "imageCertification": {
+          "verdict": "creative-follow-up",
+          "approved": true,
+          "attributionVisible": true,
+          "sourceType": "phoenix-owned",
+          "imageStrategy": "held-for-codex-image",
+          "holdReason": "story-specific-cover-still-needed",
+          "notes": [
+            "Image cleared the current Phoenix cover rules.",
+            "Story-specific creative follow-up is still needed for this cover.",
+            "Source image requires manual review before it can be used as the cover.",
+            "Using the best approved Phoenix-owned background for presentation-microservices-platforms-team-topologies-meets-microservices-patte-e1402236 while a story-specific cover still needs creative follow-up."
+          ]
+        },
         "imageBrief": {
           "storyAngle": "Risk signal",
+          "storySubject": "Presentation: Microservices Platforms: When Team Topologies Meets Microservices Patterns",
           "emotionalHook": "The useful question is what can break, cost more, or need human judgment.",
-          "visualMetaphor": "A late-night decision room, warning glow, and pressure around the operator.",
-          "audiencePainOpportunity": "Founders need to spot the risk before it becomes an expensive surprise.",
+          "visualMetaphor": "A premium founder briefing moment with clean business context.",
+          "audiencePainOpportunity": "Founders need a clear next move, not another vague article.",
+          "imagePrompt": "Create one cinematic editorial cover image for this specific story: \"Presentation: Microservices Platforms: When Team Topologies Meets Microservices Patterns\". Core context to visualize: Presentation: Microservices Platforms: When Team Topologies Meets Microservices Patterns. The useful question is what can break, cost more, or need human judgment. Founders need a clear next move, not another vague article. A premium founder briefing moment with clean business context. Make the scene specific to the article's real subject, pressure point, and physical environment. Use a cinematic editorial poster grammar: one dominant metaphor, strong light and shadow, and deliberate negative space for a bold headline. Pull out the article's key context instead of showing the article literally: the lock, threshold, risk, leverage point, workflow layer, or trust boundary. Use concrete anchors sparingly: one person silhouette, one device stack, one dashboard, one room, or one symbolic architecture. Do not build a cluttered collage. Let supporting details prove the metaphor: app cards, charts, files, messages, capital flows, handoff lines, or compute layers should feel intentional and readable at thumbnail size. Avoid generic office scenes, showroom product staging, fake logos, celebrity likenesses, overstuffed UI panels, and decorative AI clouds. For Apple/context stories, think in terms of private thresholds: keyholes, context layers, device memory, app stacks, secure compute boundaries, and elegant architectural silhouettes instead of literal product ads. Use Apple-adjacent cues only as abstract architecture, glass, device silhouettes, and privacy symbolism; never copy official logos or exact trademark marks. Use the source article only as private visual reference; create Phoenix-owned artwork for public use. Make it feel like a strong magazine or strategy-report cover, not a product render. Avoid portraits or people unless the story clearly needs a human subject. Leave clean negative space for a Phoenix Founder Signal headline overlay.",
+          "articleImageRequired": false,
+          "expectedArticleImagePath": "/images/signals/source-art/presentation-microservices-platforms-team-topologies-meets-microservices-patte-e1402236.jpg",
           "imageFamily": "ai_risk",
           "preferredImageFamily": "ai_risk",
-          "sourceImageEligibility": "reference-only",
-          "sourceImagePolicy": "reference-only",
+          "sourceImageEligibility": "manual-review",
+          "sourceImagePolicy": "manual-review",
           "sourceImageMatchedKey": "",
           "sourceImageNote": "",
           "manualReviewNeeded": true,
           "overlayTone": "warning",
           "template": "market_warning",
-          "imageVariant": "capital-pulse",
-          "imageTone": "electric",
-          "imageComposition": "left-anchor"
+          "sceneLane": "workflow_system",
+          "sceneMotif": "audit-terminal",
+          "imageVariant": "field-note",
+          "imageTone": "steel",
+          "imageComposition": "left-anchor",
+          "imageFingerprint": "c5ff0648880f7f4c",
+          "articleImagePath": "/images/signals/source-art/presentation-microservices-platforms-team-topologies-meets-microservices-patte-e1402236.jpg"
         },
-        "feedRole": "founder-tools",
-        "simpleSummary": "When old data brings AI rollouts to a screeching halt - and how to manage it points to a tool or workflow shift. Use this to ask what task could get faster, cheaper, or easier this week.",
-        "engagementPrompt": "Would you test this tool or workflow? Drop your takeaway below.",
-        "trendContext": "The pattern to watch is whether more sources start pointing to the same shift.",
+        "feedRole": "founder-market",
+        "simpleSummary": "Software teams are starting to compress work that used to take weeks into a much faster delivery loop.",
+        "engagementPrompt": "What would you test first if this pattern keeps spreading?",
+        "trendContext": "The next clue is whether more delivery teams rebuild around smaller agent loops instead of bigger project cycles.",
         "relatedRecentSignals": [],
         "readingLevel": {
           "target": "grade-5-plain-founder",
           "heuristic": "average sentence words",
-          "averageSentenceWords": 12.9
+          "averageSentenceWords": 17.8
         },
         "editorialMode": "phoenix-original-brief",
-        "internalPath": "/founder-signal/signals/old-data-brings-ai-rollouts-screeching-halt-manage-it-b46abccd",
-        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/old-data-brings-ai-rollouts-screeching-halt-manage-it-b46abccd/",
-        "originalUrl": "https://www.zdnet.com/article/proceed-cautiously-with-ai-rollouts/",
-        "whyItMatters": "Automation changes margins, response time, and customer experience. It can also expose weak processes if the business automates too early.",
-        "whyShared": "Phoenix shared this because automation is one of the cleanest bridges from AI attention to business results.",
-        "founderTakeaway": "Find one repetitive process where a better system would save time or increase follow-up quality this month.",
-        "businessTakeaway": "The business takeaway is to document the workflow before automating it, then measure whether the change creates real capacity."
+        "internalPath": "/founder-signal/signals/presentation-microservices-platforms-team-topologies-meets-microservices-patte-e1402236",
+        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/presentation-microservices-platforms-team-topologies-meets-microservices-patte-e1402236/",
+        "originalUrl": "https://www.infoq.com/presentations/microservices-platform-team-topology/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+        "rssStory": "This signal is useful when it can be tied to one concrete decision instead of treated as another headline.\n\nSoftware teams are starting to compress work that used to take weeks into a much faster delivery loop.\n\nLook at whether your current website and content system helps you ship quickly or slows every campaign down.\n\nThe next clue is whether more delivery teams rebuild around smaller agent loops instead of bigger project cycles.\n\nRead the full Phoenix signal on phoenixventurestudios.com.\n\n#AI #Founders #Startup",
+        "whyItMatters": "Modern operating systems for content, campaigns, and websites can be lighter, faster, and cheaper when the architecture is built around static assets and smart automation.",
+        "whyShared": "Phoenix shared this because technical stack choices affect speed, cost, and how easily a founder can launch campaigns.",
+        "founderTakeaway": "Look at whether your current website and content system helps you ship quickly or slows every campaign down.",
+        "businessTakeaway": "Use simple infrastructure where possible, then reserve complexity for the parts that truly need it.",
+        "articleBody": [],
+        "sourceLinks": []
       }
     }
   ]

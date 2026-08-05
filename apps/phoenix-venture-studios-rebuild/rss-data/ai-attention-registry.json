@@ -4,6 +4,7 @@
   "feedName": "AI Attention",
   "feedIntent": "Implementation, adoption, consulting, operations, and operator-change signals that show how AI is being put to work inside real businesses.",
   "maxPerSource": 2,
+  "minimumScore": 65,
   "excludeKeywords": [
     "raises $",
     "raised $",

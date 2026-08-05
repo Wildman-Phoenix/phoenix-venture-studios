@@ -1,0 +1,402 @@
+{
+  "feedId": "founder-tools-social",
+  "title": "Phoenix Venture Studios - Founder Tools - Social Queue",
+  "description": "One AI tool or agent-development signal at a time for RSS-to-social publishing.",
+  "generatedAt": "2026-07-25T18:10:42.256Z",
+  "dryRun": false,
+  "siteUrl": "https://phoenixventurestudios.com",
+  "outputFiles": {
+    "xml": "tools-social.xml",
+    "json": "tools-social.json",
+    "items": "tools-social-items.json",
+    "reportMd": "tools-social-run-report.md",
+    "reportJson": "tools-social-run-report.json"
+  },
+  "sources": {
+    "enabled": 7,
+    "fetched": 7,
+    "byType": {
+      "manual": 1,
+      "rss": 6
+    },
+    "researchEnabled": 0,
+    "warnings": [],
+    "errors": []
+  },
+  "items": {
+    "parsed": 1212,
+    "crossFeedFiltered": 0,
+    "keywordFiltered": 5,
+    "recentFiltered": 8,
+    "feedBoundaryFiltered": 15,
+    "scored": 1199,
+    "candidatePool": 6,
+    "selected": 1,
+    "held": 0,
+    "excluded": 9
+  },
+  "bucketCounts": {
+    "ai_tools_agents": 1
+  },
+  "sourceCounts": {
+    "techcrunch-ai": 1
+  },
+  "queue": {
+    "isSocialQueue": true,
+    "candidatePoolSize": 6,
+    "eligibleCandidates": 2,
+    "eligibleSelected": true,
+    "heldForManualReview": 4,
+    "skippedForFallbackArt": 0,
+    "queueRotationReason": "advanced-to-next-eligible-candidate",
+    "historyUpdated": true,
+    "sampleReady": true,
+    "selectedReasons": [
+      "creative-follow-up-needed"
+    ],
+    "queuePublishedAt": "2026-07-25T18:10:42.256Z",
+    "selectedOriginalUrl": "https://techcrunch.com/podcast/ai-communism-rogue-models-and-the-why-kimi-k3-spooked-wall-street/",
+    "selectedCanonicalKey": "https://techcrunch.com/podcast/ai-communism-rogue-models-and-the-why-kimi-k3-spooked-wall-street",
+    "excludedByRecent": 8,
+    "excludedByCrossLaneDedupe": 0,
+    "laneAssignmentReason": "founder-tools-lane",
+    "candidates": [
+      {
+        "slug": "article-self-building-agent-langchain4j-experiment-4fe8dd42",
+        "title": "Article: The Self-Building Agent: A LangChain4j Experiment",
+        "score": 83,
+        "imageStrategy": "held-for-codex-image",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageApprovalStatus": "approved",
+        "manualReviewNeeded": true,
+        "eligible": false,
+        "sampleReady": false,
+        "reasons": [
+          "manual-review",
+          "creative-follow-up-needed"
+        ]
+      },
+      {
+        "slug": "article-multi-agent-ai-production-security-operations-a2a-mcp-architecture-5g-10c44e9d",
+        "title": "Article: Multi-Agent AI for Production Security Operations: An A2A and MCP Architecture in a 5G Core",
+        "score": 70,
+        "imageStrategy": "held-for-codex-image",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageApprovalStatus": "approved",
+        "manualReviewNeeded": true,
+        "eligible": false,
+        "sampleReady": false,
+        "reasons": [
+          "manual-review",
+          "creative-follow-up-needed"
+        ]
+      },
+      {
+        "slug": "ai-communism-rogue-models-kimi-k3-spooked-wall-street-b9480a06",
+        "title": "'AI communism', rogue models, and the why Kimi K3 spooked Wall Street",
+        "score": 75,
+        "imageStrategy": "held-for-codex-image",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageApprovalStatus": "approved",
+        "manualReviewNeeded": false,
+        "eligible": true,
+        "sampleReady": true,
+        "reasons": [
+          "creative-follow-up-needed"
+        ]
+      },
+      {
+        "slug": "jotai-v2-20-rework-store-building-blocks-high-throughput-performance-sets-stag-0d0f36c7",
+        "title": "Jotai v2.20: Rework Store Building Blocks for High-Throughput Performance and Sets the Stage for v3",
+        "score": 72,
+        "imageStrategy": "held-for-codex-image",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageApprovalStatus": "approved",
+        "manualReviewNeeded": true,
+        "eligible": false,
+        "sampleReady": false,
+        "reasons": [
+          "manual-review",
+          "creative-follow-up-needed"
+        ]
+      },
+      {
+        "slug": "openai-s-voice-mode-makes-it-chatgpt-desktop-app-75e11e42",
+        "title": "OpenAI's new voice mode makes it to the ChatGPT desktop app",
+        "score": 71,
+        "imageStrategy": "held-for-codex-image",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageApprovalStatus": "approved",
+        "manualReviewNeeded": false,
+        "eligible": true,
+        "sampleReady": true,
+        "reasons": [
+          "creative-follow-up-needed"
+        ]
+      },
+      {
+        "slug": "zalando-built-process-client-side-load-balancer-one-million-requests-per-secon-9626f1ec",
+        "title": "How Zalando Built an In-Process Client-Side Load Balancer for One Million Requests per Second",
+        "score": 70,
+        "imageStrategy": "held-for-codex-image",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageApprovalStatus": "approved",
+        "manualReviewNeeded": true,
+        "eligible": false,
+        "sampleReady": false,
+        "reasons": [
+          "manual-review",
+          "creative-follow-up-needed"
+        ]
+      }
+    ]
+  },
+  "scoring": {
+    "preferredKeywords": [
+      "agentic",
+      "gentic",
+      "coding agent",
+      "codex",
+      "vibe coding",
+      "app builder",
+      "app builders",
+      "build apps",
+      "building apps",
+      "app development",
+      "developer tool",
+      "developer tools",
+      "developer platform",
+      "sdk",
+      "api",
+      "cli",
+      "integration",
+      "extension",
+      "plugin",
+      "launches",
+      "ships",
+      "release",
+      "feature",
+      "workspace",
+      "automation",
+      "workflow",
+      "operator",
+      "prototype",
+      "ship faster",
+      "cloudflare",
+      "github actions",
+      "save time",
+      "time saving",
+      "productivity",
+      "useful tool",
+      "new tool",
+      "new tools"
+    ],
+    "penaltyKeywords": [
+      "bird feeder",
+      "backyard drama",
+      "review",
+      "hands-on",
+      "consulting",
+      "services firm",
+      "adoption",
+      "change management",
+      "rollout",
+      "implementation partner"
+    ]
+  },
+  "automation": {
+    "mode": "autonomous-editorial",
+    "scheduleSlots": [
+      "early-morning",
+      "mid-morning",
+      "afternoon",
+      "late-night",
+      "friday-ai-trend-sweep"
+    ],
+    "recentItemsConsidered": 252,
+    "modelStrategy": {
+      "triage": "lower-cost model or deterministic scoring",
+      "finalEditorial": "strong model recommended for publish/skip decisions",
+      "validation": "deterministic gates plus lightweight audit agents"
+    }
+  },
+  "images": {
+    "mode": "source-or-codex-queue",
+    "attempted": 6,
+    "approved": 1,
+    "held": 0,
+    "generated": 1,
+    "sourceAllowlisted": 0,
+    "codexApproved": 1,
+    "strategyCounts": {
+      "held-for-codex-image": 1
+    },
+    "familyCounts": {
+      "ai_risk": 1
+    },
+    "variantCounts": {
+      "signal-rail": 1
+    },
+    "toneCounts": {
+      "electric": 1
+    },
+    "compositionCounts": {
+      "right-anchor": 1
+    },
+    "variety": {
+      "familyCounts": {
+        "ai_risk": 1
+      },
+      "variantCounts": {
+        "signal-rail": 1
+      },
+      "toneCounts": {
+        "electric": 1
+      },
+      "compositionCounts": {
+        "right-anchor": 1
+      },
+      "maxConsecutiveFamily": 1,
+      "dominantFamily": "ai_risk",
+      "dominantFamilyCount": 1,
+      "warnings": [],
+      "errors": []
+    },
+    "sourceTypeCounts": {
+      "phoenix-owned": 1
+    },
+    "rightsStatusCounts": {
+      "owned-or-licensed": 1
+    },
+    "manualReviewNeeded": 0,
+    "creativeFollowUpSelected": 1,
+    "warnings": [
+      {
+        "slug": "ai-communism-rogue-models-kimi-k3-spooked-wall-street-b9480a06",
+        "title": "'AI communism', rogue models, and the why Kimi K3 spooked Wall Street",
+        "warning": "Using the best approved Phoenix-owned background for ai-communism-rogue-models-kimi-k3-spooked-wall-street-b9480a06 while a story-specific cover still needs creative follow-up."
+      }
+    ],
+    "errors": []
+  },
+  "copy": {
+    "repeated": [],
+    "warnings": []
+  },
+  "editorial": {
+    "warnings": [],
+    "errors": [],
+    "depthAudit": {
+      "feedId": "founder-tools-social",
+      "leadItemLimit": 5,
+      "checkedLeadItems": 0,
+      "thinLeadItems": 0,
+      "leadItemsWithDepth": 0,
+      "warnings": []
+    }
+  },
+  "aliases": {
+    "configured": [],
+    "written": []
+  },
+  "heldItems": [],
+  "selectedItems": [
+    {
+      "title": "'AI communism', rogue models, and the why Kimi K3 spooked Wall Street",
+      "url": "https://phoenixventurestudios.com/founder-signal/signals/ai-communism-rogue-models-kimi-k3-spooked-wall-street-b9480a06/",
+      "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/ai-communism-rogue-models-kimi-k3-spooked-wall-street-b9480a06/",
+      "originalUrl": "https://techcrunch.com/podcast/ai-communism-rogue-models-and-the-why-kimi-k3-spooked-wall-street/",
+      "sourceName": "TechCrunch AI",
+      "sourceSurface": "rss",
+      "rawTitle": "‘AI communism’, rogue models, and the why Kimi K3 spooked Wall Street",
+      "reviewTitle": "TechCrunch AI | AI Tools & Agents | ‘AI communism’, rogue models, and the why Kimi K3 spooked Wall Street",
+      "topicLabel": "AI Tools & Agents",
+      "whySelected": "RSS source matched the Phoenix registry and entered editorial scoring.",
+      "researchCitations": [],
+      "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/ai-communism-rogue-models-kimi-k3-spooked-wall-street-b9480a06.jpg",
+      "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/ai-communism-rogue-models-kimi-k3-spooked-wall-street-b9480a06.jpg",
+      "socialImagePath": "/images/signals/generated/ai-communism-rogue-models-kimi-k3-spooked-wall-street-b9480a06.jpg",
+      "sourceImageUrl": "",
+      "imageStrategy": "held-for-codex-image",
+      "imageApprovalStatus": "approved",
+      "imageHoldReason": "story-specific-cover-still-needed",
+      "imageFamily": "ai_risk",
+      "imageSourceType": "phoenix-owned",
+      "imageCredit": "Phoenix Venture Studios approved background library",
+      "imageRightsStatus": "owned-or-licensed",
+      "imageTemplate": "market_warning",
+      "imageVariant": "signal-rail",
+      "imageTone": "electric",
+      "imageComposition": "right-anchor",
+      "sceneLane": "general",
+      "sceneMotif": "signal-atlas",
+      "imageFingerprint": "0b021d32d09dbb10",
+      "imageVisualHash": "",
+      "imageAudit": null,
+      "imageCorrectionTrail": [],
+      "imageBrief": {
+        "storyAngle": "Risk signal",
+        "storySubject": "‘AI communism’, rogue models, and the why Kimi K3 spooked Wall Street",
+        "emotionalHook": "The useful question is what can break, cost more, or need human judgment.",
+        "visualMetaphor": "A premium founder briefing moment with clean business context.",
+        "audiencePainOpportunity": "Founders need a clear next move, not another vague article.",
+        "imagePrompt": "Create one cinematic editorial cover image for this specific story: \"‘AI communism’, rogue models, and the why Kimi K3 spooked Wall Street\". Core context to visualize: ‘AI communism’, rogue models, and the why Kimi K3 spooked Wall Street. The useful question is what can break, cost more, or need human judgment. Founders need a clear next move, not another vague article. A premium founder briefing moment with clean business context. Make the scene specific to the article's real subject, pressure point, and physical environment. Use a cinematic editorial poster grammar: one dominant metaphor, strong light and shadow, and deliberate negative space for a bold headline. Pull out the article's key context instead of showing the article literally: the lock, threshold, risk, leverage point, workflow layer, or trust boundary. Use concrete anchors sparingly: one person silhouette, one device stack, one dashboard, one room, or one symbolic architecture. Do not build a cluttered collage. Let supporting details prove the metaphor: app cards, charts, files, messages, capital flows, handoff lines, or compute layers should feel intentional and readable at thumbnail size. Avoid generic office scenes, showroom product staging, fake logos, celebrity likenesses, overstuffed UI panels, and decorative AI clouds. For Apple/context stories, think in terms of private thresholds: keyholes, context layers, device memory, app stacks, secure compute boundaries, and elegant architectural silhouettes instead of literal product ads. Use Apple-adjacent cues only as abstract architecture, glass, device silhouettes, and privacy symbolism; never copy official logos or exact trademark marks. Use the source article only as private visual reference; create Phoenix-owned artwork for public use. Make it feel like a strong magazine or strategy-report cover, not a product render. Avoid portraits or people unless the story clearly needs a human subject. Leave clean negative space for a Phoenix Founder Signal headline overlay.",
+        "articleImageRequired": false,
+        "expectedArticleImagePath": "/images/signals/source-art/ai-communism-rogue-models-kimi-k3-spooked-wall-street-b9480a06.jpg",
+        "imageFamily": "ai_risk",
+        "preferredImageFamily": "ai_risk",
+        "sourceImageEligibility": "allowed",
+        "sourceImagePolicy": "allowed",
+        "sourceImageMatchedKey": "",
+        "sourceImageNote": "",
+        "manualReviewNeeded": false,
+        "overlayTone": "warning",
+        "template": "market_warning",
+        "sceneLane": "general",
+        "sceneMotif": "signal-atlas",
+        "imageVariant": "signal-rail",
+        "imageTone": "electric",
+        "imageComposition": "right-anchor",
+        "imageFingerprint": "0b021d32d09dbb10",
+        "articleImagePath": "/images/signals/source-art/ai-communism-rogue-models-kimi-k3-spooked-wall-street-b9480a06.jpg"
+      },
+      "expectedArticleImagePath": "/images/signals/source-art/ai-communism-rogue-models-kimi-k3-spooked-wall-street-b9480a06.jpg",
+      "feedId": "founder-tools-social",
+      "feedRole": "founder-tools",
+      "simpleSummary": "AI still has to earn trust under real workload, not just in a demo.",
+      "engagementPrompt": "What would you need to see before trusting this in production?",
+      "trendContext": "If more benchmark results look like this, founders will need to slow down before handing critical work to agents.",
+      "relatedRecentSignals": [],
+      "readingLevel": {
+        "target": "grade-5-plain-founder",
+        "heuristic": "average sentence words",
+        "averageSentenceWords": 16.8
+      },
+      "editorialMode": "phoenix-original-brief",
+      "imageWarnings": [
+        "Using the best approved Phoenix-owned background for ai-communism-rogue-models-kimi-k3-spooked-wall-street-b9480a06 while a story-specific cover still needs creative follow-up."
+      ],
+      "imageDecision": "phoenix-owned-background-used-creative-follow-up",
+      "imageDiagnosticReason": "RSS image missing; Phoenix generated art used",
+      "imageDiagnostic": {
+        "feedImageMissing": true,
+        "articleImageChecked": false,
+        "imageDecision": "rss-image-missing-not-checked"
+      },
+      "qualityStatus": "creative-follow-up",
+      "qualityNeedsCreativeFollowUp": true,
+      "rssStory": "A new enterprise benchmark found frontier AI models handled fewer than half of the agentic IT tasks they were given.\n\nAI still has to earn trust under real workload, not just in a demo.\n\nIf the task touches operations, customers, or money, ask what proof you would need before trusting an agent to own it.\n\nIf more benchmark results look like this, founders will need to slow down before handing critical work to agents.\n\nRead the full Phoenix signal on phoenixventurestudios.com.\n\n#OpenAI #AgenticAI #AI",
+      "slug": "ai-communism-rogue-models-kimi-k3-spooked-wall-street-b9480a06",
+      "bucket": "ai_tools_agents",
+      "bucketLabel": "AI Tools & Agents",
+      "score": 75,
+      "publishedAt": "2026-07-25T18:10:42.256Z"
+    }
+  ],
+  "validation": {
+    "xmlWellFormed": true,
+    "errors": []
+  },
+  "feedValid": true,
+  "preservedPreviousFeed": false
+}

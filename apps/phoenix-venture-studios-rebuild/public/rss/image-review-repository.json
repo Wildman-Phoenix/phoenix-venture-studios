@@ -1,0 +1,2455 @@
+{
+  "generatedAt": "2026-08-05T20:25:59.938Z",
+  "totalEntries": 400,
+  "groups": [
+    {
+      "sceneLane": "general",
+      "reviewMode": "phoenix-owned",
+      "total": 94,
+      "approved": 94,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 47.77,
+        "sharpness": 13.74,
+        "luminanceStdDev": 55.35,
+        "readability": 0.554
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "This looks too much like images we already learned to reject in this lane.",
+          "count": 70
+        },
+        {
+          "value": "The headline area is too busy or bright.",
+          "count": 42
+        },
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 29
+        },
+        {
+          "value": "The tonal range is too flat.",
+          "count": 10
+        },
+        {
+          "value": "The image does not have enough color energy.",
+          "count": 6
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Pick a more distinct scene and avoid reusing the same visual setup for this story type.",
+          "count": 70
+        },
+        {
+          "value": "Choose a composition with cleaner negative space for the title overlay.",
+          "count": 42
+        },
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 29
+        },
+        {
+          "value": "Use deeper shadows and brighter highlights so the story has more tension.",
+          "count": 10
+        },
+        {
+          "value": "Add more color pop or choose a source image with clearer visual contrast.",
+          "count": 6
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "They Gave an AI Bot a Storefront, 3 Employees and $100,000. Can It Build a Profitable Business?",
+          "sourceName": "Entrepreneur",
+          "originalUrl": "https://www.entrepreneur.com/business-news/an-ai-bot-ran-a-san-francisco-store-for-the-first-time",
+          "imageFingerprint": "925232b9675a1950",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "Remove the text in the bottom left corner.",
+              "Use a sharper base image with a cleaner focal subject."
+            ],
+            "fixes": [
+              "Remove the text in the bottom left corner."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "You Could Get a $24,000 College Scholarship — Without Even Applying to Any Schools",
+          "sourceName": "Entrepreneur",
+          "originalUrl": "https://www.entrepreneur.com/business-news/more-colleges-are-admitting-students-who-never-filled-out-an-application",
+          "imageFingerprint": "60e8e1fe7820c28f",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "Cluttered background",
+              "High luminance",
+              "Low readability",
+              "Potential low-confidence hands",
+              "Potential off anatomy"
+            ],
+            "fixes": [
+              "Adjust background",
+              "Increase contrast",
+              "Reduce luminance",
+              "Increase readability",
+              "Remove low-confidence hands"
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Google just announced a major shakeup of its top AI leadership",
+          "sourceName": "The Verge AI",
+          "originalUrl": "https://www.theverge.com/tech/975677/google-deepmind-ai-demis-hassabis-shakeup",
+          "imageFingerprint": "7e3b2d5d76bcdf37",
+          "editorialModelReview": {
+            "verdict": "revise",
+            "storyFit": "weak",
+            "headlinePlacementRisk": "high",
+            "confidence": "low",
+            "notes": [
+              "Too busy for a clean cover. Needs a more subtle overlay.",
+              "Headline is too bright.",
+              "Could benefit from a more subdued color palette."
+            ],
+            "fixes": [
+              "Reduce text brightness.",
+              "Add more negative space.",
+              "Use a softer color palette for the title."
+            ],
+            "normalizedVerdict": "revise"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "workflow_system",
+      "reviewMode": "phoenix-owned",
+      "total": 39,
+      "approved": 39,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 34.88,
+        "sharpness": 14.65,
+        "luminanceStdDev": 52.54,
+        "readability": 0.441
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The headline area is too busy or bright.",
+          "count": 29
+        },
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 7
+        },
+        {
+          "value": "The image does not have enough color energy.",
+          "count": 6
+        },
+        {
+          "value": "The tonal range is too flat.",
+          "count": 4
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Choose a composition with cleaner negative space for the title overlay.",
+          "count": 29
+        },
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 7
+        },
+        {
+          "value": "Add more color pop or choose a source image with clearer visual contrast.",
+          "count": 6
+        },
+        {
+          "value": "Use deeper shadows and brighter highlights so the story has more tension.",
+          "count": 4
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "OpenAI's new voice mode makes it to the ChatGPT desktop app",
+          "sourceName": "TechCrunch AI",
+          "originalUrl": "https://techcrunch.com/2026/07/24/openais-new-voice-mode-makes-it-to-the-chatgpt-desktop-app/",
+          "imageFingerprint": "9834b369e137e59f",
+          "editorialModelReview": {
+            "verdict": "reject",
+            "storyFit": "weak",
+            "headlinePlacementRisk": "low",
+            "confidence": "low",
+            "notes": [
+              "The image is too similar to a logo, thumbnail, or placeholder asset.",
+              "The image reads too soft at social size."
+            ],
+            "fixes": [
+              "Use a sharper base image with a cleaner focal subject."
+            ],
+            "normalizedVerdict": "reject"
+          }
+        },
+        {
+          "title": "DeepLens Diagnosis Agent: Agentic Workflow Design Lets a Small Reasoning Model Compete with Frontier LLMs",
+          "sourceName": "TensorFeed",
+          "originalUrl": "https://arxiv.org/abs/2607.22555",
+          "imageFingerprint": "73b940cb3212cc68",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "Choose a composition with cleaner negative space for the title overlay."
+            ],
+            "fixes": [
+              "Choose a composition with cleaner negative space for the title overlay."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Jeff Dean and other top AI researchers are leaving Google to launch their own startup",
+          "sourceName": "TechCrunch AI",
+          "originalUrl": "https://techcrunch.com/2026/08/05/jeff-dean-and-other-top-ai-researchers-are-leaving-google-to-launch-their-own-startup/",
+          "imageFingerprint": "906eabdeaa50c511",
+          "editorialModelReview": {
+            "verdict": "reject",
+            "storyFit": "weak",
+            "headlinePlacementRisk": "high",
+            "confidence": "low",
+            "notes": [
+              "The image reads too soft at social size.",
+              "The headline area is too busy or bright.",
+              "The text is not readable at a small size."
+            ],
+            "fixes": [
+              "Use a sharper base image with a cleaner focal subject.",
+              "Choose a composition with cleaner negative space for the title overlay.",
+              "Increase text contrast."
+            ],
+            "normalizedVerdict": "reject"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "chip_infrastructure",
+      "reviewMode": "phoenix-owned",
+      "total": 35,
+      "approved": 35,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 29.76,
+        "sharpness": 13.75,
+        "luminanceStdDev": 55.76,
+        "readability": 0.471
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The headline area is too busy or bright.",
+          "count": 20
+        },
+        {
+          "value": "The image does not have enough color energy.",
+          "count": 8
+        },
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 7
+        },
+        {
+          "value": "The tonal range is too flat.",
+          "count": 1
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Choose a composition with cleaner negative space for the title overlay.",
+          "count": 20
+        },
+        {
+          "value": "Add more color pop or choose a source image with clearer visual contrast.",
+          "count": 8
+        },
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 7
+        },
+        {
+          "value": "Use deeper shadows and brighter highlights so the story has more tension.",
+          "count": 1
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "MacPaw taps Liquid AI to offer on-device inference to devs building for its app store",
+          "sourceName": "TechCrunch",
+          "originalUrl": "https://techcrunch.com/2026/08/05/macpaw-taps-liquid-ai-to-offer-on-device-inference-to-devs-building-for-its-app-store/",
+          "imageFingerprint": "4f4e9beea507cbdb",
+          "editorialModelReview": {
+            "verdict": "reject",
+            "storyFit": "weak",
+            "headlinePlacementRisk": "high",
+            "confidence": "low",
+            "notes": [
+              "The image is too busy. Add more color pop or choose a source image with clearer visual contrast.",
+              "The headline area is too bright. Choose a composition with cleaner negative space for the title overlay."
+            ],
+            "fixes": [
+              "Add more color pop or choose a source image with clearer visual contrast.",
+              "Choose a composition with cleaner negative space for the title overlay."
+            ],
+            "normalizedVerdict": "reject"
+          }
+        },
+        {
+          "title": "Agentic Coding in the Wild: Characterizing GitHub Copilot Traces at Production Scale",
+          "sourceName": "TensorFeed",
+          "originalUrl": "https://arxiv.org/abs/2608.00101",
+          "imageFingerprint": "202951182b097a46",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "Make the title overlay more visually distinct.",
+              "Consider adding a subtle background texture to reduce readability issues."
+            ],
+            "fixes": [
+              "Use a more subdued background for the title overlay.",
+              "Increase the contrast between the text and background for better readability."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Google's Top AI Brains Are Leaving to Launch Discovery Loop",
+          "sourceName": "TensorFeed",
+          "originalUrl": "https://www.wired.com/story/jeff-dean-google-discovery-loop-startup/",
+          "imageFingerprint": "fad909c8a0e20522",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "The image looks great!",
+              "Consider adding a subtle shadow to the text to improve readability at social size."
+            ],
+            "fixes": [
+              ""
+            ],
+            "normalizedVerdict": "approve"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "frontier_funding",
+      "reviewMode": "phoenix-owned",
+      "total": 26,
+      "approved": 26,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 55.72,
+        "sharpness": 14.18,
+        "luminanceStdDev": 53.2,
+        "readability": 0.578
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 9
+        },
+        {
+          "value": "The headline area is too busy or bright.",
+          "count": 8
+        },
+        {
+          "value": "The tonal range is too flat.",
+          "count": 3
+        },
+        {
+          "value": "The image does not have enough color energy.",
+          "count": 2
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 9
+        },
+        {
+          "value": "Choose a composition with cleaner negative space for the title overlay.",
+          "count": 8
+        },
+        {
+          "value": "Use deeper shadows and brighter highlights so the story has more tension.",
+          "count": 3
+        },
+        {
+          "value": "Add more color pop or choose a source image with clearer visual contrast.",
+          "count": 2
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "Elon Musk's Boring Company reportedly raising funding at a $20 billion valuation",
+          "sourceName": "TechCrunch",
+          "originalUrl": "https://techcrunch.com/2026/07/25/elon-musks-boring-company-reportedly-raising-funding-at-a-20-billion-valuation/",
+          "imageFingerprint": "ea9c6cc2879a39dc",
+          "editorialModelReview": {
+            "verdict": "reject",
+            "storyFit": "weak",
+            "headlinePlacementRisk": "high",
+            "confidence": "low",
+            "notes": [
+              "Add more color pop or choose a source image with clearer visual contrast."
+            ],
+            "fixes": [
+              "Add more color pop or choose a source image with clearer visual contrast."
+            ],
+            "normalizedVerdict": "reject"
+          }
+        },
+        {
+          "title": "Bot-detection startup Spur nabs $200M from Insight",
+          "sourceName": "TechCrunch",
+          "originalUrl": "https://techcrunch.com/2026/07/28/bot-detection-startup-spur-nabs-200m-from-insight/",
+          "imageFingerprint": "b64dddcba890489e",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "high",
+            "confidence": "medium",
+            "notes": [
+              "Choose a composition with cleaner negative space for the title overlay.",
+              "Consider using a different color scheme to add depth."
+            ],
+            "fixes": [
+              "Add a subtle shadow to the text for better readability."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Powerful Compute So Compact, It's Clutch — Build AI Anywhere With NVIDIA Jetson",
+          "sourceName": "TensorFeed",
+          "originalUrl": "https://blogs.nvidia.com/blog/build-ai-with-nvidia-jetson/",
+          "imageFingerprint": "621d8e5fca9ed454",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "medium",
+            "notes": [
+              "text is clear and readable",
+              "image is of good quality",
+              "no generic filler"
+            ],
+            "fixes": [
+              "keep sharp and clean"
+            ],
+            "normalizedVerdict": "approve"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "frontier_funding",
+      "reviewMode": "source-image",
+      "total": 25,
+      "approved": 25,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 42.01,
+        "sharpness": 12.86,
+        "luminanceStdDev": 51.99,
+        "readability": 0.762
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 9
+        },
+        {
+          "value": "The tonal range is too flat.",
+          "count": 4
+        },
+        {
+          "value": "The image does not have enough color energy.",
+          "count": 4
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 9
+        },
+        {
+          "value": "Use deeper shadows and brighter highlights so the story has more tension.",
+          "count": 4
+        },
+        {
+          "value": "Add more color pop or choose a source image with clearer visual contrast.",
+          "count": 4
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "Elon Musk's Boring Company reportedly raising funding at a $20 billion valuation",
+          "sourceName": "TechCrunch",
+          "originalUrl": "https://techcrunch.com/2026/07/25/elon-musks-boring-company-reportedly-raising-funding-at-a-20-billion-valuation/",
+          "imageFingerprint": "32610ae7c5f92ad9",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "medium",
+            "notes": [
+              "Add more color pop or choose a source image with clearer visual contrast."
+            ],
+            "fixes": [
+              "Add more color pop or choose a source image with clearer visual contrast."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Elon Musk's Boring Company reportedly raising funding at a $20 billion valuation",
+          "sourceName": "TechCrunch",
+          "originalUrl": "https://techcrunch.com/2026/07/25/elon-musks-boring-company-reportedly-raising-funding-at-a-20-billion-valuation/",
+          "imageFingerprint": "32610ae7c5f92ad9",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "Add more color pop or choose a source image with clearer visual contrast."
+            ],
+            "fixes": [
+              "Add more color pop or choose a source image with clearer visual contrast."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Anthropic signs $10B deal with AI cloud startup Volta",
+          "sourceName": "TechCrunch AI",
+          "originalUrl": "https://techcrunch.com/2026/08/04/anthropic-signs-10-billion-deal-with-ai-cloud-startup-volta/",
+          "imageFingerprint": "5ecd2f2c0582a9a9",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "medium",
+            "notes": [
+              "image is a bit soft at social size. sharpening might help."
+            ],
+            "fixes": [
+              "sharpen the base image"
+            ],
+            "normalizedVerdict": "approve"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "general",
+      "reviewMode": "source-image",
+      "total": 24,
+      "approved": 24,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 85.42,
+        "sharpness": 13.88,
+        "luminanceStdDev": 51.47,
+        "readability": 0.692
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 8
+        },
+        {
+          "value": "The tonal range is too flat.",
+          "count": 6
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 8
+        },
+        {
+          "value": "Use deeper shadows and brighter highlights so the story has more tension.",
+          "count": 6
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "This Immigrant Founder Created a Platform That Helps People 'Be Their Own Boss' — And Make Up to $260k a Month",
+          "sourceName": "Entrepreneur",
+          "originalUrl": "https://www.entrepreneur.com/building-a-business/this-immigrant-founder-created-a-platform-that-helps-people-be-their-own-boss-and-make-up-to-260k-a-month",
+          "imageFingerprint": "bfb5cb8b5399facf",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "...",
+              "..."
+            ],
+            "fixes": [
+              "..."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Indian EV startup River raises $120M Series C to scale production, launch more models",
+          "sourceName": "TechCrunch",
+          "originalUrl": "https://techcrunch.com/2026/08/05/indian-ev-two-wheeler-startup-river-raises-120m-after-scaling-with-one-model/",
+          "imageFingerprint": "b69e236d179250df",
+          "editorialModelReview": null
+        },
+        {
+          "title": "TechCrunch Disrupt 2026's Real World AI Stage features robots, automated factories, and extinct animals",
+          "sourceName": "TechCrunch AI",
+          "originalUrl": "https://techcrunch.com/2026/08/05/techcrunch-disrupt-2026s-real-world-ai-stage-features-robots-automated-factories-and-extinct-animals/",
+          "imageFingerprint": "6fcd5d61e26ecabe",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "Looks strong",
+              "Robots, automated factories, extinct animals",
+              "Good mix of subjects"
+            ],
+            "fixes": [],
+            "normalizedVerdict": "approve"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "talent_motion",
+      "reviewMode": "phoenix-owned",
+      "total": 20,
+      "approved": 20,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 62.15,
+        "sharpness": 21.12,
+        "luminanceStdDev": 65.24,
+        "readability": 0.534
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The headline area is too busy or bright.",
+          "count": 13
+        },
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 2
+        },
+        {
+          "value": "The image does not have enough color energy.",
+          "count": 1
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Choose a composition with cleaner negative space for the title overlay.",
+          "count": 13
+        },
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 2
+        },
+        {
+          "value": "Add more color pop or choose a source image with clearer visual contrast.",
+          "count": 1
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "Gen Z Workers Can Make $34,400 a Month Interning at This Wall Street Firm — And Housing Is Free",
+          "sourceName": "Entrepreneur",
+          "originalUrl": "https://www.entrepreneur.com/business-news/gen-z-workers-can-make-34400-a-month-interning-at-this-wall-street-firm-and-housing-is-free",
+          "imageFingerprint": "f1a14aee83654f5a",
+          "editorialModelReview": null
+        },
+        {
+          "title": "Gen Z Workers Can Make $34,400 a Month Interning at This Wall Street Firm — And Housing Is Free",
+          "sourceName": "Entrepreneur",
+          "originalUrl": "https://www.entrepreneur.com/business-news/gen-z-workers-can-make-34400-a-month-interning-at-this-wall-street-firm-and-housing-is-free",
+          "imageFingerprint": "f1a14aee83654f5a",
+          "editorialModelReview": null
+        },
+        {
+          "title": "The Hidden $10 Million Mistake Most Fast-Growing Startups Make After Hiring Sales Reps",
+          "sourceName": "Inc.",
+          "originalUrl": "https://www.inc.com/lou-shipley/fast-growing-startups-hiring-sales-reps-go-to-market-ramping-gtm/91380944",
+          "imageFingerprint": "b3e521d52bca1968",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "medium",
+            "notes": [
+              "Avoid over-saturation in the background.",
+              "Ensure text contrast is high enough for readability."
+            ],
+            "fixes": [
+              "Increase contrast in the background.",
+              "Use a darker font for the headline."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "workflow_system",
+      "reviewMode": "source-image",
+      "total": 18,
+      "approved": 18,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 69.59,
+        "sharpness": 18.32,
+        "luminanceStdDev": 51.13,
+        "readability": 0.726
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 8
+        },
+        {
+          "value": "The tonal range is too flat.",
+          "count": 2
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 8
+        },
+        {
+          "value": "Use deeper shadows and brighter highlights so the story has more tension.",
+          "count": 2
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "MCP startup Runlayer accuses Rippling of stealing its product idea",
+          "sourceName": "TechCrunch",
+          "originalUrl": "https://techcrunch.com/2026/07/28/mcp-startup-runlayer-accuses-rippling-of-stealing-its-product-idea/",
+          "imageFingerprint": "af50c24f621d2563",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "Cover looks strong",
+              "Text is readable",
+              "Image is well-lit"
+            ],
+            "fixes": [],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Recursive Superintelligence signs $410M compute deal with Amazon",
+          "sourceName": "TechCrunch AI",
+          "originalUrl": "https://techcrunch.com/2026/07/28/recursive-superintelligence-signs-400-compute-deal-with-amazon/",
+          "imageFingerprint": "893e7606bde7ba16",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "medium",
+            "notes": [
+              "The text is readable but could be clearer for social media."
+            ],
+            "fixes": [
+              "Increase font size and contrast for better readability."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "AMD's data center business is booming while gaming takes a backseat",
+          "sourceName": "TensorFeed",
+          "originalUrl": "https://www.theverge.com/tech/975381/amd-q2-2026-earnings-ai-gaming-ryzen",
+          "imageFingerprint": "67f3b9b7b67e7fff",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "medium",
+            "confidence": "medium",
+            "notes": [
+              "The image is too soft for social media. Consider sharpening the image and focusing on the text."
+            ],
+            "fixes": [
+              "Sharpen the image and improve text clarity for social media use."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "distress_signal",
+      "reviewMode": "source-image",
+      "total": 13,
+      "approved": 13,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 42.97,
+        "sharpness": 11.97,
+        "luminanceStdDev": 53.12,
+        "readability": 0.744
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 4
+        },
+        {
+          "value": "The image does not have enough color energy.",
+          "count": 4
+        },
+        {
+          "value": "The tonal range is too flat.",
+          "count": 1
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 4
+        },
+        {
+          "value": "Add more color pop or choose a source image with clearer visual contrast.",
+          "count": 4
+        },
+        {
+          "value": "Use deeper shadows and brighter highlights so the story has more tension.",
+          "count": 1
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "A Major Tire and Auto Repair Franchisee Just Filed For Bankruptcy",
+          "sourceName": "Inc.",
+          "originalUrl": "https://www.inc.com/kevin-haynes/a-major-tire-and-auto-repair-franchisee-just-filed-for-bankruptcy/91373042",
+          "imageFingerprint": "cdf9358181c657e6",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "medium",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "Add more color pop or choose a source image with clearer visual contrast."
+            ],
+            "fixes": [],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Jack Dorsey's Block Just Settled for $45 Million Over Fraud Claims—but Some Victims May Not See a Dime",
+          "sourceName": "Inc.",
+          "originalUrl": "https://www.inc.com/esther-lian/jack-dorsey-block-settled-over-fraud-claims-some-victims-may-not-see-a-dime/91372444",
+          "imageFingerprint": "f80008afd4e40c6a",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "medium",
+            "headlinePlacementRisk": "high",
+            "confidence": "high",
+            "notes": [
+              "Make the headline more bold.",
+              "Consider adding a subheadline.",
+              "Ensure the text is readable on smaller screens."
+            ],
+            "fixes": [
+              "Increase the font size of the headline.",
+              "Add a subheadline with key details.",
+              "Optimize the image for social media."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Your Biggest AI Cost Isn't the Technology — It's the Hidden Debt Quietly Draining Your Budget",
+          "sourceName": "Entrepreneur",
+          "originalUrl": "https://www.entrepreneur.com/science-technology/your-biggest-ai-cost-isnt-the-technology-its-the/503557",
+          "imageFingerprint": "510d05b890ba59c0",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "Use deeper shadows and brighter highlights so the story has more tension."
+            ],
+            "fixes": [
+              "Use deeper shadows and brighter highlights so the story has more tension."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "capital_growth",
+      "reviewMode": "phoenix-owned",
+      "total": 11,
+      "approved": 11,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 55.72,
+        "sharpness": 9.71,
+        "luminanceStdDev": 59.21,
+        "readability": 0.552
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 5
+        },
+        {
+          "value": "The headline area is too busy or bright.",
+          "count": 5
+        },
+        {
+          "value": "The tonal range is too flat.",
+          "count": 2
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 5
+        },
+        {
+          "value": "Choose a composition with cleaner negative space for the title overlay.",
+          "count": 5
+        },
+        {
+          "value": "Use deeper shadows and brighter highlights so the story has more tension.",
+          "count": 2
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "NVIDIA Introduces New Jetson Thor Computers to Advance Mainstream Robotics and Edge AI",
+          "sourceName": "TensorFeed",
+          "originalUrl": "https://blogs.nvidia.com/blog/jetson-thor-robotics-edge-ai-agent/",
+          "imageFingerprint": "2ea3b1822f95214f",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "high",
+            "confidence": "medium",
+            "notes": [
+              "Use a cleaner negative space for the title overlay to reduce clutter.",
+              "Ensure the headline is not too bright for readability."
+            ],
+            "fixes": [
+              "Choose a composition with cleaner negative space for the title overlay."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "HiBob turns 2,500 GPTs into product and team growth",
+          "sourceName": "OpenAI News",
+          "originalUrl": "https://openai.com/index/hibob",
+          "imageFingerprint": "af6c4064f613f036",
+          "editorialModelReview": null
+        },
+        {
+          "title": "Fish Audio raises $52M seed to build AI voice models for creators and enterprises",
+          "sourceName": "TechCrunch",
+          "originalUrl": "https://techcrunch.com/2026/07/28/fish-audio-raises-50m-seed-to-build-ai-voice-models-for-creators-and-enterprises/",
+          "imageFingerprint": "e101ba979a07c108",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "medium",
+            "confidence": "high",
+            "notes": [
+              "Image is too soft at social size."
+            ],
+            "fixes": [
+              "Use a sharper base image with a cleaner focal subject."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "talent_motion",
+      "reviewMode": "source-image",
+      "total": 11,
+      "approved": 11,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 81.85,
+        "sharpness": 13.04,
+        "luminanceStdDev": 57.01,
+        "readability": 0.631
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 6
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 6
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "What is 'Botsitting'? The New AI Workplace Trend Frustrating 87 Percent of Digital Workers",
+          "sourceName": "Inc.",
+          "originalUrl": "https://www.inc.com/bruce-crumley/what-is-botsitting-the-new-ai-workplace-trend-frustrating-87-percent-of-digital-workers/91374448",
+          "imageFingerprint": "be187d11efc94244",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "medium",
+            "notes": [
+              "Avoid generic filler",
+              "Use a sharper base image with a cleaner focal subject",
+              "Make sure the text is readable at social size"
+            ],
+            "fixes": [
+              "Use a sharper base image with a cleaner focal subject",
+              "Make sure the text is readable at social size"
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "'Botsitting' Is the New AI Workplace Trend That's Frustrating 87 Percent of Digital Workers",
+          "sourceName": "Inc.",
+          "originalUrl": "https://www.inc.com/bruce-crumley/what-is-botsitting-the-new-ai-workplace-trend-frustrating-87-percent-of-digital-workers/91374448",
+          "imageFingerprint": "be187d11efc94244",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "medium",
+            "notes": [
+              "Cleaner focal subject",
+              "Sharper base image"
+            ],
+            "fixes": [
+              "Cleaner focal subject",
+              "Sharper base image"
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Mark Cuban Says AI Will Start Training Employees the Same Way Pilots Learn. Here's How",
+          "sourceName": "Inc.",
+          "originalUrl": "https://www.inc.com/georgia-fearn/mark-cuban-says-ai-will-train-employees-the-same-way-pilots-learn/91379838",
+          "imageFingerprint": "047c5b34864d5b0e",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "Remove the text from the image"
+            ],
+            "fixes": [
+              "Replace the text with a logo"
+            ],
+            "normalizedVerdict": "approve"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "event_pipeline",
+      "reviewMode": "phoenix-owned",
+      "total": 10,
+      "approved": 10,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 45.42,
+        "sharpness": 15.92,
+        "luminanceStdDev": 53.38,
+        "readability": 0.687
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The event scene feels generic instead of high-stakes.",
+          "count": 7
+        },
+        {
+          "value": "The image does not have enough color energy.",
+          "count": 6
+        },
+        {
+          "value": "The headline area is too busy or bright.",
+          "count": 4
+        },
+        {
+          "value": "The tonal range is too flat.",
+          "count": 3
+        },
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 2
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Use a trade-show image with a stronger focal moment, demo, booth interaction, or lead-capture tension.",
+          "count": 7
+        },
+        {
+          "value": "Add more color pop or choose a source image with clearer visual contrast.",
+          "count": 6
+        },
+        {
+          "value": "Choose a composition with cleaner negative space for the title overlay.",
+          "count": 4
+        },
+        {
+          "value": "Use deeper shadows and brighter highlights so the story has more tension.",
+          "count": 3
+        },
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 2
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "'Engineered Serendipity': OpenAI's Hottest Founder Event Doesn't Involve Pitching, Panels, or Happy Hours",
+          "sourceName": "Inc.",
+          "originalUrl": "https://www.inc.com/victoria-salves/open-ai-hottest-founder-event-doesnt-involve-pitching-panels-or-happy-hours/91375313",
+          "imageFingerprint": "6cca60e5f0c6cfa3",
+          "editorialModelReview": {
+            "verdict": "reject",
+            "storyFit": "weak",
+            "headlinePlacementRisk": "high",
+            "confidence": "low",
+            "notes": [
+              "Brightness and clutter make it hard to read the headline.",
+              "Too many faces in the image."
+            ],
+            "fixes": [
+              "Make the image darker.",
+              "Remove the faces."
+            ],
+            "normalizedVerdict": "reject"
+          }
+        },
+        {
+          "title": "Coca-Cola Sold Nearly 1 Drink Per Fan at the World Cup. Its Real Win May Have Been Even Bigger",
+          "sourceName": "Inc.",
+          "originalUrl": "https://www.inc.com/ali-donaldson/coca-cola-sold-nearly-1-drink-per-fan-at-the-world-cup-its-real-win-may-have-been-even-bigger/91381100",
+          "imageFingerprint": "fbfcf8686074e3c8",
+          "editorialModelReview": {
+            "verdict": "reject",
+            "storyFit": "weak",
+            "headlinePlacementRisk": "high",
+            "confidence": "low",
+            "notes": [
+              "the headline is too busy and bright",
+              "the image has too much on-image text",
+              "the image is too cluttered",
+              "the image is too busy with the World Cup logo",
+              "the text is too close to the edge of the image"
+            ],
+            "fixes": [
+              "choose a composition with cleaner negative space for the title overlay",
+              "remove the World Cup logo",
+              "remove the text on the left side of the image",
+              "reduce the amount of text on the image"
+            ],
+            "normalizedVerdict": "reject"
+          }
+        },
+        {
+          "title": "AI Leaders Propose SAFE Guidelines for Cybersecurity Transparency",
+          "sourceName": "TensorFeed",
+          "originalUrl": "https://blogs.nvidia.com/blog/open-secure-ai-alliance-contributions/",
+          "imageFingerprint": "b132099d19907f74",
+          "editorialModelReview": {
+            "verdict": "revise",
+            "storyFit": "weak",
+            "headlinePlacementRisk": "low",
+            "confidence": "medium",
+            "notes": [
+              "Add more color pop or choose a source image with clearer visual contrast.",
+              "Use deeper shadows and brighter highlights so the story has more tension.",
+              "Use a sharper base image with a cleaner focal subject.",
+              "Use a trade-show image with a stronger focal moment, demo, booth interaction, or lead-capture tension."
+            ],
+            "fixes": [
+              "Add more color pop or choose a source image with clearer visual contrast.",
+              "Use deeper shadows and brighter highlights so the story has more tension.",
+              "Use a sharper base image with a cleaner focal subject.",
+              "Use a trade-show image with a stronger focal moment, demo, booth interaction, or lead-capture tension."
+            ],
+            "normalizedVerdict": "revise"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "chip_infrastructure",
+      "reviewMode": "source-image",
+      "total": 9,
+      "approved": 9,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 34.9,
+        "sharpness": 14.18,
+        "luminanceStdDev": 64.59,
+        "readability": 0.691
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 4
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 4
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "US investors will soon get access to SK Hynix, another memory maker riding the AI boom",
+          "sourceName": "TechCrunch",
+          "originalUrl": "https://techcrunch.com/2026/07/06/us-investors-will-soon-get-access-to-sk-hynix-another-memory-maker-riding-the-ai-boom/",
+          "imageFingerprint": "c9f19ace8b318b77",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "medium",
+            "confidence": "medium",
+            "notes": [
+              "Title is strong.",
+              "Good visual specificity.",
+              "Image is clean."
+            ],
+            "fixes": [],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Apple Is Suing OpenAI for Allegedly Stealing Hardware Secrets",
+          "sourceName": "TensorFeed",
+          "originalUrl": "https://www.wired.com/story/apple-sues-openai-allegedly-stealing-ip-hardware/",
+          "imageFingerprint": "702ec94f59d9f04b",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "The image is strong and meets the metrics.",
+              "The headline is well-placed.",
+              "There are no visible issues with clutter or color energy."
+            ],
+            "fixes": [],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Apple Is Suing OpenAI for Allegedly Stealing Hardware Secrets",
+          "sourceName": "TensorFeed",
+          "originalUrl": "https://www.wired.com/story/apple-sues-openai-allegedly-stealing-ip-hardware/",
+          "imageFingerprint": "702ec94f59d9f04b",
+          "editorialModelReview": null
+        }
+      ]
+    },
+    {
+      "sceneLane": "reliability_lab",
+      "reviewMode": "phoenix-owned",
+      "total": 9,
+      "approved": 9,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 48.41,
+        "sharpness": 13.25,
+        "luminanceStdDev": 62.24,
+        "readability": 0.334
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The headline area is too busy or bright.",
+          "count": 6
+        },
+        {
+          "value": "The image does not have enough color energy.",
+          "count": 3
+        },
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 2
+        },
+        {
+          "value": "The tonal range is too flat.",
+          "count": 1
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Choose a composition with cleaner negative space for the title overlay.",
+          "count": 6
+        },
+        {
+          "value": "Add more color pop or choose a source image with clearer visual contrast.",
+          "count": 3
+        },
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 2
+        },
+        {
+          "value": "Use deeper shadows and brighter highlights so the story has more tension.",
+          "count": 1
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "How Speechify's Simba 3.2 Took the No.1 Spot on Voice AI's Toughest Independent Benchmark",
+          "sourceName": "Entrepreneur",
+          "originalUrl": "https://www.entrepreneur.com/business-news/tech/speechifys-simba-3-2-takes-1-spot-on-voice-ai-independent-benchmark",
+          "imageFingerprint": "928fbb694a669c3d",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "medium",
+            "headlinePlacementRisk": "high",
+            "confidence": "high",
+            "notes": [
+              "Add more color pop or choose a source image with clearer visual contrast.",
+              "Choose a composition with cleaner negative space for the title overlay."
+            ],
+            "fixes": [
+              "Add more color pop or choose a source image with clearer visual contrast."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "How Speechify's Simba 3.2 Took the No.1 Spot on Voice AI's Toughest Independent Benchmark",
+          "sourceName": "Entrepreneur",
+          "originalUrl": "https://www.entrepreneur.com/business-news/tech/speechifys-simba-3-2-takes-1-spot-on-voice-ai-independent-benchmark",
+          "imageFingerprint": "928fbb694a669c3d",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "Add more color pop or choose a source image with clearer visual contrast."
+            ],
+            "fixes": [
+              "Add more color pop or choose a source image with clearer visual contrast."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Microsoft's new AI model beats Mythos on security benchmark",
+          "sourceName": "TensorFeed",
+          "originalUrl": "https://www.zdnet.com/article/ai-model-release-tracker/",
+          "imageFingerprint": "839fb3687daf2199",
+          "editorialModelReview": {
+            "verdict": "reject",
+            "storyFit": "weak",
+            "headlinePlacementRisk": "medium",
+            "confidence": "low",
+            "notes": [
+              "too much text on image",
+              "reads like promo graphic",
+              "looks cluttered"
+            ],
+            "fixes": [
+              "crop text",
+              "reduce clutter",
+              "ensure headline placement"
+            ],
+            "normalizedVerdict": "reject"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "interactive_build",
+      "reviewMode": "phoenix-owned",
+      "total": 9,
+      "approved": 9,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 55.07,
+        "sharpness": 7.76,
+        "luminanceStdDev": 50.56,
+        "readability": 0.605
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 6
+        },
+        {
+          "value": "This looks too much like images we already learned to reject in this lane.",
+          "count": 4
+        },
+        {
+          "value": "The headline area is too busy or bright.",
+          "count": 3
+        },
+        {
+          "value": "The image does not have enough color energy.",
+          "count": 1
+        },
+        {
+          "value": "The tonal range is too flat.",
+          "count": 1
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 6
+        },
+        {
+          "value": "Pick a more distinct scene and avoid reusing the same visual setup for this story type.",
+          "count": 4
+        },
+        {
+          "value": "Choose a composition with cleaner negative space for the title overlay.",
+          "count": 3
+        },
+        {
+          "value": "Add more color pop or choose a source image with clearer visual contrast.",
+          "count": 1
+        },
+        {
+          "value": "Use deeper shadows and brighter highlights so the story has more tension.",
+          "count": 1
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "Take our I/O 2026 quiz, vibe coded in Google AI Studio.",
+          "sourceName": "Google AI Blog",
+          "originalUrl": "https://blog.google/innovation-and-ai/technology/ai/io-2026-vibe-coded-quiz/",
+          "imageFingerprint": "12ba216dc4ddd3a7",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "Text coverage is low."
+            ],
+            "fixes": [
+              "Increase font size and contrast."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Self-Improvements in Modern Agentic Systems: A Survey",
+          "sourceName": "TensorFeed",
+          "originalUrl": "https://arxiv.org/abs/2607.13104",
+          "imageFingerprint": "52e20ac46c239bcc",
+          "editorialModelReview": {
+            "verdict": "reject",
+            "storyFit": "weak",
+            "headlinePlacementRisk": "high",
+            "confidence": "low",
+            "notes": [
+              "Choose a composition with cleaner negative space for the title overlay.",
+              "Pick a more distinct scene and avoid reusing the same visual setup for this story type."
+            ],
+            "fixes": [],
+            "normalizedVerdict": "reject"
+          }
+        },
+        {
+          "title": "New in ChatGPT for Business: March 2025",
+          "sourceName": "OpenAI News",
+          "originalUrl": "https://openai.com/business/new-in-chatgpt-for-work-march-updates-2025",
+          "imageFingerprint": "d1cb58af9069f3e6",
+          "editorialModelReview": {
+            "verdict": "reject",
+            "storyFit": "weak",
+            "headlinePlacementRisk": "high",
+            "confidence": "medium",
+            "notes": [
+              "The image is too flat. The image reads too soft at social size. This looks too much like images we already learned to reject in this lane."
+            ],
+            "fixes": [
+              "Use deeper shadows and brighter highlights so the story has more tension. Use a sharper base image with a cleaner focal subject. Pick a more distinct scene and avoid reusing the same visual setup for this story type."
+            ],
+            "normalizedVerdict": "reject"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "distress_signal",
+      "reviewMode": "phoenix-owned",
+      "total": 7,
+      "approved": 7,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 35.05,
+        "sharpness": 18.21,
+        "luminanceStdDev": 63.2,
+        "readability": 0.561
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The headline area is too busy or bright.",
+          "count": 3
+        },
+        {
+          "value": "The image does not have enough color energy.",
+          "count": 3
+        },
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 1
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Choose a composition with cleaner negative space for the title overlay.",
+          "count": 3
+        },
+        {
+          "value": "Add more color pop or choose a source image with clearer visual contrast.",
+          "count": 3
+        },
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 1
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "A 47-Year-Old Ski Shop Just Filed for Bankruptcy. Experts Say It's a Warning That 'Peak Ski Era' Is Over",
+          "sourceName": "Inc.",
+          "originalUrl": "https://www.inc.com/georgia-fearn/ski-shop-filed-for-bankruptcy-experts-say-warning-that-peak-ski-era-is-over/91370588",
+          "imageFingerprint": "bbb15b5fe60476be",
+          "editorialModelReview": {
+            "verdict": "reject",
+            "storyFit": "weak",
+            "headlinePlacementRisk": "low",
+            "confidence": "low",
+            "notes": [
+              "text is too small",
+              "background is too busy",
+              "looks generic"
+            ],
+            "fixes": [
+              "resize text",
+              "reduce clutter",
+              "avoid generic imagery"
+            ],
+            "normalizedVerdict": "reject"
+          }
+        },
+        {
+          "title": "A Major Tire and Auto Repair Franchisee Just Filed For Bankruptcy",
+          "sourceName": "Inc.",
+          "originalUrl": "https://www.inc.com/kevin-haynes/a-major-tire-and-auto-repair-franchisee-just-filed-for-bankruptcy/91373042",
+          "imageFingerprint": "e024fde3156822bd",
+          "editorialModelReview": {
+            "verdict": "reject",
+            "storyFit": "medium",
+            "headlinePlacementRisk": "high",
+            "confidence": "low",
+            "notes": [
+              "Color is lacking. The image appears to be quite plain. Add more color pop or choose a source image with clearer visual contrast."
+            ],
+            "fixes": [
+              "Add more color pop or choose a source image with clearer visual contrast."
+            ],
+            "normalizedVerdict": "reject"
+          }
+        },
+        {
+          "title": "AI image fraud will cost $40 billion next year - can these international standards help?",
+          "sourceName": "TensorFeed",
+          "originalUrl": "https://www.zdnet.com/article/ai-image-fraud-new-global-standards/",
+          "imageFingerprint": "59652dd258c147bc",
+          "editorialModelReview": {
+            "verdict": "reject",
+            "storyFit": "weak",
+            "headlinePlacementRisk": "high",
+            "confidence": "low",
+            "notes": [
+              "Looks generic. Focus on the headline.",
+              "Avoid using stock images."
+            ],
+            "fixes": [
+              "Use a different stock image."
+            ],
+            "normalizedVerdict": "reject"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "capital_growth",
+      "reviewMode": "source-image",
+      "total": 7,
+      "approved": 7,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 56.21,
+        "sharpness": 10.15,
+        "luminanceStdDev": 63.19,
+        "readability": 0.659
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 3
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 3
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "AI customers are coming around to the idea that small is beautiful",
+          "sourceName": "TensorFeed",
+          "originalUrl": "https://www.theregister.com/ai-and-ml/2026/07/11/ai-customers-are-coming-around-to-the-idea-that-small-is-beautiful/5268070",
+          "imageFingerprint": "f384743fcaa34a70",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "Good shot of a woman with a smartphone. It's clear that she's happy to be using it."
+            ],
+            "fixes": [],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Indian AI coding startup Emergent becomes a unicorn with $130M Series C",
+          "sourceName": "TechCrunch",
+          "originalUrl": "https://techcrunch.com/2026/07/15/indian-ai-coding-startup-emergent-becomes-a-unicorn-just-over-a-year-after-launch/",
+          "imageFingerprint": "ec3bb7e6d9b5746e",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "medium",
+            "notes": [
+              "Landmarks are not clear"
+            ],
+            "fixes": [
+              "Add more landmarks"
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "8 Unique Side Hustle Ideas for Summer 2026 and Beyond",
+          "sourceName": "Entrepreneur",
+          "originalUrl": "https://www.entrepreneur.com/entrepreneurs/8-unique-side-hustle-ideas-for-summer-2026-and-beyond",
+          "imageFingerprint": "397d6050be7ead0c",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "Less cluttered than previous images",
+              "Good color energy",
+              "Strong visual specificity"
+            ],
+            "fixes": [
+              "Use a sharper base image with a cleaner focal subject"
+            ],
+            "normalizedVerdict": "approve"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "document_flow",
+      "reviewMode": "phoenix-owned",
+      "total": 6,
+      "approved": 6,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 77.16,
+        "sharpness": 14.65,
+        "luminanceStdDev": 61.37,
+        "readability": 0.389
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The headline area is too busy or bright.",
+          "count": 6
+        },
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 1
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Choose a composition with cleaner negative space for the title overlay.",
+          "count": 6
+        },
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 1
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "Jersey Mike's IPO illustrates how bad the AI hype has become",
+          "sourceName": "TechCrunch AI",
+          "originalUrl": "https://techcrunch.com/2026/07/02/jersey-mikes-ipo-illustrates-how-bad-the-ai-hype-has-become/",
+          "imageFingerprint": "3867b4606ea7a07c",
+          "editorialModelReview": null
+        },
+        {
+          "title": "Agentic AI and Retrieval-Augmented Models in Straight-Through Underwriting",
+          "sourceName": "TensorFeed",
+          "originalUrl": "https://arxiv.org/abs/2607.07858",
+          "imageFingerprint": "00e109b0dec6ed2a",
+          "editorialModelReview": {
+            "verdict": "reject",
+            "storyFit": "medium",
+            "headlinePlacementRisk": "high",
+            "confidence": "low",
+            "notes": [
+              "Too busy and bright. Needs more negative space.",
+              "Text coverage is too low.",
+              "Low luminance mean, needs more contrast.",
+              "Low colorfulness.",
+              "Need more visual specificity."
+            ],
+            "fixes": [
+              "Choose a composition with cleaner negative space for the title overlay.",
+              "Add more visual specificity.",
+              "Increase contrast.",
+              "Add more colorfulness.",
+              "Improve text coverage."
+            ],
+            "normalizedVerdict": "reject"
+          }
+        },
+        {
+          "title": "Kalshi demands Netflix take down trailer for 'Prediction Games' documentary",
+          "sourceName": "TechCrunch",
+          "originalUrl": "https://techcrunch.com/2026/07/25/kalshi-demands-netflix-take-down-trailer-for-prediction-games-documentary/",
+          "imageFingerprint": "71d043da9acbd67f",
+          "editorialModelReview": {
+            "verdict": "reject",
+            "storyFit": "weak",
+            "headlinePlacementRisk": "high",
+            "confidence": "low",
+            "notes": [
+              "Bright background makes text hard to read.",
+              "Text is too small for the image."
+            ],
+            "fixes": [
+              "Use a darker background.",
+              "Increase text size."
+            ],
+            "normalizedVerdict": "reject"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "search_visibility",
+      "reviewMode": "phoenix-owned",
+      "total": 6,
+      "approved": 6,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 63.69,
+        "sharpness": 13.69,
+        "luminanceStdDev": 51.36,
+        "readability": 0.58
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The image does not have enough color energy.",
+          "count": 1
+        },
+        {
+          "value": "The tonal range is too flat.",
+          "count": 1
+        },
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 1
+        },
+        {
+          "value": "The headline area is too busy or bright.",
+          "count": 1
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Add more color pop or choose a source image with clearer visual contrast.",
+          "count": 1
+        },
+        {
+          "value": "Use deeper shadows and brighter highlights so the story has more tension.",
+          "count": 1
+        },
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 1
+        },
+        {
+          "value": "Choose a composition with cleaner negative space for the title overlay.",
+          "count": 1
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "Show HN: AI blog system with human DNA",
+          "sourceName": "TensorFeed",
+          "originalUrl": "https://voicecite.com",
+          "imageFingerprint": "449af4a6cfde45c1",
+          "editorialModelReview": {
+            "verdict": "revise",
+            "storyFit": "medium",
+            "headlinePlacementRisk": "medium",
+            "confidence": "high",
+            "notes": [
+              "Add more color pop. | Use deeper shadows and brighter highlights.",
+              "The image is too soft at social size."
+            ],
+            "fixes": [
+              "Add more color pop. | Use deeper shadows and brighter highlights.",
+              "The image is too soft at social size."
+            ],
+            "normalizedVerdict": "revise"
+          }
+        },
+        {
+          "title": "2 Technical SEO Mistakes Quietly Draining Your Revenue (And You've Probably Made Both)",
+          "sourceName": "Entrepreneur",
+          "originalUrl": "https://www.entrepreneur.com/business-news/two-technical-seo-mistakes-quietly-draining-your-revenue-and-youve-probably-made-both",
+          "imageFingerprint": "88806132d747374c",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "medium",
+            "notes": [
+              "Looks good. Only minor issues with hands."
+            ],
+            "fixes": [
+              "Fix hands for clarity"
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "The 2 SEO Signals Most Founders Underestimate (And Why They Compound)",
+          "sourceName": "Entrepreneur",
+          "originalUrl": "https://www.entrepreneur.com/building-a-business/the-2-seo-signals-most-founders-underestimate-and-why-they-compound",
+          "imageFingerprint": "4aeb637d450b3285",
+          "editorialModelReview": {
+            "verdict": "reject",
+            "storyFit": "weak",
+            "headlinePlacementRisk": "high",
+            "confidence": "low",
+            "notes": [
+              "Too busy for an editorial cover.",
+              "Brightness is distracting.",
+              "Not clear enough for a strong headline."
+            ],
+            "fixes": [
+              "Reduce the number of elements on the cover.",
+              "Lower the brightness of the cover.",
+              "Make the headline more prominent."
+            ],
+            "normalizedVerdict": "reject"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "human_boundary",
+      "reviewMode": "source-image",
+      "total": 5,
+      "approved": 5,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 45.7,
+        "sharpness": 9.17,
+        "luminanceStdDev": 49.76,
+        "readability": 0.869
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 4
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 4
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "Fable 5 just set a new AI freelance work performance record - but it can't replace humans yet",
+          "sourceName": "TensorFeed",
+          "originalUrl": "https://www.zdnet.com/article/anthropic-fable-5-freelance-work-performance-record/",
+          "imageFingerprint": "3791cbbbb3b50534",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "medium",
+            "confidence": "high",
+            "notes": [
+              "Text is readable at social size.",
+              "Image looks clean and focused.",
+              "Background is not distracting."
+            ],
+            "fixes": [],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Fable 5 just set a new AI freelance work performance record - but it can't replace humans yet",
+          "sourceName": "TensorFeed",
+          "originalUrl": "https://www.zdnet.com/article/anthropic-fable-5-freelance-work-performance-record/",
+          "imageFingerprint": "3791cbbbb3b50534",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "medium",
+            "confidence": "high",
+            "notes": [
+              "Try to add more contrast to the text.",
+              "Consider using a background that complements the title color.",
+              "Make sure the text is readable at a smaller size."
+            ],
+            "fixes": [
+              "Use a sharper base image with a cleaner focal subject.",
+              "Add a subtle shadow to the text for better readability.",
+              "Ensure the text is centered on the image."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Christopher Nolan says people disdain AI, idea it'll replace humans is nonsense",
+          "sourceName": "TensorFeed",
+          "originalUrl": "https://www.theguardian.com/film/2026/jul/13/christopher-nolan-odyssey-director-comments-ai-artificial-intelligence",
+          "imageFingerprint": "02a9d5556fc3405e",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "medium",
+            "confidence": "high",
+            "notes": [
+              "Looks strong with a great headline.",
+              "Good balance of text and image.",
+              "Text is readable and well-placed."
+            ],
+            "fixes": [],
+            "normalizedVerdict": "approve"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "search_visibility",
+      "reviewMode": "source-image",
+      "total": 5,
+      "approved": 5,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 92.97,
+        "sharpness": 11.23,
+        "luminanceStdDev": 43.87,
+        "readability": 0.531
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [],
+      "commonRecommendedFixes": [],
+      "strongestApprovedExamples": [
+        {
+          "title": "I've Spent Years Refining a 10-Step SEO System. Here's How to Use It.",
+          "sourceName": "Entrepreneur",
+          "originalUrl": "https://www.entrepreneur.com/building-a-business/ive-spent-years-refining-a-10-step-seo-system-heres-how-you-can-use-it-to-grow-organic-traffic",
+          "imageFingerprint": "c88414eac63ba8f5",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "medium",
+            "notes": [
+              "Good text coverage. Good colorfulness. Good sharpness."
+            ],
+            "fixes": [],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Leads Are the Lifeblood of Your Business, and AI Chatbots Can Help You Find Better Ones",
+          "sourceName": "Entrepreneur",
+          "originalUrl": "https://www.entrepreneur.com/growing-a-business/are-ai-chatbots-the-secret-to-generating-smarter-leads/496089",
+          "imageFingerprint": "329e81a3ae51614c",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "Text is readable.",
+              "Image is clear and colorful."
+            ],
+            "fixes": [],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Leads Are the Lifeblood of Your Business, and AI Chatbots Can Help You Find Better Ones",
+          "sourceName": "Entrepreneur",
+          "originalUrl": "https://www.entrepreneur.com/growing-a-business/are-ai-chatbots-the-secret-to-generating-smarter-leads/496089",
+          "imageFingerprint": "329e81a3ae51614c",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "Text is readable.",
+              "Image is clear and colorful."
+            ],
+            "fixes": [],
+            "normalizedVerdict": "approve"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "mission_grant",
+      "reviewMode": "source-image",
+      "total": 4,
+      "approved": 4,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 76.37,
+        "sharpness": 7.02,
+        "luminanceStdDev": 50,
+        "readability": 0.718
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 3
+        },
+        {
+          "value": "The tonal range is too flat.",
+          "count": 1
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 3
+        },
+        {
+          "value": "Use deeper shadows and brighter highlights so the story has more tension.",
+          "count": 1
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "One Founder Ignored the Critics and Got AI Education Right Years Before Everyone Else",
+          "sourceName": "Inc.",
+          "originalUrl": "https://www.inc.com/sophie-meharenna/this-founder-ignored-the-critics-and-got-ai-education-right-years-early/91373029",
+          "imageFingerprint": "f9f78d77e3f7cc50",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "medium",
+            "confidence": "high",
+            "notes": [
+              "Background blur could be reduced for a cleaner look.",
+              "Consider adding a subtle logo or watermark for brand recognition."
+            ],
+            "fixes": [
+              "Reduce background blur.",
+              "Add a subtle logo or watermark."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "Here's How Wharton Psychologist Adam Grant Makes Decisions and Why You Should Steal His System",
+          "sourceName": "Inc.",
+          "originalUrl": "https://www.inc.com/minda-zetlin/wharton-psychologist-adam-grant-decision-making-system/91375140",
+          "imageFingerprint": "54de3bba5aaba91d",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "Use a sharper base image with a cleaner focal subject."
+            ],
+            "fixes": [
+              "Use a sharper base image with a cleaner focal subject."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        },
+        {
+          "title": "OpenAI and the CSU system bring AI to 500,000 students & faculty",
+          "sourceName": "OpenAI News",
+          "originalUrl": "https://openai.com/index/openai-and-the-csu-system",
+          "imageFingerprint": "23022ab2266f1d40",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "high",
+            "notes": [
+              "Use a sharper base image with a cleaner focal subject."
+            ],
+            "fixes": [],
+            "normalizedVerdict": "approve"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "interactive_build",
+      "reviewMode": "source-image",
+      "total": 3,
+      "approved": 0,
+      "rejected": 3,
+      "averageApprovedMetrics": null,
+      "averageRejectedMetrics": {
+        "colorfulness": 73.03,
+        "sharpness": 5.95,
+        "luminanceStdDev": 50.06,
+        "readability": 0.844
+      },
+      "commonRejectionReasons": [
+        {
+          "reason": "approved-image-failed-art-director-audit",
+          "count": 3
+        }
+      ],
+      "commonEditorialNotes": [
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 3
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 3
+        }
+      ],
+      "strongestApprovedExamples": []
+    },
+    {
+      "sceneLane": "mission_grant",
+      "reviewMode": "phoenix-owned",
+      "total": 2,
+      "approved": 2,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 20.58,
+        "sharpness": 17.57,
+        "luminanceStdDev": 25,
+        "readability": 0.677
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The image does not have enough color energy.",
+          "count": 1
+        },
+        {
+          "value": "The tonal range is too flat.",
+          "count": 1
+        },
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 1
+        },
+        {
+          "value": "The headline area is too busy or bright.",
+          "count": 1
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Add more color pop or choose a source image with clearer visual contrast.",
+          "count": 1
+        },
+        {
+          "value": "Use deeper shadows and brighter highlights so the story has more tension.",
+          "count": 1
+        },
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 1
+        },
+        {
+          "value": "Choose a composition with cleaner negative space for the title overlay.",
+          "count": 1
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "SinceAI: A nonprofit AI accelerator combining compute, research, pilot customers",
+          "sourceName": "TensorFeed",
+          "originalUrl": "https://sinceai.ai",
+          "imageFingerprint": "64aca256b070f032",
+          "editorialModelReview": {
+            "verdict": "reject",
+            "storyFit": "weak",
+            "headlinePlacementRisk": "medium",
+            "confidence": "low",
+            "notes": [
+              "The image is too soft for a headline-led cover.",
+              "The tonal range is too flat.",
+              "The image reads too soft at social size."
+            ],
+            "fixes": [
+              "Add more color pop or choose a source image with clearer visual contrast.",
+              "Use deeper shadows and brighter highlights so the story has more tension.",
+              "Use a sharper base image with a cleaner focal subject."
+            ],
+            "normalizedVerdict": "reject"
+          }
+        },
+        {
+          "title": "Nonprofit Current AI is racing to build the World Wide Web of AI, free for all",
+          "sourceName": "TechCrunch",
+          "originalUrl": "https://techcrunch.com/2026/07/19/nonprofit-current-ai-is-racing-to-build-the-world-wide-web-of-ai-free-for-all/",
+          "imageFingerprint": "e81c3214cb2afa09",
+          "editorialModelReview": {
+            "verdict": "reject",
+            "storyFit": "weak",
+            "headlinePlacementRisk": "high",
+            "confidence": "low",
+            "notes": [
+              "The headline is too busy and bright for a clean editorial cover.",
+              "Consider using a composition with cleaner negative space for the title overlay."
+            ],
+            "fixes": [
+              "Use a composition with cleaner negative space for the title overlay."
+            ],
+            "normalizedVerdict": "reject"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "reliability_lab",
+      "reviewMode": "source-image",
+      "total": 1,
+      "approved": 1,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 35.15,
+        "sharpness": 5.81,
+        "luminanceStdDev": 15.09,
+        "readability": 0.5
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The tonal range is too flat.",
+          "count": 1
+        },
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 1
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Use deeper shadows and brighter highlights so the story has more tension.",
+          "count": 1
+        },
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 1
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "Reliability Determines Success in the Biotech Industry",
+          "sourceName": "Inc.",
+          "originalUrl": "https://www.inc.com/fred-elabed/reliability-determines-success-in-the-biotech-industry/91367252",
+          "imageFingerprint": "bc83c814812573c6",
+          "editorialModelReview": {
+            "verdict": "approve|fixes",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "medium",
+            "notes": [
+              "The image is too flat. | The image reads too soft at social size."
+            ],
+            "fixes": [
+              "Use deeper shadows and brighter highlights so the story has more tension. | Use a sharper base image with a cleaner focal subject."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        }
+      ]
+    },
+    {
+      "sceneLane": "event_pipeline",
+      "reviewMode": "source-image",
+      "total": 1,
+      "approved": 1,
+      "rejected": 0,
+      "averageApprovedMetrics": {
+        "colorfulness": 76.77,
+        "sharpness": 7.9,
+        "luminanceStdDev": 67.44,
+        "readability": 0.702
+      },
+      "averageRejectedMetrics": null,
+      "commonRejectionReasons": [],
+      "commonEditorialNotes": [
+        {
+          "value": "The image reads too soft at social size.",
+          "count": 1
+        }
+      ],
+      "commonRecommendedFixes": [
+        {
+          "value": "Use a sharper base image with a cleaner focal subject.",
+          "count": 1
+        }
+      ],
+      "strongestApprovedExamples": [
+        {
+          "title": "Microsoft goes all in on new AI-powered Windows security strategy - what it means for you",
+          "sourceName": "TensorFeed",
+          "originalUrl": "https://www.zdnet.com/article/microsoft-windows-ai-security-vulnerability-analysis/",
+          "imageFingerprint": "220e313853f0862f",
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "medium",
+            "notes": [
+              "Use a sharper base image with a cleaner focal subject.",
+              "The image reads too soft at social size."
+            ],
+            "fixes": [
+              "Use a sharper base image with a cleaner focal subject."
+            ],
+            "normalizedVerdict": "approve"
+          }
+        }
+      ]
+    }
+  ]
+}

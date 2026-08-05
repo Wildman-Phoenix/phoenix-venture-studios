@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Newspaper, RefreshCw, Zap } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import { isSupabaseConfigured, supabase } from "@/integrations/supabase/client";
-import { loadStaticRssFeed } from "@/lib/static-rss-feed";
+import { loadMergedStaticRssFeeds } from "@/lib/static-rss-feed";
+import { getPrimaryArticleLink } from "@/lib/market-intelligence-feed";
 
 interface Article {
   headline: string;
@@ -11,9 +13,11 @@ interface Article {
   date: string;
   summary: string;
   url: string;
+  internalPath?: string;
+  originalUrl?: string;
 }
 
-const CACHE_KEY = "pvs_intel_feed";
+const CACHE_KEY = "pvs_intel_feed_v2";
 const CACHE_TTL = 1000 * 60 * 30; // 30 min
 
 function getCached(): { articles: Article[]; ts: number } | null {
@@ -26,6 +30,46 @@ function getCached(): { articles: Article[]; ts: number } | null {
     // Ignore malformed local cache and fetch fresh data.
   }
   return null;
+}
+
+async function loadStaticFounderArticles() {
+  const feed = await loadMergedStaticRssFeeds(5);
+  return feed.articles.map((article) => ({
+    headline: article.headline,
+    source: article.source,
+    date: article.date,
+    summary: article.whyItMatters || article.summary,
+    url: article.url,
+    internalPath: article.internalPath,
+    originalUrl: article.originalUrl,
+  }));
+}
+
+async function loadFounderArticlesFromFunction() {
+  const { data, error: fnError } = await supabase.functions.invoke("founder-intelligence");
+  if (fnError) throw fnError;
+
+  return ((data?.articles || []) as any[]).slice(0, 5).map((article) => ({
+    headline: article.headline || "",
+    source: article.source || "",
+    date: article.date || "",
+    summary: article.whyItMatters || article.summary || "",
+    url: article.url || "",
+    internalPath: article.internalPath || article.internal_path || article._phoenix?.internalPath,
+    originalUrl:
+      article.originalUrl || article.original_url || article.external_url || article._phoenix?.originalUrl,
+  }));
+}
+
+function getArticleCta(article: Article) {
+  const target = getPrimaryArticleLink(article);
+  const isInternal = target.startsWith("/");
+
+  return {
+    target,
+    isInternal,
+    label: isInternal ? "Read Signal" : "Read Source",
+  };
 }
 
 const FounderIntelligenceFeed = () => {
@@ -47,17 +91,25 @@ const FounderIntelligenceFeed = () => {
     setLoading(true);
     setError(false);
     try {
-      const arts = isSupabaseConfigured
-        ? await supabase.functions.invoke("founder-intelligence").then(({ data, error: fnError }) => {
-            if (fnError) throw fnError;
-            return (data?.articles || []).slice(0, 5);
-          })
-        : await loadStaticRssFeed(5).then((feed) => feed.articles);
+      let arts = await loadStaticFounderArticles();
+
+      if (!arts.length && isSupabaseConfigured) {
+        arts = await loadFounderArticlesFromFunction();
+      }
+
       setArticles(arts);
       localStorage.setItem(CACHE_KEY, JSON.stringify({ articles: arts, ts: Date.now() }));
     } catch (err) {
       console.error("Feed error:", err);
-      setError(true);
+      try {
+        const fallbackArticles = await loadStaticFounderArticles();
+        setArticles(fallbackArticles);
+        setError(false);
+        localStorage.setItem(CACHE_KEY, JSON.stringify({ articles: fallbackArticles, ts: Date.now() }));
+      } catch (fallbackError) {
+        console.error("Static fallback error:", fallbackError);
+        setError(true);
+      }
     } finally {
       setLoading(false);
     }
@@ -140,18 +192,29 @@ const FounderIntelligenceFeed = () => {
                     </p>
                     <div className="flex items-center justify-between mt-auto">
                       <span className="text-[10px] text-muted-foreground/60">{article.date}</span>
-                      {article.url && article.url.startsWith("http") && (
-                        <a
-                          href={article.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-primary hover:text-accent transition-colors"
-                        >
-                          <Button variant="ghost" size="sm" className="h-7 px-2 text-xs">
-                            Read Source <ExternalLink className="ml-1 h-3 w-3" />
-                          </Button>
-                        </a>
-                      )}
+                      {(() => {
+                        const cta = getArticleCta(article);
+                        if (!cta.target) return null;
+
+                        return cta.isInternal ? (
+                          <Link to={cta.target} className="text-primary hover:text-accent transition-colors">
+                            <Button variant="ghost" size="sm" className="h-7 px-2 text-xs">
+                              {cta.label}
+                            </Button>
+                          </Link>
+                        ) : (
+                          <a
+                            href={cta.target}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary hover:text-accent transition-colors"
+                          >
+                            <Button variant="ghost" size="sm" className="h-7 px-2 text-xs">
+                              {cta.label} <ExternalLink className="ml-1 h-3 w-3" />
+                            </Button>
+                          </a>
+                        );
+                      })()}
                     </div>
                   </div>
                 </ScrollReveal>

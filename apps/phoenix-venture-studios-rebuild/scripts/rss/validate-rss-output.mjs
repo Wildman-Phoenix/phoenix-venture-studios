@@ -71,18 +71,27 @@ async function compareArtifactFile(root, file, errors) {
 
 export async function validateRssOutput(argv = process.argv.slice(2)) {
   const errors = [];
+  const warnings = [];
   const checkDeployArtifacts = argv.includes("--deploy-artifacts");
   const requireArticleSpecificImages =
     process.env.PHOENIX_RSS_REQUIRE_ARTICLE_IMAGES === "1" ||
     process.env.PHOENIX_RSS_IMAGE_MODE === "article-or-hold";
   const feedExpectations = [
-    { xml: "feed.xml", json: "feed.json", items: 10 },
-    { xml: "tools.xml", json: "tools.json", items: 10 },
-    { xml: "ai-attention.xml", json: "ai-attention.json", items: 10 },
-    { xml: "social.xml", json: "social.json", items: 1 },
-    { xml: "tools-social.xml", json: "tools-social.json", items: 1 },
-    { xml: "ai-attention-social.xml", json: "ai-attention-social.json", items: 1 },
+    { id: "founder-market", xml: "feed.xml", json: "feed.json", items: 10 },
+    { id: "founder-tools", xml: "tools.xml", json: "tools.json", items: 10 },
+    { id: "ai-attention", xml: "ai-attention.xml", json: "ai-attention.json", items: 10 },
+    { id: "founder-market-social", xml: "social.xml", json: "social.json", items: 1 },
+    { id: "founder-tools-social", xml: "tools-social.xml", json: "tools-social.json", items: 1 },
+    { id: "ai-attention-social", xml: "ai-attention-social.xml", json: "ai-attention-social.json", items: 1 },
   ];
+  const autonomousReport = JSON.parse(
+    await readText("autonomous-run-report.json").catch(() => "{}"),
+  );
+  const currentRunFeeds = new Map(
+    (Array.isArray(autonomousReport.feeds) ? autonomousReport.feeds : [])
+      .filter((feed) => feed?.feedId)
+      .map((feed) => [feed.feedId, feed]),
+  );
   const requiredFiles = [
     ...feedExpectations.flatMap((feed) => [feed.xml, feed.json]),
     "run-report.json",
@@ -225,6 +234,19 @@ export async function validateRssOutput(argv = process.argv.slice(2)) {
       if (!String(phoenix.socialImagePath || "").startsWith("/images/signals/generated/")) {
         errors.push(`${label} socialImagePath must be generated`);
       }
+      if (
+        phoenix.imageDiagnostic?.feedImageMissing === true &&
+        phoenix.imageDiagnostic?.articleImageChecked !== true
+      ) {
+        const currentRunFeed = currentRunFeeds.get(expectation.id);
+        if (currentRunFeed && currentRunFeed.preservedPreviousFeed !== true) {
+          errors.push(`${label} was selected without attempting article-page image metadata`);
+        } else {
+          warnings.push(
+            `${label} predates current-run article-page image diagnostics; regenerate it in its next scheduled slot`,
+          );
+        }
+      }
       const imagePath = path.join(PUBLIC_ROOT, String(phoenix.socialImagePath || "").replace(/^\//, ""));
       try {
         await fs.access(imagePath);
@@ -286,6 +308,7 @@ export async function validateRssOutput(argv = process.argv.slice(2)) {
   }
 
   if (errors.length) fail(errors);
+  for (const warning of warnings) console.warn(`RSS validation warning: ${warning}`);
   console.log("RSS validation passed: artifacts, XML, Phoenix links, generated images, and editorial metadata are valid.");
 }
 

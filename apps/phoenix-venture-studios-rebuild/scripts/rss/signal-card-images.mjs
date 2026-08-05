@@ -270,7 +270,7 @@ function sceneLaneForItem(item) {
   if (textMatches(text, "dynamic workflow|subagent|subagents|swarm|orchestrat|multi-agent|workflow|automation|audit|mcp|token|codex|delivery")) return "workflow_system";
   if (textMatches(text, "laid-off|layoff|hiring|recruiting|workers|talent")) return "talent_motion";
   if (textMatches(text, "trade show|pipeline|booth|event|conference|demo")) return "event_pipeline";
-  if (textMatches(text, "ocr|document parsing|documents|forms|paperwork|intake")) return "document_flow";
+  if (textMatches(text, "ocr|document parsing|document extraction|document intelligence|form extraction|paperwork automation")) return "document_flow";
   if (textMatches(text, "quiz|vibe coded|prototype|prototypes|google ai studio|product studio|interactive")) return "interactive_build";
   if (textMatches(text, "nonprofit|grant|grants|community innovation|public good|education")) return "mission_grant";
   if (textMatches(text, "seo|invisible|search visibility|discoverability|ranking|search")) return "search_visibility";

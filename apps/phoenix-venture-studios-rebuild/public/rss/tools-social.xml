@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Phoenix Venture Studios - Founder Tools - Social Queue</title>
+    <description>One AI tool or agent-development signal at a time for RSS-to-social publishing.</description>
+    <link>https://phoenixventurestudios.com</link>
+    <atom:link href="https://phoenixventurestudios.com/rss/tools-social.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Jul 2026 18:10:42 GMT</lastBuildDate>
+    <language>en-us</language>
+    <generator>Phoenix Venture Studios Static RSS Generator</generator>
+    <item>
+      <title><![CDATA['AI communism', rogue models, and the why Kimi K3 spooked Wall Street]]></title>
+      <description><![CDATA[A new enterprise benchmark found frontier AI models handled fewer than half of the agentic IT tasks they were given.
+
+AI still has to earn trust under real workload, not just in a demo.
+
+If the task touches operations, customers, or money, ask what proof you would need before trusting an agent to own it.
+
+If more benchmark results look like this, founders will need to slow down before handing critical work to agents.
+
+Read the full Phoenix signal on phoenixventurestudios.com.
+
+#OpenAI #AgenticAI #AI]]></description>
+      <link>https://phoenixventurestudios.com/founder-signal/signals/ai-communism-rogue-models-kimi-k3-spooked-wall-street-b9480a06/</link>
+      <guid isPermaLink="true">https://phoenixventurestudios.com/founder-signal/signals/ai-communism-rogue-models-kimi-k3-spooked-wall-street-b9480a06/</guid>
+      <pubDate>Sat, 25 Jul 2026 18:10:42 GMT</pubDate>
+      <source url="https://techcrunch.com/podcast/ai-communism-rogue-models-and-the-why-kimi-k3-spooked-wall-street/"><![CDATA[TechCrunch AI]]></source>
+      <category><![CDATA[AI Tools & Agents]]></category>
+      <enclosure url="https://phoenixventurestudios.com/images/signals/generated/ai-communism-rogue-models-kimi-k3-spooked-wall-street-b9480a06.jpg" type="image/jpeg" length="0" />
+    </item>
+  </channel>
+</rss>

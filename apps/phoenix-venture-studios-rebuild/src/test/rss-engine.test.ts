@@ -528,6 +528,44 @@ describe("static RSS engine", () => {
     expect(sourceCounts.b).toBe(1);
   });
 
+  it("does not fill the feed with low-quality stories below the configured score floor", () => {
+    const scored = [
+      { title: "Official AI operator release", bucket: "ai_operator_impact", score: 91, excluded: false },
+      { title: "Off-topic documentary dispute", bucket: "funding_venture", score: 59, excluded: false },
+    ];
+    const { selected } = selectItems(scored, {
+      ai_operator_impact: 1,
+      funding_venture: 1,
+    }, 2, { minimumScore: 65 });
+
+    expect(selected.map((item) => item.title)).toEqual(["Official AI operator release"]);
+  });
+
+  it("does not mistake an incidental documents mention for an OCR workflow story", () => {
+    const json = buildFeedJson([
+      {
+        title: "Kalshi demands Netflix take down a documentary trailer",
+        description: "The company says the trailer contains fabricated documents and misleading statements.",
+        url: "https://example.com/documentary-dispute",
+        publishedAt: "2026-07-25T04:00:00Z",
+        sourceName: "Fixture",
+        sourceUrl: "https://example.com/feed.xml",
+        imageStrategy: "held-for-codex-image",
+        imageApprovalStatus: "approved",
+        imagePath: "/images/signals/generated/documentary-dispute.jpg",
+        socialImagePath: "/images/signals/generated/documentary-dispute.jpg",
+        imageUrl: "https://preview.example.com/images/signals/generated/documentary-dispute.jpg",
+        socialImageUrl: "https://preview.example.com/images/signals/generated/documentary-dispute.jpg",
+        bucket: "funding_venture",
+        bucketLabel: "Funding & Venture",
+        score: 59,
+      },
+    ], { now: new Date("2026-07-25T05:00:00Z"), siteUrl: "https://preview.example.com" });
+
+    expect(json.items[0].content_text).not.toContain("PaddleOCR");
+    expect(json.items[0]._phoenix.imageBrief.sceneLane).not.toBe("document_flow");
+  });
+
   it("skips semantically duplicative selections in the same editorial lane", () => {
     const scored = [
       {
@@ -2017,6 +2055,7 @@ describe("static RSS engine", () => {
       outputDir: tempDir,
       socialImageOutputRoot: tempDir,
       siteUrl: "https://preview.example.com",
+      enableArticleMetadata: true,
       fetchTextImpl: async (url) => url === "https://example.com/feed.xml"
         ? fixtureXml
         : "<!doctype html><html><head><title>No image article</title></head><body>No image.</body></html>"

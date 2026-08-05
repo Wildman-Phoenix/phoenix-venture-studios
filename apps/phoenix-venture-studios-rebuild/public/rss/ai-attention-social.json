@@ -1,0 +1,207 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Phoenix Venture Studios - AI Attention - Social Queue",
+  "home_page_url": "https://phoenixventurestudios.com",
+  "feed_url": "https://phoenixventurestudios.com/rss/ai-attention-social.json",
+  "description": "One AI consulting or implementation signal at a time for RSS-to-social publishing.",
+  "generated_at": "2026-07-26T22:30:00.710Z",
+  "items": [
+    {
+      "id": "https://phoenixventurestudios.com/founder-signal/signals/automate-7-projects-marketing-ai-40-0f36281c/",
+      "url": "https://phoenixventurestudios.com/founder-signal/signals/automate-7-projects-marketing-ai-40-0f36281c/",
+      "external_url": "https://apsquared.co/posts/marketing-automation-claude-codex",
+      "title": "Automate 7 Projects Marketing with AI for $40",
+      "content_text": "The useful signal is the workflow change underneath this release: which step becomes faster, cheaper, or easier to supervise.\n\nThis points to a workflow shift worth testing in the real world. Look for the task that gets cheaper, faster, or easier first.\n\nStart with the workflow that already hurts. If the tool cannot improve that work, it has not earned expansion.\n\nThe next proof point is this signal showing up again from a different angle.\n\nRead the full Phoenix signal on phoenixventurestudios.com.\n\n#AI",
+      "image": "https://phoenixventurestudios.com/images/signals/generated/automate-7-projects-marketing-ai-40-0f36281c.jpg",
+      "banner_image": "https://phoenixventurestudios.com/images/signals/generated/automate-7-projects-marketing-ai-40-0f36281c.jpg",
+      "date_published": "2026-07-26T22:30:00.710Z",
+      "authors": [
+        {
+          "name": "TensorFeed"
+        }
+      ],
+      "tags": [
+        "Business Automation"
+      ],
+      "_phoenix": {
+        "bucket": "business_automation",
+        "score": 79,
+        "source": "TensorFeed",
+        "sourceName": "TensorFeed",
+        "sourceSurface": "rss",
+        "rawTitle": "Automate 7 Projects Marketing with AI for $40",
+        "reviewTitle": "TensorFeed | Business Automation | Automate 7 Projects Marketing with AI for $40",
+        "topicLabel": "Business Automation",
+        "whySelected": "RSS source matched the Phoenix registry and entered editorial scoring.",
+        "researchCitations": [],
+        "slug": "automate-7-projects-marketing-ai-40-0f36281c",
+        "publicTitle": "Automate 7 Projects Marketing with AI for $40",
+        "sourceTitle": "Automate 7 Projects Marketing with AI for $40",
+        "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/automate-7-projects-marketing-ai-40-0f36281c.jpg",
+        "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/automate-7-projects-marketing-ai-40-0f36281c.jpg",
+        "socialImagePath": "/images/signals/generated/automate-7-projects-marketing-ai-40-0f36281c.jpg",
+        "sourceImageUrl": "",
+        "feedId": "ai-attention-social",
+        "imageStrategy": "source-allowlisted",
+        "imageApprovalStatus": "approved",
+        "imageHoldReason": "",
+        "imageFamily": "ai_opportunity",
+        "imageSourceType": "source-image",
+        "imageCredit": "TensorFeed",
+        "imageRightsStatus": "allowlisted",
+        "imageTemplate": "founder_brief",
+        "imageVariant": "signal-rail",
+        "imageTone": "steel",
+        "imageComposition": "left-anchor",
+        "sceneLane": "workflow_system",
+        "sceneMotif": "control-surface",
+        "imageFingerprint": "3220e6111246b9ba",
+        "imageVisualHash": "6cc53565630848b5",
+        "imageWarnings": [],
+        "imageAudit": {
+          "width": 1024,
+          "height": 1024,
+          "luminanceMean": 128.95,
+          "luminanceStdDev": 62.7,
+          "colorfulness": 63.67,
+          "sharpness": 16.22,
+          "bestComposition": {
+            "composition": "split-panel",
+            "meanLuma": 113.7145930815508,
+            "lumaStdDev": 57.886945579516414,
+            "textureStdDev": 12.421827382438781,
+            "readability": 0.5417783086937615
+          },
+          "compositionScores": {
+            "left-anchor": {
+              "meanLuma": 114.51,
+              "lumaStdDev": 57.51,
+              "textureStdDev": 12.94,
+              "readability": 0.54
+            },
+            "split-panel": {
+              "meanLuma": 113.71,
+              "lumaStdDev": 57.89,
+              "textureStdDev": 12.42,
+              "readability": 0.542
+            },
+            "right-anchor": {
+              "meanLuma": 140.26,
+              "lumaStdDev": 62.78,
+              "textureStdDev": 15.37,
+              "readability": 0.38
+            },
+            "lower-band": {
+              "meanLuma": 116.22,
+              "lumaStdDev": 63.35,
+              "textureStdDev": 13.27,
+              "readability": 0.494
+            }
+          },
+          "learningSignal": {
+            "lane": "workflow_system",
+            "reviewMode": "source-image",
+            "approvedExamples": 15,
+            "rejectedExamples": 0,
+            "distanceToApproved": 1.162,
+            "distanceToRejected": null,
+            "shouldReject": false
+          },
+          "vision": {
+            "faceCount": 1,
+            "textObservationCount": 0,
+            "completeHandCount": 0,
+            "handCount": 0,
+            "lowConfidenceHandCount": 0,
+            "maxFaceAreaRatio": 0.059965567680486664,
+            "textCoverage": 0,
+            "landmarkedFaceCount": 1
+          },
+          "editorialNotes": [],
+          "recommendedFixes": [],
+          "editorialModelReview": {
+            "verdict": "approve",
+            "storyFit": "strong",
+            "headlinePlacementRisk": "low",
+            "confidence": "medium",
+            "notes": [
+              "Looks good",
+              "Not a bad cover"
+            ],
+            "fixes": [],
+            "normalizedVerdict": "approve"
+          }
+        },
+        "imageCorrectionTrail": [],
+        "imageDecision": "allowed-source-image-used",
+        "imageDiagnosticReason": "OG image found and allowed source image passed audit",
+        "imageDiagnostic": {
+          "feedImageMissing": false,
+          "articleImageChecked": true,
+          "articleImageFound": true,
+          "articleImageSource": "og:image",
+          "articleImageFetchError": "",
+          "sourceImagePolicy": "reference-only",
+          "imageDecision": "RSS image found"
+        },
+        "imageCertification": {
+          "verdict": "good-to-go",
+          "approved": true,
+          "attributionVisible": true,
+          "sourceType": "source-image",
+          "imageStrategy": "source-allowlisted",
+          "holdReason": "",
+          "notes": [
+            "Image cleared the current Phoenix cover rules."
+          ]
+        },
+        "imageBrief": {
+          "storyAngle": "Workflow shift",
+          "storySubject": "Automate 7 Projects Marketing with AI for $40",
+          "emotionalHook": "The signal is not the tool itself. It is what the tool can remove, speed up, or systemize.",
+          "visualMetaphor": "A premium founder briefing moment with clean business context.",
+          "audiencePainOpportunity": "Founders need a clear next move, not another vague article.",
+          "imagePrompt": "Create one cinematic editorial cover image for this specific story: \"Automate 7 Projects Marketing with AI for $40\". Core context to visualize: Automate 7 Projects Marketing with AI for $40. The signal is not the tool itself. It is what the tool can remove, speed up, or systemize. Founders need a clear next move, not another vague article. A premium founder briefing moment with clean business context. Make the scene specific to the article's real subject, pressure point, and physical environment. Use a cinematic editorial poster grammar: one dominant metaphor, strong light and shadow, and deliberate negative space for a bold headline. Pull out the article's key context instead of showing the article literally: the lock, threshold, risk, leverage point, workflow layer, or trust boundary. Use concrete anchors sparingly: one person silhouette, one device stack, one dashboard, one room, or one symbolic architecture. Do not build a cluttered collage. Let supporting details prove the metaphor: app cards, charts, files, messages, capital flows, handoff lines, or compute layers should feel intentional and readable at thumbnail size. Avoid generic office scenes, showroom product staging, fake logos, celebrity likenesses, overstuffed UI panels, and decorative AI clouds. For Apple/context stories, think in terms of private thresholds: keyholes, context layers, device memory, app stacks, secure compute boundaries, and elegant architectural silhouettes instead of literal product ads. Use Apple-adjacent cues only as abstract architecture, glass, device silhouettes, and privacy symbolism; never copy official logos or exact trademark marks. Use the source article only as private visual reference; create Phoenix-owned artwork for public use. Make it feel like a strong magazine or strategy-report cover, not a product render. Avoid portraits or people unless the story clearly needs a human subject. Leave clean negative space for a Phoenix Founder Signal headline overlay.",
+          "articleImageRequired": false,
+          "expectedArticleImagePath": "/images/signals/source-art/automate-7-projects-marketing-ai-40-0f36281c.jpg",
+          "imageFamily": "ai_opportunity",
+          "preferredImageFamily": "ai_opportunity",
+          "sourceImageEligibility": "allowed",
+          "sourceImagePolicy": "allowed",
+          "sourceImageMatchedKey": "",
+          "sourceImageNote": "",
+          "manualReviewNeeded": false,
+          "overlayTone": "operator",
+          "template": "founder_brief",
+          "sceneLane": "workflow_system",
+          "sceneMotif": "control-surface",
+          "imageVariant": "signal-rail",
+          "imageTone": "steel",
+          "imageComposition": "left-anchor",
+          "imageFingerprint": "3220e6111246b9ba"
+        },
+        "feedRole": "founder-market",
+        "simpleSummary": "This points to a workflow shift worth testing in the real world. Look for the task that gets cheaper, faster, or easier first.",
+        "engagementPrompt": "Where would you test this first in a live workflow?",
+        "trendContext": "The next proof point is this signal showing up again from a different angle.",
+        "relatedRecentSignals": [],
+        "readingLevel": {
+          "target": "grade-5-plain-founder",
+          "heuristic": "average sentence words",
+          "averageSentenceWords": 11.4
+        },
+        "editorialMode": "phoenix-original-brief",
+        "internalPath": "/founder-signal/signals/automate-7-projects-marketing-ai-40-0f36281c",
+        "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/automate-7-projects-marketing-ai-40-0f36281c/",
+        "originalUrl": "https://apsquared.co/posts/marketing-automation-claude-codex",
+        "rssStory": "The useful signal is the workflow change underneath this release: which step becomes faster, cheaper, or easier to supervise.\n\nThis points to a workflow shift worth testing in the real world. Look for the task that gets cheaper, faster, or easier first.\n\nStart with the workflow that already hurts. If the tool cannot improve that work, it has not earned expansion.\n\nThe next proof point is this signal showing up again from a different angle.\n\nRead the full Phoenix signal on phoenixventurestudios.com.\n\n#AI",
+        "whyItMatters": "Automation changes margins, response time, and customer experience. It can also expose weak processes if the business automates too early.",
+        "whyShared": "Phoenix shared this because automation is one of the cleanest bridges from AI attention to business results.",
+        "founderTakeaway": "Start with the workflow that already hurts. If the tool cannot improve that work, it has not earned expansion.",
+        "businessTakeaway": "Document the workflow before automating it, then measure whether the change creates real capacity.",
+        "articleBody": [],
+        "sourceLinks": []
+      }
+    }
+  ]
+}

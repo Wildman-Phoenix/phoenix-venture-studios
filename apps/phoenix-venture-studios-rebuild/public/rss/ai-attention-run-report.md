@@ -1,86 +1,70 @@
 # Phoenix RSS Run Report
 
-- Feed: founder-tools
-- Title: Phoenix Venture Studios - Founder Tools
-- Generated: 2026-05-29T15:20:13.011Z
+- Feed: ai-attention
+- Title: Phoenix Venture Studios - AI Attention
+- Generated: 2026-08-05T20:27:42.613Z
 - Dry run: no
-- Sources enabled: 6
-- Sources fetched: 6
+- Sources enabled: 7
+- Sources fetched: 7
+- Research sources enabled: 0
+- Source warnings: 0
 - Source errors: 0
-- Parsed items: 1164
-- Keyword filtered items: 7
-- Selected items: 10
-- Social cards generated: 10/10
-- Social card errors: 0
-- Manual image review needed: 10
+- Parsed items: 1298
+- Keyword filtered items: 6
+- Recent social items skipped: 0
+- Selected items: 4
+- Image mode: source-or-codex-queue
+- Feed-ready images: 4/5
+- Held for Codex image: 0
+- Source-approved images: 1
+- Codex-approved raw images: 3
+- Image processing errors: 0
+- Manual image review needed: 2
+- Creative follow-up still needed: 3
 - Feed valid: yes
 - Preserved previous feed: no
 
 ## Bucket Counts
 
-- AI Implementation: 2
-- AI Tools & Agents: 4
+- Jamstack Operating Systems: 2
 - Business Automation: 2
-- AI Revenue Opportunities: 1
-- Wildcard Attention: 1
 
 ## Source Counts
 
-- google-ai-blog: 1
 - infoq-general: 2
-- techcrunch-ai: 2
-- tensorfeed-ai: 2
-- the-verge-ai: 1
-- openai-news: 2
+- techcrunch-ai: 1
+- tensorfeed-ai: 1
+
+## Source Type Counts
+
+- manual: 1
+- rss: 6
 
 ## Image Strategy Counts
 
-- owned-photo-match: 10
+- held-for-codex-image: 3
+- source-allowlisted: 1
 
 ## Image Family Counts
 
-- ai_opportunity: 4
-- consulting_revenue: 1
-- ai_risk: 2
 - wildcard_attention: 1
-- market_shock: 1
-- founder_pressure: 1
+- ai_opportunity: 1
+- consulting_revenue: 1
+- ai_risk: 1
 
 ## Image Variety Audit
 
-- Max consecutive family repeats: 2
+- Max consecutive family repeats: 1
+- Variant operator-map: 1
 - Variant field-note: 2
-- Variant operator-map: 4
-- Variant capital-pulse: 4
-- Composition lower-band: 2
-- Composition left-anchor: 3
-- Composition right-anchor: 1
-- Composition split-panel: 4
+- Variant signal-rail: 1
+- Composition right-anchor: 2
+- Composition lower-band: 1
+- Composition left-anchor: 1
 
 ## Selected Items
 
-- [AI Tools & Agents] GitHub Slashes Agent Workflow Token Spend up to 62% with Daily Audits and MCP Pruning (InfoQ, score 97)
-- [AI Tools & Agents] Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool (TechCrunch AI, score 85)
-- [AI Revenue Opportunities] Glean’s top line crosses $300M as AI budget cutting becomes its major selling point (TechCrunch AI, score 82)
-- [Wildcard Attention] A $2,000 AI-generated film will make its debut at Tribeca (The Verge AI, score 81)
-- [AI Tools & Agents] How Endava builds an agentic organization with Codex (OpenAI News, score 81)
-- [AI Tools & Agents] Warp’s big bet on building open source with GPT-5.5 (OpenAI News, score 74)
-- [AI Implementation] Check out real-life AI prototypes from the Futures Lab. (Google AI Blog, score 72)
-- [Business Automation] AI Data Center Map – Visualize Water and Power Impact (TensorFeed, score 63)
-- [AI Implementation] Presentation: From Founding Engineer to CTO to CEO – At the Same Startup (InfoQ, score 62)
-- [Business Automation] When old data brings AI rollouts to a screeching halt - and how to manage it (TensorFeed, score 61)
-
-## Copy Repetition Warnings
-
-- whyItMatters repeats across 4 selected items; consider a sharper Phoenix take in the next editorial pass.
-- whyShared repeats across 4 selected items; consider a sharper Phoenix take in the next editorial pass.
-- founderTakeaway repeats across 4 selected items; consider a sharper Phoenix take in the next editorial pass.
-- businessTakeaway repeats across 4 selected items; consider a sharper Phoenix take in the next editorial pass.
-
-## Feed Aliases
-
-- tools.xml -> ai-attention.xml
-- tools.json -> ai-attention.json
-- tools-items.json -> ai-attention-items.json
-- tools-run-report.md -> ai-attention-run-report.md
-- tools-run-report.json -> ai-attention-run-report.json
+- [Jamstack Operating Systems] InfoQ | Jamstack Operating Systems | Presentation: The Five Stages of AI Maturity in Engineering Organizations - Where and Why Teams Get Stuck (InfoQ, score 70) -> source image policy is reference-only; Phoenix generated art used
+- [Business Automation] TechCrunch AI | Business Automation | Jeff Dean and other top AI researchers are leaving Google to launch their own startup (TechCrunch AI, score 68) -> OG image failed audit; Phoenix generated art used
+- [Business Automation] TensorFeed | Business Automation | AMD’s data center business is booming while gaming takes a backseat (TensorFeed, score 67) -> OG image found and allowed source image passed audit
+- [Jamstack Operating Systems] InfoQ | Jamstack Operating Systems | Presentation: Microservices Platforms: When Team Topologies Meets Microservices Patterns (InfoQ, score 69) -> source image policy is reference-only; Phoenix generated art used

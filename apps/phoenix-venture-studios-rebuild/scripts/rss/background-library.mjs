@@ -72,6 +72,18 @@ export const BACKGROUND_VARIANTS = [
     contrast: 1.12,
     creativeScene: "ai_risk_signal_grid",
   }),
+  variant("ai_risk", "/images/signals/backgrounds/db3-04-venture-blueprint-raw.png", "src/assets/intel-trust-bg.jpg", {
+    saturation: 1.12,
+    brightness: 1.02,
+    contrast: 1.08,
+    creativeScene: "venture_blueprint_control_surface",
+  }),
+  variant("ai_risk", "/images/signals/backgrounds/db3-05-black-varnish-raw.png", "src/assets/snapshot-noise.jpg", {
+    saturation: 1.08,
+    brightness: 1.02,
+    contrast: 1.1,
+    creativeScene: "black_varnish_risk_boundary",
+  }),
   variant("ai_opportunity", "/images/signals/backgrounds/ai-opportunity.jpg", "src/assets/strategy-session.jpg", {
     saturation: 1.28,
     brightness: 1.06,
@@ -85,6 +97,18 @@ export const BACKGROUND_VARIANTS = [
     saturation: 1.3,
     brightness: 1.02,
     contrast: 1.1,
+  }),
+  variant("ai_opportunity", "/images/signals/backgrounds/db2-03-prism-breakthrough-raw.png", "src/assets/strategy-session.jpg", {
+    saturation: 1.16,
+    brightness: 1.04,
+    contrast: 1.08,
+    creativeScene: "prism_breakthrough",
+  }),
+  variant("ai_opportunity", "/images/signals/backgrounds/db2-04-idea-current-raw.png", "src/assets/phoenix-operator-workspace-gpt.jpg", {
+    saturation: 1.16,
+    brightness: 1.03,
+    contrast: 1.08,
+    creativeScene: "idea_current",
   }),
   variant("founder_pressure", "/images/signals/backgrounds/founder-pressure.jpg", "src/assets/hero-entrepreneur-v2.jpg", {
     saturation: 1.22,
@@ -100,6 +124,12 @@ export const BACKGROUND_VARIANTS = [
     brightness: 1.01,
     contrast: 1.08,
   }),
+  variant("founder_pressure", "/images/signals/backgrounds/db4-05-after-the-storm-raw.png", "src/assets/hero-entrepreneur-v2.jpg", {
+    saturation: 1.12,
+    brightness: 1.05,
+    contrast: 1.06,
+    creativeScene: "after_the_storm",
+  }),
   variant("capital_readiness", "/images/signals/backgrounds/capital-readiness.jpg", "src/assets/funding-review.jpg", {
     saturation: 1.3,
     brightness: 1.05,
@@ -113,6 +143,18 @@ export const BACKGROUND_VARIANTS = [
     saturation: 1.18,
     brightness: 1.02,
     contrast: 1.1,
+  }),
+  variant("capital_readiness", "/images/signals/backgrounds/db2-06-ascending-system-raw.png", "src/assets/funding-review.jpg", {
+    saturation: 1.12,
+    brightness: 1.04,
+    contrast: 1.08,
+    creativeScene: "ascending_system",
+  }),
+  variant("capital_readiness", "/images/signals/backgrounds/db1-03-bronze-monolith-raw.png", "src/assets/phoenix-capital-readiness-gpt.jpg", {
+    saturation: 1.08,
+    brightness: 1.04,
+    contrast: 1.08,
+    creativeScene: "bronze_monolith",
   }),
   variant("market_shock", "/images/signals/backgrounds/market-shock.jpg", "src/assets/intel-hero.jpg", {
     saturation: 1.34,
@@ -129,6 +171,12 @@ export const BACKGROUND_VARIANTS = [
     brightness: 1.01,
     contrast: 1.08,
   }),
+  variant("market_shock", "/images/signals/backgrounds/db4-02-stone-portal-raw.png", "src/assets/intel-hero.jpg", {
+    saturation: 1.1,
+    brightness: 1.03,
+    contrast: 1.1,
+    creativeScene: "stone_portal",
+  }),
   variant("operational_leverage", "/images/signals/backgrounds/operational-leverage.jpg", "src/assets/intel-action.jpg", {
     saturation: 1.25,
     brightness: 1.07,
@@ -142,6 +190,18 @@ export const BACKGROUND_VARIANTS = [
     saturation: 1.22,
     brightness: 1.03,
     contrast: 1.1,
+  }),
+  variant("operational_leverage", "/images/signals/backgrounds/db2-01-signal-network-raw.png", "src/assets/intel-action.jpg", {
+    saturation: 1.12,
+    brightness: 1.03,
+    contrast: 1.08,
+    creativeScene: "signal_network",
+  }),
+  variant("operational_leverage", "/images/signals/backgrounds/db4-04-house-of-ideas-raw.png", "src/assets/phoenix-strategy-room-gpt.jpg", {
+    saturation: 1.08,
+    brightness: 1.04,
+    contrast: 1.08,
+    creativeScene: "house_of_ideas",
   }),
   variant("consulting_revenue", "/images/signals/backgrounds/consulting-revenue.jpg", "src/assets/hero-entrepreneur.jpg", {
     saturation: 1.28,
@@ -157,6 +217,12 @@ export const BACKGROUND_VARIANTS = [
     brightness: 1.02,
     contrast: 1.08,
   }),
+  variant("consulting_revenue", "/images/signals/backgrounds/db3-02-modernist-grid-raw.png", "src/assets/hero-entrepreneur.jpg", {
+    saturation: 1.08,
+    brightness: 1.04,
+    contrast: 1.06,
+    creativeScene: "modernist_grid",
+  }),
   variant("event_workshop", "/images/signals/backgrounds/event-workshop.jpg", "src/assets/founders-collaborating.jpg", {
     saturation: 1.24,
     brightness: 1.06,
@@ -170,6 +236,18 @@ export const BACKGROUND_VARIANTS = [
     saturation: 1.14,
     brightness: 1.02,
     contrast: 1.1,
+  }),
+  variant("event_workshop", "/images/signals/backgrounds/db4-01-founder-threshold-raw.png", "src/assets/founders-collaborating.jpg", {
+    saturation: 1.1,
+    brightness: 1.04,
+    contrast: 1.08,
+    creativeScene: "founder_threshold",
+  }),
+  variant("event_workshop", "/images/signals/backgrounds/db4-06-city-of-possibility-raw.png", "src/assets/traverse-city-aerial.jpg", {
+    saturation: 1.08,
+    brightness: 1.03,
+    contrast: 1.08,
+    creativeScene: "city_of_possibility",
   }),
   variant("wildcard_attention", "/images/signals/backgrounds/wildcard-attention.jpg", "src/assets/late-night-strategy.jpg", {
     saturation: 1.3,
@@ -190,6 +268,12 @@ export const BACKGROUND_VARIANTS = [
     brightness: 1.0,
     contrast: 1.12,
     creativeScene: "attention_filter_prism",
+  }),
+  variant("wildcard_attention", "/images/signals/backgrounds/db3-06-brutalist-collage-raw.png", "src/assets/late-night-strategy.jpg", {
+    saturation: 1.08,
+    brightness: 1.03,
+    contrast: 1.08,
+    creativeScene: "brutalist_editorial_collage",
   }),
   variant("ai_opportunity", "/images/signals/backgrounds/ai-opportunity-build-sprint.jpg", "src/assets/snapshot-path.jpg", {
     saturation: 1.16,

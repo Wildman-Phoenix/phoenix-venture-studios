@@ -22,7 +22,7 @@ const RESEARCH_SOURCE_REGISTRY_PATH = path.join(APP_ROOT, "rss-data/research-sou
 const MANUAL_SIGNALS_PATH = path.join(APP_ROOT, "rss-data/manual-signals.json");
 const DEFAULT_IMAGE_SOURCE_ALLOWLIST_PATH = path.join(APP_ROOT, "rss-data/image-source-allowlist.json");
 const DEFAULT_OUTPUT_DIR = path.join(APP_ROOT, "public/rss");
-const DEFAULT_SITE_URL = "https://previews.phoenixventurestudios.com/phoenix-venture-studios-rebuild";
+const DEFAULT_SITE_URL = "https://phoenixventurestudios.com";
 const MAX_ITEMS = 10;
 const ARCHIVE_FEED_ITEM_LIMIT = MAX_ITEMS;
 const SOCIAL_QUEUE_CANDIDATE_LIMIT = 6;
@@ -426,6 +426,11 @@ function editorialText(item = {}) {
   return `${item.publicTitle || item.title || ""} ${item.description || ""}`.toLowerCase();
 }
 
+function hasDocumentWorkflowSignal(item = {}) {
+  return /\b(ocr|document parsing|document extraction|document intelligence|form extraction|paperwork automation)\b/i
+    .test(editorialText(item));
+}
+
 function hasFrontierFundingSignal(item = {}) {
   const text = editorialText(item);
   if (!FRONTIER_AI_ENTITY_PATTERN.test(text) || !FRONTIER_FUNDING_PATTERN.test(text)) return false;
@@ -452,7 +457,7 @@ function detectEditorialLane(item) {
   if (mentionsAny(text, "\\b(dynamic workflow|subagent|subagents|swarm|orchestrat|multi-agent)\\b")) return "workflow-orchestration";
   if (mentionsAny(text, "\\b(trade show|pipeline|booth|event|conference)\\b")) return "event-pipeline";
   if (mentionsAny(text, "\\b(layoff|laid-off|hiring|workers|talent|recruiting|join)\\b")) return "talent-flow";
-  if (mentionsAny(text, "\\b(ocr|document parsing|documents|forms|paperwork)\\b")) return "document-ai";
+  if (hasDocumentWorkflowSignal(item)) return "document-ai";
   if (mentionsAny(text, "\\b(quiz|vibe coded|google ai studio|io 2026|i/o 2026)\\b")) return "interactive-prototype";
   if (mentionsAny(text, "\\b(prototype|prototypes|futures lab|students|education)\\b")) return "prototype-lab";
   if (mentionsAny(text, "\\b(nonprofit|people-first ai fund|community innovation|grant|grants|public good)\\b")) return "mission-funding";
@@ -1120,7 +1125,7 @@ function buildPlainLanguageSummary(item) {
   if (mentionsAny(text, "\\b(dynamic workflow|subagent|subagents|swarm|orchestrat|multi-agent)\\b")) {
     return "The real question is whether orchestration removes friction or just gives you one more moving part to babysit.";
   }
-  if (mentionsAny(text, "\\b(ocr|document parsing|documents|forms|paperwork)\\b")) {
+  if (hasDocumentWorkflowSignal(item)) {
     return "This is about turning messy documents into usable workflow input. The win is speed, accuracy, and less manual cleanup.";
   }
   if (mentionsAny(text, "\\b(quiz|vibe coded|google ai studio|io 2026|i/o 2026)\\b")) {
@@ -1224,7 +1229,7 @@ function buildLeadSentence(item, cleanedSummary = "") {
   if (mentionsAny(text, "\\b(layoff|laid-off|hiring|workers|talent|recruiting|join)\\b")) {
     return "A fast-growing AI company is using the layoff cycle to pull experienced operators into a more demanding startup environment.";
   }
-  if (mentionsAny(text, "\\b(ocr|document parsing|documents|forms|paperwork)\\b")) {
+  if (hasDocumentWorkflowSignal(item)) {
     return "PaddleOCR 3.5 pushes document parsing closer to a usable workflow layer instead of a one-off extraction demo.";
   }
   if (mentionsAny(text, "\\b(quiz|vibe coded|google ai studio|io 2026|i/o 2026)\\b")) {
@@ -1244,7 +1249,19 @@ function buildLeadSentence(item, cleanedSummary = "") {
   if (mentionsAny(text, "\\b(tribeca|film|filmmaker|movie|cinema)\\b")) {
     return "A low-cost AI film is reaching a real festival stage, which says more about tool maturity than most demo reels do.";
   }
-  return toSentence(publicTitle);
+  if (item.bucket === "ai_tools_agents" || item.bucket === "ai_implementation" || item.bucket === "business_automation") {
+    return "The useful signal is the workflow change underneath this release: which step becomes faster, cheaper, or easier to supervise.";
+  }
+  if (item.bucket === "ai_operator_impact") {
+    return "The important shift is not the announcement by itself, but where it changes an operator's cost, control, or decision speed.";
+  }
+  if (item.bucket === "funding_venture" || item.bucket === "capital_credit") {
+    return "The headline matters only if it reveals what kind of proof, demand, or operating leverage the market is rewarding.";
+  }
+  if (item.bucket === "market_regulatory") {
+    return "The practical question is where this changes risk, timing, or the cost of making the next move.";
+  }
+  return "This signal is useful when it can be tied to one concrete decision instead of treated as another headline.";
 }
 
 function buildTrendContext(item, relatedSignals = []) {
@@ -1282,7 +1299,7 @@ function buildTrendContext(item, relatedSignals = []) {
   if (mentionsAny(text, "\\b(codex|software delivery|requirements analysis|engineering team|delivery)\\b")) {
     return "The next clue is whether more delivery teams rebuild around smaller agent loops instead of bigger project cycles.";
   }
-  if (mentionsAny(text, "\\b(ocr|document parsing|documents|forms|paperwork)\\b")) {
+  if (hasDocumentWorkflowSignal(item)) {
     return "The real adoption marker is whether document-heavy teams start treating this as table stakes instead of a niche back-office tool.";
   }
   if (mentionsAny(text, "\\b(quiz|vibe coded|google ai studio|io 2026|i/o 2026)\\b")) {
@@ -1399,6 +1416,9 @@ function buildPhoenixRssStory(item) {
     const parts = item.articleBody
       .map((paragraph) => stripHtml(paragraph).replace(/\s+/g, " ").trim())
       .filter(Boolean);
+    if (parts.length && isHeadlineEcho(parts[0], item)) {
+      parts[0] = buildLeadSentence(item, parts[0]);
+    }
     if (item.internalUrl) parts.push(buildSignalCtaLine(item));
     parts.push(buildContextualHashtags(item));
     return parts.filter(Boolean).join("\n\n");
@@ -1829,8 +1849,9 @@ export function dedupeItems(items) {
 }
 
 export function selectItems(scoredItems, targets, limit = MAX_ITEMS, options = {}) {
+  const minimumScore = Number.isFinite(options.minimumScore) ? options.minimumScore : -Infinity;
   const candidates = dedupeItems(scoredItems)
-    .filter((item) => !item.excluded)
+    .filter((item) => !item.excluded && item.score >= minimumScore)
     .sort((a, b) => b.score - a.score);
   const selected = [];
   const selectedKeys = new Set();
@@ -3328,12 +3349,18 @@ export async function buildStaticRss(options = {}) {
   };
   const outputAliases = Array.isArray(outputFiles.aliases) ? outputFiles.aliases : [];
   const fetchTextImpl = options.fetchTextImpl ?? fetchText;
+  // Vitest build fixtures use example.com URLs and must stay offline unless a
+  // fixture explicitly supplies an article-metadata implementation.
+  const enableArticleMetadata = options.enableArticleMetadata
+    ?? (Boolean(options.fetchArticleMetadataImpl)
+      || process.env.PHOENIX_RSS_DISABLE_ARTICLE_METADATA !== "1");
   const sourceImageAllowlist = options.sourceImageAllowlist ??
     await readOptionalJson(imageSourceAllowlistPath, DEFAULT_IMAGE_SOURCE_ALLOWLIST);
   const socialImageOutputRoot = options.socialImageOutputRoot ?? path.join(APP_ROOT, "public");
   const registry = await readJson(registryPath);
   const targets = options.targets ?? registry.targets;
   const maxPerSource = options.maxPerSource ?? registry.maxPerSource;
+  const minimumScore = options.minimumScore ?? registry.minimumScore ?? -Infinity;
   const excludeKeywords = options.excludeKeywords ?? registry.excludeKeywords ?? [];
   const preferredKeywords = options.preferredKeywords ?? registry.preferredKeywords ?? [];
   const penaltyKeywords = options.penaltyKeywords ?? registry.penaltyKeywords ?? [];
@@ -3401,7 +3428,7 @@ export async function buildStaticRss(options = {}) {
   const metadataItems = await enrichItemsWithArticleMetadata(parsedItems, {
     fetchTextImpl,
     fetchArticleMetadataImpl: options.fetchArticleMetadataImpl,
-    enableArticleMetadata: options.enableArticleMetadata,
+    enableArticleMetadata,
     articleMetadataMaxItems: options.articleMetadataMaxItems,
     articleMetadataTimeoutMs: options.articleMetadataTimeoutMs,
     articleMetadataConcurrency: options.articleMetadataConcurrency,
@@ -3428,8 +3455,21 @@ export async function buildStaticRss(options = {}) {
   const selectionLimit = isSocialQueueFeedId(feedId)
     ? Math.max(maxItems, SOCIAL_QUEUE_CANDIDATE_LIMIT)
     : Math.max(maxItems, ARTICLE_IMAGE_BACKFILL_LIMIT);
-  const initialSelection = selectItems(boundaryScopedItems, targets, selectionLimit, { maxPerSource });
+  const eligibleBoundaryItems = boundaryScopedItems.filter((item) => item.score >= minimumScore);
+  const initialSelection = selectItems(eligibleBoundaryItems, targets, selectionLimit, { maxPerSource, minimumScore });
   let workingSelected = initialSelection.selected.map((item) => enrichSignalItem(item, { siteUrl }));
+  // The first metadata pass is intentionally capped so a large source sweep does
+  // not spend time opening every article. Selected stories can appear after that
+  // cap, though, so backfill article metadata before the editorial/image layer
+  // can replace the missing source image with Phoenix-owned fallback art.
+  workingSelected = await enrichItemsWithArticleMetadata(workingSelected, {
+    fetchTextImpl,
+    fetchArticleMetadataImpl: options.fetchArticleMetadataImpl,
+    enableArticleMetadata,
+    articleMetadataMaxItems: workingSelected.length,
+    articleMetadataTimeoutMs: options.articleMetadataTimeoutMs,
+    articleMetadataConcurrency: options.articleMetadataConcurrency,
+  });
   workingSelected = applyAutonomousEditorialLayer(workingSelected, {
     recentItems,
     feedId,
@@ -3439,14 +3479,22 @@ export async function buildStaticRss(options = {}) {
   if (editorialPrune.removed.length) {
     const selectedKeySet = new Set(workingSelected.map((item) => recentSelectionKey(item)));
     workingSelected = editorialPrune.kept;
-    const backfillPool = boundaryScopedItems
+    const backfillPool = eligibleBoundaryItems
       .filter((item) => !selectedKeySet.has(recentSelectionKey(item)))
       .sort((a, b) => b.score - a.score);
 
     for (const candidate of backfillPool) {
       if (workingSelected.length >= initialSelection.selected.length) break;
       const enrichedCandidate = enrichSignalItem(candidate, { siteUrl });
-      const editorialCandidate = applyAutonomousEditorialLayer([enrichedCandidate], {
+      const [metadataCandidate] = await enrichItemsWithArticleMetadata([enrichedCandidate], {
+        fetchTextImpl,
+        fetchArticleMetadataImpl: options.fetchArticleMetadataImpl,
+        enableArticleMetadata,
+        articleMetadataMaxItems: 1,
+        articleMetadataTimeoutMs: options.articleMetadataTimeoutMs,
+        articleMetadataConcurrency: 1,
+      });
+      const editorialCandidate = applyAutonomousEditorialLayer([metadataCandidate], {
         recentItems,
         feedId,
         sourceImageAllowlist,

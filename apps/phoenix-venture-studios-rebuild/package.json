@@ -8,8 +8,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "build:proof": "PHOENIX_BUILD_PROOF=1 vite build --mode production",
+    "build": "npm run rss:combine && vite build",
+    "build:proof": "npm run rss:combine && PHOENIX_BUILD_PROOF=1 vite build --mode production",
     "build:dev": "vite build --mode development",
     "prepare:production": "node scripts/preview/prepare-production-pages.mjs",
     "lint": "eslint .",
@@ -31,12 +31,14 @@
     "rss:test:schedule": "node scripts/rss/test-autonomous-schedule.mjs",
     "rss:autonomous": "node scripts/rss/autonomous-rss-runner.mjs",
     "rss:validate": "node scripts/rss/validate-rss-output.mjs",
+    "rss:combine": "node scripts/rss/build-combined-founder-signal.mjs",
     "rss:adopt-current": "node scripts/rss/adopt-current-rss-bundle.mjs",
-    "rss:hydrate-live": "node scripts/rss/hydrate-live-rss-baseline.mjs",
+    "rss:rebase-canonical": "node scripts/rss/rebase-rss-canonical-site.mjs",
     "rss:publish-preview": "node scripts/rss/publish-preview-rss.mjs",
     "rss:publish-production": "node scripts/rss/publish-production-rss.mjs",
     "preview:publish": "node scripts/preview/publish-preview-app.mjs",
-    "rss:test": "vitest run src/test/rss-engine.test.ts",
+    "images:contact-sheet": "node scripts/preview/build-image-contact-sheet.mjs",
+    "rss:test": "PHOENIX_RSS_DISABLE_ARTICLE_METADATA=1 NODE_OPTIONS=--require=./scripts/rss/register-rollup-wasm.cjs vitest run --config vitest.rss.config.ts src/test/rss-engine.test.ts",
     "test:watch": "vitest"
   },
   "dependencies": {
@@ -94,6 +96,7 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "@rollup/wasm-node": "4.62.2",
     "@eslint/js": "^9.32.0",
     "@tailwindcss/typography": "^0.5.16",
     "@testing-library/jest-dom": "^6.6.0",
@@ -114,7 +117,6 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.38.0",
     "vite": "^8.1.4",
-    "vitest": "^3.2.7",
-    "wrangler": "4.110.0"
+    "vitest": "^3.2.7"
   }
 }

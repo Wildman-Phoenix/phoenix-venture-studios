@@ -3,6 +3,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { writeSignalStaticPages } from "../rss/signal-page-html.mjs";
+import { writePreviewGuards } from "./ensure-preview-routes.mjs";
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const APP_ROOT = path.resolve(SCRIPT_DIR, "../..");
@@ -32,6 +33,39 @@ async function copyDir(sourceDir, targetDir) {
   }
 }
 
+function readDatalessPublicFiles() {
+  if (process.platform !== "darwin") return new Set();
+  try {
+    const output = execFileSync(
+      "/usr/bin/find",
+      [path.join(APP_ROOT, "public"), "-type", "f", "-exec", "/usr/bin/stat", "-f", "%Sf|%N", "{}", "+"],
+      { encoding: "utf8", maxBuffer: 16 * 1024 * 1024 },
+    );
+    return new Set(
+      output
+        .split("\n")
+        .filter((line) => line.startsWith("compressed,dataless|"))
+        .map((line) => line.slice(line.indexOf("|") + 1)),
+    );
+  } catch {
+    return new Set();
+  }
+}
+
+async function copyAvailablePublicDir(sourceDir, targetDir, datalessFiles) {
+  await fs.mkdir(targetDir, { recursive: true });
+  const entries = await fs.readdir(sourceDir, { withFileTypes: true });
+  for (const entry of entries) {
+    const sourcePath = path.join(sourceDir, entry.name);
+    const targetPath = path.join(targetDir, entry.name);
+    if (entry.isDirectory()) {
+      await copyAvailablePublicDir(sourcePath, targetPath, datalessFiles);
+    } else if (entry.isFile() && !datalessFiles.has(sourcePath)) {
+      await fs.copyFile(sourcePath, targetPath);
+    }
+  }
+}
+
 async function cleanTargetPreservingRss() {
   await fs.mkdir(TARGET_DIR, { recursive: true });
   const entries = await fs.readdir(TARGET_DIR, { withFileTypes: true });
@@ -44,21 +78,13 @@ async function cleanTargetPreservingRss() {
 async function ensureRedirects() {
   const existing = await fs.readFile(REDIRECTS_PATH, "utf8").catch(() => "");
   const appShellTarget = `/${PREVIEW_SLUG}/`;
-  const appRoutes = [
-    "funding",
-    "snapshot",
-    "market-intelligence",
-    "ai-overview",
-    "studio",
-    "founder-signal",
-    "about",
-    "contact",
-    "privacy",
-    "terms",
+  const routeRegistry = JSON.parse(await fs.readFile(path.join(APP_ROOT, "src/config/phoenix-routes.json"), "utf8"));
+  const appRoutes = [...new Set([
+    ...Object.values(routeRegistry)
+      .filter((route) => route !== "/" && !route.includes(":"))
+      .map((route) => route.replace(/^\//, "")),
     "insights",
-    "unsubscribe",
-    "founder-signal/preferences",
-  ];
+  ])];
   const required = [
     `/${PREVIEW_SLUG}  /${PREVIEW_SLUG}/  301`,
     ...appRoutes.flatMap((route) => [
@@ -87,12 +113,19 @@ async function ensureHubFavicon() {
   await fs.copyFile(APP_FAVICON_PATH, HUB_FAVICON_PATH).catch(() => {});
 }
 
+async function ensureAppNotFoundShell() {
+  await fs.copyFile(path.join(TARGET_DIR, "index.html"), path.join(TARGET_DIR, "404.html"));
+}
+
 try {
+  const datalessPublicFiles = readDatalessPublicFiles();
   execFileSync("npm", ["run", "build"], {
     cwd: APP_ROOT,
-    env: { ...process.env, VITE_BASE_PATH: PREVIEW_BASE },
+    env: { ...process.env, VITE_BASE_PATH: PREVIEW_BASE, PHOENIX_SKIP_PUBLIC_COPY: "1" },
     stdio: "inherit",
   });
+
+  await copyAvailablePublicDir(path.join(APP_ROOT, "public"), DIST_DIR, datalessPublicFiles);
 
   await cleanTargetPreservingRss();
   const signalPages = await writeSignalStaticPages({
@@ -101,13 +134,18 @@ try {
     siteUrl: PREVIEW_SITE_URL,
   });
   await copyDir(DIST_DIR, TARGET_DIR);
+  await ensureAppNotFoundShell();
   await ensureRedirects();
   await ensureHubCard();
   await ensureHubFavicon();
+  await writePreviewGuards(HUB_DIR);
 
   console.log(`Published app preview to ${TARGET_DIR}`);
   console.log(`Preview base path: ${PREVIEW_BASE}`);
   console.log(`Generated static signal pages: ${signalPages.count}`);
+  if (datalessPublicFiles.size) {
+    console.log(`Skipped ${datalessPublicFiles.size} unavailable local-only public placeholders; current RSS images were verified local before staging.`);
+  }
 } catch (error) {
   console.error("Preview app publish failed:", error);
   process.exitCode = 1;

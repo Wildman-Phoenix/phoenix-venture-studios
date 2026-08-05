@@ -1,0 +1,317 @@
+{
+  "generatedAt": "2026-05-30T21:32:15.377Z",
+  "startedAt": "2026-05-30T21:22:27.487Z",
+  "processed": 1,
+  "approved": 0,
+  "failed": 0,
+  "results": [
+    {
+      "slug": "check-out-real-life-ai-prototypes-futures-lab-daac52c1",
+      "title": "Check out real-life AI prototypes from the Futures Lab.",
+      "status": "held",
+      "rawImagePath": "/images/signals/source-art/check-out-real-life-ai-prototypes-futures-lab-daac52c1.jpg",
+      "finalCoverPath": "",
+      "promptUsed": "Create one premium editorial image for this specific story: \"Check out real-life AI prototypes from the Futures Lab.\". An applied AI studio with working prototypes, assistive interfaces, and test users interacting with early products. Show prototype devices, experimental interfaces, and real-world use contexts instead of abstract AI imagery. Use the allowlisted source image if it is visually strong and accurate. Make it feel current, specific, and useful for founders. Avoid generic boardrooms, repetitive office stock scenes, fake logos, celebrity likenesses, unreadable UI text, and crowded collage layouts. Avoid portraits or people unless the story clearly needs a human subject. Leave clean negative space for a Phoenix Founder Signal headline overlay. Retry 2. Add more color pop or choose a source image with clearer visual contrast. Use deeper shadows and brighter highlights so the story has more tension. Use a sharper base image with a cleaner focal subject. Avoid this issue: The image does not have enough color energy. Avoid this issue: The tonal range is too flat. Avoid this issue: The image reads too soft at social size. Push the shadows and color contrast harder without making the image muddy. Retry 3. Add more color pop or choose a source image with clearer visual contrast. Use deeper shadows and brighter highlights so the story has more tension. Use a sharper base image with a cleaner focal subject. Avoid this issue: The image does not have enough color energy. Avoid this issue: The tonal range is too flat. Avoid this issue: The image reads too soft at social size. Use a more specific real-world subject with clearer focal tension. [source-derived-fallback]",
+      "correctionTrail": [
+        {
+          "attempt": 1,
+          "promptUsed": "Create one premium editorial image for this specific story: \"Check out real-life AI prototypes from the Futures Lab.\". An applied AI studio with working prototypes, assistive interfaces, and test users interacting with early products. Show prototype devices, experimental interfaces, and real-world use contexts instead of abstract AI imagery. Use the allowlisted source image if it is visually strong and accurate. Make it feel current, specific, and useful for founders. Avoid generic boardrooms, repetitive office stock scenes, fake logos, celebrity likenesses, unreadable UI text, and crowded collage layouts. Avoid portraits or people unless the story clearly needs a human subject. Leave clean negative space for a Phoenix Founder Signal headline overlay. [source-derived-fallback]",
+          "blocked": true,
+          "reasons": [
+            "editorial expert review requires another revision before publish"
+          ],
+          "warnings": [],
+          "metrics": {
+            "width": 1200,
+            "height": 630,
+            "luminanceMean": 149.97,
+            "luminanceStdDev": 28.57,
+            "colorfulness": 16.66,
+            "sharpness": 3.55,
+            "bestComposition": {
+              "composition": "lower-band",
+              "meanLuma": 135.74692197776386,
+              "lumaStdDev": 23.486288171815165,
+              "textureStdDev": 5.9260869290559,
+              "readability": 0.6286915589325301
+            },
+            "compositionScores": {
+              "left-anchor": {
+                "meanLuma": 145.26,
+                "lumaStdDev": 20.02,
+                "textureStdDev": 3.13,
+                "readability": 0.582
+              },
+              "split-panel": {
+                "meanLuma": 143.88,
+                "lumaStdDev": 20.04,
+                "textureStdDev": 3.21,
+                "readability": 0.589
+              },
+              "right-anchor": {
+                "meanLuma": 168.69,
+                "lumaStdDev": 20.55,
+                "textureStdDev": 6.04,
+                "readability": 0.5
+              },
+              "lower-band": {
+                "meanLuma": 135.75,
+                "lumaStdDev": 23.49,
+                "textureStdDev": 5.93,
+                "readability": 0.629
+              }
+            },
+            "learningSignal": null,
+            "vision": {
+              "handCount": 0,
+              "lowConfidenceHandCount": 0,
+              "completeHandCount": 0,
+              "textCoverage": 0.06651190476190479,
+              "landmarkedFaceCount": 0,
+              "textObservationCount": 3,
+              "faceCount": 0,
+              "maxFaceAreaRatio": 0
+            },
+            "editorialNotes": [
+              "The image does not have enough color energy.",
+              "The tonal range is too flat.",
+              "The image reads too soft at social size."
+            ],
+            "recommendedFixes": [
+              "Add more color pop or choose a source image with clearer visual contrast.",
+              "Use deeper shadows and brighter highlights so the story has more tension.",
+              "Use a sharper base image with a cleaner focal subject."
+            ],
+            "editorialModelReview": {
+              "verdict": "revise",
+              "storyFit": "medium",
+              "headlinePlacementRisk": "low",
+              "confidence": "medium",
+              "notes": [
+                "Add more color pop or choose a source image with clearer visual contrast.",
+                "Use deeper shadows and brighter highlights so the story has more tension.",
+                "Use a sharper base image with a cleaner focal subject."
+              ],
+              "fixes": [
+                "Add more color pop or choose a source image with clearer visual contrast.",
+                "Use deeper shadows and brighter highlights so the story has more tension.",
+                "Use a sharper base image with a cleaner focal subject."
+              ],
+              "normalizedVerdict": "revise"
+            }
+          }
+        },
+        {
+          "attempt": 2,
+          "promptUsed": "Create one premium editorial image for this specific story: \"Check out real-life AI prototypes from the Futures Lab.\". An applied AI studio with working prototypes, assistive interfaces, and test users interacting with early products. Show prototype devices, experimental interfaces, and real-world use contexts instead of abstract AI imagery. Use the allowlisted source image if it is visually strong and accurate. Make it feel current, specific, and useful for founders. Avoid generic boardrooms, repetitive office stock scenes, fake logos, celebrity likenesses, unreadable UI text, and crowded collage layouts. Avoid portraits or people unless the story clearly needs a human subject. Leave clean negative space for a Phoenix Founder Signal headline overlay. Retry 2. Add more color pop or choose a source image with clearer visual contrast. Use deeper shadows and brighter highlights so the story has more tension. Use a sharper base image with a cleaner focal subject. Avoid this issue: The image does not have enough color energy. Avoid this issue: The tonal range is too flat. Avoid this issue: The image reads too soft at social size. Push the shadows and color contrast harder without making the image muddy. [source-derived-fallback]",
+          "blocked": true,
+          "reasons": [
+            "editorial expert review requires another revision before publish"
+          ],
+          "warnings": [],
+          "metrics": {
+            "width": 1200,
+            "height": 630,
+            "luminanceMean": 149.97,
+            "luminanceStdDev": 28.57,
+            "colorfulness": 16.66,
+            "sharpness": 3.55,
+            "bestComposition": {
+              "composition": "lower-band",
+              "meanLuma": 135.74692197776386,
+              "lumaStdDev": 23.486288171815165,
+              "textureStdDev": 5.9260869290559,
+              "readability": 0.6286915589325301
+            },
+            "compositionScores": {
+              "left-anchor": {
+                "meanLuma": 145.26,
+                "lumaStdDev": 20.02,
+                "textureStdDev": 3.13,
+                "readability": 0.582
+              },
+              "split-panel": {
+                "meanLuma": 143.88,
+                "lumaStdDev": 20.04,
+                "textureStdDev": 3.21,
+                "readability": 0.589
+              },
+              "right-anchor": {
+                "meanLuma": 168.69,
+                "lumaStdDev": 20.55,
+                "textureStdDev": 6.04,
+                "readability": 0.5
+              },
+              "lower-band": {
+                "meanLuma": 135.75,
+                "lumaStdDev": 23.49,
+                "textureStdDev": 5.93,
+                "readability": 0.629
+              }
+            },
+            "learningSignal": null,
+            "vision": {
+              "completeHandCount": 0,
+              "handCount": 0,
+              "textCoverage": 0.06651190476190479,
+              "lowConfidenceHandCount": 0,
+              "maxFaceAreaRatio": 0,
+              "textObservationCount": 3,
+              "faceCount": 0,
+              "landmarkedFaceCount": 0
+            },
+            "editorialNotes": [
+              "The image does not have enough color energy.",
+              "The tonal range is too flat.",
+              "The image reads too soft at social size."
+            ],
+            "recommendedFixes": [
+              "Add more color pop or choose a source image with clearer visual contrast.",
+              "Use deeper shadows and brighter highlights so the story has more tension.",
+              "Use a sharper base image with a cleaner focal subject."
+            ],
+            "editorialModelReview": {
+              "verdict": "revise",
+              "storyFit": "medium",
+              "headlinePlacementRisk": "high",
+              "confidence": "high",
+              "notes": [
+                "Add more color pop or choose a source image with clearer visual contrast.",
+                "Use deeper shadows and brighter highlights so the story has more tension.",
+                "Use a sharper base image with a cleaner focal subject."
+              ],
+              "fixes": [
+                "Add more color pop or choose a source image with clearer visual contrast.",
+                "Use deeper shadows and brighter highlights so the story has more tension.",
+                "Use a sharper base image with a cleaner focal subject."
+              ],
+              "normalizedVerdict": "revise"
+            }
+          }
+        },
+        {
+          "attempt": 3,
+          "promptUsed": "Create one premium editorial image for this specific story: \"Check out real-life AI prototypes from the Futures Lab.\". An applied AI studio with working prototypes, assistive interfaces, and test users interacting with early products. Show prototype devices, experimental interfaces, and real-world use contexts instead of abstract AI imagery. Use the allowlisted source image if it is visually strong and accurate. Make it feel current, specific, and useful for founders. Avoid generic boardrooms, repetitive office stock scenes, fake logos, celebrity likenesses, unreadable UI text, and crowded collage layouts. Avoid portraits or people unless the story clearly needs a human subject. Leave clean negative space for a Phoenix Founder Signal headline overlay. Retry 2. Add more color pop or choose a source image with clearer visual contrast. Use deeper shadows and brighter highlights so the story has more tension. Use a sharper base image with a cleaner focal subject. Avoid this issue: The image does not have enough color energy. Avoid this issue: The tonal range is too flat. Avoid this issue: The image reads too soft at social size. Push the shadows and color contrast harder without making the image muddy. Retry 3. Add more color pop or choose a source image with clearer visual contrast. Use deeper shadows and brighter highlights so the story has more tension. Use a sharper base image with a cleaner focal subject. Avoid this issue: The image does not have enough color energy. Avoid this issue: The tonal range is too flat. Avoid this issue: The image reads too soft at social size. Use a more specific real-world subject with clearer focal tension. [source-derived-fallback]",
+          "blocked": false,
+          "reasons": [],
+          "warnings": [],
+          "metrics": {
+            "width": 1200,
+            "height": 630,
+            "luminanceMean": 149.97,
+            "luminanceStdDev": 28.57,
+            "colorfulness": 16.66,
+            "sharpness": 3.55,
+            "bestComposition": {
+              "composition": "lower-band",
+              "meanLuma": 135.74692197776386,
+              "lumaStdDev": 23.486288171815165,
+              "textureStdDev": 5.9260869290559,
+              "readability": 0.6286915589325301
+            },
+            "compositionScores": {
+              "left-anchor": {
+                "meanLuma": 145.26,
+                "lumaStdDev": 20.02,
+                "textureStdDev": 3.13,
+                "readability": 0.582
+              },
+              "split-panel": {
+                "meanLuma": 143.88,
+                "lumaStdDev": 20.04,
+                "textureStdDev": 3.21,
+                "readability": 0.589
+              },
+              "right-anchor": {
+                "meanLuma": 168.69,
+                "lumaStdDev": 20.55,
+                "textureStdDev": 6.04,
+                "readability": 0.5
+              },
+              "lower-band": {
+                "meanLuma": 135.75,
+                "lumaStdDev": 23.49,
+                "textureStdDev": 5.93,
+                "readability": 0.629
+              }
+            },
+            "learningSignal": null,
+            "vision": {
+              "completeHandCount": 0,
+              "maxFaceAreaRatio": 0,
+              "handCount": 0,
+              "textObservationCount": 3,
+              "lowConfidenceHandCount": 0,
+              "textCoverage": 0.06651190476190479,
+              "landmarkedFaceCount": 0,
+              "faceCount": 0
+            },
+            "editorialNotes": [
+              "The image does not have enough color energy.",
+              "The tonal range is too flat.",
+              "The image reads too soft at social size."
+            ],
+            "recommendedFixes": [
+              "Add more color pop or choose a source image with clearer visual contrast.",
+              "Use deeper shadows and brighter highlights so the story has more tension.",
+              "Use a sharper base image with a cleaner focal subject."
+            ],
+            "editorialModelReview": {
+              "verdict": "approve",
+              "storyFit": "strong",
+              "headlinePlacementRisk": "low",
+              "confidence": "medium",
+              "notes": [
+                "Add more color pop or choose a source image with clearer visual contrast."
+              ],
+              "fixes": [
+                "Add more color pop or choose a source image with clearer visual contrast."
+              ],
+              "normalizedVerdict": "approve"
+            }
+          }
+        }
+      ],
+      "audit": {
+        "colorfulness": 16.66,
+        "sharpness": 3.55,
+        "luminanceStdDev": 28.57,
+        "readability": 0.6286915589325301,
+        "editorialNotes": [
+          "The image does not have enough color energy.",
+          "The tonal range is too flat.",
+          "The image reads too soft at social size."
+        ],
+        "recommendedFixes": [
+          "Add more color pop or choose a source image with clearer visual contrast.",
+          "Use deeper shadows and brighter highlights so the story has more tension.",
+          "Use a sharper base image with a cleaner focal subject."
+        ],
+        "editorialModelReview": {
+          "verdict": "approve",
+          "storyFit": "strong",
+          "headlinePlacementRisk": "low",
+          "confidence": "medium",
+          "notes": [
+            "Add more color pop or choose a source image with clearer visual contrast."
+          ],
+          "fixes": [
+            "Add more color pop or choose a source image with clearer visual contrast."
+          ],
+          "normalizedVerdict": "approve"
+        }
+      },
+      "warnings": [
+        "Moved headline layout from right-anchor to lower-band to avoid text conflict.",
+        "Approved Phoenix image failed the local art-director audit: editorial expert review requires another revision before publish"
+      ],
+      "imageStrategy": "held-for-codex-image",
+      "imageSourceType": "pending-codex-image",
+      "imageVisualHash": "0000000008000000",
+      "imageFingerprint": "0da0747cba851225",
+      "sourceName": "Google AI Blog",
+      "sourceUrl": "https://blog.google/technology/ai/rss/",
+      "sceneLane": "interactive_build"
+    }
+  ]
+}

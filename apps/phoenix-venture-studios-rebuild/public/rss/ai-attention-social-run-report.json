@@ -1,0 +1,417 @@
+{
+  "feedId": "ai-attention-social",
+  "title": "Phoenix Venture Studios - AI Attention - Social Queue",
+  "description": "One AI consulting or implementation signal at a time for RSS-to-social publishing.",
+  "generatedAt": "2026-07-26T22:30:00.710Z",
+  "dryRun": false,
+  "siteUrl": "https://phoenixventurestudios.com",
+  "outputFiles": {
+    "xml": "ai-attention-social.xml",
+    "json": "ai-attention-social.json",
+    "items": "ai-attention-social-items.json",
+    "reportMd": "ai-attention-social-run-report.md",
+    "reportJson": "ai-attention-social-run-report.json"
+  },
+  "sources": {
+    "enabled": 7,
+    "fetched": 7,
+    "byType": {
+      "manual": 1,
+      "rss": 6
+    },
+    "researchEnabled": 0,
+    "warnings": [],
+    "errors": []
+  },
+  "items": {
+    "parsed": 1227,
+    "crossFeedFiltered": 0,
+    "keywordFiltered": 5,
+    "recentFiltered": 11,
+    "feedBoundaryFiltered": 1019,
+    "scored": 1211,
+    "candidatePool": 5,
+    "selected": 1,
+    "held": 0,
+    "excluded": 9
+  },
+  "bucketCounts": {
+    "business_automation": 1
+  },
+  "sourceCounts": {
+    "tensorfeed-ai": 1
+  },
+  "queue": {
+    "isSocialQueue": true,
+    "candidatePoolSize": 3,
+    "eligibleCandidates": 2,
+    "eligibleSelected": true,
+    "heldForManualReview": 1,
+    "skippedForFallbackArt": 0,
+    "queueRotationReason": "selected-top-eligible-candidate",
+    "historyUpdated": true,
+    "sampleReady": true,
+    "selectedReasons": [],
+    "queuePublishedAt": "2026-07-26T22:30:00.710Z",
+    "selectedOriginalUrl": "https://apsquared.co/posts/marketing-automation-claude-codex",
+    "selectedCanonicalKey": "https://apsquared.co/posts/marketing-automation-claude-codex",
+    "excludedByRecent": 11,
+    "excludedByCrossLaneDedupe": 0,
+    "laneAssignmentReason": "ai-attention-lane",
+    "candidates": [
+      {
+        "slug": "automate-7-projects-marketing-ai-40-0f36281c",
+        "title": "Automate 7 Projects Marketing with AI for $40",
+        "score": 79,
+        "imageStrategy": "source-allowlisted",
+        "imageRightsStatus": "allowlisted",
+        "imageApprovalStatus": "approved",
+        "manualReviewNeeded": false,
+        "eligible": true,
+        "sampleReady": true,
+        "reasons": []
+      },
+      {
+        "slug": "article-multi-agent-ai-production-security-operations-a2a-mcp-architecture-5g-10c44e9d",
+        "title": "Article: Multi-Agent AI for Production Security Operations: An A2A and MCP Architecture in a 5G Core",
+        "score": 69,
+        "imageStrategy": "held-for-codex-image",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageApprovalStatus": "approved",
+        "manualReviewNeeded": true,
+        "eligible": false,
+        "sampleReady": false,
+        "reasons": [
+          "manual-review",
+          "creative-follow-up-needed"
+        ]
+      },
+      {
+        "slug": "ntt-data-group-cuts-incident-analysis-30-minutes-codex-ce627deb",
+        "title": "NTT DATA Group cuts incident analysis to 30 minutes with Codex",
+        "score": 65,
+        "imageStrategy": "held-for-codex-image",
+        "imageRightsStatus": "owned-or-licensed",
+        "imageApprovalStatus": "approved",
+        "manualReviewNeeded": false,
+        "eligible": true,
+        "sampleReady": true,
+        "reasons": [
+          "creative-follow-up-needed"
+        ]
+      }
+    ]
+  },
+  "scoring": {
+    "preferredKeywords": [
+      "implementation",
+      "adoption",
+      "rollout",
+      "deployment",
+      "operations",
+      "operator",
+      "consulting",
+      "services",
+      "delivery",
+      "change management",
+      "transformation",
+      "enablement",
+      "workflow redesign",
+      "case study",
+      "customer story",
+      "enterprise rollout",
+      "internal ops",
+      "automation",
+      "workflow",
+      "margin",
+      "utilization",
+      "time savings",
+      "small business",
+      "operators"
+    ],
+    "penaltyKeywords": [
+      "bird feeder",
+      "backyard drama",
+      "review",
+      "hands-on",
+      "sdk",
+      "api",
+      "plugin",
+      "extension",
+      "developer tool",
+      "developer tools",
+      "app builder",
+      "app builders",
+      "coding agent"
+    ]
+  },
+  "automation": {
+    "mode": "autonomous-editorial",
+    "scheduleSlots": [
+      "early-morning",
+      "mid-morning",
+      "afternoon",
+      "late-night",
+      "friday-ai-trend-sweep"
+    ],
+    "recentItemsConsidered": 250,
+    "modelStrategy": {
+      "triage": "lower-cost model or deterministic scoring",
+      "finalEditorial": "strong model recommended for publish/skip decisions",
+      "validation": "deterministic gates plus lightweight audit agents"
+    }
+  },
+  "images": {
+    "mode": "source-or-codex-queue",
+    "attempted": 5,
+    "approved": 1,
+    "held": 0,
+    "generated": 1,
+    "sourceAllowlisted": 1,
+    "codexApproved": 0,
+    "strategyCounts": {
+      "source-allowlisted": 1
+    },
+    "familyCounts": {
+      "ai_opportunity": 1
+    },
+    "variantCounts": {
+      "signal-rail": 1
+    },
+    "toneCounts": {
+      "steel": 1
+    },
+    "compositionCounts": {
+      "left-anchor": 1
+    },
+    "variety": {
+      "familyCounts": {
+        "ai_opportunity": 1
+      },
+      "variantCounts": {
+        "signal-rail": 1
+      },
+      "toneCounts": {
+        "steel": 1
+      },
+      "compositionCounts": {
+        "left-anchor": 1
+      },
+      "maxConsecutiveFamily": 1,
+      "dominantFamily": "ai_opportunity",
+      "dominantFamilyCount": 1,
+      "warnings": [],
+      "errors": []
+    },
+    "sourceTypeCounts": {
+      "source-image": 1
+    },
+    "rightsStatusCounts": {
+      "allowlisted": 1
+    },
+    "manualReviewNeeded": 0,
+    "creativeFollowUpSelected": 0,
+    "warnings": [
+      {
+        "slug": "ntt-data-group-cuts-incident-analysis-30-minutes-codex-ce627deb",
+        "title": "NTT DATA Group cuts incident analysis to 30 minutes with Codex",
+        "warning": "Image family variety reassigned ai_opportunity to operational_leverage."
+      }
+    ],
+    "errors": []
+  },
+  "copy": {
+    "repeated": [],
+    "warnings": []
+  },
+  "editorial": {
+    "warnings": [],
+    "errors": [],
+    "depthAudit": {
+      "feedId": "ai-attention-social",
+      "leadItemLimit": 5,
+      "checkedLeadItems": 0,
+      "thinLeadItems": 0,
+      "leadItemsWithDepth": 0,
+      "warnings": []
+    }
+  },
+  "aliases": {
+    "configured": [],
+    "written": []
+  },
+  "heldItems": [],
+  "selectedItems": [
+    {
+      "title": "Automate 7 Projects Marketing with AI for $40",
+      "url": "https://phoenixventurestudios.com/founder-signal/signals/automate-7-projects-marketing-ai-40-0f36281c/",
+      "internalUrl": "https://phoenixventurestudios.com/founder-signal/signals/automate-7-projects-marketing-ai-40-0f36281c/",
+      "originalUrl": "https://apsquared.co/posts/marketing-automation-claude-codex",
+      "sourceName": "TensorFeed",
+      "sourceSurface": "rss",
+      "rawTitle": "Automate 7 Projects Marketing with AI for $40",
+      "reviewTitle": "TensorFeed | Business Automation | Automate 7 Projects Marketing with AI for $40",
+      "topicLabel": "Business Automation",
+      "whySelected": "RSS source matched the Phoenix registry and entered editorial scoring.",
+      "researchCitations": [],
+      "imageUrl": "https://phoenixventurestudios.com/images/signals/generated/automate-7-projects-marketing-ai-40-0f36281c.jpg",
+      "socialImageUrl": "https://phoenixventurestudios.com/images/signals/generated/automate-7-projects-marketing-ai-40-0f36281c.jpg",
+      "socialImagePath": "/images/signals/generated/automate-7-projects-marketing-ai-40-0f36281c.jpg",
+      "sourceImageUrl": "",
+      "imageStrategy": "source-allowlisted",
+      "imageApprovalStatus": "approved",
+      "imageHoldReason": "",
+      "imageFamily": "ai_opportunity",
+      "imageSourceType": "source-image",
+      "imageCredit": "TensorFeed",
+      "imageRightsStatus": "allowlisted",
+      "imageTemplate": "founder_brief",
+      "imageVariant": "signal-rail",
+      "imageTone": "steel",
+      "imageComposition": "left-anchor",
+      "sceneLane": "workflow_system",
+      "sceneMotif": "control-surface",
+      "imageFingerprint": "3220e6111246b9ba",
+      "imageVisualHash": "6cc53565630848b5",
+      "imageAudit": {
+        "width": 1024,
+        "height": 1024,
+        "luminanceMean": 128.95,
+        "luminanceStdDev": 62.7,
+        "colorfulness": 63.67,
+        "sharpness": 16.22,
+        "bestComposition": {
+          "composition": "split-panel",
+          "meanLuma": 113.7145930815508,
+          "lumaStdDev": 57.886945579516414,
+          "textureStdDev": 12.421827382438781,
+          "readability": 0.5417783086937615
+        },
+        "compositionScores": {
+          "left-anchor": {
+            "meanLuma": 114.51,
+            "lumaStdDev": 57.51,
+            "textureStdDev": 12.94,
+            "readability": 0.54
+          },
+          "split-panel": {
+            "meanLuma": 113.71,
+            "lumaStdDev": 57.89,
+            "textureStdDev": 12.42,
+            "readability": 0.542
+          },
+          "right-anchor": {
+            "meanLuma": 140.26,
+            "lumaStdDev": 62.78,
+            "textureStdDev": 15.37,
+            "readability": 0.38
+          },
+          "lower-band": {
+            "meanLuma": 116.22,
+            "lumaStdDev": 63.35,
+            "textureStdDev": 13.27,
+            "readability": 0.494
+          }
+        },
+        "learningSignal": {
+          "lane": "workflow_system",
+          "reviewMode": "source-image",
+          "approvedExamples": 15,
+          "rejectedExamples": 0,
+          "distanceToApproved": 1.162,
+          "distanceToRejected": null,
+          "shouldReject": false
+        },
+        "vision": {
+          "faceCount": 1,
+          "textObservationCount": 0,
+          "completeHandCount": 0,
+          "handCount": 0,
+          "lowConfidenceHandCount": 0,
+          "maxFaceAreaRatio": 0.059965567680486664,
+          "textCoverage": 0,
+          "landmarkedFaceCount": 1
+        },
+        "editorialNotes": [],
+        "recommendedFixes": [],
+        "editorialModelReview": {
+          "verdict": "approve",
+          "storyFit": "strong",
+          "headlinePlacementRisk": "low",
+          "confidence": "medium",
+          "notes": [
+            "Looks good",
+            "Not a bad cover"
+          ],
+          "fixes": [],
+          "normalizedVerdict": "approve"
+        }
+      },
+      "imageCorrectionTrail": [],
+      "imageBrief": {
+        "storyAngle": "Workflow shift",
+        "storySubject": "Automate 7 Projects Marketing with AI for $40",
+        "emotionalHook": "The signal is not the tool itself. It is what the tool can remove, speed up, or systemize.",
+        "visualMetaphor": "A premium founder briefing moment with clean business context.",
+        "audiencePainOpportunity": "Founders need a clear next move, not another vague article.",
+        "imagePrompt": "Create one cinematic editorial cover image for this specific story: \"Automate 7 Projects Marketing with AI for $40\". Core context to visualize: Automate 7 Projects Marketing with AI for $40. The signal is not the tool itself. It is what the tool can remove, speed up, or systemize. Founders need a clear next move, not another vague article. A premium founder briefing moment with clean business context. Make the scene specific to the article's real subject, pressure point, and physical environment. Use a cinematic editorial poster grammar: one dominant metaphor, strong light and shadow, and deliberate negative space for a bold headline. Pull out the article's key context instead of showing the article literally: the lock, threshold, risk, leverage point, workflow layer, or trust boundary. Use concrete anchors sparingly: one person silhouette, one device stack, one dashboard, one room, or one symbolic architecture. Do not build a cluttered collage. Let supporting details prove the metaphor: app cards, charts, files, messages, capital flows, handoff lines, or compute layers should feel intentional and readable at thumbnail size. Avoid generic office scenes, showroom product staging, fake logos, celebrity likenesses, overstuffed UI panels, and decorative AI clouds. For Apple/context stories, think in terms of private thresholds: keyholes, context layers, device memory, app stacks, secure compute boundaries, and elegant architectural silhouettes instead of literal product ads. Use Apple-adjacent cues only as abstract architecture, glass, device silhouettes, and privacy symbolism; never copy official logos or exact trademark marks. Use the source article only as private visual reference; create Phoenix-owned artwork for public use. Make it feel like a strong magazine or strategy-report cover, not a product render. Avoid portraits or people unless the story clearly needs a human subject. Leave clean negative space for a Phoenix Founder Signal headline overlay.",
+        "articleImageRequired": false,
+        "expectedArticleImagePath": "/images/signals/source-art/automate-7-projects-marketing-ai-40-0f36281c.jpg",
+        "imageFamily": "ai_opportunity",
+        "preferredImageFamily": "ai_opportunity",
+        "sourceImageEligibility": "allowed",
+        "sourceImagePolicy": "allowed",
+        "sourceImageMatchedKey": "",
+        "sourceImageNote": "",
+        "manualReviewNeeded": false,
+        "overlayTone": "operator",
+        "template": "founder_brief",
+        "sceneLane": "workflow_system",
+        "sceneMotif": "control-surface",
+        "imageVariant": "signal-rail",
+        "imageTone": "steel",
+        "imageComposition": "left-anchor",
+        "imageFingerprint": "3220e6111246b9ba"
+      },
+      "expectedArticleImagePath": "/images/signals/source-art/automate-7-projects-marketing-ai-40-0f36281c.jpg",
+      "feedId": "ai-attention-social",
+      "feedRole": "founder-market",
+      "simpleSummary": "This points to a workflow shift worth testing in the real world. Look for the task that gets cheaper, faster, or easier first.",
+      "engagementPrompt": "Where would you test this first in a live workflow?",
+      "trendContext": "The next proof point is this signal showing up again from a different angle.",
+      "relatedRecentSignals": [],
+      "readingLevel": {
+        "target": "grade-5-plain-founder",
+        "heuristic": "average sentence words",
+        "averageSentenceWords": 12.6
+      },
+      "editorialMode": "phoenix-original-brief",
+      "imageWarnings": [],
+      "imageDecision": "allowed-source-image-used",
+      "imageDiagnosticReason": "OG image found and allowed source image passed audit",
+      "imageDiagnostic": {
+        "feedImageMissing": false,
+        "articleImageChecked": true,
+        "articleImageFound": true,
+        "articleImageSource": "og:image",
+        "articleImageFetchError": "",
+        "sourceImagePolicy": "reference-only",
+        "imageDecision": "RSS image found"
+      },
+      "qualityStatus": "ready",
+      "qualityNeedsCreativeFollowUp": false,
+      "rssStory": "The useful signal is the workflow change underneath this release: which step becomes faster, cheaper, or easier to supervise.\n\nThis points to a workflow shift worth testing in the real world. Look for the task that gets cheaper, faster, or easier first.\n\nStart with the workflow that already hurts. If the tool cannot improve that work, it has not earned expansion.\n\nThe next proof point is this signal showing up again from a different angle.\n\nRead the full Phoenix signal on phoenixventurestudios.com.\n\n#AI",
+      "slug": "automate-7-projects-marketing-ai-40-0f36281c",
+      "bucket": "business_automation",
+      "bucketLabel": "Business Automation",
+      "score": 79,
+      "publishedAt": "2026-07-26T22:30:00.710Z"
+    }
+  ],
+  "validation": {
+    "xmlWellFormed": true,
+    "errors": []
+  },
+  "feedValid": true,
+  "preservedPreviousFeed": false
+}
