@@ -303,6 +303,9 @@ export async function runFeedChild(config, options = {}) {
 
 export async function runSupervisedGeneration(options = {}) {
   const workingDir = await prepareWorkingRssDir();
+  // Retain the hydrated live identities before rolling feeds replace them.
+  const hasBaseline = (await Promise.all(["feed.json", "tools.json", "ai-attention.json", "feed.xml", "tools.xml", "ai-attention.xml"].map(file => fs.access(path.join(workingDir,file)).then(() => true, () => false)))).every(Boolean);
+  if (hasBaseline) await buildCombinedFounderSignal(workingDir);
   const startedAt = new Date().toISOString();
   const feedConfigs = options.feedConfigs || DEFAULT_FEED_CONFIGS;
   const feeds = [];
