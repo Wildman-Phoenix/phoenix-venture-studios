@@ -223,7 +223,8 @@ export async function validateRssOutput(argv = process.argv.slice(2)) {
       const phoenix = item._phoenix || {};
       const label = `${file}:${item.title || phoenix.slug || "unknown"}`;
       for (const field of REQUIRED_FIELDS) {
-        if (!phoenix[field]) errors.push(`${label} missing _phoenix.${field}`);
+        const intentionallyEmpty = phoenix.editorialMode === "source-note" && ["engagementPrompt", "trendContext"].includes(field) && phoenix[field] === "";
+        if (!phoenix[field] && !intentionallyEmpty) errors.push(`${label} missing _phoenix.${field}`);
       }
       if (!String(phoenix.internalUrl || "").startsWith("https://phoenixventurestudios.com/founder-signal/signals/")) {
         errors.push(`${label} internalUrl must be Phoenix signal URL`);
