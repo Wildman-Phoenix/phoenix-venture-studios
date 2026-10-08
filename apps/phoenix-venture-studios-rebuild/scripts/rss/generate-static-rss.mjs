@@ -1193,75 +1193,8 @@ function isHeadlineEcho(value = "", item = {}) {
 }
 
 function buildLeadSentence(item, cleanedSummary = "") {
-  const publicTitle = item.publicTitle || item.title || "Founder Signal";
-  const text = `${publicTitle} ${item.description || ""}`.toLowerCase();
-
-  if (mentionsAny(text, "\\b(shouldn t replace humans|shouldn't replace humans|replace humans|supplant human|human programmers|human judgment)\\b")) {
-    return "Cognition's CEO is drawing a line between coding agents that speed people up and agents that try to replace them outright.";
-  }
-  if (mentionsAny(text, "\\b(benchmark|score|reliability|test|eval|evaluation)\\b")) {
-    return "A new enterprise benchmark found frontier AI models handled fewer than half of the agentic IT tasks they were given.";
-  }
-  if (mentionsAny(text, "\\b(content safety|safety model|multimodal safety|guardrail|guardrails|moderation)\\b")) {
-    return "Nvidia is turning content safety into a configurable workflow layer for teams that need AI outputs screened across more than one format.";
-  }
-  if (mentionsAny(text, "\\b(agentic misalignment|teaching claude|misalignment)\\b")) {
-    return "Anthropic is showing how model behavior can drift under pressure and why alignment work has to be tested against real agent tasks.";
-  }
-  if (hasFrontierFundingSignal(item)) {
-    return "Anthropic is closing in on a $1 trillion valuation as investors keep betting on trusted AI products, real usage, and infrastructure.";
-  }
-  if (mentionsAny(text, "\\b(memory|chip|inference|gpu|server|infrastructure)\\b")) {
-    return cleanedSummary || "Money is moving deeper into AI infrastructure as the market chases the layer that may limit the next wave of growth.";
-  }
-  if (mentionsAny(text, "\\b(token|audit|auditor|optimizer|mcp|cli|workflow spend|pruning)\\b")) {
-    return "GitHub says disciplined audits, smaller tool stacks, and simpler workflow choices cut token spend by up to 62 percent.";
-  }
-  if (mentionsAny(text, "\\b(usage limit|license(?:s)?|blew\\s*\\$|spent\\s*\\$|monthly ai bill|single month)\\b")) {
-    return "One company reportedly ran up a massive Claude bill in a single month after leaving employee usage limits too loose.";
-  }
-  if (mentionsAny(text, "\\b(dynamic workflow|subagent|subagents|swarm|orchestrat|multi-agent)\\b")) {
-    return "Anthropic is pushing AI closer to managed multi-step work with a new dynamic workflow tool for coordinating subagents.";
-  }
-  if (mentionsAny(text, "\\b(trade show|pipeline|booth|event|conference)\\b")) {
-    return "One founder turned a small trade show booth into dozens of content assets and nearly $1 million in pipeline.";
-  }
-  if (mentionsAny(text, "\\b(layoff|laid-off|hiring|workers|talent|recruiting|join)\\b")) {
-    return "A fast-growing AI company is using the layoff cycle to pull experienced operators into a more demanding startup environment.";
-  }
-  if (hasDocumentWorkflowSignal(item)) {
-    return "PaddleOCR 3.5 pushes document parsing closer to a usable workflow layer instead of a one-off extraction demo.";
-  }
-  if (mentionsAny(text, "\\b(quiz|vibe coded|google ai studio|io 2026|i/o 2026)\\b")) {
-    return "A lightweight Google AI Studio build shows how fast a simple interactive idea can turn into something people can click and try.";
-  }
-  if (mentionsAny(text, "\\b(nonprofit|people-first ai fund|community innovation|grant|grants|public good)\\b")) {
-    return "OpenAI is backing nonprofits with a $50 million fund aimed at education, community innovation, and economic opportunity.";
-  }
-  if (mentionsAny(text, "\\b(prototype|prototypes|futures lab|students|education)\\b")) {
-    return "The Futures Lab is surfacing early AI prototypes that feel closer to real product signals than classroom experiments.";
-  }
-  if (mentionsAny(text, "\\b(i gave an ai agent|agent challenge|make 10k|zero to 10k)\\b")) {
-    return "One founder turned a zero-budget AI agent challenge into a live test of what these workflows can actually produce.";
-  }
-
-  if (cleanedSummary && !isHeadlineEcho(cleanedSummary, item)) return cleanedSummary;
-  if (mentionsAny(text, "\\b(tribeca|film|filmmaker|movie|cinema)\\b")) {
-    return "A low-cost AI film is reaching a real festival stage, which says more about tool maturity than most demo reels do.";
-  }
-  if (item.bucket === "ai_tools_agents" || item.bucket === "ai_implementation" || item.bucket === "business_automation") {
-    return "The useful signal is the workflow change underneath this release: which step becomes faster, cheaper, or easier to supervise.";
-  }
-  if (item.bucket === "ai_operator_impact") {
-    return "The important shift is not the announcement by itself, but where it changes an operator's cost, control, or decision speed.";
-  }
-  if (item.bucket === "funding_venture" || item.bucket === "capital_credit") {
-    return "The headline matters only if it reveals what kind of proof, demand, or operating leverage the market is rewarding.";
-  }
-  if (item.bucket === "market_regulatory") {
-    return "The practical question is where this changes risk, timing, or the cost of making the next move.";
-  }
-  return "This signal is useful when it can be tied to one concrete decision instead of treated as another headline.";
+  // Keyword matches classify topics; they cannot establish facts about a source.
+  return cleanedSummary || item.sourceTitle || item.title || "Source note awaiting editorial review.";
 }
 
 function buildTrendContext(item, relatedSignals = []) {
@@ -1412,16 +1345,12 @@ function buildSignalCtaLine(item) {
 }
 
 function buildPhoenixRssStory(item) {
-  if (Array.isArray(item.articleBody) && item.articleBody.length) {
-    const parts = item.articleBody
-      .map((paragraph) => stripHtml(paragraph).replace(/\s+/g, " ").trim())
-      .filter(Boolean);
-    if (parts.length && isHeadlineEcho(parts[0], item)) {
-      parts[0] = buildLeadSentence(item, parts[0]);
-    }
-    if (item.internalUrl) parts.push(buildSignalCtaLine(item));
-    parts.push(buildContextualHashtags(item));
-    return parts.filter(Boolean).join("\n\n");
+  if (item.editorialMode === "source-note") {
+    return [item.sourceTitle || item.title, `Read the Phoenix signal: ${item.internalUrl}`, `Original reporting: ${item.sourceName || "Original source"} — ${item.originalUrl || item.url}`].filter(Boolean).join("\n\n");
+  }
+  if (hasReviewedSourceBrief(item)) {
+    const excerpt = stripHtml(item.articleBody[0]).split(/\s+/).filter(Boolean).slice(0, 80).join(" ");
+    return [excerpt, `Read the deeper dive and subscribe to Founder Signal: ${item.internalUrl}`, `Original reporting: ${item.sourceName || "Original source"} — ${item.originalUrl || item.url}`].join("\n\n");
   }
 
   const shortSourceSummary = stripHtml(item.description || item.content_text || "").replace(/\s+/g, " ").trim();
@@ -1598,7 +1527,7 @@ function buildPhoenixRssStory(item) {
 
 export function enrichSignalItem(item, options = {}) {
   const siteUrl = normalizeSiteUrl(options.siteUrl ?? DEFAULT_SITE_URL);
-  const context = buildPhoenixContext(item);
+  const context = {}; // Reviewed commentary must be supplied with the source-bound body.
   const slug = item.slug || buildSignalSlug(item);
   const internalPath = item.internalPath || `/founder-signal/signals/${slug}`;
   const normalizedInternalPath = internalPath.endsWith("/") ? internalPath : `${internalPath}/`;
@@ -1973,7 +1902,7 @@ export function buildFeedJson(items, options = {}) {
       image: item.socialImageUrl || item.imageUrl,
       banner_image: item.socialImageUrl || item.imageUrl,
       date_published: new Date(Date.parse(item.publishedAt) || now.getTime()).toISOString(),
-      authors: [{ name: item.sourceName }],
+      authors: [{ name: "Phoenix Venture Studios" }],
       tags: [item.bucketLabel],
       _phoenix: {
         bucket: item.bucket,
@@ -2024,6 +1953,8 @@ export function buildFeedJson(items, options = {}) {
         relatedRecentSignals: item.relatedRecentSignals || [],
         readingLevel: item.readingLevel,
         editorialMode: item.editorialMode,
+        editorialSourceUrl: item.editorialSourceUrl || "",
+        editorialReviewStatus: item.editorialReviewStatus || "pending",
         internalPath: item.internalPath,
         internalUrl: item.internalUrl,
         originalUrl: item.originalUrl,
@@ -3027,67 +2958,42 @@ function pruneEditorialDuplicates(items = []) {
   return { kept, removed };
 }
 
+export function hasReviewedSourceBrief(item) {
+  const originalUrl = item.originalUrl || item.url || "";
+  const body = Array.isArray(item.articleBody) ? item.articleBody : [];
+  // A reviewed body is attached to the same original article, never a topic lane.
+  return Boolean(originalUrl && item.editorialSourceUrl === originalUrl &&
+    item.editorialReviewStatus === "approved" && body.length >= 4 && body.every(paragraph => typeof paragraph === "string" && paragraph.trim()) &&
+    body.join(" ").split(/\s+/).filter(Boolean).length >= 300 &&
+    Array.isArray(item.sourceLinks) && item.sourceLinks.some(link => link.url === originalUrl));
+}
+
 function applyAutonomousEditorialLayer(items, options = {}) {
   const recentItems = options.recentItems || [];
   const feedId = options.feedId || "founder-market";
   return items.map((item) => {
-    const publicTitle = buildPublicHeadline(item);
-    const relatedRecentSignals = buildRelatedRecentSignals(item, recentItems);
-    const founderTakeaway = buildFounderTakeaway({
-      ...item,
-      publicTitle,
-    });
-    const editorialBase = {
-      ...item,
-      publicTitle,
-      title: publicTitle,
-      sourceTitle: item.sourceTitle || item.title,
-      founderTakeaway,
-    };
-    const simpleSummary = item.simpleSummary || buildPlainLanguageSummary(editorialBase);
-    const engagementPrompt = item.engagementPrompt || buildEngagementPrompt(editorialBase);
-    const trendContext = item.trendContext || buildTrendContext(editorialBase, relatedRecentSignals);
-    const combinedCopy = [
-      item.whyItMatters,
-      item.whyShared,
-      item.founderTakeaway,
-      simpleSummary,
-      trendContext,
-      engagementPrompt
-    ].filter(Boolean).join(" ");
-
-    const preservedImageBrief = {
-      ...(item.imageBrief || createImageBrief(editorialBase, { sourceImageAllowlist: options.sourceImageAllowlist })),
-    };
-    const sourcePolicy = resolveSourceImagePolicy(item, options.sourceImageAllowlist);
-    const sourceImageUrl = item.sourceImageUrl ||
-      (/^https?:\/\//i.test(item.imageUrl || "") && !extractPhoenixImagePath(item.imageUrl) ? item.imageUrl : "");
-    const hasNonPublicSourceImage = Boolean(sourceImageUrl) && sourcePolicy.policy !== "allowed";
-    const isOwnedFallbackBackground = item.imageHoldReason === "story-specific-cover-still-needed";
-    if (
-      item.imageStrategy === "source-allowlisted" ||
-      (item.imageStrategy === "held-for-codex-image" && item.imageApprovalStatus === "approved")
-    ) {
-      preservedImageBrief.articleImageRequired = false;
-      if (!(hasNonPublicSourceImage && isOwnedFallbackBackground)) {
-        preservedImageBrief.manualReviewNeeded = false;
-      }
+    // Never turn a feed headline into a factual briefing using topic templates.
+    // A website deep dive must be reviewed and bound to its exact original source.
+    if (!hasReviewedSourceBrief(item)) {
+      const sourceTitle = item.sourceTitle || item.rawTitle || item.title;
+      return {
+        ...item, title: sourceTitle, publicTitle: sourceTitle, sourceTitle,
+        simpleSummary: "Source note: Phoenix commentary is awaiting source-specific editorial review.",
+        whyItMatters: "", whyShared: "", founderTakeaway: "", businessTakeaway: "",
+        engagementPrompt: "", trendContext: "", relatedRecentSignals: [],
+        articleBody: [], researchCitations: [], sourceLinks: [],
+        feedRole: isToolsFeedId(feedId) ? "founder-tools" : isAiAttentionFeedId(feedId) ? "ai-attention" : "founder-market",
+        readingLevel: { target: "source-note", averageSentenceWords: 0 },
+        editorialMode: "source-note",
+        imageBrief: { ...item.imageBrief, storySubject: sourceTitle, manualReviewNeeded: true },
+      };
     }
-
     return {
-      ...editorialBase,
-      feedRole: isToolsFeedId(feedId) ? "founder-tools" : "founder-market",
-      imageBrief: preservedImageBrief,
-      simpleSummary,
-      engagementPrompt,
-      trendContext,
-      relatedRecentSignals,
-      readingLevel: {
-        target: "grade-5-plain-founder",
-        heuristic: "average sentence words",
-        averageSentenceWords: averageSentenceWords(combinedCopy),
-      },
-      editorialMode: "phoenix-original-brief",
+      ...item,
+      title: item.sourceTitle || item.title,
+      publicTitle: item.sourceTitle || item.title,
+      simpleSummary: item.simpleSummary || item.articleBody[0],
+      editorialMode: "reviewed-source-briefing",
     };
   });
 }
@@ -3170,6 +3076,10 @@ function buildEditorialQualityAudit(items, options = {}) {
     ].filter(Boolean);
     const combined = fields.join(" ").toLowerCase();
 
+    if (item.editorialMode === "source-note") {
+      warnings.push(`${slug}: source-backed deeper dive awaits editorial approval; source note only`);
+      continue;
+    }
     if (!item.simpleSummary) errors.push(`${slug}: missing simpleSummary`);
     if (!item.engagementPrompt) errors.push(`${slug}: missing engagementPrompt`);
     if (!item.trendContext) errors.push(`${slug}: missing trendContext`);
@@ -3179,7 +3089,7 @@ function buildEditorialQualityAudit(items, options = {}) {
       errors.push(`${slug}: generated lead sentence still echoes the headline instead of translating it`);
     }
     if ((item.readingLevel?.averageSentenceWords ?? 99) > 24) {
-      warnings.push(`${slug}: reading level heuristic is above target (${item.readingLevel.averageSentenceWords} avg sentence words)`);
+      warnings.push(`${slug}: reading level heuristic is above target (${item.readingLevel?.averageSentenceWords ?? "unknown"} avg sentence words)`);
     }
     for (const phrase of bannedWeakPhrases) {
       if (combined.includes(phrase)) {
@@ -3252,6 +3162,7 @@ async function validateSelectedItems(items, options = {}) {
 
   for (const item of items) {
     for (const field of REQUIRED_PHOENIX_FIELDS) {
+      if (item.editorialMode === "source-note" && ["engagementPrompt", "trendContext"].includes(field)) continue;
       if (!item[field]) errors.push(`${item.slug || item.title || "unknown"}: missing ${field}`);
     }
 

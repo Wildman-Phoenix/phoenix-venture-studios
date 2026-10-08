@@ -38,8 +38,9 @@ export async function hydrateLiveRssBaseline() {
   await fs.writeFile(path.join(RSS_DIR, "bundle-manifest.json"), manifestBytes);
 
   const imagePaths = new Set();
-  for (const file of ["feed.json", "tools.json", "ai-attention.json", "social.json", "tools-social.json", "ai-attention-social.json"]) {
-    const feed = JSON.parse(await fs.readFile(path.join(RSS_DIR, file), "utf8"));
+  for (const file of ["signal-archive.json", "feed.json", "tools.json", "ai-attention.json", "social.json", "tools-social.json", "ai-attention-social.json"]) {
+    const raw = await fs.readFile(path.join(RSS_DIR,file),"utf8").catch(error => {if(error.code === "ENOENT" && file === "signal-archive.json") return "{\"items\":[]}";throw error;});
+    const feed = JSON.parse(raw);
     for (const item of feed.items || []) {
       const imagePath = item?._phoenix?.socialImagePath;
       if (String(imagePath || "").startsWith("/images/signals/generated/")) imagePaths.add(imagePath);

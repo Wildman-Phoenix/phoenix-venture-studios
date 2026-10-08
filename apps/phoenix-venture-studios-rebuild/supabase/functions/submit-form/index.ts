@@ -125,6 +125,7 @@ function getProtectedFormNames(formType: string, data: Record<string, unknown>):
     case "lead":
       return getLeadValidationForms(data);
     case "newsletter_subscribe":
+    case "newsletter_welcome_retry":
       return getExplicitValidationFormName(data, "newsletter");
     case "newsletter_unsubscribe":
       return getExplicitValidationFormName(data, "unsubscribe");
@@ -271,7 +272,7 @@ async function sendNewsletterWelcomeEmail(email: string): Promise<WelcomeDeliver
     if (!response.ok || !payload?.success) {
       return {
         delivered: false,
-        reason: String(payload?.delivery || payload?.reason || "delivery_failed"),
+        reason: payload?.retry_requires_review ? "receipt_requires_review" : String(payload?.delivery || payload?.reason || "delivery_failed"),
         error: typeof payload?.error === "string" ? payload.error : `newsletter-welcome ${response.status}`,
       };
     }
@@ -413,6 +414,9 @@ Deno.serve(async (req) => {
       case "newsletter_subscribe":
         result = await handleNewsletterSubscribe(supabase, data);
         break;
+      case "newsletter_welcome_retry":
+        result = await handleNewsletterWelcomeRetry(supabase, data);
+        break;
       case "newsletter_unsubscribe":
         result = await handleNewsletterUnsubscribe(supabase, data);
         break;
@@ -505,7 +509,7 @@ async function handleLead(supabase: any, data: any) {
 
 // ── NEWSLETTER SUBSCRIBE ──
 async function handleNewsletterSubscribe(supabase: any, data: any) {
-  const email = sanitize(data.email, MAX_EMAIL);
+  const email = sanitize(data.email, MAX_EMAIL)?.toLowerCase();
   if (!email || !isValidEmail(email)) {
     return { error: "Valid email is required" };
   }
@@ -578,6 +582,7 @@ async function handleNewsletterSubscribe(supabase: any, data: any) {
         success: true,
         already_subscribed: true,
         provider_sync: ghlSync,
+        welcome_delivery: await sendNewsletterWelcomeEmail(email),
       };
     }
 
@@ -618,9 +623,7 @@ async function handleNewsletterSubscribe(supabase: any, data: any) {
     provider_last_synced_at: new Date().toISOString(),
   });
 
-  const welcomeDelivery = (!existing?.id || existing.unsubscribed)
-    ? await sendNewsletterWelcomeEmail(email)
-    : ghlSync.delivered;
+  const welcomeDelivery = await sendNewsletterWelcomeEmail(email);
 
   return {
     success: true,
@@ -629,6 +632,14 @@ async function handleNewsletterSubscribe(supabase: any, data: any) {
     provider_sync: ghlSync,
     welcome_delivery: welcomeDelivery,
   };
+}
+
+async function handleNewsletterWelcomeRetry(supabase: any, data: any) {
+  const email = sanitize(data.email,MAX_EMAIL)?.toLowerCase();
+  if (!email || !isValidEmail(email)) return {error:"Valid email is required"};
+  const {data:subscriber,error} = await supabase.from("newsletter_subscribers").select("id,marketing_consent,unsubscribed").eq("email",email).maybeSingle();
+  if (error || !subscriber?.marketing_consent || subscriber.unsubscribed) return {error:"Active subscriber required"};
+  return {success:true,welcome_delivery:await sendNewsletterWelcomeEmail(email)};
 }
 
 // ── NEWSLETTER UNSUBSCRIBE ──

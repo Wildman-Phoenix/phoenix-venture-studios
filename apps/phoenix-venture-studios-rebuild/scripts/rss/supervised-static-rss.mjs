@@ -1,3 +1,4 @@
+import { buildCombinedFounderSignal } from "./build-combined-founder-signal.mjs";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { spawn } from "node:child_process";
@@ -167,7 +168,7 @@ async function removeStaleNumberedArtifacts(baseDir) {
 }
 
 async function writeBundleManifest(baseDir, report) {
-  const files = new Set([REPORT_FILE, "autonomous-history.json"]);
+  const files = new Set([REPORT_FILE, "autonomous-history.json", "signal-archive.json", "all.xml"]);
   for (const config of DEFAULT_FEED_CONFIGS) {
     for (const file of outputFilesForFeed(config)) files.add(file);
   }
@@ -355,6 +356,7 @@ export async function runSupervisedGeneration(options = {}) {
 
   if (report.allSafe) {
     await removeStaleNumberedArtifacts(workingDir);
+    await buildCombinedFounderSignal(workingDir);
     await writeBundleManifest(workingDir, report);
     await replacePublicRssDir(workingDir);
   }

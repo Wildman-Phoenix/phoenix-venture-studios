@@ -8,6 +8,7 @@ const FEED_FILES = [
   "social.json",
   "tools-social.json",
   "ai-attention-social.json",
+  "signal-archive.json",
 ];
 const DEFAULT_SITE_URL = "https://phoenixventurestudios.com";
 function normalizeSiteUrl(value = DEFAULT_SITE_URL) {
@@ -91,7 +92,9 @@ function buildSignalMeta(item, siteUrl) {
     ? asAbsoluteUrl(ownedImagePath, siteUrl)
     : asSiteUrl(item.image || item.banner_image, siteUrl);
   const title = `${stripHtml(item.title || "Founder Signal")} | Phoenix Venture Studios`;
-  const description = clampText(phoenix.whyItMatters || item.content_text || "A Phoenix Founder Signal briefing for entrepreneurs.");
+  const sourceUrl = item.external_url || phoenix.originalUrl || "";
+  const reviewed = Boolean(sourceUrl) && phoenix.editorialReviewStatus === "approved" && phoenix.editorialSourceUrl === sourceUrl && Array.isArray(phoenix.articleBody) && phoenix.articleBody.length >= 4 && phoenix.articleBody.every(paragraph => typeof paragraph === "string" && paragraph.trim()) && phoenix.articleBody.join(" ").split(/\s+/).filter(Boolean).length >= 300 && Array.isArray(phoenix.sourceLinks) && phoenix.sourceLinks.some(link => link && link.url === sourceUrl);
+  const description = clampText(reviewed ? (phoenix.whyItMatters || phoenix.articleBody.join(" ")) : `${stripHtml(item.title || "Founder Signal")}. Source signal; a reviewed Phoenix deep dive is not yet available.`);
 
   return {
     slug,

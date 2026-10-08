@@ -1,3 +1,4 @@
+import { welcomeState, welcomeMessage, type WelcomeState } from "@/lib/newsletter-delivery";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -165,6 +166,7 @@ function FounderSignalSignup() {
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
+  const [welcome, setWelcome] = useState<WelcomeState>("delayed");
   const { toast } = useToast();
 
   const {
@@ -172,6 +174,7 @@ function FounderSignalSignup() {
     setHoneypot,
     turnstileRef,
     validateSubmission,
+    resetTurnstile,
     isValidating,
     hasTurnstile,
   } = useFormSecurity("founder_signal");
@@ -184,9 +187,26 @@ function FounderSignalSignup() {
     );
   };
 
+  const retryWelcome = async () => {
+    setLoading(true);
+    try {
+      const trimmed = email.trim().toLowerCase();
+      const validation = await validateSubmission(trimmed);
+      if (!validation.valid) return;
+      resetTurnstile();
+      const { data: result, error } = await supabase.functions.invoke("submit-form", {
+        body: { formType: "newsletter_welcome_retry", data: { email: trimmed, security_form_name: "founder_signal" } },
+      });
+      if (error || !result?.success) throw error || new Error("Welcome retry failed");
+      setWelcome(welcomeState(result));
+    } catch {
+      toast({ title: "Welcome message delayed", description: "Your subscription is saved. Please try again later.", variant: "destructive" });
+    } finally { setLoading(false); }
+  };
+
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    const trimmed = email.trim();
+    const trimmed = email.trim().toLowerCase();
     if (!trimmed) return;
 
     if (!isSupabaseConfigured) {
@@ -201,6 +221,7 @@ function FounderSignalSignup() {
     try {
       const validation = await validateSubmission(trimmed);
       if (!validation.valid) return;
+      resetTurnstile();
 
       const { data: subscribeResult, error: subscribeError } = await supabase.functions.invoke("submit-form", {
         body: {
@@ -212,10 +233,11 @@ function FounderSignalSignup() {
         },
       });
 
-      if (subscribeError || subscribeResult?.error) {
+      if (subscribeError || !subscribeResult?.success) {
         throw subscribeError || new Error(subscribeResult?.error || "Subscription failed");
       }
 
+      setWelcome(welcomeState(subscribeResult));
       if (selectedInterests.length > 0) {
         const { data: profileResult, error: profileError } = await supabase.functions.invoke("submit-form", {
           body: {
@@ -240,10 +262,6 @@ function FounderSignalSignup() {
           setSubscribed(true);
           return;
         }
-      }
-
-      if (!subscribeResult?.already_subscribed) {
-        supabase.functions.invoke("newsletter-welcome", { body: { email: trimmed } }).catch(() => {});
       }
 
       setSubscribed(true);
@@ -288,17 +306,19 @@ function FounderSignalSignup() {
         </div>
       )}
 
-      {subscribed ? (
+      <FormSecurityFields honeypot={honeypot} setHoneypot={setHoneypot} turnstileRef={turnstileRef} hasTurnstile={hasTurnstile} />
+            {subscribed ? (
         <div className="mt-7 rounded-2xl bg-[#123c69] px-5 py-6 text-white">
           <CheckCircle2 className="h-7 w-7 text-[#8ed9d2]" />
           <h3 className="mt-4 font-heading text-2xl font-bold">You are on the list.</h3>
           <p className="mt-2 text-sm leading-6 text-white/70">
-            Watch your inbox for the next Founder Signal briefing and the clearest paths out of it.
+            {welcomeMessage[welcome]}
           </p>
+          {welcome === "delayed" && <><Button type="button" disabled={loading || isValidating} onClick={retryWelcome} className="mt-4">{loading ? "Retrying..." : "Retry welcome message"}</Button></>}
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="mt-7 space-y-5">
-          <FormSecurityFields honeypot={honeypot} setHoneypot={setHoneypot} turnstileRef={turnstileRef} hasTurnstile={hasTurnstile} />
+
 
           <div>
             <label htmlFor="founder-signal-email" className="text-sm font-semibold text-[#123c69]">

@@ -1,3 +1,4 @@
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { deliverTransactionalEmailViaHighLevel, getNewsletterMode, isNewsletterProviderConfigured } from "../_shared/highlevel-newsletter.ts";
 import { requireInternalRequest } from "../_shared/internal-auth.ts";
@@ -18,14 +19,44 @@ serve(async (req) => {
     return auth.response;
   }
 
+  let ambiguousHighLevel = false;
   try {
-    const { email } = await req.json();
+    const {email:rawEmail} = await req.json();
+    const email = typeof rawEmail === "string" ? rawEmail.trim().toLowerCase() : "";
 
     if (!email) {
       return new Response(
         JSON.stringify({ success: false, reason: "No email provided" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
+    }
+
+    const database = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
+    const {data:subscriber,error:lookupError} = await database.from("newsletter_subscribers")
+      .select("id,marketing_consent,unsubscribed,welcome_email_attempted_at,welcome_email_attempt_provider,welcome_email_accepted_at")
+      .eq("email",email).maybeSingle();
+    if (lookupError) throw new Error("Welcome receipt lookup unavailable");
+    if (!subscriber?.marketing_consent || subscriber.unsubscribed) return new Response(JSON.stringify({success:false,reason:"active_subscriber_required"}),{status:403,headers:{...corsHeaders,"Content-Type":"application/json"}});
+    if (subscriber.welcome_email_accepted_at) return new Response(JSON.stringify({success:true,accepted:true,already_accepted:true,delivery:"provider_accepted"}),{headers:{...corsHeaders,"Content-Type":"application/json"}});
+    const useHighLevel = getNewsletterMode() === "primary" && isNewsletterProviderConfigured();
+    const resendKey = Deno.env.get("RESEND_API_KEY");
+    if (!useHighLevel && !resendKey) return new Response(JSON.stringify({success:false,delivery:"unconfigured"}),{status:503,headers:{...corsHeaders,"Content-Type":"application/json"}});
+    // HighLevel has no verified send-idempotency contract. Hold ambiguous attempts.
+    // Resend retries stay inside its documented 24-hour retention, with a one-hour margin.
+    if (subscriber.welcome_email_attempted_at && (useHighLevel || subscriber.welcome_email_attempt_provider !== "resend" || Date.now()-Date.parse(subscriber.welcome_email_attempted_at)>=23*60*60*1000)) return new Response(JSON.stringify({success:false,delivery:"receipt_requires_review",retry_requires_review:true}),{status:503,headers:{...corsHeaders,"Content-Type":"application/json"}});
+    if (!subscriber.welcome_email_attempted_at) {
+      const {data:claimed,error:claimError} = await database.from("newsletter_subscribers")
+        .update({welcome_email_attempted_at:new Date().toISOString(),welcome_email_attempt_provider:useHighLevel?"gohighlevel":"resend"}).eq("id",subscriber.id)
+        .is("welcome_email_attempted_at",null).select("id").maybeSingle();
+      if (claimError) throw new Error("Welcome attempt unavailable");
+      if (!claimed) return new Response(JSON.stringify({success:false,delivery:"receipt_requires_review",retry_requires_review:true}),{status:503,headers:{...corsHeaders,"Content-Type":"application/json"}});
+    }
+    const digest = await crypto.subtle.digest("SHA-256",new TextEncoder().encode(email));
+    const idempotencyKey = "phoenix-welcome-"+[...new Uint8Array(digest)].map(byte=>byte.toString(16).padStart(2,"0")).join("");
+    async function acceptedReceipt(messageId: string) {
+      const {error} = await database.from("newsletter_subscribers").update({welcome_email_accepted_at:new Date().toISOString(),welcome_email_id:messageId}).eq("id",subscriber.id);
+      if (error) throw new Error("Welcome acceptance receipt unavailable");
+      return new Response(JSON.stringify({success:true,accepted:true,delivery:"provider_accepted"}),{headers:{...corsHeaders,"Content-Type":"application/json"}});
     }
 
     const SITE_URL = Deno.env.get("SITE_URL") || "https://phoenixventurestudios.com";
@@ -91,30 +122,22 @@ Clarity over complexity. Strategy over noise.
 
 Unsubscribe: ${unsubUrl}`;
 
-    if (getNewsletterMode() === "primary" && isNewsletterProviderConfigured()) {
+    if (useHighLevel) {
+      ambiguousHighLevel = true;
       const ghlDelivery = await deliverTransactionalEmailViaHighLevel(
         email,
         "Welcome to The Founder Signal",
         htmlBody,
       );
 
-      return new Response(
-        JSON.stringify({
-          success: ghlDelivery.delivered,
-          delivery: ghlDelivery.reason,
-          error: ghlDelivery.error,
-        }),
-        {
-          status: ghlDelivery.delivered ? 200 : 502,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        }
-      );
+      if (ghlDelivery.delivered && typeof ghlDelivery.messageId === "string" && ghlDelivery.messageId) return await acceptedReceipt(ghlDelivery.messageId);
+      return new Response(JSON.stringify({success:false,delivery:"receipt_requires_review",retry_requires_review:true}),{status:502,headers:{...corsHeaders,"Content-Type":"application/json"}});
     }
 
     const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 
     if (!RESEND_API_KEY) {
-      console.log("RESEND_API_KEY not set — welcome email logged only:", email);
+      console.error("Welcome provider unconfigured");
       return new Response(
         JSON.stringify({
           success: false,
@@ -130,6 +153,7 @@ Unsubscribe: ${unsubUrl}`;
       headers: {
         Authorization: `Bearer ${RESEND_API_KEY}`,
         "Content-Type": "application/json",
+        "Idempotency-Key": idempotencyKey,
       },
       body: JSON.stringify({
         from: "The Founder Signal <signal@phoenixventurestudios.com>",
@@ -141,8 +165,8 @@ Unsubscribe: ${unsubUrl}`;
     });
 
     if (!res.ok) {
-      const errText = await res.text();
-      console.error("Resend welcome email failed:", res.status, errText);
+      await res.text();
+      console.error("Resend welcome email failed:", res.status);
       return new Response(
         JSON.stringify({
           success: false,
@@ -153,14 +177,13 @@ Unsubscribe: ${unsubUrl}`;
       );
     }
 
-    return new Response(
-      JSON.stringify({ success: true, delivery: "email" }),
-      { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-    );
+    const receipt = await res.json();
+    if (typeof receipt?.id !== "string" || !receipt.id) throw new Error("Provider acceptance receipt missing");
+    return await acceptedReceipt(receipt.id);
   } catch (error) {
     console.error("newsletter-welcome error:", error);
     return new Response(
-      JSON.stringify({ error: error instanceof Error ? error.message : "Unknown error" }),
+      JSON.stringify({ success:false, ...(ambiguousHighLevel ? {delivery:"receipt_requires_review",retry_requires_review:true} : {}), error: error instanceof Error ? error.message : "Unknown error" }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }

@@ -55,8 +55,10 @@ function useSignalArticle(slug?: string) {
     let active = true;
 
     Promise.allSettled([
-      loadStaticRssFeed(20, "ai-attention.json"),
-      loadStaticRssFeed(20, "feed.json"),
+      loadStaticRssFeed(Number.MAX_SAFE_INTEGER, "feed.json"),
+      loadStaticRssFeed(Number.MAX_SAFE_INTEGER, "tools.json"),
+      loadStaticRssFeed(Number.MAX_SAFE_INTEGER, "ai-attention.json"),
+      loadStaticRssFeed(Number.MAX_SAFE_INTEGER, "signal-archive.json"),
     ])
       .then((results) => {
         if (!active) return;
@@ -149,7 +151,7 @@ export default function FounderSignalDetail() {
     );
   }
 
-  const phoenixTake = article.whyItMatters || article.whyShared || article.imageBrief?.emotionalHook || article.summary;
+  const phoenixTake = article.whyItMatters || article.whyShared || article.summary;
   const sourceContext = `${article.source}${article.date ? ` • ${article.date}` : ""}`;
 
   const deeperContext = [
@@ -252,6 +254,14 @@ export default function FounderSignalDetail() {
                   </a>
                 )}
               </div>
+              {article.articleBody?.length ? (
+                <article className="mt-8 max-w-3xl space-y-6 text-base leading-8 text-[#335d81]">
+                  {article.articleBody.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+                  <div className="flex flex-wrap gap-4 text-sm font-semibold">
+                    {article.sourceLinks?.map(source => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.label} ↗</a>)}
+                  </div>
+                </article>
+              ) : <p className="mt-6 text-base leading-8 text-[#335d81]">The source-backed deeper dive is awaiting editorial review. Read the original reporting above, or join Founder Signal below.</p>}
               <Accordion type="single" collapsible className="mt-6 space-y-3">
                 {deeperContext.map((item) => (
                   <AccordionItem key={item.value} value={item.value} className="rounded-[1.35rem] border border-[#e6d9c6] bg-[#fbf6ee] px-5">

@@ -1,3 +1,4 @@
+import { welcomeState, welcomeMessage, type WelcomeState } from "@/lib/newsletter-delivery";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,15 +19,33 @@ const NewsletterSignup = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
+  const [welcome, setWelcome] = useState<WelcomeState>("delayed");
   const { toast } = useToast();
 
   const {
-    honeypot, setHoneypot, turnstileRef, validateSubmission, isValidating, hasTurnstile
+    honeypot, setHoneypot, turnstileRef, validateSubmission, resetTurnstile, isValidating, hasTurnstile
   } = useFormSecurity("newsletter");
+
+  const retryWelcome = async () => {
+    setLoading(true);
+    try {
+      const trimmed = email.trim().toLowerCase();
+      const validation = await validateSubmission(trimmed);
+      if (!validation.valid) return;
+      resetTurnstile();
+      const { data: result, error } = await supabase.functions.invoke("submit-form", {
+        body: { formType: "newsletter_welcome_retry", data: { email: trimmed, security_form_name: "newsletter" } },
+      });
+      if (error || !result?.success) throw error || new Error("Welcome retry failed");
+      setWelcome(welcomeState(result));
+    } catch {
+      toast({ title: "Welcome message delayed", description: "Your subscription is saved. Please try again later.", variant: "destructive" });
+    } finally { setLoading(false); }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const trimmed = email.trim();
+    const trimmed = email.trim().toLowerCase();
     if (!trimmed) return;
 
     if (!isSupabaseConfigured) {
@@ -44,6 +63,7 @@ const NewsletterSignup = () => {
         setLoading(false);
         return;
       }
+      resetTurnstile();
 
       const { data: result, error } = await supabase.functions.invoke("submit-form", {
         body: {
@@ -57,17 +77,10 @@ const NewsletterSignup = () => {
 
       if (error) throw error;
 
-      if (result?.already_subscribed) {
-        toast({ title: "Already subscribed", description: "This email is already on our list." });
-        setSubscribed(true);
-      } else if (result?.success) {
-        setSubscribed(true);
-        toast({ title: "Subscribed!", description: "Welcome to Founder Signal." });
-        // Fire welcome email (non-blocking)
-        supabase.functions.invoke("newsletter-welcome", { body: { email: trimmed } }).catch(() => {});
-      } else {
-        throw new Error(result?.error || "Subscription failed");
-      }
+      if (!result?.success) throw new Error(result?.error || "Subscription failed");
+      setWelcome(welcomeState(result));
+      setSubscribed(true);
+      toast({ title: result.already_subscribed ? "Already subscribed" : "Subscribed", description: "Your email is on the Founder Signal list." });
     } catch {
       toast({ title: "Error", description: "Something went wrong. Please try again.", variant: "destructive" });
     } finally {
@@ -113,14 +126,16 @@ const NewsletterSignup = () => {
               ))}
             </div>
 
+            <FormSecurityFields honeypot={honeypot} setHoneypot={setHoneypot} turnstileRef={turnstileRef} hasTurnstile={hasTurnstile} />
             {subscribed ? (
               <div className="py-8">
                 <p className="text-primary font-medium text-lg">You're on the Founder Signal list.</p>
-                <p className="text-background/50 text-sm mt-2">Watch your inbox for the next Founder Signal briefing.</p>
+                <p className="text-background/50 text-sm mt-2">{welcomeMessage[welcome]}</p>
+          {welcome === "delayed" && <><Button type="button" disabled={loading || isValidating} onClick={retryWelcome} className="mt-4">{loading ? "Retrying..." : "Retry welcome message"}</Button></>}
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="max-w-md mx-auto relative">
-                <FormSecurityFields honeypot={honeypot} setHoneypot={setHoneypot} turnstileRef={turnstileRef} hasTurnstile={hasTurnstile} />
+
 
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Input

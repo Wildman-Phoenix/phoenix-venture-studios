@@ -34,6 +34,7 @@ export type NewsletterQueuePayload = {
 };
 
 export type NewsletterDeliveryResult = {
+  messageId?: string;
   delivered: boolean;
   error?: string;
   provider: "gohighlevel";
@@ -311,7 +312,7 @@ async function sendEmailToContact(
   subject: string,
   html: string,
 ): Promise<NewsletterDeliveryResult> {
-  await highLevelRequest(config, {
+  const receipt = await highLevelRequest<{messageId?: string}>(config, {
     path: "/conversations/messages",
     body: {
       contactId,
@@ -325,6 +326,7 @@ async function sendEmailToContact(
     delivered: true,
     provider: NEWSLETTER_PROVIDER,
     reason: "email_queued",
+    messageId: receipt.messageId,
   };
 }
 

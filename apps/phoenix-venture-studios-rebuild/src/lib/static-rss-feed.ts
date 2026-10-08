@@ -97,6 +97,8 @@ interface JsonFeedItem {
     engagementPrompt?: string;
     whySelected?: string;
     editorialMode?: string;
+    editorialSourceUrl?: string;
+    editorialReviewStatus?: string;
     feedId?: string;
     feedRole?: string;
     rssStory?: string;
@@ -323,10 +325,8 @@ function getBriefDepth({
   engagementPrompt?: string;
 }): StaticFeedArticle["briefDepth"] {
   const hasExpandedEvidence =
-    articleBody.length > 0 ||
-    researchCitations.length > 0 ||
-    relatedRecentSignals.length > 0 ||
-    sourceLinks.length > 0;
+    articleBody.length > 0 &&
+    (researchCitations.length > 0 || sourceLinks.length > 0);
 
   if (hasExpandedEvidence) {
     return "expanded-briefing";
@@ -358,7 +358,22 @@ export async function loadStaticRssFeed(count = 10, feedFile = "feed.json"): Pro
   }
 
   const feed = (await response.json()) as JsonFeed;
-  const articles = (feed.items || []).slice(0, count).map((item) => {
+  const articles = (feed.items || []).slice(0, count).map((rawItem) => {
+    const metadata = rawItem._phoenix || {};
+    const sourceUrl = rawItem.external_url || metadata.originalUrl || "";
+    const body = Array.isArray(metadata.articleBody) ? metadata.articleBody : [];
+    const reviewed = Boolean(sourceUrl) && metadata.editorialReviewStatus === "approved" && metadata.editorialSourceUrl === sourceUrl &&
+      body.length >= 4 && body.every(paragraph => typeof paragraph === "string" && paragraph.trim()) && body.join(" ").split(/\s+/).filter(Boolean).length >= 300 &&
+      Array.isArray(metadata.sourceLinks) && metadata.sourceLinks.some(link => link && link.url === sourceUrl);
+    const item: JsonFeedItem = reviewed ? rawItem : {
+      ...rawItem,
+      content_text: metadata.sourceTitle || rawItem.title,
+      _phoenix: { ...metadata, publicTitle: metadata.sourceTitle || rawItem.title,
+        simpleSummary: "The source-backed deeper dive is awaiting editorial review.",
+        rssStory: "", whyItMatters: "", whyShared: "", founderTakeaway: "", businessTakeaway: "",
+        trendContext: "", engagementPrompt: "", whySelected: "", relatedRecentSignals: [],
+        articleBody: [], researchCitations: [], sourceLinks: [], editorialMode: "source-note" },
+    };
     const source = item._phoenix?.sourceName || item._phoenix?.source || item.authors?.[0]?.name || "Phoenix Source";
     const category =
       item._phoenix?.topicLabel ||

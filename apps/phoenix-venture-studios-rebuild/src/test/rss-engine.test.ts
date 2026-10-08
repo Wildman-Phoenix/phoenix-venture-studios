@@ -666,13 +666,13 @@ describe("static RSS engine", () => {
     expect(item._phoenix.slug).toMatch(/^founder-s-ai-credit-shift-/);
     expect(item._phoenix.internalPath).toContain(`/founder-signal/signals/${item._phoenix.slug}`);
     expect(item._phoenix.originalUrl).toBe("https://example.com/item?a=1&b=2");
-    expect(item._phoenix.whyItMatters).toContain("Capital access");
+    expect(item._phoenix.whyItMatters).toBe("");
     expect(item._phoenix.simpleSummary).toBeTruthy();
     expect(item._phoenix.simpleSummary.startsWith("For founders")).toBe(false);
-    expect(item._phoenix.trendContext).toBeTruthy();
-    expect(item._phoenix.engagementPrompt).toBeTruthy();
-    expect(item._phoenix.readingLevel.target).toBe("grade-5-plain-founder");
-    expect(item._phoenix.editorialMode).toBe("phoenix-original-brief");
+    expect(item._phoenix.trendContext).toBe("");
+    expect(item._phoenix.engagementPrompt).toBe("");
+    expect(item._phoenix.readingLevel.target).toBe("source-note");
+    expect(item._phoenix.editorialMode).toBe("source-note");
   });
 
   it("keeps founder-tools editorial copy from inheriting frontier-funding framing", () => {
@@ -695,7 +695,8 @@ describe("static RSS engine", () => {
     });
 
     const story = json.items[0].content_text;
-    expect(story).toContain("GitHub says disciplined audits");
+    expect(story).toContain("GitHub adds agent workflow audits for coding teams");
+    expect(story).not.toContain("62 percent");
     expect(story).not.toMatch(/Anthropic|valuation|trillion|funding race/i);
     expect(story).not.toContain("The useful question is");
     expect(story).not.toContain("Watch whether");
@@ -756,15 +757,12 @@ describe("static RSS engine", () => {
     }
 
     expect(item.url).toMatch(/^https:\/\/preview\.example\.com\/founder-signal\/signals\/visa-expands-replit-prototyping-into-agentic-payments-workflows-/);
-    expect(copy).not.toContain(item.url);
-    expect(copy).toContain("preview.example.com.");
-    expect(copy).toContain("#Visa");
-    expect(copy).toContain("#Replit");
-    expect(copy).toContain("#AgenticAI");
-    expect(copy).toContain("#Payments");
-    expect(copy).not.toMatch(/^[-*]\s/m);
-    expect(copy).toMatch(/^Visa is moving Replit closer to the payment layer, not just the prototype layer\./);
-    expect(copy).toContain("For founders building apps, automations, or client systems, this is where coding tools start to matter more.");
+    expect(copy).toContain(item.url);
+    expect(copy).toContain("Original reporting:");
+    expect(copy).toContain(item.external_url);
+    expect(copy).not.toContain("More than 1,000");
+    expect(item._phoenix.articleBody).toEqual([]);
+    expect(item._phoenix.editorialMode).toBe("source-note");
   });
 
   it("strips punctuation-only source summaries and avoids raw-link spam in public copy", () => {
@@ -786,9 +784,9 @@ describe("static RSS engine", () => {
     const copy = item.content_text;
 
     expect(copy.startsWith("..")).toBe(false);
-    expect(copy).toContain("massive Claude bill");
-    expect(copy).toContain("preview.example.com.");
-    expect(copy).not.toContain(item.url);
+    expect(copy).toContain(item.title);
+    expect(copy).toContain(item.url);
+    expect(copy).toContain(item.url);
   });
 
   it("creates deterministic image briefs for major signal types", () => {
