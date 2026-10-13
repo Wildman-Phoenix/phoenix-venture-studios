@@ -1,11 +1,6 @@
+import PhoenixArticleReading from "@/components/PhoenixArticleReading";
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import {
   ArrowLeft,
   ArrowRight,
@@ -50,10 +45,17 @@ function useSignalArticle(slug?: string) {
   const [articles, setArticles] = useState<StaticFeedArticle[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [draftImage, setDraftImage] = useState<string>();
+  const [isDraft, setIsDraft] = useState(false);
 
   useEffect(() => {
     let active = true;
 
+    if (import.meta.env.DEV && new URLSearchParams(window.location.search).get("review") === "pluto" && slug === "pluto-security-raises-42m-as-ai-gives-enterprise-security-teams-headache-992e14a3") {
+      const localDraftModule = "../dev/pluto-draft.ts";
+      import(/* @vite-ignore */ localDraftModule).then(draft => { if(active){setArticles([draft.article]);setDraftImage(draft.referenceImage);setIsDraft(true);setLoading(false);} }).catch(() => { if(active){setError("Local review fixture unavailable.");setLoading(false);} });
+      return () => {active=false;};
+    }
     Promise.allSettled([
       loadStaticRssFeed(Number.MAX_SAFE_INTEGER, "feed.json"),
       loadStaticRssFeed(Number.MAX_SAFE_INTEGER, "tools.json"),
@@ -95,12 +97,12 @@ function useSignalArticle(slug?: string) {
     [articles, slug]
   );
 
-  return { article, loading, error };
+  return { article, loading, error, isDraft, draftImage };
 }
 
 export default function FounderSignalDetail() {
   const { slug } = useParams();
-  const { article, loading, error } = useSignalArticle(slug);
+  const { article, loading, error, isDraft, draftImage } = useSignalArticle(slug);
   const imageUrl = article?.socialImageUrl || article?.imageUrl || DEFAULT_SIGNAL_IMAGE;
   const description = trimDescription(article?.whyItMatters || article?.summary || "A Phoenix Founder Signal briefing for entrepreneurs.");
 
@@ -151,26 +153,12 @@ export default function FounderSignalDetail() {
     );
   }
 
-  const phoenixTake = article.whyItMatters || article.whyShared || article.summary;
-  const sourceContext = `${article.source}${article.date ? ` • ${article.date}` : ""}`;
+  if (article.articleBody?.length) return <main className="min-h-screen bg-[#f8f4ea] pt-28"><div className="mx-auto max-w-3xl px-5 sm:px-8"><Link to="/founder-signal" className="text-sm text-[#58728b]">← Founder Signal</Link></div><PhoenixArticleReading article={article} draft={isDraft} referenceImage={draftImage}/></main>;
 
-  const deeperContext = [
-    {
-      value: "what-changed",
-      title: "What changed",
-      text: article.summary || "A Phoenix-selected signal moved through the public market conversation.",
-    },
-    {
-      value: "founder-move",
-      title: "Founder move",
-      text: article.founderTakeaway || article.businessTakeaway || "Use this as a prompt to decide what to watch, what to test, and what to tighten next.",
-    },
-    {
-      value: "source-note",
-      title: "Source",
-      text: sourceContext,
-    },
-  ];
+  const phoenixTake = article.whyItMatters || article.whyShared || article.summary;
+  const sourceContext = `${article.publisherName || article.source}${article.sourceDateStatus === "verified" && article.sourcePublishedAt ? ` • Original source: ${article.sourcePublishedAt.slice(0,10)}` : article.date ? ` • Feed date: ${article.date}` : ""}`;
+
+
 
   return (
     <div className="min-h-screen bg-[#f5efe4] text-[#123c69]">
@@ -231,7 +219,7 @@ export default function FounderSignalDetail() {
                 />
                 <div className="border-t border-[#dfd3c0] bg-white/80 px-5 py-4">
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#5f788d]">Founder Signal card</p>
-                  <p className="mt-2 text-sm leading-6 text-[#5f788d]">Phoenix-owned visual. Publisher source stays linked separately.</p>
+                  <p className="mt-2 text-sm leading-6 text-[#5f788d]">{article.imageCredit || "Image credit unavailable. Original source linked separately."}</p>
                 </div>
               </div>
             </ScrollReveal>
@@ -262,18 +250,7 @@ export default function FounderSignalDetail() {
                   </div>
                 </article>
               ) : <p className="mt-6 text-base leading-8 text-[#335d81]">The source-backed deeper dive is awaiting editorial review. Read the original reporting above, or join Founder Signal below.</p>}
-              <Accordion type="single" collapsible className="mt-6 space-y-3">
-                {deeperContext.map((item) => (
-                  <AccordionItem key={item.value} value={item.value} className="rounded-[1.35rem] border border-[#e6d9c6] bg-[#fbf6ee] px-5">
-                    <AccordionTrigger className="py-5 text-left font-heading text-xl font-bold text-[#123c69] hover:no-underline">
-                      {item.title}
-                    </AccordionTrigger>
-                    <AccordionContent className="pb-5 text-sm leading-7 text-[#58728b]">
-                      {item.text}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
+
             </div>
           </ScrollReveal>
         </div>

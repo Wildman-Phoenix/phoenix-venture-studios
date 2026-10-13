@@ -26,7 +26,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { useFormSecurity } from "@/hooks/useFormSecurity";
 import { useToast } from "@/hooks/use-toast";
 import { isSupabaseConfigured, supabase } from "@/integrations/supabase/client";
-import { loadStaticRssFeed, type StaticFeedArticle } from "@/lib/static-rss-feed";
+import { loadMergedStaticRssFeeds, type StaticFeedArticle } from "@/lib/static-rss-feed";
 import foundersImage from "@/assets/phoenix-operator-workspace-gpt.jpg";
 import fundingImage from "@/assets/phoenix-capital-readiness-gpt.jpg";
 import strategyImage from "@/assets/phoenix-strategy-room-gpt.jpg";
@@ -381,10 +381,10 @@ function useAiAttentionSignals() {
   useEffect(() => {
     let active = true;
 
-    loadStaticRssFeed(5, "ai-attention.json")
+    loadMergedStaticRssFeeds(Number.MAX_SAFE_INTEGER, ["feed.json", "tools.json", "ai-attention.json"])
       .then((feed) => {
         if (!active) return;
-        setArticles(feed.articles);
+        setArticles(feed.articles.filter(article => article.promotionEligible));
         setError("");
       })
       .catch((err) => {

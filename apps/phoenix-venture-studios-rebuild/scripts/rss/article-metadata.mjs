@@ -86,7 +86,23 @@ export function extractArticleMetadata(html = "", articleUrl = "") {
   ].filter(([, value]) => value);
   const [imageSource = "none", rawImageUrl = ""] = imageCandidates[0] || [];
 
+  const sourceDateEvidence = [];
+  for (const tag of String(html).match(/<meta\b[^>]*>/gi) || []) {
+    const name = (getAttr(tag,"property") || getAttr(tag,"name") || getAttr(tag,"itemprop")).toLowerCase();
+    if (["article:published_time","og:published_time","datepublished","parsely-pub-date"].includes(name)) sourceDateEvidence.push({kind:name,value:getAttr(tag,"content")});
+  }
+  for (const match of String(html).matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+    try { const visit = node => { if (!node || typeof node !== "object") return; if (/Article|BlogPosting/.test(String(node["@type"])) && node.datePublished) sourceDateEvidence.push({kind:"jsonld:datePublished",value:node.datePublished}); for (const value of Object.values(node)) if (typeof value === "object") { if(Array.isArray(value)) value.forEach(visit);else visit(value); } }; visit(JSON.parse(match[1])); } catch { /* Unparseable metadata cannot establish a source date. */ }
+  }
+  for (const tag of String(html).match(/<time\b[^>]*>/gi) || []) if (getAttr(tag,"itemprop").toLowerCase()==="datepublished") sourceDateEvidence.push({kind:"time:datePublished",value:getAttr(tag,"datetime")});
+  const dates = sourceDateEvidence.map(entry=>Date.parse(entry.value));
+  const valid = dates.filter(Number.isFinite);
+  const conflicting = valid.length !== dates.length || new Set(valid.map(date=>new Date(date).toISOString().slice(0,10))).size > 1;
+  const sourceDateStatus = !sourceDateEvidence.length ? "unknown" : conflicting ? "conflicting" : "verified";
   return {
+    sourcePublishedAt: sourceDateStatus === "verified" ? new Date(valid[0]).toISOString() : "",
+    sourceDateStatus, sourceDateEvidence,
+    publisherName: findMetaContent(html,["og:site_name"]) || sourceHost(canonicalUrl || articleUrl),
     ok: true,
     url: articleUrl,
     canonicalUrl,

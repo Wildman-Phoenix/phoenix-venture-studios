@@ -1,5 +1,5 @@
 import { describe, expect, it, vi, afterEach } from "vitest";
-import { buildFeedJson, buildFeedXml } from "../../scripts/rss/generate-static-rss.mjs";
+import { buildFeedJson, buildFeedXml, editorialContentDigest } from "../../scripts/rss/generate-static-rss.mjs";
 import { loadMergedStaticRssFeeds } from "@/lib/static-rss-feed";
 
 afterEach(() => vi.unstubAllGlobals());
@@ -24,15 +24,19 @@ describe("source binding regression", () => {
   it("preserves a reviewed deep dive bound to the exact source", () => {
     const url = "https://example.com/kafka";
     const paragraphs = Array.from({ length: 4 }, (_, i) => `Reviewed section ${i}. ` + "Source backed explanation and practical steps. ".repeat(15));
-    const input = { title: "Kafka pipeline", sourceTitle: "Kafka pipeline", url, articleBody: paragraphs, editorialSourceUrl: url, editorialReviewStatus: "approved", sourceLinks: [{label:"Original",url}], founderTakeaway: "Reviewed action step" };
+    const input = { editorialContentDigest:"", publicTitle: "Kafka pipeline", deck:"A reviewed practical Kafka guide", title: "Kafka pipeline", sourceTitle: "Kafka pipeline", url, articleBody: paragraphs, editorialSourceUrl: url, editorialReviewStatus: "approved", sourceLinks: [{label:"Original",url}], founderTakeaway: "Reviewed action step" };
+    input.editorialContentDigest = editorialContentDigest(input);
     const item = buildFeedJson([input]).items[0];
     expect(item._phoenix.articleBody).toEqual(paragraphs);
     expect(item._phoenix.founderTakeaway).toBe("Reviewed action step");
     expect(item._phoenix.editorialMode).toBe("reviewed-source-briefing");
     expect(item.content_text.split("\n\n")[0].split(/\s+/).length).toBeLessThanOrEqual(80);
     expect(item.content_text).toContain(item.url);
-    expect(item.content_text).toContain("Original reporting:");
-    const noCommentary = buildFeedJson([{...input, founderTakeaway:undefined}]).items[0];
+    expect(item.content_text).not.toContain("Original reporting:");
+    expect(item.external_url).toBe(url);
+    const withoutCommentary = {...input, founderTakeaway:undefined};
+    withoutCommentary.editorialContentDigest = editorialContentDigest(withoutCommentary);
+    const noCommentary = buildFeedJson([withoutCommentary]).items[0];
     expect(noCommentary._phoenix.founderTakeaway).toBeUndefined();
     expect(noCommentary._phoenix.whyItMatters).toBeUndefined();
     const mismatched = buildFeedJson([{...input, editorialSourceUrl:"https://example.com/other"}]).items[0];

@@ -1,3 +1,5 @@
+import { hasReviewedSourceBrief, promotionState, editorialContentDigest, sourceDateGate } from "./editorial-gates.mjs";
+export { hasReviewedSourceBrief, editorialContentDigest } from "./editorial-gates.mjs";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { createHash } from "node:crypto";
@@ -1350,7 +1352,9 @@ function buildPhoenixRssStory(item) {
   }
   if (hasReviewedSourceBrief(item)) {
     const excerpt = stripHtml(item.articleBody[0]).split(/\s+/).filter(Boolean).slice(0, 80).join(" ");
-    return [excerpt, `Read the deeper dive and subscribe to Founder Signal: ${item.internalUrl}`, `Original reporting: ${item.sourceName || "Original source"} — ${item.originalUrl || item.url}`].join("\n\n");
+    const teaser = stripHtml(item.socialTeaser || item.deck || excerpt).replace(/https?:\/\/\S+/g, "").trim();
+    const historicalLabel = item.articleKind === "historical-lookback" ? `Historical lookback · Original source: ${item.sourcePublishedAt?.slice(0,10) || "date unverified"}.` : "";
+    return [historicalLabel, teaser, item.internalUrl].filter(Boolean).join("\n\n");
   }
 
   const shortSourceSummary = stripHtml(item.description || item.content_text || "").replace(/\s+/g, " ").trim();
@@ -1556,13 +1560,7 @@ export function enrichSignalItem(item, options = {}) {
   }
   const socialImagePath = getOwnedSignalImagePath(item, siteUrl);
   const imageUrl = socialImagePath ? getOwnedSignalImageUrl({ ...item, socialImagePath }, siteUrl) : "";
-  const imageApprovalStatus = item.imageApprovalStatus || (
-    item.imageStrategy === "source-allowlisted"
-      ? "approved"
-      : item.imageStrategy === "held-for-codex-image"
-        ? (socialImagePath ? "approved" : "held")
-        : "held"
-  );
+  const imageApprovalStatus = item.imageApprovalStatus || "held";
 
   return {
     ...item,
@@ -1571,6 +1569,8 @@ export function enrichSignalItem(item, options = {}) {
     internalUrl,
     originalUrl,
     sourceImageUrl,
+    editorialReviewNeeded: !hasReviewedSourceBrief(item),
+    promotionEligible: promotionState({ ...item, imageBrief }, options).eligible,
     imageBrief,
     imagePath: item.imagePath || socialImagePath || "",
     imageUrl,
@@ -1582,7 +1582,7 @@ export function enrichSignalItem(item, options = {}) {
     imageFamily: item.imageFamily || imageBrief.imageFamily,
     imageSourceType: item.imageSourceType || (imageApprovalStatus === "approved" ? "phoenix-owned" : "pending-codex-image"),
     imageCredit: item.imageCredit || "",
-    imageRightsStatus: item.imageRightsStatus || (imageApprovalStatus === "approved" ? "owned-or-licensed" : "manual-review"),
+    imageRightsStatus: item.imageRightsStatus || "manual-review",
     imageTemplate: item.imageTemplate || imageBrief.template,
     imageVariant: item.imageVariant || imageBrief.imageVariant,
     imageTone: item.imageTone || imageBrief.imageTone,
@@ -1893,6 +1893,7 @@ export function buildFeedJson(items, options = {}) {
     feed_url: `${normalizedSiteUrl}/rss/${feedFile}`,
     description,
     generated_at: now.toISOString(),
+    promotion_state: enrichedItems.length ? "eligible" : "held-no-eligible-story",
     items: enrichedItems.map((item) => ({
       id: item.internalUrl,
       url: item.internalUrl,
@@ -1901,7 +1902,7 @@ export function buildFeedJson(items, options = {}) {
       content_text: buildPhoenixRssStory(item),
       image: item.socialImageUrl || item.imageUrl,
       banner_image: item.socialImageUrl || item.imageUrl,
-      date_published: new Date(Date.parse(item.publishedAt) || now.getTime()).toISOString(),
+      date_published: new Date(Date.parse(item.phoenixPublishedAt || item.publishedAt) || now.getTime()).toISOString(),
       authors: [{ name: "Phoenix Venture Studios" }],
       tags: [item.bucketLabel],
       _phoenix: {
@@ -1918,6 +1919,22 @@ export function buildFeedJson(items, options = {}) {
         slug: item.slug,
         publicTitle: item.publicTitle || item.title,
         sourceTitle: item.sourceTitle || item.title,
+        deck: item.deck || "",
+        editorialContentDigest: item.editorialContentDigest || "",
+        editorialReviewNeeded: !hasReviewedSourceBrief(item),
+        promotionEligible: promotionState(item, {now}).eligible,
+        sourcePublishedAt: item.sourcePublishedAt || "",
+        sourceDateStatus: item.sourceDateStatus || "unknown",
+        sourceDateEvidence: item.sourceDateEvidence || [],
+        discoveredAt: item.discoveredAt || item.publishedAt || "",
+        phoenixPublishedAt: item.phoenixPublishedAt || "",
+        socialRotatedAt: item.socialRotatedAt || "",
+        publisherName: item.publisherName || "",
+        aggregatorName: item.aggregatorName || item.sourceName || "",
+        articleKind: item.articleKind || "current-news",
+        historicalReviewStatus: item.historicalReviewStatus || "",
+        phoenixCta: item.phoenixCta || null,
+        socialTeaser: item.socialTeaser || "",
         imageUrl: item.imageUrl,
         socialImageUrl: item.socialImageUrl || item.imageUrl,
         socialImagePath: item.socialImagePath || item.imagePath || "",
@@ -1930,6 +1947,7 @@ export function buildFeedJson(items, options = {}) {
         imageSourceType: item.imageSourceType,
         imageCredit: item.imageCredit,
         imageRightsStatus: item.imageRightsStatus,
+        sourceImagePolicy: item.sourceImagePolicy || "",
         imageTemplate: item.imageTemplate,
         imageVariant: item.imageVariant,
         imageTone: item.imageTone,
@@ -2205,18 +2223,6 @@ export async function enrichItemsWithArticleMetadata(items = [], options = {}) {
 
   return mapWithConcurrency(items, options.articleMetadataConcurrency ?? 6, async (item, index) => {
     const feedImageMissing = !item.sourceImageUrl;
-    if (!feedImageMissing && !item.articleMetadata) {
-      return {
-        ...item,
-        imageDiagnostic: {
-          ...(item.imageDiagnostic || {}),
-          feedImageMissing: false,
-          articleImageChecked: false,
-          articleImageFound: false,
-          imageDecision: "RSS image found",
-        },
-      };
-    }
     if (!item.url || index >= maxItems) {
       return {
         ...item,
@@ -2229,11 +2235,11 @@ export async function enrichItemsWithArticleMetadata(items = [], options = {}) {
       };
     }
 
-    let metadata = item.articleMetadata || null;
+    let metadata = item.articleMetadata?.sourceDateStatus ? item.articleMetadata : null;
     if (!metadata) {
       try {
         metadata = await withTimeout(
-          fetchArticleMetadataImpl(item.url, { fetchTextImpl, timeoutMs }),
+          fetchArticleMetadataImpl(item.originalUrl || item.url, { fetchTextImpl, timeoutMs }),
           options.articleMetadataCollectTimeoutMs ?? timeoutMs + 1000,
           `article metadata for ${item.url}`
         );
@@ -2252,6 +2258,12 @@ export async function enrichItemsWithArticleMetadata(items = [], options = {}) {
     return {
       ...item,
       sourceImageUrl,
+      discoveredAt: item.discoveredAt || item.publishedAt || "",
+      sourcePublishedAt: metadata?.sourcePublishedAt || "",
+      sourceDateStatus: item.sourceDateStatus === "conflicting" ? "conflicting" : metadata?.sourceDateStatus || "unknown",
+      sourceDateEvidence: metadata?.sourceDateEvidence || [],
+      publisherName: metadata?.publisherName || metadata?.siteName || "",
+      aggregatorName: item.aggregatorName || item.sourceName || "",
       publisherImageUrl: item.publisherImageUrl || metadata?.imageUrl || "",
       imageUrl: item.imageUrl || sourceImageUrl,
       canonicalUrl: metadata?.canonicalUrl || item.canonicalUrl || "",
@@ -2644,7 +2656,7 @@ function requiresCreativeFollowUp(item = {}) {
   );
 }
 
-function buildSocialQueueCandidateState(item, options = {}) {
+export function buildSocialQueueCandidateState(item, options = {}) {
   const siteUrl = normalizeSiteUrl(options.siteUrl ?? DEFAULT_SITE_URL);
   const imageApprovalStatus = item.imageApprovalStatus || "";
   const manualReviewNeeded = Boolean(
@@ -2661,7 +2673,8 @@ function buildSocialQueueCandidateState(item, options = {}) {
     item.imageStrategy === "source-allowlisted" ||
     (item.imageStrategy === "held-for-codex-image" && imageApprovalStatus === "approved")
   );
-  const reasons = [];
+  const promotion = promotionState(item, options);
+  const reasons = [...promotion.reasons];
 
   if (manualReviewNeeded) reasons.push("manual-review");
   if (requiresCreativeFollowUp(item)) reasons.push("creative-follow-up-needed");
@@ -2674,8 +2687,8 @@ function buildSocialQueueCandidateState(item, options = {}) {
     ...item,
     queueCandidateState: {
       publishable,
-      eligible: publishable && !manualReviewNeeded && usesStrictImageStrategy,
-      sampleReady: publishable && !manualReviewNeeded && usesStrictImageStrategy,
+      eligible: publishable && !manualReviewNeeded && usesStrictImageStrategy && promotion.eligible,
+      sampleReady: publishable && !manualReviewNeeded && usesStrictImageStrategy && promotion.eligible,
       manualReviewNeeded,
       usesStrictImageStrategy,
       reasons,
@@ -2692,7 +2705,7 @@ function selectSocialQueueCandidate(items = [], options = {}) {
     ? selectedItem.queueCandidateState.eligible
       ? (candidates[0] === selectedItem ? "selected-top-eligible-candidate" : "advanced-to-next-eligible-candidate")
       : "unexpected-noneligible-selection"
-    : "held-no-eligible-article-image";
+    : "held-no-eligible-story";
 
   return {
     selectedItems: selectedItem ? [selectedItem] : [],
@@ -2958,16 +2971,6 @@ function pruneEditorialDuplicates(items = []) {
   return { kept, removed };
 }
 
-export function hasReviewedSourceBrief(item) {
-  const originalUrl = item.originalUrl || item.url || "";
-  const body = Array.isArray(item.articleBody) ? item.articleBody : [];
-  // A reviewed body is attached to the same original article, never a topic lane.
-  return Boolean(originalUrl && item.editorialSourceUrl === originalUrl &&
-    item.editorialReviewStatus === "approved" && body.length >= 4 && body.every(paragraph => typeof paragraph === "string" && paragraph.trim()) &&
-    body.join(" ").split(/\s+/).filter(Boolean).length >= 300 &&
-    Array.isArray(item.sourceLinks) && item.sourceLinks.some(link => link.url === originalUrl));
-}
-
 function applyAutonomousEditorialLayer(items, options = {}) {
   const recentItems = options.recentItems || [];
   const feedId = options.feedId || "founder-market";
@@ -2985,14 +2988,23 @@ function applyAutonomousEditorialLayer(items, options = {}) {
         feedRole: isToolsFeedId(feedId) ? "founder-tools" : isAiAttentionFeedId(feedId) ? "ai-attention" : "founder-market",
         readingLevel: { target: "source-note", averageSentenceWords: 0 },
         editorialMode: "source-note",
-        imageBrief: { ...item.imageBrief, storySubject: sourceTitle, manualReviewNeeded: true },
+        editorialReviewNeeded: true,
+        imageBrief: { ...item.imageBrief, storySubject: sourceTitle },
       };
     }
     return {
       ...item,
-      title: item.sourceTitle || item.title,
-      publicTitle: item.sourceTitle || item.title,
-      simpleSummary: item.simpleSummary || item.articleBody[0],
+      title: item.publicTitle || item.title,
+      publicTitle: item.publicTitle || item.title,
+      sourceTitle: item.sourceTitle || item.rawTitle || item.title,
+      deck: item.deck || item.simpleSummary || item.articleBody[0],
+      simpleSummary: item.deck || item.simpleSummary || item.articleBody[0],
+      editorialReviewNeeded: false,
+      feedRole: isToolsFeedId(feedId) ? "founder-tools" : isAiAttentionFeedId(feedId) ? "ai-attention" : "founder-market",
+      engagementPrompt: item.engagementPrompt || "",
+      trendContext: item.trendContext || "",
+      relatedRecentSignals: item.relatedRecentSignals || [],
+      readingLevel: item.readingLevel || {target:"reviewed-original-analysis",averageSentenceWords:0},
       editorialMode: "reviewed-source-briefing",
     };
   });
@@ -3081,8 +3093,8 @@ function buildEditorialQualityAudit(items, options = {}) {
       continue;
     }
     if (!item.simpleSummary) errors.push(`${slug}: missing simpleSummary`);
-    if (!item.engagementPrompt) errors.push(`${slug}: missing engagementPrompt`);
-    if (!item.trendContext) errors.push(`${slug}: missing trendContext`);
+    if (!hasReviewedSourceBrief(item) && !item.engagementPrompt) errors.push(`${slug}: missing engagementPrompt`);
+    if (!hasReviewedSourceBrief(item) && !item.trendContext) errors.push(`${slug}: missing trendContext`);
     if (!Array.isArray(item.relatedRecentSignals)) errors.push(`${slug}: missing relatedRecentSignals array`);
     if (!item.editorialMode) errors.push(`${slug}: missing editorialMode`);
     if (isHeadlineEcho(leadSentence, item)) {
@@ -3162,7 +3174,7 @@ async function validateSelectedItems(items, options = {}) {
 
   for (const item of items) {
     for (const field of REQUIRED_PHOENIX_FIELDS) {
-      if (item.editorialMode === "source-note" && ["engagementPrompt", "trendContext"].includes(field)) continue;
+      if ((item.editorialMode === "source-note" || hasReviewedSourceBrief(item)) && ["engagementPrompt", "trendContext"].includes(field)) continue;
       if (!item[field]) errors.push(`${item.slug || item.title || "unknown"}: missing ${field}`);
     }
 
@@ -3234,6 +3246,10 @@ async function validateSelectedItems(items, options = {}) {
 export async function buildStaticRss(options = {}) {
   const now = options.now ?? new Date();
   const registryPath = options.registryPath ?? DEFAULT_REGISTRY_PATH;
+  const editorialRegistryPath = options.editorialRegistryPath || path.join(path.dirname(registryPath), "reviewed-editorials.json");
+  let reviewedEditorials = options.reviewedEditorials;
+  if (!reviewedEditorials) { try { reviewedEditorials = JSON.parse(await fs.readFile(editorialRegistryPath,"utf8")); } catch(error) { if(error.code !== "ENOENT") throw error; reviewedEditorials = []; } }
+  if (!Array.isArray(reviewedEditorials)) throw new Error("Reviewed editorial registry must be an array");
   const outputDir = options.outputDir ?? DEFAULT_OUTPUT_DIR;
   const siteUrl =
     options.siteUrl ??
@@ -3344,6 +3360,11 @@ export async function buildStaticRss(options = {}) {
     articleMetadataTimeoutMs: options.articleMetadataTimeoutMs,
     articleMetadataConcurrency: options.articleMetadataConcurrency,
   });
+  for (let index=0; index<metadataItems.length; index++) {
+    const item = metadataItems[index];
+    const review = reviewedEditorials.find(review => review.editorialSourceUrl === (item.originalUrl || item.url));
+    if (review) metadataItems[index] = { ...item, ...review, url:item.url, originalUrl:item.originalUrl || item.url, slug:item.slug || review.slug, sourcePublishedAt:item.sourcePublishedAt, sourceDateStatus:review.sourcePublishedAt && item.sourcePublishedAt && review.sourcePublishedAt.slice(0,10)!==item.sourcePublishedAt.slice(0,10) ? "conflicting" : item.sourceDateStatus, articleMetadata:item.articleMetadata };
+  }
   const crossFeedFilteredItems = excludedOriginalUrls.size
     ? metadataItems.filter((item) => !excludedOriginalUrls.has(normalizeSelectionIdentity(item.originalUrl || item.url || item.title)))
     : metadataItems;
@@ -3367,7 +3388,9 @@ export async function buildStaticRss(options = {}) {
     ? Math.max(maxItems, SOCIAL_QUEUE_CANDIDATE_LIMIT)
     : Math.max(maxItems, ARTICLE_IMAGE_BACKFILL_LIMIT);
   const eligibleBoundaryItems = boundaryScopedItems.filter((item) => item.score >= minimumScore);
-  const initialSelection = selectItems(eligibleBoundaryItems, targets, selectionLimit, { maxPerSource, minimumScore });
+  const editorialDateHeld = eligibleBoundaryItems.filter(item => !hasReviewedSourceBrief(item) || !sourceDateGate(item,now).eligible).map(item => enrichSignalItem(item,{siteUrl}));
+  const editorialDateEligible = eligibleBoundaryItems.filter(item => hasReviewedSourceBrief(item) && sourceDateGate(item,now).eligible);
+  const initialSelection = selectItems(editorialDateEligible, targets, selectionLimit, { maxPerSource, minimumScore });
   let workingSelected = initialSelection.selected.map((item) => enrichSignalItem(item, { siteUrl }));
   // The first metadata pass is intentionally capped so a large source sweep does
   // not spend time opening every article. Selected stories can appear after that
@@ -3441,7 +3464,11 @@ export async function buildStaticRss(options = {}) {
   }
   workingSelected = workingSelected.map((item) => normalizeImagePolicyMetadata(withReviewLabels(item, sourceImageAllowlist), sourceImageAllowlist));
 
-  const heldQueueItems = [];
+  const heldQueueItems = [...editorialDateHeld];
+  // All new featured and social records require independent content/date/rights gates.
+  const promotionHeld = workingSelected.filter(item => !promotionState(item,{now,sourceImageAllowlist}).eligible);
+  heldQueueItems.push(...promotionHeld);
+  workingSelected = workingSelected.filter(item => promotionState(item,{now,sourceImageAllowlist}).eligible);
   if (!isSocialQueueFeedId(feedId)) {
     const publishableItems = workingSelected.filter((item) =>
       item.imageStrategy === "source-allowlisted" ||
@@ -3476,17 +3503,19 @@ export async function buildStaticRss(options = {}) {
   };
 
   if (isSocialQueueFeedId(feedId)) {
-    const queueSelection = selectSocialQueueCandidate(workingSelected, {
+    const queueSelection = selectSocialQueueCandidate([...workingSelected, ...promotionHeld, ...editorialDateHeld], {
       siteUrl,
       requireArticleSpecificImages,
+      now,
     });
     heldQueueItems.push(
       ...workingSelected.filter((item) => !queueSelection.selectedItems.some((selectedItem) => selectedItem.slug === item.slug))
         .filter((item) => item.imageApprovalStatus === "held")
     );
-    const queuePublishedAt = now.toISOString();
+    const queuePublishedAt = queueSelection.selectedItems.length ? now.toISOString() : "";
     workingSelected = queueSelection.selectedItems.map((item) => ({
       ...item,
+      socialRotatedAt: queuePublishedAt,
       publishedAt: queuePublishedAt,
     }));
     queue = {
@@ -3524,7 +3553,8 @@ export async function buildStaticRss(options = {}) {
     requireArticleSpecificImages,
     feedId
   });
-  const feedValid = enrichedSelected.length > 0 && xmlWellFormed && validation.errors.length === 0;
+  const noEligibleStories = enrichedSelected.length === 0;
+  const feedValid = (enrichedSelected.length > 0 || noEligibleStories) && xmlWellFormed && validation.errors.length === 0;
   const existingFeedPath = path.join(outputDir, outputFiles.xml);
   let preservedPreviousFeed = false;
 
@@ -3576,8 +3606,8 @@ export async function buildStaticRss(options = {}) {
     images: {
       mode: requireArticleSpecificImages ? "source-or-codex-queue" : "source-or-codex-queue",
       attempted: dryRun || options.generateSocialImages === false ? 0 : initialSelection.selected.length,
-      approved: enrichedSelected.length + queueOnlyCandidates.filter((item) => item.imageApprovalStatus === "approved").length,
-      held: heldItems.length + queueOnlyCandidates.filter((item) => item.imageApprovalStatus === "held").length,
+      approved: reportImageItems.filter(item => item.imageApprovalStatus === "approved").length + queueOnlyCandidates.filter((item) => item.imageApprovalStatus === "approved").length,
+      held: heldItems.filter(item => item.imageApprovalStatus === "held").length + queueOnlyCandidates.filter((item) => item.imageApprovalStatus === "held").length,
       generated: enrichedSelected.filter((item) => String(item.socialImagePath || item.imagePath || "").startsWith("/images/signals/generated/")).length,
       sourceAllowlisted: enrichedSelected.filter((item) => item.imageStrategy === "source-allowlisted").length,
       codexApproved: enrichedSelected.filter((item) => item.imageStrategy === "held-for-codex-image").length + queueOnlyCandidates.filter((item) => item.imageStrategy === "held-for-codex-image" && item.imageApprovalStatus === "approved").length,
@@ -3589,6 +3619,7 @@ export async function buildStaticRss(options = {}) {
       variety: validation.varietyAudit,
       sourceTypeCounts: countBy(reportImageItems, "imageSourceType"),
       rightsStatusCounts: countBy(reportImageItems, "imageRightsStatus"),
+      editorialHeld: [...promotionHeld,...editorialDateHeld].filter(item => !hasReviewedSourceBrief(item)).length,
       manualReviewNeeded: reportImageItems.filter((item) => (
         item.imageBrief?.manualReviewNeeded ||
         item.imageRightsStatus === "manual-review"
@@ -3714,6 +3745,8 @@ export async function buildStaticRss(options = {}) {
       errors: validation.errors
     },
     feedValid,
+    noEligibleStories,
+    promotionState: noEligibleStories ? "held-no-eligible-story" : "eligible",
     preservedPreviousFeed
   };
 

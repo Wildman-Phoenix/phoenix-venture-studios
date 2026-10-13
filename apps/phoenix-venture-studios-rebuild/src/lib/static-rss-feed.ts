@@ -1,4 +1,21 @@
+import { editorialApprovalPayload, sourceBoundDepth, sourceDateGate } from "./editorial-contract.mjs";
 export interface StaticFeedArticle {
+  deck?: string;
+  editorialReviewStatus?: string;
+  editorialContentDigest?: string;
+  editorialSourceUrl?: string;
+  sourcePublishedAt?: string;
+  sourceDateStatus?: string;
+  discoveredAt?: string;
+  phoenixPublishedAt?: string;
+  socialRotatedAt?: string;
+  publisherName?: string;
+  aggregatorName?: string;
+  articleKind?: string;
+  historicalReviewStatus?: string;
+  promotionEligible?: boolean;
+  phoenixCta?: {label:string;href:string};
+  socialTeaser?: string;
   headline: string;
   source: string;
   date: string;
@@ -13,6 +30,8 @@ export interface StaticFeedArticle {
   socialImageUrl?: string;
   socialImagePath?: string;
   sourceImageUrl?: string;
+  imageApprovalStatus?: string;
+  sourceImagePolicy?: string;
   imageStrategy?: string;
   imageFamily?: string;
   imageSourceType?: string;
@@ -69,6 +88,22 @@ interface JsonFeedItem {
   authors?: { name?: string }[];
   tags?: string[];
   _phoenix?: {
+    deck?: string;
+    editorialReviewStatus?: string;
+    editorialContentDigest?: string;
+    editorialSourceUrl?: string;
+    sourcePublishedAt?: string;
+    sourceDateStatus?: string;
+    discoveredAt?: string;
+    phoenixPublishedAt?: string;
+    socialRotatedAt?: string;
+    publisherName?: string;
+    aggregatorName?: string;
+    articleKind?: string;
+    historicalReviewStatus?: string;
+    promotionEligible?: boolean;
+    phoenixCta?: {label:string;href:string};
+    socialTeaser?: string;
     source?: string;
     bucket?: string;
     score?: number;
@@ -77,7 +112,9 @@ interface JsonFeedItem {
     socialImageUrl?: string;
     socialImagePath?: string;
     sourceImageUrl?: string;
-    imageStrategy?: string;
+    imageApprovalStatus?: string;
+  sourceImagePolicy?: string;
+  imageStrategy?: string;
     imageFamily?: string;
     imageSourceType?: string;
     imageCredit?: string;
@@ -97,8 +134,7 @@ interface JsonFeedItem {
     engagementPrompt?: string;
     whySelected?: string;
     editorialMode?: string;
-    editorialSourceUrl?: string;
-    editorialReviewStatus?: string;
+
     feedId?: string;
     feedRole?: string;
     rssStory?: string;
@@ -358,13 +394,15 @@ export async function loadStaticRssFeed(count = 10, feedFile = "feed.json"): Pro
   }
 
   const feed = (await response.json()) as JsonFeed;
-  const articles = (feed.items || []).slice(0, count).map((rawItem) => {
+  const articles = await Promise.all((feed.items || []).slice(0, count).map(async (rawItem) => {
     const metadata = rawItem._phoenix || {};
     const sourceUrl = rawItem.external_url || metadata.originalUrl || "";
     const body = Array.isArray(metadata.articleBody) ? metadata.articleBody : [];
-    const reviewed = Boolean(sourceUrl) && metadata.editorialReviewStatus === "approved" && metadata.editorialSourceUrl === sourceUrl &&
-      body.length >= 4 && body.every(paragraph => typeof paragraph === "string" && paragraph.trim()) && body.join(" ").split(/\s+/).filter(Boolean).length >= 300 &&
-      Array.isArray(metadata.sourceLinks) && metadata.sourceLinks.some(link => link && link.url === sourceUrl);
+    const approvalItem = {...metadata, title:rawItem.title, url:sourceUrl, originalUrl:sourceUrl};
+    const digest = crypto.subtle ? [...new Uint8Array(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(editorialApprovalPayload(approvalItem))))].map(byte=>byte.toString(16).padStart(2,"0")).join("") : "";
+    const reviewed = sourceBoundDepth(approvalItem) && Boolean(digest) && digest === metadata.editorialContentDigest;
+    const dateReady = sourceDateGate(approvalItem).eligible;
+    const imageReady = metadata.imageApprovalStatus === "approved" && ["owned-or-licensed","allowed","allowlisted","licensed","phoenix-owned"].includes(metadata.imageRightsStatus || "") && ["held-for-codex-image","source-allowlisted"].includes(metadata.imageStrategy || "") && Boolean(metadata.socialImagePath?.match(/^\/images\/signals\/(generated|source-art)\//)) && !metadata.imageBrief?.manualReviewNeeded && (metadata.imageStrategy !== "source-allowlisted" || metadata.sourceImagePolicy === "allowed");
     const item: JsonFeedItem = reviewed ? rawItem : {
       ...rawItem,
       content_text: metadata.sourceTitle || rawItem.title,
@@ -431,6 +469,18 @@ export async function loadStaticRssFeed(count = 10, feedFile = "feed.json"): Pro
       source,
       date: formatFeedDate(item.date_published),
       publishedAt: item.date_published || "",
+      deck: reviewed ? metadata.deck || summary : "",
+      editorialReviewStatus: metadata.editorialReviewStatus,
+      promotionEligible: reviewed && dateReady && imageReady,
+      sourcePublishedAt: metadata.sourcePublishedAt,
+      sourceDateStatus: metadata.sourceDateStatus,
+      discoveredAt: metadata.discoveredAt,
+      phoenixPublishedAt: metadata.phoenixPublishedAt,
+      socialRotatedAt: metadata.socialRotatedAt,
+      publisherName: metadata.publisherName,
+      aggregatorName: metadata.aggregatorName,
+      articleKind: metadata.articleKind,
+      phoenixCta: reviewed ? metadata.phoenixCta : undefined,
       summary,
       sourceSummary,
       url: internalUrl,
@@ -441,6 +491,8 @@ export async function loadStaticRssFeed(count = 10, feedFile = "feed.json"): Pro
       socialImagePath,
       socialImageUrl,
       imageStrategy: item._phoenix?.imageStrategy,
+      imageApprovalStatus: item._phoenix?.imageApprovalStatus,
+      sourceImagePolicy: item._phoenix?.sourceImagePolicy,
       imageFamily: item._phoenix?.imageFamily,
       imageSourceType: item._phoenix?.imageSourceType,
       imageCredit: item._phoenix?.imageCredit,
@@ -470,7 +522,7 @@ export async function loadStaticRssFeed(count = 10, feedFile = "feed.json"): Pro
       researchCitationCount: researchCitations.length,
       relatedSignalCount: relatedRecentSignals.length,
     };
-  });
+  }));
 
   return {
     articles,

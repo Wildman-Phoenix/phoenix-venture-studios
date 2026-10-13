@@ -1,3 +1,4 @@
+import { promotionState } from "./editorial-gates.mjs";
 import { buildCombinedFounderSignal } from "./build-combined-founder-signal.mjs";
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -7,6 +8,7 @@ import { fileURLToPath } from "node:url";
 import {
   DEFAULT_FEED_CONFIGS,
   validateRss,
+  buildFeedXml,
   writeRecentSelectionHistory,
 } from "./generate-static-rss.mjs";
 
@@ -92,7 +94,7 @@ async function feedArtifactsLookValid(baseDir, config = {}) {
   try {
     const xml = await fs.readFile(path.join(baseDir, xmlFile), "utf8");
     const json = JSON.parse(await fs.readFile(path.join(baseDir, jsonFile), "utf8"));
-    return validateRss(xml) && Array.isArray(json.items) && json.items.length > 0;
+    return validateRss(xml) && Array.isArray(json.items) && (json.items.length > 0 || json.promotion_state === "held-no-eligible-story");
   } catch {
     return false;
   }
@@ -194,7 +196,7 @@ async function updateQueueReports(baseDir, feeds, historyUpdated) {
     const report = await readReport(baseDir, { outputFiles: feed.report.outputFiles }) || feed.report;
     report.queue = {
       ...(report.queue || {}),
-      historyUpdated,
+      historyUpdated: historyUpdated && feed.selected > 0,
     };
     await fs.writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`, "utf8");
     feed.report = report;
@@ -301,6 +303,26 @@ export async function runFeedChild(config, options = {}) {
   };
 }
 
+export async function holdIneligibleInactiveQueues(baseDir, activeIds = [], now = new Date()) {
+ const changed=[];
+ for (const config of DEFAULT_FEED_CONFIGS.filter(config => !activeIds.includes(config.id) && isSocialFeed(config.id))) {
+  const files=config.outputFiles;
+  let feed,report;
+  try { feed=JSON.parse(await fs.readFile(path.join(baseDir,files.json),"utf8")); report=JSON.parse(await fs.readFile(path.join(baseDir,files.reportJson),"utf8")); } catch(error) { if(error.code === "ENOENT") continue;throw error; }
+  if (!Array.isArray(feed.items)) throw new Error(`Invalid inactive queue ${config.id}`);
+  if (!feed.items.length || feed.items.every(item => promotionState({...item._phoenix,title:item.title,originalUrl:item.external_url},{now}).eligible)) continue;
+  const xml=buildFeedXml([],{now,title:config.title,description:config.description,feedFile:files.xml});
+  await fs.writeFile(path.join(baseDir,files.xml),xml);
+  await fs.writeFile(path.join(baseDir,files.json),JSON.stringify({...feed,items:[],promotion_state:"held-no-eligible-story"},null,2));
+  await fs.writeFile(path.join(baseDir,files.items),"[]");
+  const held={...report,generatedAt:now.toISOString(),feedValid:true,noEligibleStories:true,promotionState:"held-no-eligible-story",preservedPreviousFeed:false,items:{...report.items,selected:0},selectedItems:[],queue:{...report.queue,eligibleSelected:false,sampleReady:false,historyUpdated:false,queuePublishedAt:"",selectedOriginalUrl:"",selectedCanonicalKey:"",queueRotationReason:"held-no-eligible-story"}};
+  await fs.writeFile(path.join(baseDir,files.reportJson),JSON.stringify(held,null,2));
+  await fs.writeFile(path.join(baseDir,files.reportMd),`# Social queue held\n\nNo story passes the independent editorial, source-date and image-provenance gates. History and rotation are unchanged.\n`);
+  changed.push(config.id);
+ }
+ return changed;
+}
+
 export async function runSupervisedGeneration(options = {}) {
   const workingDir = await prepareWorkingRssDir();
   // Retain the hydrated live identities before rolling feeds replace them.
@@ -309,14 +331,15 @@ export async function runSupervisedGeneration(options = {}) {
   const startedAt = new Date().toISOString();
   const feedConfigs = options.feedConfigs || DEFAULT_FEED_CONFIGS;
   const feeds = [];
+  const heldInactiveQueues = await holdIneligibleInactiveQueues(workingDir,feedConfigs.map(config=>config.id));
 
   for (const config of feedConfigs) {
     feeds.push(await runFeedChild(config, { ...options, outputDir: workingDir }));
   }
 
   let historyUpdated = false;
-  if (feeds.every((feed) => feed.safeOutput)) {
-    await writeRecentSelectionHistory(workingDir, feeds.map((feed) => ({ report: feed.report })), new Date());
+  if (feeds.every((feed) => feed.safeOutput) && feeds.some(feed => feed.selected > 0)) {
+    await writeRecentSelectionHistory(workingDir, feeds.filter(feed => feed.selected > 0).map((feed) => ({ report: feed.report })), new Date());
     historyUpdated = true;
     await updateQueueReports(workingDir, feeds, true);
   }
@@ -331,6 +354,7 @@ export async function runSupervisedGeneration(options = {}) {
     preservedCount: feeds.filter((feed) => feed.preservedPreviousFeed).length,
     timeoutCount: feeds.filter((feed) => feed.timedOut).length,
     historyUpdated,
+    heldInactiveQueues,
     feeds: feeds.map((feed) => ({
       feedId: feed.feedId,
       startedAt: feed.startedAt,

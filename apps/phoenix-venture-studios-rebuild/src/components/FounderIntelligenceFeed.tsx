@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Newspaper, RefreshCw, Zap } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
-import { isSupabaseConfigured, supabase } from "@/integrations/supabase/client";
 import { loadMergedStaticRssFeeds } from "@/lib/static-rss-feed";
 import { getPrimaryArticleLink } from "@/lib/market-intelligence-feed";
 
@@ -17,24 +16,9 @@ interface Article {
   originalUrl?: string;
 }
 
-const CACHE_KEY = "pvs_intel_feed_v2";
-const CACHE_TTL = 1000 * 60 * 30; // 30 min
-
-function getCached(): { articles: Article[]; ts: number } | null {
-  try {
-    const raw = localStorage.getItem(CACHE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw);
-    if (Date.now() - parsed.ts < CACHE_TTL) return parsed;
-  } catch {
-    // Ignore malformed local cache and fetch fresh data.
-  }
-  return null;
-}
-
 async function loadStaticFounderArticles() {
-  const feed = await loadMergedStaticRssFeeds(5);
-  return feed.articles.map((article) => ({
+  const feed = await loadMergedStaticRssFeeds(Number.MAX_SAFE_INTEGER);
+  return feed.articles.filter(article => article.promotionEligible).slice(0,5).map((article) => ({
     headline: article.headline,
     source: article.source,
     date: article.date,
@@ -42,22 +26,6 @@ async function loadStaticFounderArticles() {
     url: article.url,
     internalPath: article.internalPath,
     originalUrl: article.originalUrl,
-  }));
-}
-
-async function loadFounderArticlesFromFunction() {
-  const { data, error: fnError } = await supabase.functions.invoke("founder-intelligence");
-  if (fnError) throw fnError;
-
-  return ((data?.articles || []) as any[]).slice(0, 5).map((article) => ({
-    headline: article.headline || "",
-    source: article.source || "",
-    date: article.date || "",
-    summary: article.whyItMatters || article.summary || "",
-    url: article.url || "",
-    internalPath: article.internalPath || article.internal_path || article._phoenix?.internalPath,
-    originalUrl:
-      article.originalUrl || article.original_url || article.external_url || article._phoenix?.originalUrl,
   }));
 }
 
@@ -78,34 +46,24 @@ const FounderIntelligenceFeed = () => {
   const [error, setError] = useState(false);
   const tickerRef = useRef<HTMLDivElement>(null);
 
-  const fetchArticles = async (force = false) => {
-    if (!force) {
-      const cached = getCached();
-      if (cached) {
-        setArticles(cached.articles);
-        setLoading(false);
-        return;
-      }
-    }
+  const fetchArticles = async (_force = false) => {
 
     setLoading(true);
     setError(false);
     try {
-      let arts = await loadStaticFounderArticles();
+      const arts = await loadStaticFounderArticles();
 
-      if (!arts.length && isSupabaseConfigured) {
-        arts = await loadFounderArticlesFromFunction();
-      }
+      // A held curated feed must not fall back to unreviewed function results.
 
       setArticles(arts);
-      localStorage.setItem(CACHE_KEY, JSON.stringify({ articles: arts, ts: Date.now() }));
+
     } catch (err) {
       console.error("Feed error:", err);
       try {
         const fallbackArticles = await loadStaticFounderArticles();
         setArticles(fallbackArticles);
         setError(false);
-        localStorage.setItem(CACHE_KEY, JSON.stringify({ articles: fallbackArticles, ts: Date.now() }));
+
       } catch (fallbackError) {
         console.error("Static fallback error:", fallbackError);
         setError(true);

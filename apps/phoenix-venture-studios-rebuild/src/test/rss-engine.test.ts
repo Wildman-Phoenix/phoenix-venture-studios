@@ -5,12 +5,13 @@ import os from "node:os";
 import path from "node:path";
 import sharp from "sharp";
 import {
-  buildAllStaticRss,
-  buildStaticRss,
+  buildAllStaticRss as buildAllStaticRssRaw,
+  buildStaticRss as buildStaticRssRaw,
   collectOfficialPageSource,
   collectPerplexityResearchSource,
   collectYoutubeSource,
   buildFeedJson,
+  editorialContentDigest,
   buildFeedXml,
   buildSignalSlug,
   classifyItem,
@@ -36,6 +37,25 @@ import {
 import { buildImageReviewQueue } from "../../scripts/rss/image-review-queue.mjs";
 import { buildImageReviewRepository } from "../../scripts/rss/image-review-repository.mjs";
 import { writeSignalStaticPages } from "../../scripts/rss/signal-page-html.mjs";
+
+// These image/routing integration fixtures deliberately supply reviewed test
+// editorial and publisher-date evidence. Empty/pending behavior is tested separately.
+function reviewedFixtureOptions(options: any) {
+ const reviews: any[]=[];
+ return {...options, reviewedEditorials:reviews,
+  fetchArticleMetadataImpl:async (url: string, context: any) => ({...(options.fetchArticleMetadataImpl ? await options.fetchArticleMetadataImpl(url,context) : {ok:true,canonicalUrl:url,imageUrl:""}),sourcePublishedAt:(options.now || new Date()).toISOString(),sourceDateStatus:"verified",publisherName:"Fixture publisher"}),
+  fetchTextImpl:async (...args: any[]) => {
+   const xml=await options.fetchTextImpl(...args);
+   if(/<rss|<feed/.test(xml)) for(const item of parseFeedXml(xml,{id:"fixture",name:"Fixture publisher",buckets:["ai_operator_impact"]})) {
+    const review:any={editorialSourceUrl:item.url,editorialReviewStatus:"approved",publicTitle:item.title,sourceTitle:item.title,deck:"Reviewed fixture summary",articleBody:Array.from({length:4},(_,index)=>`Test section ${index}. `+"Fictional fixture evidence and original explanation for integration verification. ".repeat(12)),sourceLinks:[{label:"Fixture publisher",url:item.url}]};
+    review.editorialContentDigest=editorialContentDigest(review);reviews.push(review);
+   }
+   return xml;
+  }
+ };
+}
+const buildStaticRss=(options:any)=>buildStaticRssRaw(reviewedFixtureOptions(options));
+const buildAllStaticRss=(options:any)=>buildAllStaticRssRaw(reviewedFixtureOptions(options));
 
 const source = {
   id: "fixture",
@@ -661,7 +681,7 @@ describe("static RSS engine", () => {
     expect(item._phoenix.imageStrategy).toBe("held-for-codex-image");
     expect(item._phoenix.imageApprovalStatus).toBe("approved");
     expect(item._phoenix.imageFamily).toBe("capital_readiness");
-    expect(item._phoenix.imageRightsStatus).toBe("owned-or-licensed");
+    expect(item._phoenix.imageRightsStatus).toBe("manual-review");
     expect(item._phoenix.imageBrief.storyAngle).toBe("Capital readiness");
     expect(item._phoenix.slug).toMatch(/^founder-s-ai-credit-shift-/);
     expect(item._phoenix.internalPath).toContain(`/founder-signal/signals/${item._phoenix.slug}`);
@@ -2106,21 +2126,16 @@ describe("static RSS engine", () => {
     const feed = JSON.parse(await fs.readFile(path.join(tempDir, "feed.json"), "utf8"));
 
     expect(report.feedValid).toBe(true);
+    expect(report.noEligibleStories).toBe(true);
     expect(report.preservedPreviousFeed).toBe(false);
     expect(report.images.manualReviewNeeded).toBe(1);
     expect(report.images.held).toBe(0);
     expect(report.images.approved).toBe(1);
-    expect(report.images.creativeFollowUpSelected).toBe(1);
-    expect(report.images.warnings.length).toBeGreaterThanOrEqual(1);
-    expect(report.images.warnings.some((entry) => /reference-only|manual review|best approved Phoenix-owned background/i.test(entry.warning))).toBe(true);
-    expect(report.selectedItems[0].expectedArticleImagePath).toContain("/images/signals/source-art/");
-    expect(report.selectedItems[0].imageDiagnosticReason).toMatch(/Phoenix generated art used|Phoenix-owned background/i);
-    expect(feed.items[0].image).toContain("/images/signals/generated/");
-    expect(feed.items[0].image).not.toBe("https://storage.googleapis.com/gweb-uniblog-publish-prod/images/IO26_Dialogues_3z680sK.max-600x600.format-webp.webp");
-    expect(feed.items[0]._phoenix.sourceImageUrl).toBe("");
+    expect(report.selectedItems).toEqual([]);
+    expect(feed.items).toEqual([]);
   });
 
-  it("records lead Founder Signal depth warnings when top feed items lack depth artifacts", async () => {
+  it("keeps reviewed source-bound depth for lead fixtures", async () => {
     const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "phoenix-rss-depth-audit-"));
     const registryPath = path.join(tempDir, "registry.json");
     await fs.writeFile(registryPath, JSON.stringify({
@@ -2168,14 +2183,14 @@ describe("static RSS engine", () => {
     const reportMd = await fs.readFile(path.join(tempDir, "run-report.md"), "utf8");
     expect(report.feedValid).toBe(true);
     expect(report.editorial.depthAudit.checkedLeadItems).toBe(1);
-    expect(report.editorial.depthAudit.thinLeadItems).toBe(1);
-    expect(report.editorial.depthAudit.leadItemsWithDepth).toBe(0);
-    expect(report.editorial.warnings.some((warning) => /lead Founder Signal item is shipping without articleBody/i.test(warning))).toBe(true);
+    expect(report.editorial.depthAudit.thinLeadItems).toBe(0);
+    expect(report.editorial.depthAudit.leadItemsWithDepth).toBe(1);
+    expect(report.editorial.warnings.some((warning) => /lead Founder Signal item is shipping without articleBody/i.test(warning))).toBe(false);
     expect(reportMd).toContain("## Lead Depth Audit");
-    expect(reportMd).toContain("Thin lead items: 1");
+    expect(reportMd).toContain("Thin lead items: 0");
   });
 
-  it("publishes social queue items with approved Phoenix fallback backgrounds when story art is missing", async () => {
+  it("holds social queue when source-reference image provenance still needs review", async () => {
     const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "phoenix-rss-social-sample-ready-"));
     const registryPath = path.join(tempDir, "registry.json");
     await fs.writeFile(registryPath, JSON.stringify({
@@ -2219,17 +2234,18 @@ describe("static RSS engine", () => {
       }
     });
 
-    expect(report.feedValid).toBe(false);
+    expect(report.feedValid).toBe(true);
+    expect(report.noEligibleStories).toBe(true);
     expect(report.preservedPreviousFeed).toBe(false);
     expect(report.queue.isSocialQueue).toBe(true);
     expect(report.queue.candidatePoolSize).toBe(1);
     expect(report.queue.eligibleSelected).toBe(false);
     expect(report.queue.sampleReady).toBe(false);
-    expect(report.queue.queueRotationReason).toBe("held-no-eligible-article-image");
+    expect(report.queue.queueRotationReason).toBe("held-no-eligible-story");
     expect(report.images.manualReviewNeeded).toBe(1);
     expect(report.images.held).toBe(0);
     expect(report.images.approved).toBe(1);
-    expect(report.images.creativeFollowUpSelected).toBe(1);
+    expect(report.images.creativeFollowUpSelected).toBe(0);
     expect(report.images.warnings.some((entry) => /best approved Phoenix-owned background/i.test(entry.warning))).toBe(true);
     expect(report.selectedItems).toHaveLength(0);
     expect(report.queue.candidates[0].imageStrategy).toBe("held-for-codex-image");
@@ -2537,7 +2553,7 @@ describe("static RSS engine", () => {
     expect(html).toContain('<meta name="twitter:image" content="https://preview.example.com/images/signals/generated/ai-agents-change-sales-operations-47907e2e.jpg"');
   });
 
-  it("preserves the previous valid feed when the current source set is empty", async () => {
+  it("does not repromote the previous pending feed when the current source set is empty", async () => {
     const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "phoenix-rss-preserve-"));
     const registryPath = path.join(tempDir, "registry.json");
     const previousXml = buildFeedXml([
@@ -2575,9 +2591,10 @@ describe("static RSS engine", () => {
       siteUrl: "https://preview.example.com"
     });
 
-    expect(report.feedValid).toBe(false);
-    expect(report.preservedPreviousFeed).toBe(true);
-    expect(await fs.readFile(path.join(tempDir, "feed.xml"), "utf8")).toBe(previousXml);
+    expect(report.feedValid).toBe(true);
+    expect(report.noEligibleStories).toBe(true);
+    expect(report.preservedPreviousFeed).toBe(false);
+    expect(await fs.readFile(path.join(tempDir, "feed.xml"), "utf8")).not.toContain("<item>");
   });
 
   it("uses PHOENIX_RSS_SITE_URL when no explicit siteUrl option is passed", async () => {

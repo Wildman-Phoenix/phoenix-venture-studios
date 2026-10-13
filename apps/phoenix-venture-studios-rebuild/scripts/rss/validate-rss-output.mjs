@@ -1,3 +1,4 @@
+import { hasReviewedSourceBrief, promotionState } from "./editorial-gates.mjs";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -172,13 +173,21 @@ export async function validateRssOutput(argv = process.argv.slice(2)) {
     const xml = await readText(expectation.xml).catch(() => "");
     if (!validateRss(xml)) errors.push(`${expectation.xml} is not well-formed RSS`);
     const itemCount = (xml.match(/<item>/g) || []).length;
+    const jsonStatus = JSON.parse(await readText(expectation.json).catch(() => "{}"));
+    const heldEmpty = itemCount === 0 && Array.isArray(jsonStatus.items) && jsonStatus.items.length === 0 && jsonStatus.promotion_state === "held-no-eligible-story";
+    if (heldEmpty) {
+      const reportFile = {"feed.json":"run-report.json","tools.json":"tools-run-report.json","ai-attention.json":"ai-attention-run-report.json","social.json":"social-run-report.json","tools-social.json":"tools-social-run-report.json","ai-attention-social.json":"ai-attention-social-run-report.json"}[expectation.json];
+      const heldReport = JSON.parse(await readText(reportFile).catch(() => "{}"));
+      if (heldReport.noEligibleStories !== true || heldReport.items?.selected !== 0 || heldReport.preservedPreviousFeed === true) errors.push(`${expectation.xml} empty feed lacks an explicit non-preserving hold report`);
+      if (expectation.items === 1 && (heldReport.queue?.queuePublishedAt || heldReport.queue?.eligibleSelected || heldReport.queue?.historyUpdated)) errors.push(`${expectation.xml} held queue cannot rotate or advance history`);
+    }
     if (expectation.items === 1) {
-      if (itemCount !== 1) errors.push(`${expectation.xml} must contain 1 item`);
-    } else if (itemCount < 1 || itemCount > expectation.items) {
+      if (!heldEmpty && itemCount !== 1) errors.push(`${expectation.xml} must contain 1 item`);
+    } else if (!heldEmpty && (itemCount < 1 || itemCount > expectation.items)) {
       errors.push(`${expectation.xml} must contain between 1 and ${expectation.items} items`);
     }
-    if (!xml.includes("/founder-signal/signals/")) errors.push(`${expectation.xml} missing Phoenix signal links`);
-    if (!xml.includes("/images/signals/generated/")) errors.push(`${expectation.xml} missing generated Phoenix enclosures`);
+    if (!heldEmpty && !xml.includes("/founder-signal/signals/")) errors.push(`${expectation.xml} missing Phoenix signal links`);
+    if (!heldEmpty && !xml.includes("/images/signals/generated/")) errors.push(`${expectation.xml} missing generated Phoenix enclosures`);
     if (expectation.xml === "tools.xml" && !xml.includes("https://phoenixventurestudios.com/rss/tools.xml")) {
       errors.push("tools.xml must self-identify as /rss/tools.xml");
     }
@@ -203,8 +212,8 @@ export async function validateRssOutput(argv = process.argv.slice(2)) {
     if (!Array.isArray(feed.items)) {
       errors.push(`${file} must contain an items array`);
     } else if (expectation.items === 1) {
-      if (feed.items.length !== 1) errors.push(`${file} must contain 1 item`);
-    } else if (feed.items.length < 1 || feed.items.length > expectation.items) {
+      if (!(feed.items.length === 0 && feed.promotion_state === "held-no-eligible-story") && feed.items.length !== 1) errors.push(`${file} must contain 1 item`);
+    } else if (!(feed.items.length === 0 && feed.promotion_state === "held-no-eligible-story") && (feed.items.length < 1 || feed.items.length > expectation.items)) {
       errors.push(`${file} must contain between 1 and ${expectation.items} items`);
     }
     if (file === "tools.json" && feed.feed_url !== "https://phoenixventurestudios.com/rss/tools.json") {
@@ -222,8 +231,9 @@ export async function validateRssOutput(argv = process.argv.slice(2)) {
     for (const item of feed.items || []) {
       const phoenix = item._phoenix || {};
       const label = `${file}:${item.title || phoenix.slug || "unknown"}`;
+      if (!promotionState({...phoenix,title:item.title,originalUrl:item.external_url}).eligible) errors.push(`${label} is not approved for promotion`);
       for (const field of REQUIRED_FIELDS) {
-        const intentionallyEmpty = phoenix.editorialMode === "source-note" && ["engagementPrompt", "trendContext"].includes(field) && phoenix[field] === "";
+        const intentionallyEmpty = (phoenix.editorialMode === "source-note" || hasReviewedSourceBrief({...phoenix, title:item.title, originalUrl:item.external_url})) && ["engagementPrompt", "trendContext"].includes(field) && phoenix[field] === "";
         if (!phoenix[field] && !intentionallyEmpty) errors.push(`${label} missing _phoenix.${field}`);
       }
       if (!String(phoenix.internalUrl || "").startsWith("https://phoenixventurestudios.com/founder-signal/signals/")) {
