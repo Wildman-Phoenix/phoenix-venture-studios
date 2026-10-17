@@ -14,6 +14,7 @@ import {
 } from "./signal-card-images.mjs";
 import { extractArticleMetadata, fetchArticleMetadata } from "./article-metadata.mjs";
 import { collectPerplexityResearchSource as collectPerplexityResearchSourceImpl } from "./perplexity-research.mjs";
+import { parsePublicYoutubeChannel } from "./youtube-channel-source.mjs";
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const APP_ROOT = path.resolve(SCRIPT_DIR, "../..");
@@ -846,11 +847,24 @@ export async function collectRssSource(source, fetchTextImpl, options = {}) {
 }
 
 export async function collectYoutubeSource(source, fetchTextImpl, options = {}) {
-  const xml = await fetchTextImpl(source.url, source.timeoutMs || options.sourceFetchTimeoutMs || 8000);
-  return {
-    items: parseFeedXml(xml, { ...source, type: "youtube", sourceSurface: "youtube" }).map((item) => annotateCandidate(item, source)),
-    warnings: [],
-  };
+  try {
+    const xml = await fetchTextImpl(source.url, source.timeoutMs || options.sourceFetchTimeoutMs || 8000);
+    const items = parseFeedXml(xml, { ...source, type: "youtube", sourceSurface: "youtube" });
+    if (!items.length) throw new Error("YouTube feed returned no video entries");
+    return { items: items.map((item) => annotateCandidate(item, source)), warnings: [] };
+  } catch (error) {
+    if (!source.fallbackUrl) throw error;
+    const fallback = new URL(source.fallbackUrl);
+    if (fallback.origin !== "https://www.youtube.com" || !/^\/@[^/]+\/videos$/.test(fallback.pathname)) {
+      throw new Error("YouTube fallback must be an official public channel videos page");
+    }
+    const html = await fetchTextImpl(fallback.href, source.timeoutMs || options.sourceFetchTimeoutMs || 8000);
+    const items = parsePublicYoutubeChannel(html, source, options.now || new Date());
+    return {
+      items: items.map((item) => annotateCandidate(item, source)),
+      warnings: [{ source: source.name, url: source.url, warning: `Native feed unavailable (${error.message}); used verified public channel metadata. Publication dates are approximate; primary corroboration remains required.` }],
+    };
+  }
 }
 
 function anchorText(value = "") {
@@ -2036,7 +2050,9 @@ function shouldAutoMergeResearchRegistry(registryPath, options = {}) {
 function sourceCadenceApplies(source = {}, now = new Date(), options = {}) {
   if (options.includeOffCadenceSources) return true;
   const cadence = String(source.cadence || "daily").toLowerCase();
-  if (cadence === "weekly-friday") return now.getDay() === 5;
+  if (cadence === "weekly-friday") return new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Detroit", weekday: "short",
+  }).format(now) === "Fri";
   return true;
 }
 
@@ -2047,11 +2063,13 @@ function sourceAppliesToFeed(source = {}, feedId = "", now = new Date(), options
   return !feedIds.length || feedIds.includes(feedId);
 }
 
-async function loadResearchSources(options = {}, feedId = "", registryPath = DEFAULT_REGISTRY_PATH) {
+export async function loadResearchSources(options = {}, feedId = "", registryPath = DEFAULT_REGISTRY_PATH) {
   const now = options.now || new Date();
   const limit = Number(options.researchSourceLimit ?? (isToolsFeedId(feedId) ? 8 : 6));
+  const reserved = (source) => feedId === "founder-tools" && source.reserveOnCadence === true &&
+    source.cadence === "weekly-friday" && sourceCadenceApplies(source, now);
   const applyLimit = (sources = []) => sources
-    .sort((left, right) => Number(right.score ?? 0) - Number(left.score ?? 0))
+    .sort((left, right) => Number(reserved(right)) - Number(reserved(left)) || Number(right.score ?? 0) - Number(left.score ?? 0))
     .slice(0, Math.max(0, limit));
   if (Array.isArray(options.researchSources)) {
     return applyLimit(options.researchSources.filter((source) => source?.enabled && sourceAppliesToFeed(source, feedId, now, options)));
@@ -3571,6 +3589,7 @@ export async function buildStaticRss(options = {}) {
       fetched: enabledSources.length - sourceErrors.length,
       byType: countBy(enabledSources.map((source) => ({ type: normalizeSourceType(source) })), "type"),
       researchEnabled: researchSources.length,
+      researchSelectedIds: researchSources.map((source) => source.id),
       warnings: sourceWarnings,
       errors: sourceErrors
     },
@@ -3752,7 +3771,23 @@ export async function buildStaticRss(options = {}) {
 
   if (!dryRun) {
     await fs.mkdir(outputDir, { recursive: true });
-    if (feedValid) {
+    // A quiet/held run must not clear a genuinely reviewed current feed.
+    // Legacy source-note feeds do not qualify for preservation.
+    if (noEligibleStories) {
+      try {
+        const previousXml = await fs.readFile(existingFeedPath, "utf8");
+        const previousJson = JSON.parse(await fs.readFile(path.join(outputDir, outputFiles.json), "utf8"));
+        const previousItems = (previousJson.items || []).map((entry) => entry._phoenix || {});
+        if (previousItems.length && validateRss(previousXml) &&
+          previousItems.every((item) => promotionState(item, { now }).eligible)) {
+          preservedPreviousFeed = true;
+          report.preservedPreviousFeed = true;
+          report.retainedPreviousItems = previousItems.length;
+          report.promotionState = "held-preserved-reviewed-feed";
+        }
+      } catch { /* No reviewed last-good bundle to retain. */ }
+    }
+    if (feedValid && !preservedPreviousFeed) {
       const publicItems = enrichedSelected.map((item) => ({
         ...normalizeImagePolicyMetadata(item, sourceImageAllowlist),
         url: item.internalUrl || item.url,
@@ -3762,7 +3797,7 @@ export async function buildStaticRss(options = {}) {
       await writeJson(path.join(outputDir, outputFiles.json), feedJson);
       await writeJson(path.join(outputDir, outputFiles.items), publicItems);
       report.aliases.written = outputAliases.filter((alias) => alias?.from && alias?.to);
-    } else {
+    } else if (!feedValid) {
       try {
         const previous = await fs.readFile(existingFeedPath, "utf8");
         preservedPreviousFeed = validateRss(previous);
@@ -3773,7 +3808,7 @@ export async function buildStaticRss(options = {}) {
     }
     await fs.writeFile(path.join(outputDir, outputFiles.reportMd), reportMarkdown(report), "utf8");
     await writeJson(path.join(outputDir, outputFiles.reportJson), report);
-    if (feedValid) {
+    if (feedValid && !preservedPreviousFeed) {
       await writeOutputAliases(outputDir, outputAliases);
     }
   }

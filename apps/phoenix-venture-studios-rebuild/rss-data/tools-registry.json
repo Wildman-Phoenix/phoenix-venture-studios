@@ -152,6 +152,26 @@
       "score": 78,
       "buckets": ["ai_implementation", "ai_tools_agents", "jamstack_ops"],
       "notes": "Disabled because the AI-specific URL returned 404 during implementation; the general InfoQ feed is enabled instead."
+    },
+    {
+      "id": "phoenix-reviewed-fast-mode",
+      "name": "Phoenix reviewed capability briefing",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#october-15-2026-5",
+      "type": "manual-signal",
+      "itemsPath": "rss-data/manual-signals.json",
+      "itemIds": [
+        "opus-fast-mode-completed-task-20261017"
+      ],
+      "feedIds": [
+        "founder-tools"
+      ],
+      "enabled": true,
+      "score": 300,
+      "buckets": [
+        "ai_implementation",
+        "ai_tools_agents",
+        "business_automation"
+      ]
     }
   ]
 }

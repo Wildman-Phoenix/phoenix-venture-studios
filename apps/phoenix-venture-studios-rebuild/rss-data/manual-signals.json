@@ -193,6 +193,83 @@
       "imageRightsStatus": "manual-review",
       "imageApprovalStatus": "held",
       "imageHoldReason": "waiting-for-user-provided-cover-file"
+    },
+    {
+      "id": "opus-fast-mode-completed-task-20261017",
+      "enabled": true,
+      "feedIds": [
+        "founder-tools"
+      ],
+      "title": "Before you pay for faster AI, time the whole task",
+      "publicTitle": "Before you pay for faster AI, time the whole task",
+      "sourceTitle": "Claude Platform release notes — October 15, 2026",
+      "slug": "faster-ai-time-the-whole-task-2026-10-17",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#october-15-2026-5",
+      "originalUrl": "https://platform.claude.com/docs/en/release-notes/overview#october-15-2026-5",
+      "sourceName": "Anthropic Claude Platform",
+      "sourceScore": 300,
+      "sourceSurface": "phoenix-original",
+      "publishedAt": "2026-10-15T00:00:00Z",
+      "sourcePublishedAt": "2026-10-15T00:00:00Z",
+      "sourceDateStatus": "verified",
+      "sourceDateEvidence": [
+        {
+          "type": "official-release-notes-and-rss",
+          "url": "https://platform.claude.com/docs/en/release-notes/feed.xml",
+          "value": "Thu, 15 Oct 2026 00:00:00 GMT"
+        }
+      ],
+      "description": "Opus 5.5 fast mode has left research preview. Phoenix explains how to compare complete task time, review effort and cost before changing a founder workflow.",
+      "simpleSummary": "Fast mode is easier to access for Opus 5.5. Measure the time and cost of an accepted result before deciding whether to change a business workflow.",
+      "articleBody": [
+        "Anthropic's October 15 platform release notes say fast mode for Claude Opus 5.5 has left research preview. Developers no longer need to request access or supply the fast-mode beta header for that model. The same note distinguishes older Opus versions, whose fast mode remains in research preview. That distinction matters: an update to one model and API surface does not establish that every Claude product has changed in the same way.",
+        "For a founder, the useful question is what a faster response changes in a complete job. Consider preparing a customer proposal. The job includes finding the right information, generating a draft, checking the customer's requirements, correcting mistakes and deciding whether the proposal is ready. A reduction in model waiting time can help. It does not by itself establish that the finished proposal costs less or needs less review. That is a business hypothesis to test, rather than a result demonstrated by this announcement.",
+        "A practical comparison starts with a small set of representative tasks and an acceptance checklist written before testing. Keep the inputs and expected outputs consistent. Record the time from starting the task to an accepted result, the review time, retries, failed requests and the actual usage cost. Compare the normal and fast paths on that basis. A few impressive responses are useful observations, but they are not enough to estimate a dependable saving across a whole business.",
+        "Availability also deserves a separate check. The release note describes default fast-mode rate limits for the Start, Build and Scale API usage tiers and availability for Opus 5.5 deployments hosted on Azure through Microsoft Foundry. An operator should check the documentation for the exact account and deployment being used, then confirm current pricing before running a comparison. This briefing does not assume a particular price premium or promise that a consumer subscription includes the API behavior.",
+        "Phoenix's interpretation is that easier access makes a controlled trial more practical. It is not a reason to replace a working production workflow immediately. Start with a reversible task that has a clear completion standard. Keep a human decision at the point where an output becomes a customer commitment. If the faster path reduces total completion time while meeting the same standard at an acceptable cost, there is a concrete case for expanding it. If checking and correction still dominate, that is the next bottleneck to address.",
+        "This article is an original analysis of the vendor's dated release note. Phoenix has not benchmarked this fast-mode release, and no performance percentage is claimed here. The next useful evidence is a documented comparison on a real workflow, with the model, settings, costs, limitations and acceptance criteria disclosed. Read the linked primary source for the release details, then choose one task where waiting time is a measurable part of the work."
+      ],
+      "sourceLinks": [
+        {
+          "label": "Anthropic: October 15 platform release notes",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview#october-15-2026-5"
+        }
+      ],
+      "researchCitations": [
+        {
+          "label": "Official release note and availability details",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview#october-15-2026-5"
+        }
+      ],
+      "editorialSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview#october-15-2026-5",
+      "editorialReviewStatus": "approved",
+      "editorialReviewer": "Codex — primary-source fact check and original analysis",
+      "editorialReviewedAt": "2026-10-17T02:00:00Z",
+      "articleKind": "current-news",
+      "whyItMatters": "A faster model response can reduce waiting, while review and correction can still determine the cost of a finished customer task.",
+      "whyShared": "Phoenix compares model capability announcements with the business workflow they could change.",
+      "founderTakeaway": "Test one reversible task using consistent acceptance criteria, total completion time, review time and actual cost.",
+      "businessTakeaway": "Expand a faster path only when accepted outcomes meet the same standard at an acceptable total cost.",
+      "trendContext": "The useful next evidence is a repeatable workflow comparison rather than a model response-time claim.",
+      "engagementPrompt": "Choose one task where waiting time is measurable, and define what an accepted result looks like before comparing modes.",
+      "sourceImageUrl": "",
+      "imageRightsStatus": "owned-or-licensed",
+      "articleMetadata": {
+        "ok": true,
+        "sourceDateStatus": "verified",
+        "sourcePublishedAt": "2026-10-15T00:00:00Z",
+        "sourceDateEvidence": [
+          {
+            "type": "official-rss",
+            "url": "https://platform.claude.com/docs/en/release-notes/feed.xml",
+            "value": "Thu, 15 Oct 2026 00:00:00 GMT"
+          }
+        ],
+        "canonicalUrl": "https://platform.claude.com/docs/en/release-notes/overview#october-15-2026-5",
+        "imageUrl": "",
+        "publisherName": "Anthropic"
+      },
+      "editorialContentDigest": "eb91216d83b0c08dff10b5eea3b3b1a45317fea45fa4746c66180eb1afcd732b"
     }
   ]
 }

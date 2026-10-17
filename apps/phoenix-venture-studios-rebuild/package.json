@@ -39,7 +39,7 @@
     "rss:publish-production": "node scripts/rss/publish-production-rss.mjs",
     "preview:publish": "node scripts/preview/publish-preview-app.mjs",
     "images:contact-sheet": "node scripts/preview/build-image-contact-sheet.mjs",
-    "rss:test": "PHOENIX_RSS_DISABLE_ARTICLE_METADATA=1 NODE_OPTIONS=--require=./scripts/rss/register-rollup-wasm.cjs vitest run --config vitest.rss.config.ts src/test/rss-engine.test.ts",
+    "rss:test": "node scripts/rss/test-source-repair.mjs && PHOENIX_RSS_DISABLE_ARTICLE_METADATA=1 NODE_OPTIONS=--require=./scripts/rss/register-rollup-wasm.cjs vitest run --config vitest.rss.config.ts src/test/rss-engine.test.ts",
     "test:watch": "vitest"
   },
   "dependencies": {

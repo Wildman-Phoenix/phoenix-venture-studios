@@ -300,6 +300,9 @@
       "limit": 4
     },
     {
+      "reserveOnCadence": true,
+      "fallbackUrl": "https://www.youtube.com/@mreflow/videos",
+      "collectTimeoutMs": 20000,
       "id": "matt-wolfe-youtube",
       "name": "Matt Wolfe YouTube",
       "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UChpleBmo18P08aKCIgti38g",
@@ -315,6 +318,7 @@
       "corroborationDomains": ["openai.com", "anthropic.com", "claude.com", "x.ai", "ai.google.dev", "github.blog", "blog.cloudflare.com", "heygen.com", "synthesia.io", "tavus.io", "runwayml.com", "lumalabs.ai", "captions.ai", "d-id.com", "deepmind.google", "vercel.com", "huggingface.co"]
     },
     {
+      "reserveOnCadence": true,
       "id": "futuretools-news",
       "name": "FutureTools News",
       "url": "https://futuretools.io/news",
@@ -450,6 +454,7 @@
       "limit": 5
     },
     {
+      "reserveOnCadence": true,
       "id": "perplexity-matt-wolfe-friday-sweep",
       "name": "Perplexity Matt Wolfe Friday Corroboration Sweep",
       "url": "perplexity://matt-wolfe-friday-sweep",
