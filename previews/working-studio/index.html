@@ -17,20 +17,22 @@ footer{display:flex;justify-content:space-between;gap:15px;padding:23px 3.3vw;fo
 @media(max-width:780px){.topbar{padding:21px 22px;min-height:100px;flex-wrap:wrap;gap:13px}.wordmark{font-size:1.55rem;max-width:100%;flex:1 1 100%}.product-name{border:0;padding:0}.product-name strong{font-size:.83rem}.product-name small{font-size:.67rem}.topbar>.tag{font-size:.6rem;padding:5px 8px}.shell{display:flex;flex-direction:column;min-height:0}.rail{border-right:0;border-bottom:1px solid var(--line);padding:11px 15px;display:block}.rail>.eyebrow,.rail-bottom{display:none}.chapter-nav{flex-direction:row;gap:5px}.chapter-nav button{flex:1;min-width:0;min-height:56px;padding:8px;border:0}.chapter-nav button strong{font-size:.9rem}.chapter-nav button span{font-size:.59rem;line-height:1.3}.main{padding:30px 23px 37px}h1{font-size:clamp(2.65rem,8.8vw,4rem);line-height:1.03;margin-top:18px}.lead{font-size:.9rem;margin-bottom:28px}.task-picker{grid-template-columns:1fr 1fr}.task-option{padding:12px;gap:8px}.task-option strong{font-size:.82rem}.task-option small{font-size:.7rem}.workbench{margin:0 22px 30px;padding:27px 25px 29px;border-radius:3px}.workbench>h2{font-size:2rem;margin:17px 0 21px;max-width:400px}.side-content{padding-top:18px}.side-kicker{margin-bottom:14px}.side-content dl{margin:0;display:grid;grid-template-columns:1fr 2fr;gap:13px 17px}.side-content dt{margin:0;font-size:.61rem;align-self:start;padding-top:4px}.side-content dd{font-size:.88rem}.side-bottom{padding-top:25px}.side-footer{display:none}.side-bottom .small{font-size:.71rem}.progress-strip{padding:22px}.milestones{gap:12px}.milestone{padding-right:7px}.milestone strong{font-size:1rem;display:block}.milestone strong span{font-size:.76rem;display:block;margin:0 0 2px}.milestone p{font-size:.65rem;line-height:1.45}.progress-meta{font-size:.65rem}.section-top{flex-direction:row;align-items:center}.section-top h2{font-size:1.7rem}.field-grid{grid-template-columns:1fr 1fr;gap:12px}footer{padding:21px 23px;flex-direction:column;gap:8px}.button{font-size:.82rem}.button-row{gap:9px}}
 @media(max-width:420px){.task-picker,.field-grid{grid-template-columns:1fr}.task-option{padding:12px 14px}.task-option strong{font-size:.9rem}.task-option small{font-size:.74rem}.task-option input{margin-top:6px}.section-top{align-items:flex-start;flex-direction:column}.topbar>.tag{margin-left:auto}.product-name small{max-width:175px}.milestone p{display:none}.button-row .button{flex:1;justify-content:center}.progress-meta{flex-wrap:wrap}progress{min-width:90px}.side-content dl{grid-template-columns:1fr}.side-content dt{margin-bottom:-8px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}.button:active{transform:none}}
+
+.draft-warning{border-left:3px solid var(--orange);background:#fff0e7;padding:14px 16px;font-size:.83rem;margin-bottom:22px}.saved-work{margin-top:32px}.saved-work h3{font-size:1rem;margin:24px 0 12px}.earlier-brief{border-top:1px solid var(--line);padding:14px 0}.earlier-brief summary{cursor:pointer;font-size:.85rem;font-weight:600;min-height:44px}.earlier-brief summary:focus-visible{outline:3px solid var(--orange);outline-offset:4px}
 </style></head>
 <body>
 <a class="skip" href="#main">Skip to workspace</a>
 <header class="topbar"><div class="wordmark">Phoenix Venture Studios</div><div class="product-name"><strong>The working studio</strong><small>A practical AI training companion</small></div><span class="tag">Interactive preview</span></header>
 <div class="shell">
 <aside class="rail"><span class="eyebrow">YOUR FIELD GUIDE</span><nav class="chapter-nav" aria-label="Workflow chapters"><button data-step="0"><strong>01</strong><span>Define your task</span></button><button data-step="1" disabled><strong>02</strong><span>Prepare your bot</span></button><button data-step="2" disabled><strong>03</strong><span>Test the result</span></button><button data-step="3" disabled><strong>04</strong><span>Make it useful</span></button></nav><div class="rail-bottom"><button id="resetButton" class="text-button">Start a new brief</button></div></aside>
-<main id="main" class="main"><div class="chapter-heading"><b id="chapterNumber">01</b><span class="eyebrow" id="chapterLabel">Define your task</span></div><h1 id="stepTitle" tabindex="-1">One real task.<br>A useful first bot.</h1><p class="lead" id="stepDescription"></p><div id="stepContent"></div><noscript><p>This workspace needs JavaScript for its interactive brief builder. Enable JavaScript to use the four-step flow.</p></noscript></main>
+<main id="main" class="main"><div class="chapter-heading"><b id="chapterNumber">01</b><span class="eyebrow" id="chapterLabel">Define your task</span></div><h1 id="stepTitle" tabindex="-1">One real task.<br>A useful first bot.</h1><p class="lead" id="stepDescription"></p><div id="stepContent"></div><div id="historyPanel"></div><noscript><p>This workspace needs JavaScript for its interactive brief builder. Enable JavaScript to use the four-step flow.</p></noscript></main>
 <aside class="workbench" aria-label="Your workflow brief"><span class="eyebrow">FROM IDEA TO EVERYDAY USE</span><h2 id="sideTitle">Your first useful workflow</h2><div id="sideBody" class="side-content"></div><div class="side-bottom"><button id="sideButton" class="button side-button">Build my brief</button><p class="small">One task. A clear input. A result you can check.</p><div class="side-footer"><strong>Built around the way you work.</strong><span>Guided by Nathan Wildman · Phoenix Venture Studios</span></div></div></aside>
 </div>
 <section class="progress-strip" aria-label="Your recorded progress"><div class="milestones"><div class="milestone"><strong><span>01</span> Define</strong><p>Name the job and the result.</p></div><div class="milestone"><strong><span>02</span> Prepare</strong><p>Give your chosen tool a brief.</p></div><div class="milestone"><strong><span>03</span> Test</strong><p>Review one real example.</p></div><div class="milestone"><strong><span>04</span> Use</strong><p>Choose when to repeat it.</p></div></div><div class="progress-meta"><label id="progressLabel" for="progress">0 of 4 milestones recorded</label><progress id="progress" max="4" value="0"></progress></div></section>
 <footer><p>Preview workspace · Work stays in this tab for this visit. Export before leaving. <button id="resetMobileButton" class="text-button">Start a new brief</button></p><p>Session format and pricing confirmed separately. <a href="https://phoenixventurestudios.com/" target="_blank" rel="noopener noreferrer">About PVS</a></p></footer>
 <div id="notice" role="status" aria-live="polite" aria-atomic="true"></div>
 <dialog id="copyDialog" aria-labelledby="copyHeading"><h2 id="copyHeading">Copy your text</h2><p>Your browser could not copy automatically. Select the text below and copy it.</p><textarea id="copyFallback" aria-label="Text to copy" readonly></textarea><form method="dialog"><div class="button-row"><button class="button primary">Done</button></div></form></dialog>
-<dialog id="resetDialog" aria-labelledby="resetHeading"><h2 id="resetHeading">Start a fresh brief?</h2><p>This clears the brief, test record, and use plan in this tab. Export anything you want to keep first.</p><div class="button-row"><button id="confirmReset" class="button primary">Clear and start again</button><form method="dialog"><button class="button secondary">Keep my work</button></form></div></dialog>
+<dialog id="resetDialog" aria-labelledby="resetHeading"><h2 id="resetHeading">Start a fresh brief?</h2><p>This clears the current brief, all earlier briefs, test records, and use plans in this tab. Export anything you want to keep first.</p><div class="button-row"><button id="confirmReset" class="button primary">Clear and start again</button><form method="dialog"><button class="button secondary">Keep my work</button></form></div></dialog>
 <script>
 const TASKS = {
  meeting: {title:"Meeting follow-up",short:"Turn notes into decisions and next steps.",input:"Anonymized meeting notes",output:"A short recap, decisions, and an action list with owners and due dates.",goal:"Turn meeting notes into a reliable follow-up I can review and share.",sample:"Example: The team agreed to update the launch plan. Alex will draft it by Friday. A budget decision is still open.",rule:"Separate decisions from suggestions. If an owner or deadline is absent, write Not specified. Never invent one."},
@@ -76,7 +78,7 @@ function buildBrief(data){
 function testPassed(state){return clean(state.result).length>=12 && state.checks.length===3 && state.checks.every(Boolean);}
 function completedCount(state){return Number(Boolean(state.brief))+Number(Boolean(state.prepared))+Number(Boolean(state.passed))+Number(Boolean(state.routine));}
 function exportBrief(state){
- return [
+ const current = [
  "PHOENIX VENTURE STUDIOS — THE WORKING STUDIO",
  "Participant planning prototype. No bot is connected or launched by this page.",
  "",
@@ -93,22 +95,33 @@ function exportBrief(state){
  "",
  "Session format and pricing are confirmed separately. This is not a booking or purchase."
  ].join("\n");
+ const earlier=(state.history || []).map((record,index)=>"EARLIER BRIEF "+(index+1)+" — retained evidence for a previous version\n"+exportBrief(record));
+ return [current,...earlier].join("\n\n--------------------\n\n");
 }
 
 const $=id=>document.getElementById(id);
-const state={task:"meeting",tool:"Decide together",goal:TASKS.meeting.goal,input:TASKS.meeting.input,output:TASKS.meeting.output,step:0,brief:"",prepared:false,result:"",checks:[false,false,false],passed:false,notes:"",routine:""};
+const state={task:"meeting",tool:"Decide together",goal:TASKS.meeting.goal,input:TASKS.meeting.input,output:TASKS.meeting.output,step:0,brief:"",prepared:false,result:"",checks:[false,false,false],passed:false,notes:"",routine:"",history:[]};
 const chapters=["Define your task","Prepare your bot","Test the result","Make it useful"];
 const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 let noticeTimer;
 function notify(message){$("notice").textContent=message;clearTimeout(noticeTimer);noticeTimer=setTimeout(()=>$("notice").textContent="",6500);}
-function canVisit(index){return index===0 || (index===1 && !!state.brief) || (index===2 && state.prepared) || (index===3 && state.passed);}
+function hasDraftChanges(){
+ return !!state.brief && (validateBrief(state).length>0 || buildBrief(state)!==state.brief);
+}
+function canVisit(index){
+ if(index===0)return true;
+ if(hasDraftChanges())return false;
+ return (index===1 && !!state.brief) || (index===2 && state.prepared) || (index===3 && state.passed);
+}
 function updateChrome(){
  document.querySelectorAll("[data-step]").forEach(button=>{
  const i=Number(button.dataset.step);button.disabled=!canVisit(i);button.setAttribute("aria-current",i===state.step?"step":"false");
  });
  $("chapterNumber").textContent="0"+(state.step+1);
  $("chapterLabel").textContent=chapters[state.step];
- $("progressLabel").textContent=completedCount(state)+" of 4 milestones recorded";
+ $("progressLabel").textContent=(hasDraftChanges()?"Saved brief: ":"")+completedCount(state)+" of 4 milestones recorded";
+ const warning=$("draftWarning");
+ if(warning){warning.hidden=!hasDraftChanges();warning.textContent=hasDraftChanges()?"You have changes to this brief. Build again to start a new review; your earlier instructions, test result, notes, and use plan will be kept in Earlier briefs.":"";}
  $("progress").value=completedCount(state);
  $("stepTitle").textContent=["One real task.\nA useful first bot.","Give your bot\na clear job.","Try it on\nsomething real.","Build it into\nyour week."][state.step];
  $("stepDescription").textContent=[
@@ -127,8 +140,24 @@ function updateChrome(){
  $("sideButton").textContent=["Build my brief","Continue to my test","Review my test","Export my field guide"][state.step];
  $("sideButton").disabled=(state.step===1&&!state.prepared);
 }
-function resetDownstream(){
- state.brief="";state.prepared=false;state.result="";state.checks=[false,false,false];state.passed=false;state.notes="";state.routine="";updateChrome();
+function updateDraftStatus(){
+ // Draft edits must not destroy the saved brief or its evidence.
+ updateChrome();
+}
+function archiveCurrentBrief(){
+ if(!state.brief)return;
+ state.history.push({
+  brief:state.brief,prepared:state.prepared,result:state.result,
+  checks:[...state.checks],passed:state.passed,notes:state.notes,routine:state.routine
+ });
+}
+function renderHistory(){
+ const panel=$("historyPanel");
+ if(!state.brief && !state.history.length){panel.innerHTML="";return;}
+ panel.innerHTML='<section class="saved-work"><div class="section-top"><h2>Saved work for this visit</h2></div><p class="small muted">Download your current brief and all earlier evidence before leaving or refreshing.</p><div class="button-row"><button class="button secondary" id="downloadSaved">Download saved work</button><button class="button secondary" id="copySaved">Copy saved work</button></div>'+
+ (state.history.length?'<h3>Earlier briefs</h3>'+state.history.map((record,index)=>'<details class="earlier-brief"><summary>Brief '+(index+1)+' · '+(record.passed?'Reviewed test retained':'Work in progress retained')+'</summary><p class="small muted">This evidence belongs to the earlier instructions below. It does not mark the current brief as tested.</p><pre tabindex="0">'+escapeHTML(exportBrief(record))+'</pre></details>').join(""):'')+'</section>';
+ $("downloadSaved").onclick=()=>download(exportBrief(state),"pvs-saved-work.txt");
+ $("copySaved").onclick=()=>copyText(exportBrief(state));
 }
 function render(){
  updateChrome();
@@ -136,7 +165,7 @@ function render(){
  if(state.step===0){
  content='<fieldset class="task-picker"><legend class="eyebrow">01 / CHOOSE A STARTING POINT</legend>'+Object.entries(TASKS).map(([key,t])=>'<label class="task-option"><input type="radio" name="task" value="'+key+'" '+(state.task===key?"checked":"")+'><span><strong>'+t.title+'</strong><small>'+t.short+'</small></span></label>').join("")+'</fieldset>'+
  '<div class="sample"><span class="eyebrow">SMALL, REALISTIC INPUT</span><p>'+escapeHTML(TASKS[state.task].sample)+'</p></div>'+
- '<form id="briefForm" novalidate><div class="section-top"><h2>Shape your brief</h2><span class="small">Three short answers</span></div>'+
+ '<form id="briefForm" novalidate><p id="draftWarning" class="draft-warning" role="status" hidden></p><div class="section-top"><h2>Shape your brief</h2><span class="small">Three short answers</span></div>'+
  '<label for="goal">What do you want help with?</label><textarea id="goal" name="goal" rows="2" maxlength="500" aria-describedby="goalError" required>'+escapeHTML(state.goal)+'</textarea><p class="field-error" id="goalError"></p>'+
  '<div class="field-grid"><div><label for="input">What will you give it?</label><textarea id="input" name="input" rows="3" maxlength="700" aria-describedby="inputError" required>'+escapeHTML(state.input)+'</textarea><p class="field-error" id="inputError"></p></div><div><label for="output">What should it give you back?</label><textarea id="output" name="output" rows="3" maxlength="700" aria-describedby="outputError" required>'+escapeHTML(state.output)+'</textarea><p class="field-error" id="outputError"></p></div></div>'+
  '<label for="tool">Preferred tool</label><select id="tool" name="tool"><option>Decide together</option><option>Grok bot</option><option>A dot</option><option>Another AI assistant</option></select>'+
@@ -149,7 +178,9 @@ function render(){
  content='<div class="result-banner"><span class="eyebrow">ONE TEST REVIEWED BY YOU</span><h2>Your first useful workflow has a starting point.</h2><p>Keep testing it before you rely on it.</p></div><form id="routineForm"><label for="routine">When will you use it next, and what will you check?</label><textarea id="routine" rows="4" maxlength="1500" required placeholder="After my next team meeting, I will run the notes through the bot and check owners and deadlines before sharing.">'+escapeHTML(state.routine)+'</textarea><button class="button primary" type="submit">Save my use plan</button></form><div class="export-panel"><h2>Your field guide</h2><p>Keep your instructions, test record, and next-use plan together.</p><div class="button-row"><button class="button primary" id="exportGuide">Download my guide</button><button class="button secondary" id="copyGuide">Copy my guide</button></div></div><p class="small muted">Your work stays in this tab for this visit. Export it before refreshing or leaving.</p>';
  }
  $("stepContent").innerHTML=content;
+ renderHistory();
  bind();
+ updateChrome();
 }
 function go(index){
  if(!canVisit(index))return;
@@ -163,7 +194,14 @@ function submitBrief(event){
  const errors=validateBrief(state);
  for(const key of ["goal","input","output"]){$(key+"Error").textContent=errors.includes(key)?"Add a little more detail (at least 8 characters).":"";$(key).setAttribute("aria-invalid",String(errors.includes(key)));}
  if(errors.length){$(errors[0]).focus();notify("Complete the highlighted fields.");return;}
- state.brief=buildBrief(state);state.prepared=false;state.passed=false;state.checks=[false,false,false];state.result="";state.notes="";state.routine="";go(1);notify("Your starter instructions are ready to review.");
+ const nextBrief=buildBrief(state);
+ if(nextBrief===state.brief){
+  go(1);notify("Your brief is unchanged. Your test record, notes, and use plan are preserved.");return;
+ }
+ const hadBrief=!!state.brief;
+ archiveCurrentBrief();
+ state.brief=nextBrief;state.prepared=false;state.passed=false;state.checks=[false,false,false];state.result="";state.notes="";state.routine="";
+ go(1);notify(hadBrief?"Updated brief ready. Earlier evidence is preserved in Earlier briefs; review and test this version again.":"Your starter instructions are ready to review.");
 }
 function recordTest(event){
  if(event)event.preventDefault();state.result=$("result").value;state.notes=$("notes").value;
@@ -185,9 +223,9 @@ function bind(){
  if(state.step===0){
  $("tool").value=state.tool;
  document.querySelectorAll('input[name="task"]').forEach(r=>r.addEventListener("change",()=>{
- state.task=r.value;Object.assign(state,{goal:TASKS[r.value].goal,input:TASKS[r.value].input,output:TASKS[r.value].output});resetDownstream();render();document.querySelector('input[name="task"]:checked').focus();
+ state.task=r.value;Object.assign(state,{goal:TASKS[r.value].goal,input:TASKS[r.value].input,output:TASKS[r.value].output});updateDraftStatus();render();document.querySelector('input[name="task"]:checked').focus();
  }));
- for(const key of ["goal","input","output","tool"])$(key).addEventListener("input",()=>{syncForm();resetDownstream();});
+ for(const key of ["goal","input","output","tool"])$(key).addEventListener("input",()=>{syncForm();updateDraftStatus();});
  $("briefForm").addEventListener("submit",submitBrief);
  }else if(state.step===1){
  $("copyPrompt").onclick=()=>copyText(state.brief);
@@ -215,7 +253,7 @@ $("sideButton").onclick=()=>{
 $("resetButton").onclick=()=>$("resetDialog").showModal();
 $("resetMobileButton").onclick=()=>$("resetDialog").showModal();
 $("confirmReset").onclick=()=>{
- Object.assign(state,{task:"meeting",tool:"Decide together",goal:TASKS.meeting.goal,input:TASKS.meeting.input,output:TASKS.meeting.output,step:0,brief:"",prepared:false,result:"",checks:[false,false,false],passed:false,notes:"",routine:""});
+ Object.assign(state,{task:"meeting",tool:"Decide together",goal:TASKS.meeting.goal,input:TASKS.meeting.input,output:TASKS.meeting.output,step:0,brief:"",prepared:false,result:"",checks:[false,false,false],passed:false,notes:"",routine:"",history:[]});
  $("resetDialog").close();render();$("stepTitle").focus();notify("A new brief is ready to start.");
 };
 render();
