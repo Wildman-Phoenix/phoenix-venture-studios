@@ -26,7 +26,9 @@ Then open http://127.0.0.1:4173 in that browser. This command was not run in the
 - Explicit participant acknowledgment before entering the test stage.
 - Test result and all three review checks required before marking passed.
 - Editing the test result resets prior review checks.
-- Editing the brief invalidates later milestones.
+- Editing the brief preserves saved evidence and warns that draft changes are pending; later chapters are unavailable until the draft is reverted or rebuilt.
+- Submitting an unchanged brief preserves its reviewed result, notes, use plan, checks, and milestones.
+- Rebuilding a materially changed brief archives the earlier instructions and all evidence, then starts a fresh review for the new version. Earlier briefs remain visible and are included in saved-work exports.
 - Copy includes a selectable-text fallback when clipboard access fails.
 - Download exports a plain-text instruction sheet or complete field guide.
 - New-brief confirmation protects against accidental in-tab reset.
@@ -37,6 +39,16 @@ Then open http://127.0.0.1:4173 in that browser. This command was not run in the
 ## Verification
 
 14 core logic assertions passed in the available JavaScript execution tool, plus complete script syntax validation and static ID-uniqueness check. These are not browser tests. See design-qa.md for the exact blocked checks.
+
+The evidence-preservation fix adds 12 regression cases against the actual source submit and input/change handlers with a minimal DOM harness. The original version fails the unchanged-submit case; the revised version passes all 12 cases. These ran in the available JavaScript execution tool, not Chromium. To reproduce with Node:
+
+```sh
+node previews/working-studio/test-brief-regression.mjs
+```
+
+The original prototype remains in Git history at commit `93edf8fae47764b29fd9b41c3073d962d8490071`.
+
+No audio, video, or speech feature is implemented. No audio playback/recording or speech interaction audit has been performed.
 
 ## Preview deployment
 
