@@ -57,7 +57,7 @@ function summarizeFeedReport(report) {
       fileName: report.fileName,
       feedId: feed.feedId || "all-feeds",
       generatedAt: data.generatedAt || feed.finishedAt || "",
-      status: feed.feedValid && !feed.preservedPreviousFeed && !feed.timedOut ? "fresh" : feed.preservedPreviousFeed ? "preserved" : "attention",
+      status: feed.feedValid && Number(feed.selected) > 0 && !feed.preservedPreviousFeed && !feed.timedOut ? "fresh" : feed.preservedPreviousFeed ? "preserved" : "attention",
       selected: feed.selected ?? 0,
       held: feed.held ?? 0,
       warnings: normalizeTextList(feed.warnings || []),
@@ -68,12 +68,12 @@ function summarizeFeedReport(report) {
     }));
   }
 
-  if (data.items || data.sources || data.images || data.queue) {
+  if (!Array.isArray(data.items) && (data.items || data.sources || data.images || data.queue)) {
     return [{
       fileName: report.fileName,
       feedId: data.feedId || report.fileName.replace(/-run-report\.json$/, ""),
       generatedAt: data.generatedAt || "",
-      status: (data.validation?.errors || []).length ? "attention" : "report",
+      status: (data.validation?.errors || []).length || Number(data.items?.selected ?? data.selectedItems?.length ?? 0) === 0 ? "attention" : "report",
       selected: data.items?.selected ?? data.selectedItems?.length ?? 0,
       held: data.items?.held ?? data.images?.held ?? 0,
       warnings: [

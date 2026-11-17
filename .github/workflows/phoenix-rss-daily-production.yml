@@ -55,6 +55,9 @@ jobs:
           cache: npm
           cache-dependency-path: apps/phoenix-venture-studios-rebuild/package-lock.json
 
+      - name: Record current job evidence boundary
+        run: echo "PHOENIX_RSS_JOB_STARTED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
+
       - name: Confirm required deployment secrets
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -83,6 +86,13 @@ jobs:
 
       - name: Validate the candidate
         run: npm run rss:validate
+
+      - name: Assess coverage and surface review blockers
+        id: rss_health
+        if: always()
+        env:
+          PHOENIX_RSS_JOB_STATUS: ${{ job.status }}
+        run: node scripts/rss/rss-operational-health.mjs
 
       - name: Prepare the production artifact
         if: steps.rss_run.outputs.output_changed == 'true'
