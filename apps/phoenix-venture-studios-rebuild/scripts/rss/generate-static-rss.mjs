@@ -3015,8 +3015,10 @@ function applyAutonomousEditorialLayer(items, options = {}) {
       title: item.publicTitle || item.title,
       publicTitle: item.publicTitle || item.title,
       sourceTitle: item.sourceTitle || item.rawTitle || item.title,
-      deck: item.deck || item.simpleSummary || item.articleBody[0],
-      simpleSummary: item.deck || item.simpleSummary || item.articleBody[0],
+      // Preserve the signed editorial payload: inventing a deck from the body
+      // invalidates an otherwise approved digest when no deck was reviewed.
+      deck: item.deck || item.simpleSummary || "",
+      simpleSummary: item.deck || item.simpleSummary || "",
       editorialReviewNeeded: false,
       feedRole: isToolsFeedId(feedId) ? "founder-tools" : isAiAttentionFeedId(feedId) ? "ai-attention" : "founder-market",
       engagementPrompt: item.engagementPrompt || "",
