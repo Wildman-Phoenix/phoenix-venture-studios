@@ -35,3 +35,6 @@ PR #14 initial commit passed its ten health tests, all 70 engine tests and sourc
 November 17 production run 44163914988 independently confirmed this established hydration route works: 34 RSS files and 98 referenced images at 19:57 UTC, then all lanes selected zero, output unchanged, deployment skipped. This is fresh feed-baseline evidence, not authenticated Cloudflare deployment/rollback identity or complete application-asset preservation.
 
 Local malformed nested report hardening raises health tests to eleven, all passing. No login retry: the secure Cloudflare sign-in request was aborted. Current authenticated release/rollback checks remain blocked.
+
+
+Baseline preservation also now restores referenced reviewed `source-art` PNG/JPEG/WebP files, not just `generated` images. A narrow same-site path allowlist rejects traversal and external URLs. Two added regressions verify coverage and rejection; total health/preservation tests: 13. This fixes a concrete missing-art risk for the pending original cover, not a claim of full-site rollback completeness.
