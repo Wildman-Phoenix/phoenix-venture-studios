@@ -55,6 +55,11 @@ jobs:
       - name: Run RSS regression suite
         run: npm run rss:test
 
+      # Match production: checked-in RSS is historical source, not the live baseline.
+      # Hydration checks every manifest hash and fails closed; no deployment occurs here.
+      - name: Hydrate the last valid live bundle
+        run: npm run rss:hydrate-live
+
       - name: Validate preserved public bundle
         run: npm run rss:validate
 

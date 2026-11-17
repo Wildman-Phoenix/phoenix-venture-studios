@@ -12,16 +12,16 @@ export function assessOperationalHealth({summary,reports={},feeds={},now=new Dat
  if(jobStatus!=='success')issue('red','workflow-failed',`Workflow status: ${jobStatus}. Inspect failed steps before retrying.`);
  if(summary?.allValid===false||summary?.restoredPreviousOutput)issue('red','generation-failed','Generation failed or previous output was restored.');
  const lanes=ARCHIVE_LANES.map(([id,file,reportFile])=>{
-  const report=reports[reportFile],feed=feeds[file],run=summary?.feeds?.find(f=>f.feedId===id);
+  const report=reports[reportFile],feed=feeds[file],run=Array.isArray(summary?.feeds)?summary.feeds.find(f=>f?.feedId===id):undefined;
   if(!report||!run)issue('red','lane-report-missing',`${id}: current lane report is missing.`);
   if(report&&(!Number.isFinite(Date.parse(report.generatedAt))||Date.parse(report.generatedAt)<stamp-60000))issue('red','lane-report-stale',`${id}: lane evidence predates this run.`);
   const count=Array.isArray(feed?.items)?feed.items.length:null;
   if(count===null)issue('red','feed-unreadable',`${id}: output feed is missing or malformed.`);
   else if(count===0)issue('yellow','empty-feed',`${id}: zero published items. Do not count a successful fetch as restored coverage.`);
-  const eligibleItems=(Array.isArray(feed?.items)?feed.items:[]).filter(item=>promotionState({...item._phoenix,originalUrl:item._phoenix?.originalUrl||item.external_url},{now}).eligible).length;
+  const eligibleItems=(Array.isArray(feed?.items)?feed.items:[]).filter(item=>item&&typeof item==='object'&&promotionState({...item._phoenix,originalUrl:item._phoenix?.originalUrl||item.external_url},{now}).eligible).length;
   if(count>0&&eligibleItems<count)issue('yellow','output-needs-review',`${id}: ${count-eligibleItems} output items lack current source/editorial/image eligibility; retained output is not restored current coverage.`);
   if(run&&(run.sourceErrors||run.socialCardErrors||run.editorialErrors||run.feedValid===false))issue('red','lane-failed',`${id}: source, validation, image or editorial errors occurred.`);
-  const reasons={};for(const held of (Array.isArray(report?.heldItems)?report.heldItems:[]))for(const reason of held.promotionReasons?.length?held.promotionReasons:[held.holdReason||'review-required'])reasons[reason]=(reasons[reason]||0)+1;
+  const reasons={};for(const held of (Array.isArray(report?.heldItems)?report.heldItems:[]))for(const reason of Array.isArray(held?.promotionReasons)&&held.promotionReasons.length?held.promotionReasons:[held?.holdReason||'review-required'])reasons[reason]=(reasons[reason]||0)+1;
   const held=report?.items?.held||0;
   if(held>0&&Number(run?.selected||0)===0)issue('yellow','review-blocked',`${id}: ${held} candidates held; editorial, source-date and image review must be completed, not bypassed.`);
   if(run&&Number(run.selected||0)===0&&count>0)issue('yellow','no-new-selection',`${id}: no new selection; retained items are not proof of a new publication.`);

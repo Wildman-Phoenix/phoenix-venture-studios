@@ -12,12 +12,12 @@
 1. Add always-run operational health assessment to the existing workflow before artifact preparation. It runs without npm dependencies, writes JSON/Markdown evidence, outputs GitHub warning/error annotations and job summary. Failed/stale/missing evidence is red; empty, held or no-new-selection lanes are yellow. Nonempty items must still satisfy unchanged source/editorial/image promotion gates to count as eligible.
 2. Include all independent promotion reasons and exact original URL in held-item reports. Image-only holdReason no longer conceals source-date/editorial blockers.
 3. Correct the private HTML health report: zero-selection sections are attention, never fresh; image-review queue arrays reach their intended handler.
-4. Add ten health regressions to rss:test. No source registry, freshness period, approval predicate, ownership policy or social publishing setting is relaxed.
+4. Add eleven health regressions to rss:test. No source registry, freshness period, approval predicate, ownership policy or social publishing setting is relaxed.
 
 GitHub annotations are **not a delivered user message**. A root-owned watchdog must read run status/artifacts and notify Nathan promptly about zero-output, missed runs (>30h), failures, specific approvals, and recovery. This patch does not claim that notification delivery is configured.
 
 ## Verification
-- `npm run rss:test`: ten new health tests + existing 70 engine tests passed, plus source-repair/preservation fixtures.
+- `npm run rss:test`: eleven new health tests + existing 70 engine tests passed, plus source-repair/preservation fixtures.
 - Used Node 24.22.1 in this cloud; production workflow remains pinned Node 22.23.1. Production CI on the exact patch is still required.
 - Applied assessment to actual November 16 artifact: YELLOW, contentRestored=false, three empty archive lanes, 108 held archive records.
 - No source/production feeds, images, dates, private approval stamps or credentials changed by the assessment. Local synthetic tests only.
@@ -27,3 +27,11 @@ GitHub annotations are **not a delivered user message**. A root-owned watchdog m
 - Preserve deliberately paused social consumers. Draft preparation is not social-send approval.
 - Verify current authorized Cloudflare project/deployment/rollback and complete current asset/configuration baseline; do not deploy old development output or omit generated archive/images.
 - Review exact content/release scope before production publication. No main push or production deployment is included in this patch.
+
+
+## Follow-up: exact-commit CI and baseline mismatch
+PR #14 initial commit passed its ten health tests, all 70 engine tests and source fixtures under production-pinned Node 22.23.1. The shadow job then correctly rejected the checked-in legacy bundle at “Validate preserved public bundle”; it never generated or deployed. Shadow omitted the production workflow’s hydrate-live step and therefore validated the wrong baseline. Added that same existing read-only, manifest-hash-checked hydration before validation in shadow; approval validation remains unchanged and any fetch/hash/validation error still stops the job. No empty substitute or approval stamps added.
+
+November 17 production run 44163914988 independently confirmed this established hydration route works: 34 RSS files and 98 referenced images at 19:57 UTC, then all lanes selected zero, output unchanged, deployment skipped. This is fresh feed-baseline evidence, not authenticated Cloudflare deployment/rollback identity or complete application-asset preservation.
+
+Local malformed nested report hardening raises health tests to eleven, all passing. No login retry: the secure Cloudflare sign-in request was aborted. Current authenticated release/rollback checks remain blocked.
