@@ -39,8 +39,12 @@
     "rss:publish-production": "node scripts/rss/publish-production-rss.mjs",
     "preview:publish": "node scripts/preview/publish-preview-app.mjs",
     "images:contact-sheet": "node scripts/preview/build-image-contact-sheet.mjs",
-    "rss:test": "node scripts/rss/test-source-repair.mjs && PHOENIX_RSS_DISABLE_ARTICLE_METADATA=1 NODE_OPTIONS=--require=./scripts/rss/register-rollup-wasm.cjs vitest run --config vitest.rss.config.ts src/test/rss-engine.test.ts",
-    "test:watch": "vitest"
+    "rss:test": "npm run rss:test:health && npm run rss:test:live-recovery && node scripts/rss/test-source-repair.mjs && PHOENIX_RSS_DISABLE_ARTICLE_METADATA=1 NODE_OPTIONS=--require=./scripts/rss/register-rollup-wasm.cjs vitest run --config vitest.rss.config.ts src/test/rss-engine.test.ts",
+    "test:watch": "vitest",
+    "rss:test:health": "node --test scripts/rss/test-operational-health.mjs",
+    "rss:operational-health": "node scripts/rss/rss-operational-health.mjs",
+    "rss:test:live-recovery": "node --test scripts/rss/test-live-recovery.mjs",
+    "rss:verify-live-recovery": "node scripts/rss/verify-live-recovery.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

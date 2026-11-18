@@ -21,6 +21,19 @@ async function writePublicFile(relativePath, bytes) {
   await fs.writeFile(target, bytes);
 }
 
+// Only same-site reviewed image directories may be restored from feed metadata.
+// Return decoded canonical paths; reject traversal, query strings and external URLs.
+export function referencedOwnedImagePaths(feed) {
+  const paths = new Set();
+  for (const item of Array.isArray(feed?.items) ? feed.items : []) {
+    for (const value of [item?._phoenix?.socialImagePath, item?._phoenix?.imagePath]) {
+      if (typeof value !== "string" || !/^\/images\/signals\/(generated|source-art)\/[A-Za-z0-9_-]+\.(jpg|jpeg|png|webp)$/i.test(value)) continue;
+      paths.add(value);
+    }
+  }
+  return [...paths];
+}
+
 export async function hydrateLiveRssBaseline() {
   const manifestBytes = await fetchBuffer(`${SITE_URL}/rss/bundle-manifest.json`);
   const manifest = JSON.parse(manifestBytes.toString("utf8"));
@@ -41,10 +54,7 @@ export async function hydrateLiveRssBaseline() {
   for (const file of ["signal-archive.json", "feed.json", "tools.json", "ai-attention.json", "social.json", "tools-social.json", "ai-attention-social.json"]) {
     const raw = await fs.readFile(path.join(RSS_DIR,file),"utf8").catch(error => {if(error.code === "ENOENT" && file === "signal-archive.json") return "{\"items\":[]}";throw error;});
     const feed = JSON.parse(raw);
-    for (const item of feed.items || []) {
-      const imagePath = item?._phoenix?.socialImagePath;
-      if (String(imagePath || "").startsWith("/images/signals/generated/")) imagePaths.add(imagePath);
-    }
+    for (const imagePath of referencedOwnedImagePaths(feed)) imagePaths.add(imagePath);
   }
   for (const imagePath of imagePaths) {
     await writePublicFile(imagePath, await fetchBuffer(`${SITE_URL}${imagePath}`));

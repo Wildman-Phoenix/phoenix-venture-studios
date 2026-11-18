@@ -3015,8 +3015,10 @@ function applyAutonomousEditorialLayer(items, options = {}) {
       title: item.publicTitle || item.title,
       publicTitle: item.publicTitle || item.title,
       sourceTitle: item.sourceTitle || item.rawTitle || item.title,
-      deck: item.deck || item.simpleSummary || item.articleBody[0],
-      simpleSummary: item.deck || item.simpleSummary || item.articleBody[0],
+      // Preserve the signed editorial payload: inventing a deck from the body
+      // invalidates an otherwise approved digest when no deck was reviewed.
+      deck: item.deck || item.simpleSummary || "",
+      simpleSummary: item.deck || item.simpleSummary || "",
       editorialReviewNeeded: false,
       feedRole: isToolsFeedId(feedId) ? "founder-tools" : isAiAttentionFeedId(feedId) ? "ai-attention" : "founder-market",
       engagementPrompt: item.engagementPrompt || "",
@@ -3694,6 +3696,10 @@ export async function buildStaticRss(options = {}) {
       engagementPrompt: item.engagementPrompt,
       imageBrief: getNormalizedImageBrief(item, sourceImageAllowlist),
       holdReason: item.imageHoldReason || "codex-image-pending",
+      originalUrl: item.originalUrl || item.url || "",
+      promotionReasons: promotionState(item, { now }).reasons,
+      sourceDateStatus: item.sourceDateStatus || "unknown",
+      sourcePublishedAt: item.sourcePublishedAt || "",
       imageAudit: item.imageAudit || null,
       imageCorrectionTrail: item.imageCorrectionTrail || [],
       score: item.score,

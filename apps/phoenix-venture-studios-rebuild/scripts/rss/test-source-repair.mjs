@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import { buildStaticRss, buildFeedXml, collectYoutubeSource, loadResearchSources, editorialContentDigest } from "./generate-static-rss.mjs";
+import { buildStaticRss, buildFeedXml, buildFeedJson, hasReviewedSourceBrief, collectYoutubeSource, loadResearchSources, editorialContentDigest } from "./generate-static-rss.mjs";
 
 const registry = JSON.parse(await fs.readFile(new URL("../../rss-data/research-source-registry.json", import.meta.url)));
 const required = ["matt-wolfe-youtube", "futuretools-news", "perplexity-matt-wolfe-friday-sweep"];
@@ -73,3 +73,22 @@ try {
   assert.equal(JSON.parse(await fs.readFile(path.join(dir, "feed.json"), "utf8")).items.length, 0);
   console.log("PASS: empty runs retain reviewed eligible XML/JSON byte-for-byte; unreviewed legacy items remain held");
 } finally { await fs.rm(dir, { recursive: true, force: true }); }
+
+// A reviewed story may intentionally omit a deck. Rendering must not mutate
+// digest-bound editorial fields or manufacture a second review requirement.
+for (const summary of [{}, {deck: "Reviewed deck"}, {simpleSummary: "Reviewed summary"}]) {
+  const url = "https://example.com/digest-fixture";
+  const fixture = {title: "Fictional signed-payload regression", url, originalUrl:url,
+    editorialSourceUrl:url, editorialReviewStatus:"approved", ...summary,
+    articleBody:Array.from({length:4},()=>"Fictional evidence and original explanation for isolated regression verification. ".repeat(12)),
+    sourceLinks:[{url}], sourceDateStatus:"verified", sourcePublishedAt:"2026-11-17T00:00:00Z"};
+  fixture.editorialContentDigest = editorialContentDigest(fixture);
+  const now = new Date("2026-11-17T22:00:00Z");
+  assert.equal(hasReviewedSourceBrief(fixture), true);
+  const rendered = buildFeedJson([fixture], {now}).items[0]._phoenix;
+  assert.equal(rendered.editorialReviewNeeded, false, "Rendering must preserve approved digest");
+  assert.equal(rendered.deck, summary.deck || summary.simpleSummary || "");
+  const changed = {...fixture, articleBody:[...fixture.articleBody, "Unreviewed change"]};
+  assert.equal(hasReviewedSourceBrief(changed), false, "Content changes must still invalidate approval");
+}
+console.log("PASS: absent deck and reviewed deck/summary preserve signed payload; content changes still invalidate approval");
