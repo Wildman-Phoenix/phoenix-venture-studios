@@ -146,6 +146,15 @@ jobs:
           echo "Live feed parity did not converge after six checks."
           exit 1
 
+      - name: Verify live story freshness and images
+        if: always()
+        run: |
+          set -euo pipefail
+          status=0
+          node scripts/rss/verify-live-recovery.mjs https://phoenixventurestudios.com > public/rss/live-recovery-health.json || status=1
+          node scripts/rss/verify-live-recovery.mjs https://phoenixventurestudios-com.pages.dev > public/rss/live-recovery-pages-health.json || status=1
+          exit "$status"
+
       - name: Preserve production evidence
         if: always()
         uses: actions/upload-artifact@v4
